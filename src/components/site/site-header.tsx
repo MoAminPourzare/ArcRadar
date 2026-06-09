@@ -32,6 +32,9 @@ export function SiteHeader() {
           <Link className="transition hover:text-ink" href="/#network">
             Network
           </Link>
+          <Link className="transition hover:text-ink" href="/#wallet">
+            Wallet
+          </Link>
           <a
             className="inline-flex items-center gap-1.5 transition hover:text-ink"
             href={siteConfig.links.explorer}

@@ -4,6 +4,7 @@ import { Leaderboard } from "@/components/projects/leaderboard";
 import { ProjectDirectory } from "@/components/projects/project-directory";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
+import { ArcWalletConsole } from "@/components/wallet/arc-wallet-console";
 import { getProjects } from "@/server/projects/repository";
 
 export const dynamic = "force-dynamic";
@@ -20,6 +21,7 @@ export default async function Home() {
         <div id="network">
           <ArcOnboarding />
         </div>
+        <ArcWalletConsole />
         <ProjectDirectory projects={projects} />
         <Leaderboard projects={projects} />
       </main>

@@ -3,6 +3,7 @@ import {
   BadgeDollarSign,
   Fuel,
   Landmark,
+  Wallet,
   RadioTower,
   ShieldCheck,
 } from "lucide-react";
@@ -79,6 +80,10 @@ export function ArcOnboarding() {
           >
             Explorer
             <ArrowUpRight aria-hidden className="size-4" />
+          </a>
+          <a className="btn-primary" href="#wallet">
+            Wallet console
+            <Wallet aria-hidden className="size-4" />
           </a>
           <div className="flex min-h-16 items-center gap-3 rounded-lg border border-ink/10 bg-paper px-4 sm:col-span-2 lg:col-span-1">
             <span className="grid size-9 place-items-center rounded-md bg-blueprint text-paper">
