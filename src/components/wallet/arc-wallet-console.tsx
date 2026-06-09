@@ -1,9 +1,11 @@
 "use client";
 
 import {
+  AlertTriangle,
   ArrowUpRight,
   BadgeDollarSign,
   CheckCircle2,
+  ClipboardCheck,
   Copy,
   ExternalLink,
   Fuel,
@@ -37,17 +39,42 @@ type ReadinessItem = {
   supporting: string;
 };
 
+type CopiedTarget = "address" | "network" | null;
+
 const zeroAddress = "0x0000000000000000000000000000000000000000" as const;
 const zeroBalance = BigInt(0);
+
+const networkFacts = [
+  {
+    label: "Chain ID",
+    value: arcTestnet.id.toString(),
+  },
+  {
+    label: "RPC",
+    value: arcTestnet.rpcUrls.default.http[0],
+  },
+  {
+    label: "Explorer",
+    value: arcLinks.explorer.replace("https://", ""),
+  },
+  {
+    label: "ERC-20 USDC",
+    value: arcContracts.usdc,
+  },
+];
 
 export function ArcWalletConsole() {
   const { address, chainId, isConnected } = useAccount();
   const { connect, connectors, isPending } = useConnect();
   const { disconnect } = useDisconnect();
   const { switchChain, isPending: isSwitching } = useSwitchChain();
-  const [copied, setCopied] = useState(false);
+  const [copiedTarget, setCopiedTarget] = useState<CopiedTarget>(null);
+  const [faucetOpened, setFaucetOpened] = useState(false);
+  const [lastRefreshedAt, setLastRefreshedAt] = useState<Date | null>(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const isOnArc = chainId === arcTestnet.id;
+  const connectionState = getConnectionState(isConnected, isOnArc);
   const explorerAddressUrl = address
     ? `${arcLinks.explorer}/address/${address}`
     : arcLinks.explorer;
@@ -89,6 +116,7 @@ export function ArcWalletConsole() {
     erc20BalanceValue,
     arcCurrency.erc20UsdcDecimals,
   );
+
   const readiness = useMemo<ReadinessItem[]>(
     () => [
       {
@@ -96,30 +124,30 @@ export function ArcWalletConsole() {
         label: "Wallet connected",
         supporting: address
           ? shortenAddress(address)
-          : "Connect MetaMask, Coinbase Wallet, or injected wallet.",
+          : "MetaMask, Coinbase Wallet, or injected wallet.",
       },
       {
         done: isConnected && isOnArc,
-        label: "Arc Testnet selected",
+        label: "Arc Testnet active",
         supporting: isOnArc
           ? `Chain ${arcTestnet.id}`
-          : "Switch wallet network to Arc Testnet.",
+          : "Use switch/add network before claiming faucet funds.",
       },
       {
         done: nativeBalanceValue > zeroBalance,
-        label: "Gas balance ready",
+        label: "Gas balance funded",
         supporting:
           nativeBalanceValue > zeroBalance
             ? `${formattedNativeBalance} native USDC`
-            : "Use the faucet to fund testnet gas.",
+            : "Native USDC pays Arc Testnet gas.",
       },
       {
         done: erc20BalanceValue > zeroBalance,
-        label: "Tip balance ready",
+        label: "Tip balance funded",
         supporting:
           erc20BalanceValue > zeroBalance
             ? `${formattedErc20Balance} ERC-20 USDC`
-            : "ERC-20 USDC balance is required for tip transfers.",
+            : "ERC-20 USDC is the future tip transfer surface.",
       },
     ],
     [
@@ -133,81 +161,118 @@ export function ArcWalletConsole() {
     ],
   );
   const readyCount = readiness.filter((item) => item.done).length;
+  const hasAnyBalance =
+    nativeBalanceValue > zeroBalance || erc20BalanceValue > zeroBalance;
 
   async function copyAddress() {
     if (!address) {
       return;
     }
 
+    await copyToClipboard(address, "address");
+  }
+
+  async function copyNetworkConfig() {
+    await copyToClipboard(
+      [
+        `Network: ${arcTestnet.name}`,
+        `Chain ID: ${arcTestnet.id}`,
+        `RPC: ${arcTestnet.rpcUrls.default.http[0]}`,
+        `Explorer: ${arcLinks.explorer}`,
+        `ERC-20 USDC: ${arcContracts.usdc}`,
+      ].join("\n"),
+      "network",
+    );
+  }
+
+  async function copyToClipboard(value: string, target: CopiedTarget) {
     try {
-      await navigator.clipboard.writeText(address);
+      await navigator.clipboard.writeText(value);
     } catch {
       return;
     }
 
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1500);
+    setCopiedTarget(target);
+    window.setTimeout(() => setCopiedTarget(null), 1500);
   }
 
-  function refreshBalances() {
-    void refetchNativeBalance();
-    void refetchErc20Balance();
+  async function openFaucet() {
+    if (address) {
+      await copyAddress();
+    }
+
+    setFaucetOpened(true);
+    window.open(arcLinks.faucet, "_blank", "noopener,noreferrer");
+  }
+
+  async function refreshBalances() {
+    setIsRefreshing(true);
+
+    try {
+      await Promise.all([refetchNativeBalance(), refetchErc20Balance()]);
+      setLastRefreshedAt(new Date());
+    } finally {
+      setIsRefreshing(false);
+    }
   }
 
   return (
     <section className="border-b border-ink/10 bg-paper" id="wallet">
-      <div className="mx-auto grid w-full max-w-7xl gap-6 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:px-8">
+      <div className="mx-auto grid w-full max-w-7xl gap-6 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1fr)_392px] lg:px-8">
         <div className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm sm:p-6">
-          <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+          <div className="mb-6 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-start">
             <div>
               <p className="text-sm font-black uppercase text-blueprint">
-                Wallet console
+                Wallet onboarding
               </p>
               <h2 className="mt-2 text-3xl font-black text-ink">
-                Get ready for Arc Testnet tips
+                Connect, fund, and verify Arc Testnet
               </h2>
               <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-ink/55">
-                Connect a wallet, switch to Arc, fund testnet USDC, and verify
-                both gas and ERC-20 balances before the onchain tipping phase.
+                ArcRadar checks the active network, the wallet address, native
+                USDC for gas, and ERC-20 USDC for future project tips.
               </p>
             </div>
-            <div className="flex min-h-11 items-center gap-2 rounded-lg border border-ink/10 bg-paper px-3 text-sm font-black text-ink/60">
-              <ShieldCheck aria-hidden className="size-4 text-forest" />
-              {readyCount}/{readiness.length} ready
-            </div>
+            <StatusBadge
+              icon={connectionState.icon}
+              label={connectionState.label}
+              tone={connectionState.tone}
+              value={`${readyCount}/${readiness.length} ready`}
+            />
           </div>
 
           {!isConnected ? (
-            <div className="grid gap-3 md:grid-cols-3">
-              {connectors.map((connector) => (
-                <button
-                  className="flex min-h-20 items-center justify-between rounded-lg border border-ink/10 bg-paper px-4 text-left font-black text-ink transition hover:border-blueprint hover:text-blueprint"
-                  disabled={isPending}
-                  key={connector.uid}
-                  type="button"
-                  onClick={() => connect({ connector })}
-                >
-                  <span className="min-w-0 truncate">{connector.name}</span>
-                  <PlugZap aria-hidden className="size-4" />
-                </button>
-              ))}
-            </div>
+            <ConnectorGrid
+              connectors={connectors}
+              isPending={isPending}
+              onConnect={(connector) => connect({ connector })}
+            />
           ) : (
-            <div className="grid gap-4 md:grid-cols-2">
-              <BalancePanel
-                icon={Fuel}
-                isLoading={isNativeBalanceLoading}
-                label="Native gas USDC"
-                supporting="Pays Arc Testnet transaction gas"
-                value={`${formattedNativeBalance} USDC`}
+            <div className="grid gap-4">
+              <WalletIdentity
+                address={address}
+                copied={copiedTarget === "address"}
+                explorerAddressUrl={explorerAddressUrl}
+                isOnArc={isOnArc}
+                onCopy={copyAddress}
+                onDisconnect={() => disconnect()}
               />
-              <BalancePanel
-                icon={BadgeDollarSign}
-                isLoading={isErc20BalanceLoading}
-                label="ERC-20 USDC"
-                supporting="Used for project tip transfers"
-                value={`${formattedErc20Balance} USDC`}
-              />
+              <div className="grid gap-4 md:grid-cols-2">
+                <BalancePanel
+                  icon={Fuel}
+                  isLoading={isNativeBalanceLoading}
+                  label="Native gas USDC"
+                  supporting="Transaction gas on Arc Testnet"
+                  value={`${formattedNativeBalance} USDC`}
+                />
+                <BalancePanel
+                  icon={BadgeDollarSign}
+                  isLoading={isErc20BalanceLoading}
+                  label="ERC-20 USDC"
+                  supporting="Balance checked through balanceOf"
+                  value={`${formattedErc20Balance} USDC`}
+                />
+              </div>
             </div>
           )}
 
@@ -219,109 +284,282 @@ export function ArcWalletConsole() {
               onClick={() => switchChain({ chainId: arcTestnet.id })}
             >
               <Wallet aria-hidden className="size-4" />
-              {isSwitching ? "Switching" : isOnArc ? "On Arc" : "Switch to Arc"}
+              {isSwitching
+                ? "Switching"
+                : isOnArc
+                  ? "Arc active"
+                  : "Switch / add Arc"}
             </button>
-            <a
+            <button
               className="btn-secondary min-h-11"
-              href={arcLinks.faucet}
-              rel="noreferrer"
-              target="_blank"
+              type="button"
+              onClick={openFaucet}
             >
-              Faucet
+              Get Arc Testnet USDC
               <ArrowUpRight aria-hidden className="size-4" />
-            </a>
+            </button>
             <button
               className="btn-ghost min-h-11"
-              disabled={!isConnected}
+              disabled={!isConnected || isRefreshing}
               type="button"
               onClick={refreshBalances}
             >
-              <RefreshCw aria-hidden className="size-4" />
-              Refresh
+              <RefreshCw
+                aria-hidden
+                className={cn("size-4", isRefreshing && "animate-spin")}
+              />
+              {isRefreshing ? "Refreshing" : "Refresh balance"}
             </button>
-            {isConnected ? (
-              <button
-                className="btn-ghost min-h-11"
-                type="button"
-                onClick={copyAddress}
-              >
-                <Copy aria-hidden className="size-4" />
-                {copied ? "Copied" : "Copy address"}
-              </button>
-            ) : (
-              <a
-                className="btn-ghost min-h-11"
-                href={arcLinks.docs}
-                rel="noreferrer"
-                target="_blank"
-              >
-                Docs
-                <ExternalLink aria-hidden className="size-4" />
-              </a>
-            )}
+            <button
+              className="btn-ghost min-h-11"
+              type="button"
+              onClick={copyNetworkConfig}
+            >
+              <Copy aria-hidden className="size-4" />
+              {copiedTarget === "network" ? "Copied" : "Copy network"}
+            </button>
           </div>
 
-          {isConnected ? (
-            <div className="mt-5 flex flex-wrap gap-3 border-t border-ink/10 pt-5">
-              <a
-                className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-ink/10 bg-paper px-3 text-xs font-black uppercase text-ink transition hover:border-ink/30"
-                href={explorerAddressUrl}
-                rel="noreferrer"
-                target="_blank"
-              >
-                Explorer address
-                <ArrowUpRight aria-hidden className="size-3.5" />
-              </a>
-              <button
-                className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-ink/10 bg-paper px-3 text-xs font-black uppercase text-ink/55 transition hover:border-coral hover:text-coral"
-                type="button"
-                onClick={() => disconnect()}
-              >
-                <LogOut aria-hidden className="size-3.5" />
-                Disconnect
-              </button>
-            </div>
-          ) : null}
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            <FaucetReturnPanel
+              faucetOpened={faucetOpened}
+              hasAnyBalance={hasAnyBalance}
+              lastRefreshedAt={lastRefreshedAt}
+            />
+            <a
+              className="flex min-h-20 items-center justify-between rounded-lg border border-ink/10 bg-paper px-4 text-sm font-black text-ink transition hover:border-blueprint hover:text-blueprint"
+              href={arcLinks.docs}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <span>
+                <span className="block text-xs uppercase text-ink/40">
+                  Official setup
+                </span>
+                <span className="mt-1 block">Arc network docs</span>
+              </span>
+              <ExternalLink aria-hidden className="size-4" />
+            </a>
+          </div>
         </div>
 
         <aside className="grid content-start gap-3">
           {readiness.map((item) => (
-            <div
-              className="flex min-h-20 items-start gap-3 rounded-lg border border-ink/10 bg-white p-4 shadow-sm"
-              key={item.label}
-            >
-              {item.done ? (
-                <CheckCircle2
-                  aria-hidden
-                  className="mt-0.5 size-5 shrink-0 text-forest"
-                />
-              ) : (
-                <XCircle
-                  aria-hidden
-                  className="mt-0.5 size-5 shrink-0 text-ink/25"
-                />
-              )}
-              <div>
-                <p className="font-black text-ink">{item.label}</p>
-                <p className="mt-1 text-sm font-semibold leading-6 text-ink/55">
-                  {item.supporting}
-                </p>
-              </div>
-            </div>
+            <ReadinessCard item={item} key={item.label} />
           ))}
-          <div className="rounded-lg border border-ink/10 bg-ink p-4 text-paper shadow-sm">
-            <div className="mb-3 flex items-center gap-2 text-mint">
-              <LinkIcon aria-hidden className="size-4" />
-              <span className="text-xs font-black uppercase">Phase 4 note</span>
-            </div>
-            <p className="text-sm font-semibold leading-6 text-paper/65">
-              Faucet funding can take a moment to show up. After claiming testnet
-              USDC, return here and refresh balances before tipping projects.
-            </p>
-          </div>
+          <NetworkReference
+            copied={copiedTarget === "network"}
+            onCopy={copyNetworkConfig}
+          />
         </aside>
       </div>
     </section>
+  );
+}
+
+function ConnectorGrid({
+  connectors,
+  isPending,
+  onConnect,
+}: {
+  connectors: ReturnType<typeof useConnect>["connectors"];
+  isPending: boolean;
+  onConnect: (connector: ReturnType<typeof useConnect>["connectors"][number]) => void;
+}) {
+  return (
+    <div className="grid gap-3 md:grid-cols-3">
+      {connectors.map((connector) => (
+        <button
+          className="group flex min-h-24 items-center justify-between rounded-lg border border-ink/10 bg-paper px-4 text-left font-black text-ink transition hover:border-blueprint hover:text-blueprint"
+          disabled={isPending}
+          key={connector.uid}
+          type="button"
+          onClick={() => onConnect(connector)}
+        >
+          <span className="min-w-0">
+            <span className="block truncate">{connector.name}</span>
+            <span className="mt-1 block text-xs font-bold uppercase text-ink/40 group-hover:text-blueprint/60">
+              Connect wallet
+            </span>
+          </span>
+          <PlugZap aria-hidden className="size-4 shrink-0" />
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function WalletIdentity({
+  address,
+  copied,
+  explorerAddressUrl,
+  isOnArc,
+  onCopy,
+  onDisconnect,
+}: {
+  address?: `0x${string}`;
+  copied: boolean;
+  explorerAddressUrl: string;
+  isOnArc: boolean;
+  onCopy: () => void;
+  onDisconnect: () => void;
+}) {
+  return (
+    <div className="grid gap-3 rounded-lg border border-ink/10 bg-paper p-4 md:grid-cols-[1fr_auto] md:items-center">
+      <div className="min-w-0">
+        <div className="mb-2 flex flex-wrap gap-2">
+          <span
+            className={cn(
+              "inline-flex min-h-7 items-center rounded-md px-2 text-xs font-black uppercase",
+              isOnArc
+                ? "bg-mint/20 text-forest"
+                : "bg-amber/20 text-ink",
+            )}
+          >
+            {isOnArc ? "Arc Testnet" : "Wrong network"}
+          </span>
+          <span className="inline-flex min-h-7 items-center rounded-md bg-white px-2 text-xs font-black uppercase text-ink/45">
+            Connected
+          </span>
+        </div>
+        <p className="font-mono text-sm font-black text-ink sm:text-base">
+          {address ?? "Connected wallet"}
+        </p>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        <button
+          className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-ink/10 bg-white px-3 text-xs font-black uppercase text-ink transition hover:border-ink/30"
+          type="button"
+          onClick={onCopy}
+        >
+          <Copy aria-hidden className="size-3.5" />
+          {copied ? "Copied" : "Copy"}
+        </button>
+        <a
+          className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-ink/10 bg-white px-3 text-xs font-black uppercase text-ink transition hover:border-ink/30"
+          href={explorerAddressUrl}
+          rel="noreferrer"
+          target="_blank"
+        >
+          Explorer
+          <ArrowUpRight aria-hidden className="size-3.5" />
+        </a>
+        <button
+          className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-ink/10 bg-white px-3 text-xs font-black uppercase text-ink/55 transition hover:border-coral hover:text-coral"
+          type="button"
+          onClick={onDisconnect}
+        >
+          <LogOut aria-hidden className="size-3.5" />
+          Disconnect
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function FaucetReturnPanel({
+  faucetOpened,
+  hasAnyBalance,
+  lastRefreshedAt,
+}: {
+  faucetOpened: boolean;
+  hasAnyBalance: boolean;
+  lastRefreshedAt: Date | null;
+}) {
+  return (
+    <div
+      className={cn(
+        "flex min-h-20 items-start gap-3 rounded-lg border p-4",
+        faucetOpened
+          ? "border-mint/40 bg-mint/15"
+          : "border-ink/10 bg-paper",
+      )}
+    >
+      <ClipboardCheck
+        aria-hidden
+        className={cn(
+          "mt-0.5 size-5 shrink-0",
+          hasAnyBalance ? "text-forest" : "text-blueprint",
+        )}
+      />
+      <div>
+        <p className="font-black text-ink">
+          {hasAnyBalance
+            ? "Balance detected"
+            : faucetOpened
+              ? "Faucet opened"
+              : "Faucet return check"}
+        </p>
+        <p className="mt-1 text-sm font-semibold leading-6 text-ink/55">
+          {lastRefreshedAt
+            ? `Last refreshed ${lastRefreshedAt.toLocaleTimeString("en", {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}.`
+            : "Claim testnet USDC, return to ArcRadar, then refresh balance."}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function NetworkReference({
+  copied,
+  onCopy,
+}: {
+  copied: boolean;
+  onCopy: () => void;
+}) {
+  return (
+    <div className="rounded-lg border border-ink/10 bg-ink p-4 text-paper shadow-sm">
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2 text-mint">
+          <LinkIcon aria-hidden className="size-4" />
+          <span className="text-xs font-black uppercase">Arc setup</span>
+        </div>
+        <button
+          className="inline-flex min-h-8 items-center gap-1.5 rounded-md border border-paper/10 px-2 text-xs font-black uppercase text-paper/70 transition hover:border-mint/50 hover:text-mint"
+          type="button"
+          onClick={onCopy}
+        >
+          <Copy aria-hidden className="size-3.5" />
+          {copied ? "Copied" : "Copy"}
+        </button>
+      </div>
+      <div className="grid gap-2">
+        {networkFacts.map((fact) => (
+          <div className="rounded-md bg-paper/[0.06] p-3" key={fact.label}>
+            <p className="text-xs font-black uppercase text-paper/40">
+              {fact.label}
+            </p>
+            <p className="mt-1 break-all font-mono text-xs font-black text-paper">
+              {fact.value}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ReadinessCard({ item }: { item: ReadinessItem }) {
+  return (
+    <div className="flex min-h-20 items-start gap-3 rounded-lg border border-ink/10 bg-white p-4 shadow-sm">
+      {item.done ? (
+        <CheckCircle2
+          aria-hidden
+          className="mt-0.5 size-5 shrink-0 text-forest"
+        />
+      ) : (
+        <XCircle aria-hidden className="mt-0.5 size-5 shrink-0 text-ink/25" />
+      )}
+      <div>
+        <p className="font-black text-ink">{item.label}</p>
+        <p className="mt-1 text-sm font-semibold leading-6 text-ink/55">
+          {item.supporting}
+        </p>
+      </div>
+    </div>
   );
 }
 
@@ -334,14 +572,45 @@ function BalancePanel({
 }: BalancePanelProps) {
   return (
     <div className="rounded-lg border border-ink/10 bg-paper p-4">
-      <div className="mb-4 flex items-center justify-between">
+      <div className="mb-4 flex items-center justify-between gap-3">
         <Icon aria-hidden className="size-5 text-blueprint" />
-        <span className="text-xs font-black uppercase text-ink/40">{label}</span>
+        <span className="text-right text-xs font-black uppercase text-ink/40">
+          {label}
+        </span>
       </div>
       <p className="font-mono text-3xl font-black text-ink">
         {isLoading ? "..." : value}
       </p>
       <p className="mt-2 text-sm font-bold text-ink/55">{supporting}</p>
+    </div>
+  );
+}
+
+function StatusBadge({
+  icon: Icon,
+  label,
+  tone,
+  value,
+}: {
+  icon: LucideIcon;
+  label: string;
+  tone: "good" | "neutral" | "warn";
+  value: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "flex min-h-12 items-center gap-3 rounded-lg border px-3 text-sm font-black shadow-sm",
+        tone === "good" && "border-forest/20 bg-mint/20 text-forest",
+        tone === "neutral" && "border-ink/10 bg-paper text-ink/60",
+        tone === "warn" && "border-amber/40 bg-amber/15 text-ink",
+      )}
+    >
+      <Icon aria-hidden className="size-4" />
+      <span>{label}</span>
+      <span className="rounded-md bg-white/70 px-2 py-1 text-xs text-ink/55">
+        {value}
+      </span>
     </div>
   );
 }
@@ -353,6 +622,30 @@ type BalancePanelProps = {
   supporting: string;
   value: string;
 };
+
+function getConnectionState(isConnected: boolean, isOnArc: boolean) {
+  if (!isConnected) {
+    return {
+      icon: PlugZap,
+      label: "Not connected",
+      tone: "neutral" as const,
+    };
+  }
+
+  if (!isOnArc) {
+    return {
+      icon: AlertTriangle,
+      label: "Switch needed",
+      tone: "warn" as const,
+    };
+  }
+
+  return {
+    icon: ShieldCheck,
+    label: "Arc ready",
+    tone: "good" as const,
+  };
+}
 
 function formatDisplayBalance(value: bigint, decimals: number) {
   const formatted = Number(formatUnits(value, decimals));

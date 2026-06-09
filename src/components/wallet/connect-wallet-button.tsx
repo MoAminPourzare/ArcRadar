@@ -65,7 +65,7 @@ export function ConnectWalletButton({ className }: ConnectWalletButtonProps) {
         onClick={() => switchChain({ chainId: arcTestnet.id })}
       >
         <Wallet aria-hidden className="size-4" />
-        {isSwitching ? "Switching" : "Switch to Arc"}
+        {isSwitching ? "Switching" : "Switch / add Arc"}
       </button>
     );
   }
