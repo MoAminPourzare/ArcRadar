@@ -13,6 +13,13 @@
 # testing
 /coverage
 
+# hardhat
+/artifacts
+/cache
+/types
+/.gas-snapshot
+/snapshots
+
 # next.js
 /.next/
 /out/

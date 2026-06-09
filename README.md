@@ -12,6 +12,8 @@ network onboarding, wallet connection, and the foundation for USDC tipping.
 - **Tailwind CSS v4** for a fast, custom interface system.
 - **wagmi + viem** for EVM wallet connection, Arc Testnet config, and future
   USDC transactions.
+- **Hardhat 3 + viem** for the TipRouter contract, local contract tests, and Arc
+  Testnet deployment scripts.
 - **TanStack Query** for wallet and transaction state.
 - **Drizzle ORM + Postgres** for typed relational data without locking the app
   to one managed provider. Neon Postgres is the preferred deployment target for
@@ -49,10 +51,13 @@ Create `.env.local` from `.env.example` when adding deployment settings.
 ```bash
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=
+NEXT_PUBLIC_TIP_ROUTER_ADDRESS=
 DATABASE_URL=
 DATABASE_URL_UNPOOLED=
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=
+ARC_TESTNET_RPC_URL=https://rpc.testnet.arc.network
+ARC_TESTNET_PRIVATE_KEY=
 ```
 
 WalletConnect is optional in phase zero. Injected wallets, MetaMask, and
@@ -70,6 +75,9 @@ npm run typecheck
 npm run db:generate
 npm run db:migrate
 npm run db:studio
+npm run contracts:compile
+npm run contracts:test
+npm run contracts:deploy:arc
 ```
 
 ## Phase Zero Scope
@@ -157,10 +165,35 @@ needs a real `DATABASE_URL`.
 - Production admin routes protected by a basic auth guard driven by
   `ADMIN_USERNAME` and `ADMIN_PASSWORD`.
 
+## Phase Five Scope
+
+- `TipRouter` Solidity contract added in `contracts/TipRouter.sol`.
+- Tipping flow uses `approve` on Arc ERC-20 USDC, then
+  `tip(projectId, recipient, amount, message)`.
+- Contract transfers approved ERC-20 USDC from the tipper to the project wallet.
+- Contract emits `ProjectTipped(projectId, tipper, recipient, amount, message)`
+  so leaderboards can be indexed from onchain events.
+- Input validation added for empty/long project IDs, zero recipient, zero
+  amount, long messages, and failed USDC transfers.
+- Mock USDC and Hardhat node tests added for successful tips, event indexing,
+  validation reverts, and failed ERC-20 return values.
+- TipRouter ABI/config exported from `src/config/tip-router.ts` for future app
+  transaction UI and indexer code.
+
+## TipRouter Deployment Checklist
+
+1. Fund a deployer wallet with native Arc Testnet USDC for gas.
+2. Add `ARC_TESTNET_PRIVATE_KEY` to local env or Vercel deployment secrets.
+3. Run `npm run contracts:test`.
+4. Deploy with `npm run contracts:deploy:arc`.
+5. Copy the deployed address into `NEXT_PUBLIC_TIP_ROUTER_ADDRESS`.
+6. Verify the contract address, USDC address, and first `ProjectTipped` event on
+   ArcScan before enabling public tipping UI.
+
 ## Next Phases
 
-1. Add authentication and approve/reject actions for the admin queue.
-2. Convert approved submissions into public project profiles.
-3. Deploy `TipRouter` smart contract and index `ProjectTipped` events.
-4. Build weekly/monthly leaderboards and builder verification.
+1. Build the app-side approve/tip UI against TipRouter.
+2. Index `ProjectTipped` events into Postgres.
+3. Build weekly/monthly leaderboards and builder verification.
+4. Add authentication and approve/reject actions for the admin queue.
 5. Add admin-only project publishing workflow from the database.

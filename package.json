@@ -2,12 +2,19 @@
   "name": "arc-radar",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "overrides": {
+    "@actions/http-client": "3.0.2"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
+    "contracts:compile": "hardhat compile",
+    "contracts:test": "hardhat test",
+    "contracts:deploy:arc": "hardhat run scripts/deploy-tip-router.ts --network arcTestnet",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
@@ -29,6 +36,10 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-network-helpers": "^3.0.10",
+    "@nomicfoundation/hardhat-node-test-runner": "^3.0.17",
+    "@nomicfoundation/hardhat-viem": "^3.0.9",
+    "@nomicfoundation/hardhat-viem-assertions": "^3.1.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -36,6 +47,7 @@
     "drizzle-kit": "^0.31.10",
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
+    "hardhat": "^3.9.0",
     "tailwindcss": "^4",
     "tsx": "^4.22.4",
     "typescript": "^5"
