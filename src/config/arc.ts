@@ -34,7 +34,7 @@ export const arcCurrency = {
 } as const;
 
 export const arcLinks = {
-  docs: "https://docs.arc.network",
+  docs: "https://docs.arc.io",
   explorer: "https://testnet.arcscan.app",
   faucet: "https://faucet.circle.com",
   status: "https://status.arc.io",

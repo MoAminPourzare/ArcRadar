@@ -33,8 +33,8 @@ export default async function AdminSubmissionsPage() {
             <div>
               <p className="font-black text-ink">Admin preview</p>
               <p className="mt-1 text-sm font-semibold leading-6 text-ink/60">
-                This queue is intentionally simple for phase 3. Add auth before
-                exposing it on a public deployment.
+                This queue is internal-only. Production deployments require the
+                admin password before this route is available.
               </p>
             </div>
           </div>
@@ -49,7 +49,7 @@ export default async function AdminSubmissionsPage() {
               Project submissions
             </h1>
             <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-ink/55">
-              Review builder-submitted project packets before they become
+              Review internally curated project candidates before they become
               public ArcRadar profiles.
             </p>
           </div>
@@ -125,7 +125,7 @@ export default async function AdminSubmissionsPage() {
                   />
                   <p className="text-xl font-black text-ink">Queue is empty</p>
                   <p className="mt-2 text-sm font-semibold text-ink/55">
-                    New validated submissions will appear here.
+                    New validated internal candidates will appear here.
                   </p>
                 </div>
               </div>

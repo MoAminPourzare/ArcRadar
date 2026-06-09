@@ -32,10 +32,10 @@ async function main() {
     category: "AI Agents",
     contact: "",
     description:
-      "This is a database-backed ArcRadar phase three smoke submission used to confirm that the Neon project submission queue is working end to end.",
+      "This is a database-backed ArcRadar smoke submission used to confirm that the Neon project submission queue is working end to end.",
     discordUrl: "",
     githubUrl: "",
-    name: `Arc Phase 3 Smoke ${suffix}`,
+    name: `ArcRadar DB Smoke ${suffix}`,
     projectWallet: "0x00000000000000000000000000000000000000bb",
     stage: "Prototype",
     tagline: "Database-backed submission verification for ArcRadar.",
@@ -77,7 +77,7 @@ async function main() {
 
   await db
     .delete(projectSubmissions)
-    .where(like(projectSubmissions.name, "Arc Phase 3 Smoke %"));
+    .where(like(projectSubmissions.name, "ArcRadar DB Smoke %"));
 
   await client.end();
 

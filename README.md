@@ -50,10 +50,15 @@ Create `.env.local` from `.env.example` when adding deployment settings.
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=
 DATABASE_URL=
+DATABASE_URL_UNPOOLED=
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=
 ```
 
 WalletConnect is optional in phase zero. Injected wallets, MetaMask, and
 Coinbase Wallet are already configured.
+Set `ADMIN_PASSWORD` before deploying any `/admin/*` route. In production,
+ArcRadar returns `503` for admin pages until this password is configured.
 
 ## Scripts
 
@@ -97,8 +102,8 @@ npm run db:studio
   curation notes, activity, related projects, tip wallet, and explorer links.
 - Rich project profiles in seed data for problem, solution, why Arc, ideal user,
   roadmap, curation notes, and activity.
-- Submit surface at `/submit` with local validation, readiness checks, and a
-  curation packet preview.
+- Internal curation intake with local validation, readiness checks, and a
+  candidate packet preview.
 - Database schema expanded for project profiles, activity, and future
   `project_submissions` moderation queue.
 - Header navigation updated to work across home, detail, and submit routes.
@@ -113,7 +118,8 @@ needs a real `DATABASE_URL`.
 3. Run `npm run db:generate`.
 4. Run `npm run db:migrate`.
 5. Replace the seed-backed repository with Drizzle queries.
-6. Wire `/submit` to a server action that inserts into `project_submissions`.
+6. Use `/admin/projects/new` to insert internal candidates into
+   `project_submissions`.
 
 ## Phase Three Scope
 
@@ -124,8 +130,8 @@ needs a real `DATABASE_URL`.
   ArcRadar projects into Neon.
 - Project repository upgraded to read from Neon when available, with seed data
   fallback for local/offline safety.
-- Submit form wired to a server action that persists validated submissions into
-  `project_submissions`.
+- Internal candidate form wired to a server action that persists validated
+  entries into `project_submissions`.
 - Admin preview queue added at `/admin/submissions`.
 - Home and project profile pages marked dynamic so production builds do not
   depend on build-time database queries.
@@ -148,6 +154,8 @@ needs a real `DATABASE_URL`.
   balance.
 - Faucet, explorer, docs, refresh, copy-address, and disconnect actions.
 - Header navigation updated with a direct Wallet entry.
+- Production admin routes protected by a basic auth guard driven by
+  `ADMIN_USERNAME` and `ADMIN_PASSWORD`.
 
 ## Next Phases
 
