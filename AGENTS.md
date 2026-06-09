@@ -1,5 +1,11 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# ArcRadar Engineering Notes
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+- Use Next.js App Router conventions.
+- Keep blockchain integration in `src/config`, `src/wallet`, and focused client
+  components.
+- Treat Arc Testnet as the only supported network until mainnet requirements are
+  explicitly added.
+- Keep project data typed through `src/types/project.ts` and future database
+  records typed through Drizzle schema.
+- Never assume native USDC gas decimals are the same surface as ERC-20 USDC
+  transfers.
