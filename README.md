@@ -201,6 +201,20 @@ needs a real `DATABASE_URL`.
   project signals, weekly ranking, monthly ranking, and badges such as
   `Most Tipped`, `Rising`, and `Fresh Signal`.
 
+## Phase Seven Scope
+
+- Public builder submissions remain disabled. ArcRadar still curates projects
+  internally through `/admin/projects/new`.
+- `project_submissions` now stores a proposed project slug plus an optional
+  link to the published `projects` row.
+- `/admin/submissions` upgraded into a full moderation desk with queue counts,
+  readiness checks, review notes, approve, reject, reopen, and publish actions.
+- Approved candidates can be published into the public directory as real
+  project profiles with generated profile scaffolding, social links, stage-based
+  status, rank, signal score, curation notes, and activity history.
+- Publish actions guard against duplicate project slugs and missing Arc tip
+  wallets before creating public project rows.
+
 ## TipRouter Deployment Checklist
 
 1. Fund a deployer wallet with native Arc Testnet USDC for gas.
@@ -222,5 +236,6 @@ needs a real `DATABASE_URL`.
 2. Add a production schedule for `npm run tips:sync`, then graduate to Goldsky,
    Envio, The Graph, or a dedicated worker if event volume grows.
 3. Add builder verification and project ownership signals.
-4. Add authentication and approve/reject actions for the admin queue.
-5. Add admin-only project publishing workflow from the database.
+4. Add richer admin editing for published project profiles.
+5. Add wallet-based public submissions only if ArcRadar later decides to open
+   intake beyond internal curation.

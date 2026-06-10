@@ -25,6 +25,16 @@ const optionalUrl = z
   .pipe(z.string().url().optional());
 
 export const projectSubmissionSchema = z.object({
+  slug: z
+    .string()
+    .trim()
+    .max(96)
+    .regex(
+      /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+      "Use lowercase letters, numbers, and hyphens",
+    )
+    .optional()
+    .or(z.literal("")),
   name: z.string().trim().min(2, "Project name is too short").max(120),
   tagline: z.string().trim().min(8, "Tagline needs more signal").max(180),
   description: z

@@ -14,6 +14,7 @@ import {
   submissionStages,
   type ProjectSubmissionInput,
 } from "@/lib/project-submission";
+import { slugifyProjectName } from "@/lib/slug";
 
 type FieldErrors = Partial<Record<keyof ProjectSubmissionInput, string>>;
 
@@ -26,6 +27,7 @@ const initialValues: ProjectSubmissionInput = {
   githubUrl: "",
   name: "",
   projectWallet: "",
+  slug: "",
   stage: "Prototype",
   tagline: "",
   websiteUrl: "",
@@ -36,6 +38,7 @@ export function SubmitProjectForm() {
   const [values, setValues] = useState<ProjectSubmissionInput>(initialValues);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [packet, setPacket] = useState<ProjectSubmissionInput | null>(null);
+  const [slugEdited, setSlugEdited] = useState(false);
   const [actionResult, setActionResult] =
     useState<SubmissionActionResult | null>(null);
   const [isPending, startTransition] = useTransition();
@@ -76,6 +79,24 @@ export function SubmitProjectForm() {
       ...current,
       [key]: undefined,
     }));
+  }
+
+  function updateName(value: string) {
+    setValues((current) => ({
+      ...current,
+      name: value,
+      slug: slugEdited ? current.slug : slugifyProjectName(value),
+    }));
+    setErrors((current) => ({
+      ...current,
+      name: undefined,
+      slug: undefined,
+    }));
+  }
+
+  function updateSlug(value: string) {
+    setSlugEdited(true);
+    updateField("slug", slugifyProjectName(value));
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -124,7 +145,7 @@ export function SubmitProjectForm() {
             error={errors.name}
             label="Project name"
             value={values.name}
-            onChange={(value) => updateField("name", value)}
+            onChange={updateName}
           />
           <TextField
             error={errors.builderName}
@@ -133,6 +154,13 @@ export function SubmitProjectForm() {
             onChange={(value) => updateField("builderName", value)}
           />
         </div>
+
+        <TextField
+          error={errors.slug}
+          label="Project slug"
+          value={values.slug ?? ""}
+          onChange={updateSlug}
+        />
 
         <TextField
           error={errors.tagline}

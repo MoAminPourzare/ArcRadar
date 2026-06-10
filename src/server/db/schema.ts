@@ -156,6 +156,7 @@ export const projectSubmissions = pgTable(
   "project_submissions",
   {
     id: uuid("id").defaultRandom().primaryKey(),
+    slug: varchar("slug", { length: 96 }),
     name: varchar("name", { length: 120 }).notNull(),
     tagline: varchar("tagline", { length: 180 }).notNull(),
     description: text("description").notNull(),
@@ -170,6 +171,10 @@ export const projectSubmissions = pgTable(
     githubUrl: text("github_url"),
     status: submissionStatus("status").default("pending").notNull(),
     reviewNotes: text("review_notes"),
+    publishedProjectId: uuid("published_project_id").references(() => projects.id, {
+      onDelete: "set null",
+    }),
+    publishedAt: timestamp("published_at", { withTimezone: true }),
     submittedAt: timestamp("submitted_at", { withTimezone: true })
       .defaultNow()
       .notNull(),
@@ -178,5 +183,9 @@ export const projectSubmissions = pgTable(
   (table) => [
     index("project_submissions_status_idx").on(table.status),
     index("project_submissions_category_idx").on(table.category),
+    index("project_submissions_slug_idx").on(table.slug),
+    index("project_submissions_published_project_id_idx").on(
+      table.publishedProjectId,
+    ),
   ],
 );

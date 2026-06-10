@@ -6,6 +6,7 @@ import {
   projectSubmissionSchema,
   type ProjectSubmissionInput,
 } from "@/lib/project-submission";
+import { slugifyProjectName } from "@/lib/slug";
 import { db } from "@/server/db/client";
 import { projectSubmissions } from "@/server/db/schema";
 
@@ -49,6 +50,7 @@ export async function createProjectSubmission(
       githubUrl: parsed.data.githubUrl || null,
       name: parsed.data.name,
       projectWallet: parsed.data.projectWallet || null,
+      slug: slugifyProjectName(parsed.data.slug || parsed.data.name),
       stage: parsed.data.stage,
       tagline: parsed.data.tagline,
       websiteUrl: parsed.data.websiteUrl || null,
