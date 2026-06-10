@@ -15,6 +15,13 @@
       "when": 1781018012309,
       "tag": "0001_overrated_moondragon",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1781076021628,
+      "tag": "0002_minor_avengers",
+      "breakpoints": true
     }
   ]
 }

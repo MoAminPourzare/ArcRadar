@@ -131,10 +131,26 @@ export const tips = pgTable(
   },
   (table) => [
     uniqueIndex("tips_transaction_hash_idx").on(table.transactionHash),
+    index("tips_block_number_idx").on(table.blockNumber),
+    index("tips_created_at_idx").on(table.createdAt),
     index("tips_project_id_idx").on(table.projectId),
     index("tips_tipper_address_idx").on(table.tipperAddress),
   ],
 );
+
+export const tipIndexerState = pgTable("tip_indexer_state", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+  contractAddress: varchar("contract_address", { length: 42 }).notNull(),
+  lastProcessedBlock: bigint("last_processed_block", {
+    mode: "bigint",
+  })
+    .default(sql`0`)
+    .notNull(),
+  lastProcessedAt: timestamp("last_processed_at", { withTimezone: true }),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
 
 export const projectSubmissions = pgTable(
   "project_submissions",

@@ -6,11 +6,13 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { ArcWalletConsole } from "@/components/wallet/arc-wallet-console";
 import { getProjects } from "@/server/projects/repository";
+import { getLeaderboardData } from "@/server/tips/leaderboard";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const projects = await getProjects();
+  const leaderboardData = await getLeaderboardData(projects);
 
   return (
     <div className="min-h-screen bg-paper text-ink">
@@ -23,7 +25,7 @@ export default async function Home() {
         </div>
         <ArcWalletConsole />
         <ProjectDirectory projects={projects} />
-        <Leaderboard projects={projects} />
+        <Leaderboard data={leaderboardData} />
       </main>
 
       <SiteFooter />

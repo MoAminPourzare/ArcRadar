@@ -58,6 +58,10 @@ ADMIN_USERNAME=admin
 ADMIN_PASSWORD=
 ARC_TESTNET_RPC_URL=https://rpc.testnet.arc.network
 ARC_TESTNET_PRIVATE_KEY=
+TIP_ROUTER_ADDRESS=
+TIP_INDEXER_START_BLOCK=
+TIP_INDEXER_CONFIRMATIONS=2
+TIP_INDEXER_BLOCK_RANGE=50000
 ```
 
 WalletConnect is optional in phase zero. Injected wallets, MetaMask, and
@@ -75,6 +79,7 @@ npm run typecheck
 npm run db:generate
 npm run db:migrate
 npm run db:studio
+npm run tips:sync
 npm run contracts:compile
 npm run contracts:test
 npm run contracts:deploy:arc
@@ -180,6 +185,22 @@ needs a real `DATABASE_URL`.
 - TipRouter ABI/config exported from `src/config/tip-router.ts` for future app
   transaction UI and indexer code.
 
+## Phase Six Scope
+
+- TipRouter event cache added through the `tips` table and the new
+  `tip_indexer_state` checkpoint table.
+- `npm run tips:sync` reads `ProjectTipped` events from Arc Testnet RPC,
+  resolves project slugs against curated database projects, stores event-backed
+  tips, and advances the processed block checkpoint.
+- First sync requires `TIP_INDEXER_START_BLOCK` so ArcRadar starts from the
+  actual TipRouter deployment block instead of scanning the entire testnet.
+- Leaderboard data now prefers indexed TipRouter events and falls back to the
+  curated warm-start data when the contract is not deployed yet.
+- Home leaderboard upgraded with total ecosystem support, tip event count,
+  unique tippers, active supported projects, top projects, top tippers, fresh
+  project signals, weekly ranking, monthly ranking, and badges such as
+  `Most Tipped`, `Rising`, and `Fresh Signal`.
+
 ## TipRouter Deployment Checklist
 
 1. Fund a deployer wallet with native Arc Testnet USDC for gas.
@@ -187,13 +208,19 @@ needs a real `DATABASE_URL`.
 3. Run `npm run contracts:test`.
 4. Deploy with `npm run contracts:deploy:arc`.
 5. Copy the deployed address into `NEXT_PUBLIC_TIP_ROUTER_ADDRESS`.
-6. Verify the contract address, USDC address, and first `ProjectTipped` event on
+6. Copy the same address into `TIP_ROUTER_ADDRESS` for server-side sync jobs.
+7. Set `TIP_INDEXER_START_BLOCK` to the TipRouter deployment block before the
+   first `npm run tips:sync`.
+8. Verify the contract address, USDC address, and first `ProjectTipped` event on
    ArcScan before enabling public tipping UI.
+9. Run `npm run tips:sync` locally once, then configure the same command as a
+   scheduled job or worker in production.
 
 ## Next Phases
 
 1. Build the app-side approve/tip UI against TipRouter.
-2. Index `ProjectTipped` events into Postgres.
-3. Build weekly/monthly leaderboards and builder verification.
+2. Add a production schedule for `npm run tips:sync`, then graduate to Goldsky,
+   Envio, The Graph, or a dedicated worker if event volume grows.
+3. Add builder verification and project ownership signals.
 4. Add authentication and approve/reject actions for the admin queue.
 5. Add admin-only project publishing workflow from the database.
