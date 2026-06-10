@@ -26,6 +26,9 @@ export function SiteHeader() {
           <Link className="transition hover:text-ink" href="/#projects">
             Projects
           </Link>
+          <Link className="transition hover:text-ink" href="/#signals">
+            Signals
+          </Link>
           <Link className="transition hover:text-ink" href="/#leaderboard">
             Leaderboard
           </Link>

@@ -9,6 +9,7 @@ import Link from "next/link";
 
 import { shortenAddress } from "@/lib/utils";
 import type { Project } from "@/types/project";
+import type { ProjectSocialSignal } from "@/types/social";
 
 const statusLabel: Record<Project["status"], string> = {
   building: "Building",
@@ -25,7 +26,27 @@ const accentClass: Record<Project["accent"], string> = {
   mint: "bg-mint text-ink",
 };
 
-export function ProjectCard({ project }: { project: Project }) {
+const badgeToneClass: Record<ProjectSocialSignal["badges"][number]["tone"], string> = {
+  amber: "bg-amber/20 text-ink",
+  blueprint: "bg-blueprint/10 text-blueprint",
+  coral: "bg-coral/15 text-coral",
+  cyan: "bg-cyan/20 text-blueprint",
+  forest: "bg-mint/20 text-forest",
+  ink: "bg-ink/10 text-ink",
+  mint: "bg-mint/25 text-forest",
+};
+
+export function ProjectCard({
+  project,
+  socialSignal,
+}: {
+  project: Project;
+  socialSignal?: ProjectSocialSignal;
+}) {
+  const visibleBadges = socialSignal?.badges.slice(0, 3) ?? [];
+  const signalScore = socialSignal?.score.total ?? project.metrics.signalScore;
+  const isVerified = socialSignal?.claimStatus === "verified";
+
   return (
     <article className="group flex min-h-[410px] flex-col justify-between rounded-lg border border-ink/10 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-ink/30 hover:shadow-md">
       <div className="space-y-5">
@@ -43,10 +64,18 @@ export function ProjectCard({ project }: { project: Project }) {
               </p>
             </div>
           </div>
-          <span className="inline-flex items-center gap-1 rounded-md bg-cyan/15 px-2.5 py-1 text-xs font-black uppercase text-blueprint">
-            <Radio aria-hidden className="size-3" />
-            {statusLabel[project.status]}
-          </span>
+          <div className="grid justify-items-end gap-2">
+            <span className="inline-flex items-center gap-1 rounded-md bg-cyan/15 px-2.5 py-1 text-xs font-black uppercase text-blueprint">
+              <Radio aria-hidden className="size-3" />
+              {statusLabel[project.status]}
+            </span>
+            {isVerified ? (
+              <span className="inline-flex items-center gap-1 rounded-md bg-mint/20 px-2 py-1 text-[11px] font-black uppercase text-forest">
+                <BadgeCheck aria-hidden className="size-3" />
+                Verified
+              </span>
+            ) : null}
+          </div>
         </div>
 
         <div className="grid grid-cols-[1fr_auto] items-center gap-3 rounded-lg border border-ink/10 bg-paper px-3 py-2">
@@ -57,10 +86,24 @@ export function ProjectCard({ project }: { project: Project }) {
           <div className="text-right">
             <p className="text-xs font-black uppercase text-ink/40">Signal</p>
             <p className="font-mono text-lg font-black text-blueprint">
-              {project.metrics.signalScore}
+              {signalScore}
             </p>
           </div>
         </div>
+
+        {visibleBadges.length > 0 ? (
+          <div className="flex flex-wrap gap-2">
+            {visibleBadges.map((badge) => (
+              <span
+                className={`rounded-md px-2.5 py-1 text-[11px] font-black uppercase ${badgeToneClass[badge.tone]}`}
+                key={badge.label}
+                title={badge.description}
+              >
+                {badge.label}
+              </span>
+            ))}
+          </div>
+        ) : null}
 
         <div>
           <p className="text-base font-black text-ink">{project.tagline}</p>
@@ -128,6 +171,13 @@ export function ProjectCard({ project }: { project: Project }) {
               {project.metrics.supporters}
             </span>
           </div>
+          {socialSignal ? (
+            <div className="grid grid-cols-3 gap-2 border-t border-ink/10 pt-3">
+              <MicroSignal label="Tip" value={socialSignal.score.tip} />
+              <MicroSignal label="Social" value={socialSignal.score.social} />
+              <MicroSignal label="Fresh" value={socialSignal.score.freshness} />
+            </div>
+          ) : null}
         </div>
 
         <div className="mt-4 flex items-center justify-between gap-3">
@@ -151,5 +201,14 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
     </article>
+  );
+}
+
+function MicroSignal({ label, value }: { label: string; value: number }) {
+  return (
+    <div className="rounded-md bg-white px-2 py-1 text-right">
+      <p className="font-mono text-xs font-black text-ink">{value}</p>
+      <p className="text-[10px] font-black uppercase text-ink/35">{label}</p>
+    </div>
   );
 }

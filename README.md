@@ -215,6 +215,25 @@ needs a real `DATABASE_URL`.
 - Publish actions guard against duplicate project slugs and missing Arc tip
   wallets before creating public project rows.
 
+## Phase Eight Scope
+
+- Social signal layer added on top of project and tip data without opening
+  public project submissions.
+- Project badges now combine curated labels, verified/claim-ready status,
+  weekly momentum, tip message activity, and hackathon fit.
+- Signal score is now shown as a derived composition of tip support, weekly
+  velocity, freshness, social proof links, and curation quality.
+- Home page includes project collections such as `Arc AI Agents`,
+  `Arc Payments Stack`, `Arc Builder Infra`, and `Arc Ops Treasury`.
+- Hackathon mode groups projects into build tracks for agentic USDC, builder
+  operations, and stablecoin operations.
+- Mini activity feed turns tip messages and curation signals into a live-like
+  crypto-native feed.
+- Project profiles now show Signal DNA, collection membership, claim status,
+  verified builder badge support, and a tip message wall.
+- Claim profile is prepared as a wallet-oriented UI surface, but no public
+  claim transaction or public builder submission flow is enabled yet.
+
 ## TipRouter Deployment Checklist
 
 1. Fund a deployer wallet with native Arc Testnet USDC for gas.
@@ -235,7 +254,7 @@ needs a real `DATABASE_URL`.
 1. Build the app-side approve/tip UI against TipRouter.
 2. Add a production schedule for `npm run tips:sync`, then graduate to Goldsky,
    Envio, The Graph, or a dedicated worker if event volume grows.
-3. Add builder verification and project ownership signals.
+3. Add signed wallet-based profile claim requests for already listed projects.
 4. Add richer admin editing for published project profiles.
 5. Add wallet-based public submissions only if ArcRadar later decides to open
    intake beyond internal curation.

@@ -4,8 +4,10 @@ import { Leaderboard } from "@/components/projects/leaderboard";
 import { ProjectDirectory } from "@/components/projects/project-directory";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
+import { SocialCommandCenter } from "@/components/social/social-command-center";
 import { ArcWalletConsole } from "@/components/wallet/arc-wallet-console";
 import { getProjects } from "@/server/projects/repository";
+import { getSocialLayerData } from "@/server/social/repository";
 import { getLeaderboardData } from "@/server/tips/leaderboard";
 
 export const dynamic = "force-dynamic";
@@ -13,6 +15,7 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
   const projects = await getProjects();
   const leaderboardData = await getLeaderboardData(projects);
+  const socialData = await getSocialLayerData(projects);
 
   return (
     <div className="min-h-screen bg-paper text-ink">
@@ -24,7 +27,8 @@ export default async function Home() {
           <ArcOnboarding />
         </div>
         <ArcWalletConsole />
-        <ProjectDirectory projects={projects} />
+        <SocialCommandCenter data={socialData} />
+        <ProjectDirectory projects={projects} socialSignals={socialData.projects} />
         <Leaderboard data={leaderboardData} />
       </main>
 

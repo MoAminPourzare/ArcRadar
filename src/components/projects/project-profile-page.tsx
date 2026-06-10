@@ -1,6 +1,7 @@
 import {
   ArrowLeft,
   ArrowUpRight,
+  BadgeCheck,
   BadgeDollarSign,
   CheckCircle2,
   Circle,
@@ -9,11 +10,16 @@ import {
   Gauge,
   Layers3,
   MessageSquareQuote,
+  PanelsTopLeft,
   Radio,
   ReceiptText,
   ShieldCheck,
+  ShieldQuestion,
+  Sparkles,
   Trophy,
   Wallet,
+  WalletCards,
+  Zap,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -25,10 +31,17 @@ import type {
   ProjectMilestoneStatus,
   ProjectTipData,
 } from "@/types/project";
+import type {
+  ProjectSocialBadge,
+  ProjectSocialSignal,
+  SocialLayerData,
+} from "@/types/social";
 
 type ProjectProfilePageProps = {
   project: Project;
   relatedProjects: Project[];
+  socialData: SocialLayerData;
+  socialSignal?: ProjectSocialSignal;
   tipData: ProjectTipData;
 };
 
@@ -52,13 +65,37 @@ const milestoneClass: Record<ProjectMilestoneStatus, string> = {
   planned: "border-ink/10 bg-white text-ink/55",
 };
 
+const badgeToneClass: Record<ProjectSocialBadge["tone"], string> = {
+  amber: "bg-amber/20 text-ink",
+  blueprint: "bg-blueprint/10 text-blueprint",
+  coral: "bg-coral/15 text-coral",
+  cyan: "bg-cyan/20 text-blueprint",
+  forest: "bg-mint/20 text-forest",
+  ink: "bg-ink/10 text-ink",
+  mint: "bg-mint/25 text-forest",
+};
+
+const claimStatusLabel: Record<ProjectSocialSignal["claimStatus"], string> = {
+  "claim-ready": "Claim ready",
+  unclaimed: "Unclaimed",
+  verified: "Verified builder",
+};
+
 export function ProjectProfilePage({
   project,
   relatedProjects,
+  socialData,
+  socialSignal,
   tipData,
 }: ProjectProfilePageProps) {
   const primaryLink = project.links[0];
   const explorerAddressUrl = `${arcLinks.explorer}/address/${project.walletAddress}`;
+  const collections = socialSignal
+    ? socialData.collections.filter((collection) =>
+        socialSignal.collections.includes(collection.id),
+      )
+    : [];
+  const signalScore = socialSignal?.score.total ?? project.metrics.signalScore;
 
   return (
     <main>
@@ -94,6 +131,12 @@ export function ProjectProfilePage({
                       <span className="inline-flex min-h-7 items-center rounded-md bg-ink/5 px-2.5 text-xs font-black uppercase text-ink/55">
                         {project.stage}
                       </span>
+                      {socialSignal?.claimStatus === "verified" ? (
+                        <span className="inline-flex min-h-7 items-center gap-1.5 rounded-md bg-mint/20 px-2.5 text-xs font-black uppercase text-forest">
+                          <BadgeCheck aria-hidden className="size-3" />
+                          Verified builder
+                        </span>
+                      ) : null}
                     </div>
                     <p className="text-sm font-black uppercase text-blueprint">
                       {project.category}
@@ -111,6 +154,23 @@ export function ProjectProfilePage({
               <p className="mt-4 max-w-3xl text-base font-semibold leading-7 text-ink/60">
                 {project.description}
               </p>
+
+              {socialSignal?.badges.length ? (
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {socialSignal.badges.map((badge) => (
+                    <span
+                      className={cn(
+                        "rounded-md px-2.5 py-1 text-xs font-black uppercase",
+                        badgeToneClass[badge.tone],
+                      )}
+                      key={badge.label}
+                      title={badge.description}
+                    >
+                      {badge.label}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
 
               <div className="mt-8 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
@@ -151,8 +211,12 @@ export function ProjectProfilePage({
               <MetricPanel
                 icon={Gauge}
                 label="Signal score"
-                value={project.metrics.signalScore.toString()}
-                supporting={`Rank #${project.metrics.rank}`}
+                value={signalScore.toString()}
+                supporting={
+                  socialSignal
+                    ? `Tip ${socialSignal.score.tip} / Social ${socialSignal.score.social}`
+                    : `Rank #${project.metrics.rank}`
+                }
               />
               <MetricPanel
                 icon={BadgeDollarSign}
@@ -173,6 +237,41 @@ export function ProjectProfilePage({
 
       <section className="mx-auto grid w-full max-w-7xl gap-6 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1fr)_360px] lg:px-8">
         <div className="grid gap-6">
+          {socialSignal ? (
+            <section className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm">
+              <div className="mb-5 flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-sm font-black uppercase text-blueprint">
+                    Signal DNA
+                  </p>
+                  <h2 className="mt-1 text-2xl font-black text-ink">
+                    Why this project is ranking
+                  </h2>
+                </div>
+                <Sparkles aria-hidden className="size-5 text-blueprint" />
+              </div>
+              <div className="grid gap-3 md:grid-cols-5">
+                <SignalPillar label="Tip" value={socialSignal.score.tip} />
+                <SignalPillar
+                  label="Velocity"
+                  value={socialSignal.score.velocity}
+                />
+                <SignalPillar
+                  label="Freshness"
+                  value={socialSignal.score.freshness}
+                />
+                <SignalPillar
+                  label="Social"
+                  value={socialSignal.score.social}
+                />
+                <SignalPillar
+                  label="Curation"
+                  value={socialSignal.score.curation}
+                />
+              </div>
+            </section>
+          ) : null}
+
           <div className="grid gap-4 md:grid-cols-3">
             <NarrativeCard
               icon={ShieldCheck}
@@ -242,9 +341,11 @@ export function ProjectProfilePage({
 
           <section className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm">
             <p className="text-sm font-black uppercase text-blueprint">
-              Latest tips
+              Tip message wall
             </p>
-            <h2 className="mt-1 text-2xl font-black text-ink">Support feed</h2>
+            <h2 className="mt-1 text-2xl font-black text-ink">
+              Shoutouts from supporters
+            </h2>
             <div className="mt-5 grid gap-3">
               {tipData.latestTips.length > 0 ? (
                 tipData.latestTips.map((tip) => (
@@ -317,6 +418,89 @@ export function ProjectProfilePage({
         </div>
 
         <aside className="grid content-start gap-4">
+          {socialSignal ? (
+            <section className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm">
+              <div className="mb-4 flex items-center justify-between">
+                <ShieldQuestion aria-hidden className="size-5 text-blueprint" />
+                <span className="text-xs font-black uppercase text-ink/40">
+                  Builder claim
+                </span>
+              </div>
+              <h2 className="text-2xl font-black text-ink">
+                {claimStatusLabel[socialSignal.claimStatus]}
+              </h2>
+              <p className="mt-3 text-sm font-semibold leading-6 text-ink/55">
+                {socialSignal.claimStatus === "verified"
+                  ? "This builder has enough curated public proof to display the verified badge."
+                  : "The profile has a tip wallet and is prepared for future wallet-based claim checks."}
+              </p>
+              <Link className="btn-secondary mt-4 w-full" href="/#wallet">
+                Wallet claim prep
+                <WalletCards aria-hidden className="size-4" />
+              </Link>
+            </section>
+          ) : null}
+
+          {collections.length > 0 ? (
+            <section className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm">
+              <div className="mb-4 flex items-center justify-between">
+                <PanelsTopLeft aria-hidden className="size-5 text-blueprint" />
+                <span className="text-xs font-black uppercase text-ink/40">
+                  Collections
+                </span>
+              </div>
+              <div className="grid gap-2">
+                {collections.map((collection) => (
+                  <Link
+                    className="rounded-lg border border-ink/10 bg-paper p-3 transition hover:border-blueprint/40"
+                    href="/#signals"
+                    key={collection.id}
+                  >
+                    <p className="font-black text-ink">{collection.title}</p>
+                    <p className="mt-1 text-xs font-bold uppercase text-ink/40">
+                      {collection.track}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
+          {socialSignal?.shoutouts.length ? (
+            <section className="rounded-lg border border-ink/10 bg-ink p-5 text-paper shadow-sm">
+              <div className="mb-4 flex items-center justify-between">
+                <MessageSquareQuote aria-hidden className="size-5 text-mint" />
+                <span className="text-xs font-black uppercase text-paper/40">
+                  Shoutouts
+                </span>
+              </div>
+              <div className="grid gap-2">
+                {socialSignal.shoutouts.slice(0, 3).map((shoutout) => (
+                  <a
+                    className="rounded-lg border border-paper/10 bg-paper/[0.06] p-3 transition hover:border-mint/50"
+                    href={`${arcLinks.explorer}/tx/${shoutout.transactionHash}`}
+                    key={shoutout.id}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <div className="mb-2 flex items-center justify-between gap-3">
+                      <span className="font-mono text-xs font-black text-mint">
+                        {shortenAddress(shoutout.tipperAddress)}
+                      </span>
+                      <span className="inline-flex items-center gap-1 font-mono text-xs font-black text-paper">
+                        <Zap aria-hidden className="size-3" />
+                        {shoutout.amountUsdc} USDC
+                      </span>
+                    </div>
+                    <p className="text-sm font-semibold leading-6 text-paper/65">
+                      {shoutout.message}
+                    </p>
+                  </a>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           <section className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm">
             <div className="mb-4 flex items-center justify-between">
               <Trophy aria-hidden className="size-5 text-amber" />
@@ -465,6 +649,27 @@ function MetricPanel({
         {value}
       </p>
       <p className="mt-2 text-sm font-bold text-ink/55">{supporting}</p>
+    </div>
+  );
+}
+
+function SignalPillar({ label, value }: { label: string; value: number }) {
+  const height = `${Math.max(16, Math.min(100, value * 4))}%`;
+
+  return (
+    <div className="rounded-lg border border-ink/10 bg-paper p-3">
+      <div className="flex min-h-24 items-end rounded-md bg-white p-2">
+        <span
+          className="w-full rounded-sm bg-blueprint"
+          style={{ height }}
+        />
+      </div>
+      <div className="mt-3 flex items-center justify-between gap-3">
+        <span className="text-xs font-black uppercase text-ink/40">
+          {label}
+        </span>
+        <span className="font-mono text-sm font-black text-ink">{value}</span>
+      </div>
     </div>
   );
 }

@@ -7,20 +7,33 @@ import { ProjectCard } from "@/components/projects/project-card";
 import { projectCategories, projectStatuses } from "@/data/projects";
 import { cn } from "@/lib/utils";
 import type { Project, ProjectCategory, ProjectStatus } from "@/types/project";
+import type { ProjectSocialSignal } from "@/types/social";
 
 type CategoryFilter = ProjectCategory | "All";
 type StatusFilter = ProjectStatus | "All";
-type SortMode = "signal" | "tips" | "weekly" | "supporters";
+type SortMode = "signal" | "social" | "tips" | "weekly" | "supporters";
 
 const sortModes: Array<{ label: string; value: SortMode }> = [
   { label: "Signal", value: "signal" },
+  { label: "Social", value: "social" },
   { label: "Tips", value: "tips" },
   { label: "Weekly", value: "weekly" },
   { label: "Backers", value: "supporters" },
 ];
 
-function sortProjects(projects: Project[], sortMode: SortMode) {
+function sortProjects(
+  projects: Project[],
+  sortMode: SortMode,
+  socialSignalsBySlug: Map<string, ProjectSocialSignal>,
+) {
   return [...projects].sort((a, b) => {
+    if (sortMode === "social") {
+      return (
+        (socialSignalsBySlug.get(b.slug)?.score.total ?? b.metrics.signalScore) -
+        (socialSignalsBySlug.get(a.slug)?.score.total ?? a.metrics.signalScore)
+      );
+    }
+
     if (sortMode === "tips") {
       return b.metrics.tipsUsdc - a.metrics.tipsUsdc;
     }
@@ -37,13 +50,26 @@ function sortProjects(projects: Project[], sortMode: SortMode) {
   });
 }
 
-export function ProjectDirectory({ projects }: { projects: Project[] }) {
+export function ProjectDirectory({
+  projects,
+  socialSignals,
+}: {
+  projects: Project[];
+  socialSignals?: ProjectSocialSignal[];
+}) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<CategoryFilter>("All");
   const [status, setStatus] = useState<StatusFilter>("All");
   const [sortMode, setSortMode] = useState<SortMode>("signal");
   const hasActiveFilters =
     query.trim().length > 0 || category !== "All" || status !== "All";
+  const socialSignalsBySlug = useMemo(
+    () =>
+      new Map(
+        (socialSignals ?? []).map((signal) => [signal.project.slug, signal]),
+      ),
+    [socialSignals],
+  );
 
   const filteredProjects = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -53,6 +79,9 @@ export function ProjectDirectory({ projects }: { projects: Project[] }) {
         category === "All" || project.category === category;
       const matchesStatus = status === "All" || project.status === status;
       const searchableText = [
+        ...(socialSignalsBySlug
+          .get(project.slug)
+          ?.badges.map((badge) => badge.label) ?? []),
         project.name,
         project.tagline,
         project.description,
@@ -71,8 +100,8 @@ export function ProjectDirectory({ projects }: { projects: Project[] }) {
       return matchesCategory && matchesStatus && matchesQuery;
     });
 
-    return sortProjects(filtered, sortMode);
-  }, [category, projects, query, sortMode, status]);
+    return sortProjects(filtered, sortMode, socialSignalsBySlug);
+  }, [category, projects, query, socialSignalsBySlug, sortMode, status]);
 
   return (
     <section
@@ -190,7 +219,10 @@ export function ProjectDirectory({ projects }: { projects: Project[] }) {
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {filteredProjects.map((project) => (
             <div id={project.slug} key={project.id}>
-              <ProjectCard project={project} />
+              <ProjectCard
+                project={project}
+                socialSignal={socialSignalsBySlug.get(project.slug)}
+              />
             </div>
           ))}
         </div>
