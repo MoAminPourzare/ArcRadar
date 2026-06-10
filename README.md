@@ -15,6 +15,7 @@ network onboarding, wallet connection, and the foundation for USDC tipping.
 - **Hardhat 3 + viem** for the TipRouter contract, local contract tests, and Arc
   Testnet deployment scripts.
 - **TanStack Query** for wallet and transaction state.
+- **Vercel Web Analytics** for privacy-friendly production page analytics.
 - **Drizzle ORM + Postgres** for typed relational data without locking the app
   to one managed provider. Neon Postgres is the preferred deployment target for
   Vercel, while Supabase remains a viable option if auth/storage/realtime become
@@ -54,6 +55,7 @@ NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=
 NEXT_PUBLIC_TIP_ROUTER_ADDRESS=
 DATABASE_URL=
 DATABASE_URL_UNPOOLED=
+DATABASE_POOL_MAX=5
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=
 ARC_TESTNET_RPC_URL=https://rpc.testnet.arc.network
@@ -67,7 +69,8 @@ TIP_INDEXER_BLOCK_RANGE=50000
 WalletConnect is optional in phase zero. Injected wallets, MetaMask, and
 Coinbase Wallet are already configured.
 Set `ADMIN_PASSWORD` before deploying any `/admin/*` route. In production,
-ArcRadar returns `503` for admin pages until this password is configured.
+ArcRadar returns `503` for admin pages until this password is configured. Use a
+random value with at least 16 characters.
 
 ## Scripts
 
@@ -233,6 +236,47 @@ needs a real `DATABASE_URL`.
   verified builder badge support, and a tip message wall.
 - Claim profile is prepared as a wallet-oriented UI surface, but no public
   claim transaction or public builder submission flow is enabled yet.
+
+## Phase Nine Scope
+
+- Production security headers added through Next config.
+- Admin auth hardened with no-store/noindex headers, best-effort failed-login
+  throttling, timing-safe credential comparison, and a production password
+  length guard.
+- Admin server actions now have best-effort rate limits for project creation and
+  moderation mutations.
+- Runtime Postgres access now uses a small configurable pool with connection
+  and idle timeouts for production request stability.
+- TipRouter tests expanded for constructor validation, boundary-length inputs,
+  missing allowance, missing balance, and failed ERC-20 transfer behavior.
+- Tip indexer now rejects invalid project IDs, unknown project slugs, and events
+  whose recipient does not match the curated project wallet.
+- Wallet console now displays wallet/network/balance errors and a transaction
+  guard for TipRouter readiness, Arc network, gas, and ERC-20 USDC balance.
+- Public image upload remains disabled; future uploads must use the allowlisted
+  JPG/PNG/WebP policy in `src/server/security/image-upload.ts`.
+- Vercel Web Analytics is wired in the root layout.
+- Builder-facing notes added at `docs/builders.md`.
+
+## Production Deploy Checklist
+
+1. In Vercel, set `NEXT_PUBLIC_APP_URL` to the production domain.
+2. Add `DATABASE_URL` as the pooled Neon connection string.
+3. Add `DATABASE_URL_UNPOOLED` for Drizzle migrations and one-off scripts.
+4. Keep `DATABASE_POOL_MAX=5` unless production traffic requires tuning.
+5. Set `ADMIN_USERNAME` and a strong `ADMIN_PASSWORD` with at least 16
+   characters.
+6. Keep `NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID` optional unless WalletConnect is
+   needed.
+7. After TipRouter deployment, set both `NEXT_PUBLIC_TIP_ROUTER_ADDRESS` and
+   `TIP_ROUTER_ADDRESS`.
+8. Set `TIP_INDEXER_START_BLOCK` to the deployment block before the first
+   production `npm run tips:sync`.
+9. Run `npm run db:migrate`, `npm run db:seed`, `npm run build`, and
+   `npm run contracts:test` before production traffic.
+10. Enable Vercel Web Analytics for the project.
+11. Deploy to production only after confirming `/admin/*` returns `401` without
+    credentials and the public home/profile pages render on Arc Testnet config.
 
 ## TipRouter Deployment Checklist
 

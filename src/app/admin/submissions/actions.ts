@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { slugifyProjectName } from "@/lib/slug";
 import { db } from "@/server/db/client";
 import { projectSubmissions, projects } from "@/server/db/schema";
+import { checkRateLimit } from "@/server/security/rate-limit";
 import { desc, eq } from "drizzle-orm";
 import { z } from "zod";
 
@@ -39,6 +40,10 @@ const signalScoreByStage = {
 } as const;
 
 export async function approveSubmission(formData: FormData) {
+  if (!canRunModerationAction("approve")) {
+    return;
+  }
+
   const input = parseModerationForm(formData);
 
   if (!db || !input) {
@@ -58,6 +63,10 @@ export async function approveSubmission(formData: FormData) {
 }
 
 export async function rejectSubmission(formData: FormData) {
+  if (!canRunModerationAction("reject")) {
+    return;
+  }
+
   const input = parseModerationForm(formData);
 
   if (!db || !input) {
@@ -77,6 +86,10 @@ export async function rejectSubmission(formData: FormData) {
 }
 
 export async function reopenSubmission(formData: FormData) {
+  if (!canRunModerationAction("reopen")) {
+    return;
+  }
+
   const input = parseModerationForm(formData);
 
   if (!db || !input) {
@@ -110,6 +123,10 @@ export async function reopenSubmission(formData: FormData) {
 }
 
 export async function publishSubmission(formData: FormData) {
+  if (!canRunModerationAction("publish")) {
+    return;
+  }
+
   const input = parseModerationForm(formData);
 
   if (!db || !input) {
@@ -382,4 +399,14 @@ function mergeReviewNotes(existing: null | string, note: string) {
 function revalidateAdminSurfaces() {
   revalidatePath("/admin/submissions");
   revalidatePath("/admin/projects/new");
+}
+
+function canRunModerationAction(action: string) {
+  const rateLimit = checkRateLimit({
+    key: `admin:moderation:${action}`,
+    limit: 60,
+    windowMs: 5 * 60 * 1_000,
+  });
+
+  return rateLimit.ok;
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 
 import { AppProviders } from "@/providers/app-providers";
 import { siteConfig } from "@/config/site";
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en" className="h-full antialiased">
       <body className="flex min-h-full flex-col">
         <AppProviders>{children}</AppProviders>
+        <Analytics />
       </body>
     </html>
   );

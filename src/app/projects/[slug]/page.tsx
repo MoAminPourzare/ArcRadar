@@ -5,11 +5,11 @@ import { ProjectProfilePage } from "@/components/projects/project-profile-page";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { siteConfig } from "@/config/site";
+import { projects as seedProjects } from "@/data/projects";
 import {
   getProjects,
-  getProjectBySlug,
   getProjectTipData,
-  getRelatedProjects,
+  getRelatedProjectsFromList,
 } from "@/server/projects/repository";
 import { getSocialLayerData } from "@/server/social/repository";
 
@@ -25,7 +25,7 @@ export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const project = await getProjectBySlug(slug);
+  const project = seedProjects.find((candidate) => candidate.slug === slug);
 
   if (!project) {
     return {
@@ -46,17 +46,15 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const project = await getProjectBySlug(slug);
+  const allProjects = await getProjects();
+  const project = allProjects.find((candidate) => candidate.slug === slug);
 
   if (!project) {
     notFound();
   }
 
-  const [allProjects, relatedProjects, tipData] = await Promise.all([
-    getProjects(),
-    getRelatedProjects(project),
-    getProjectTipData(project),
-  ]);
+  const relatedProjects = getRelatedProjectsFromList(project, allProjects);
+  const tipData = await getProjectTipData(project);
   const socialData = await getSocialLayerData(allProjects);
   const socialSignal = socialData.projects.find(
     (signal) => signal.project.slug === project.slug,

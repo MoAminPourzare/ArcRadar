@@ -12,6 +12,7 @@ import {
   LinkIcon,
   LogOut,
   PlugZap,
+  ReceiptText,
   RefreshCw,
   ShieldCheck,
   Wallet,
@@ -30,6 +31,7 @@ import {
 } from "wagmi";
 
 import { arcContracts, arcCurrency, arcLinks, arcTestnet } from "@/config/arc";
+import { tipRouterConfig } from "@/config/tip-router";
 import { cn, shortenAddress } from "@/lib/utils";
 import { erc20BalanceAbi } from "@/wallet/erc20";
 
@@ -65,13 +67,23 @@ const networkFacts = [
 
 export function ArcWalletConsole() {
   const { address, chainId, isConnected } = useAccount();
-  const { connect, connectors, isPending } = useConnect();
+  const {
+    connect,
+    connectors,
+    error: connectError,
+    isPending,
+  } = useConnect();
   const { disconnect } = useDisconnect();
-  const { switchChain, isPending: isSwitching } = useSwitchChain();
+  const {
+    error: switchError,
+    isPending: isSwitching,
+    switchChain,
+  } = useSwitchChain();
   const [copiedTarget, setCopiedTarget] = useState<CopiedTarget>(null);
   const [faucetOpened, setFaucetOpened] = useState(false);
   const [lastRefreshedAt, setLastRefreshedAt] = useState<Date | null>(null);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [refreshError, setRefreshError] = useState<string | null>(null);
 
   const isOnArc = chainId === arcTestnet.id;
   const connectionState = getConnectionState(isConnected, isOnArc);
@@ -81,6 +93,7 @@ export function ArcWalletConsole() {
 
   const {
     data: nativeBalance,
+    error: nativeBalanceError,
     isLoading: isNativeBalanceLoading,
     refetch: refetchNativeBalance,
   } = useBalance({
@@ -93,6 +106,7 @@ export function ArcWalletConsole() {
 
   const {
     data: erc20Balance,
+    error: erc20BalanceError,
     isLoading: isErc20BalanceLoading,
     refetch: refetchErc20Balance,
   } = useReadContract({
@@ -163,6 +177,13 @@ export function ArcWalletConsole() {
   const readyCount = readiness.filter((item) => item.done).length;
   const hasAnyBalance =
     nativeBalanceValue > zeroBalance || erc20BalanceValue > zeroBalance;
+  const walletError =
+    refreshError ??
+    switchError?.message ??
+    connectError?.message ??
+    nativeBalanceError?.message ??
+    erc20BalanceError?.message ??
+    null;
 
   async function copyAddress() {
     if (!address) {
@@ -206,11 +227,14 @@ export function ArcWalletConsole() {
   }
 
   async function refreshBalances() {
+    setRefreshError(null);
     setIsRefreshing(true);
 
     try {
       await Promise.all([refetchNativeBalance(), refetchErc20Balance()]);
       setLastRefreshedAt(new Date());
+    } catch (error) {
+      setRefreshError(getReadableWalletError(error));
     } finally {
       setIsRefreshing(false);
     }
@@ -320,6 +344,8 @@ export function ArcWalletConsole() {
             </button>
           </div>
 
+          <WalletErrorPanel message={walletError} />
+
           <div className="mt-5 grid gap-3 md:grid-cols-2">
             <FaucetReturnPanel
               faucetOpened={faucetOpened}
@@ -344,6 +370,12 @@ export function ArcWalletConsole() {
         </div>
 
         <aside className="grid content-start gap-3">
+          <TransactionReadinessPanel
+            erc20BalanceValue={erc20BalanceValue}
+            isConnected={isConnected}
+            isOnArc={isOnArc}
+            nativeBalanceValue={nativeBalanceValue}
+          />
           {readiness.map((item) => (
             <ReadinessCard item={item} key={item.label} />
           ))}
@@ -354,6 +386,97 @@ export function ArcWalletConsole() {
         </aside>
       </div>
     </section>
+  );
+}
+
+function WalletErrorPanel({ message }: { message: null | string }) {
+  if (!message) {
+    return null;
+  }
+
+  return (
+    <div className="mt-5 flex items-start gap-3 rounded-lg border border-coral/30 bg-coral/10 p-4">
+      <AlertTriangle aria-hidden className="mt-0.5 size-5 shrink-0 text-coral" />
+      <div>
+        <p className="font-black text-ink">Wallet action needs attention</p>
+        <p className="mt-1 break-words text-sm font-semibold leading-6 text-ink/60">
+          {message}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function TransactionReadinessPanel({
+  erc20BalanceValue,
+  isConnected,
+  isOnArc,
+  nativeBalanceValue,
+}: {
+  erc20BalanceValue: bigint;
+  isConnected: boolean;
+  isOnArc: boolean;
+  nativeBalanceValue: bigint;
+}) {
+  const blockers = [
+    !tipRouterConfig.address ? "TipRouter address missing" : null,
+    !isConnected ? "Wallet not connected" : null,
+    isConnected && !isOnArc ? "Wrong network" : null,
+    isConnected && nativeBalanceValue === zeroBalance ? "Gas empty" : null,
+    isConnected && erc20BalanceValue === zeroBalance ? "ERC-20 USDC empty" : null,
+  ].filter((blocker): blocker is string => Boolean(blocker));
+  const isReady = blockers.length === 0;
+
+  return (
+    <div
+      className={cn(
+        "rounded-lg border p-4 shadow-sm",
+        isReady
+          ? "border-forest/20 bg-mint/20"
+          : "border-amber/30 bg-amber/15",
+      )}
+    >
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <ReceiptText
+            aria-hidden
+            className={cn("size-4", isReady ? "text-forest" : "text-ink")}
+          />
+          <span className="text-xs font-black uppercase text-ink/45">
+            Transaction guard
+          </span>
+        </div>
+        <span
+          className={cn(
+            "rounded-md px-2 py-1 text-xs font-black uppercase",
+            isReady ? "bg-white/70 text-forest" : "bg-white/70 text-ink",
+          )}
+        >
+          {isReady ? "Ready" : "Blocked"}
+        </span>
+      </div>
+      <p className="font-black text-ink">
+        {tipRouterConfig.address
+          ? shortenAddress(tipRouterConfig.address)
+          : "TipRouter not configured"}
+      </p>
+      {blockers.length > 0 ? (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {blockers.map((blocker) => (
+            <span
+              className="rounded-md bg-white/70 px-2 py-1 text-xs font-black uppercase text-ink/55"
+              key={blocker}
+            >
+              {blocker}
+            </span>
+          ))}
+        </div>
+      ) : (
+        <p className="mt-2 text-sm font-semibold leading-6 text-forest">
+          Wallet, network, gas, ERC-20 USDC, and TipRouter config are aligned.
+        </p>
+      )}
+    </div>
   );
 }
 
@@ -653,4 +776,20 @@ function formatDisplayBalance(value: bigint, decimals: number) {
   return formatted.toLocaleString("en", {
     maximumFractionDigits: formatted >= 1 ? 3 : 6,
   });
+}
+
+function getReadableWalletError(error: unknown) {
+  if (!(error instanceof Error)) {
+    return "Wallet request failed. Check the wallet popup and try again.";
+  }
+
+  if (/user rejected|rejected request/i.test(error.message)) {
+    return "Request was rejected in the wallet.";
+  }
+
+  if (/chain|network/i.test(error.message)) {
+    return "Network request failed. Switch to Arc Testnet and try again.";
+  }
+
+  return error.message || "Wallet request failed. Try again.";
 }

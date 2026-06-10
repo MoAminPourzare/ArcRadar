@@ -20,6 +20,15 @@ describe("TipRouter", async function () {
     };
   }
 
+  it("rejects a zero USDC token address at deployment", async function () {
+    await assert.rejects(
+      viem.deployContract("TipRouter", [
+        "0x0000000000000000000000000000000000000000",
+      ]),
+      /InvalidUsdc/,
+    );
+  });
+
   it("routes approved ERC-20 USDC to the project wallet and emits ProjectTipped", async function () {
     const { recipient, tipper, tipRouter, usdc } = await deployFixture();
     const amount = 1_000_000n;
@@ -48,6 +57,30 @@ describe("TipRouter", async function () {
       amount,
     );
     assert.equal(await usdc.read.balanceOf([tipper.account.address]), 0n);
+  });
+
+  it("accepts the maximum project id and message lengths", async function () {
+    const { recipient, tipper, tipRouter, usdc } = await deployFixture();
+    const amount = 1_000_000n;
+    const projectId = "a".repeat(96);
+    const message = "m".repeat(280);
+
+    await usdc.write.mint([tipper.account.address, amount]);
+    await usdc.write.approve([tipRouter.address, amount], {
+      account: tipper.account,
+    });
+
+    await viem.assertions.emitWithArgs(
+      tipRouter.write.tip(
+        [projectId, recipient.account.address, amount, message],
+        {
+          account: tipper.account,
+        },
+      ),
+      tipRouter,
+      "ProjectTipped",
+      [projectId, tipper.account.address, recipient.account.address, amount, message],
+    );
   });
 
   it("keeps ProjectTipped events queryable for leaderboard indexing", async function () {
@@ -140,6 +173,39 @@ describe("TipRouter", async function () {
     await viem.assertions.revertWithCustomError(
       tipRouter.write.tip(
         ["arc-escrow", recipient.account.address, amount, "Should fail"],
+        {
+          account: tipper.account,
+        },
+      ),
+      tipRouter,
+      "UsdcTransferFailed",
+    );
+  });
+
+  it("reverts when allowance or balance is missing", async function () {
+    const { recipient, tipper, tipRouter, usdc } = await deployFixture();
+    const amount = 1_000_000n;
+
+    await usdc.write.mint([tipper.account.address, amount]);
+
+    await viem.assertions.revertWithCustomError(
+      tipRouter.write.tip(
+        ["arc-escrow", recipient.account.address, amount, "No allowance"],
+        {
+          account: tipper.account,
+        },
+      ),
+      tipRouter,
+      "UsdcTransferFailed",
+    );
+
+    await usdc.write.approve([tipRouter.address, amount * 2n], {
+      account: tipper.account,
+    });
+
+    await viem.assertions.revertWithCustomError(
+      tipRouter.write.tip(
+        ["arc-escrow", recipient.account.address, amount * 2n, "No balance"],
         {
           account: tipper.account,
         },

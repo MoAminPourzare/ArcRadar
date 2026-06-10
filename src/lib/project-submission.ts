@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { PROJECT_ID_MAX_LENGTH, PROJECT_ID_PATTERN } from "@/lib/project-id";
+
 export const submissionCategories = [
   "AI Agents",
   "Payments",
@@ -28,9 +30,9 @@ export const projectSubmissionSchema = z.object({
   slug: z
     .string()
     .trim()
-    .max(96)
+    .max(PROJECT_ID_MAX_LENGTH)
     .regex(
-      /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+      PROJECT_ID_PATTERN,
       "Use lowercase letters, numbers, and hyphens",
     )
     .optional()

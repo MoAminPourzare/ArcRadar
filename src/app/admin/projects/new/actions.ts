@@ -9,6 +9,10 @@ import {
 import { slugifyProjectName } from "@/lib/slug";
 import { db } from "@/server/db/client";
 import { projectSubmissions } from "@/server/db/schema";
+import {
+  checkRateLimit,
+  formatRateLimitMessage,
+} from "@/server/security/rate-limit";
 
 export type SubmissionActionResult =
   | {
@@ -23,6 +27,19 @@ export type SubmissionActionResult =
 export async function createProjectSubmission(
   input: ProjectSubmissionInput,
 ): Promise<SubmissionActionResult> {
+  const rateLimit = checkRateLimit({
+    key: "admin:create-project-submission",
+    limit: 20,
+    windowMs: 15 * 60 * 1_000,
+  });
+
+  if (!rateLimit.ok) {
+    return {
+      message: formatRateLimitMessage(rateLimit),
+      status: "error",
+    };
+  }
+
   const parsed = projectSubmissionSchema.safeParse(input);
 
   if (!parsed.success) {

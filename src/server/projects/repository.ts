@@ -69,6 +69,14 @@ export async function getProjectSlugs() {
 export async function getRelatedProjects(project: Project, limit = 3) {
   const projectList = (await getDatabaseProjects()) ?? projects;
 
+  return getRelatedProjectsFromList(project, projectList, limit);
+}
+
+export function getRelatedProjectsFromList(
+  project: Project,
+  projectList: Project[],
+  limit = 3,
+) {
   return projectList
     .filter((candidate) => candidate.id !== project.id)
     .map((candidate) => ({

@@ -1,5 +1,6 @@
 import { arcTestnet } from "@/config/arc";
 import { tipRouterAbi } from "@/config/tip-router";
+import { parseProjectId } from "@/lib/project-id";
 import { projects, tipIndexerState, tips } from "@/server/db/schema";
 import { loadLocalEnv } from "@/server/env/load-local-env";
 import { eq, inArray } from "drizzle-orm";
@@ -28,6 +29,11 @@ type TipEvent = {
   recipientAddress: Address;
   tipperAddress: Address;
   transactionHash: Hash;
+};
+
+type TipEventReadResult = {
+  events: TipEvent[];
+  skippedInvalidProjectIds: number;
 };
 
 main().catch((error) => {
@@ -148,7 +154,7 @@ async function syncTipRouterEvents({
     };
   }
 
-  const events = await readTipEventsInChunks({
+  const eventReadResult = await readTipEventsInChunks({
     blockRange,
     fromBlock,
     publicClient,
@@ -156,19 +162,26 @@ async function syncTipRouterEvents({
     toBlock: safeToBlock,
   });
 
-  const inserted = await cacheTipEvents(database, publicClient, events);
+  const inserted = await cacheTipEvents(
+    database,
+    publicClient,
+    eventReadResult.events,
+  );
   await upsertIndexerState(database, tipRouterAddress, safeToBlock);
 
   return {
     contractAddress: tipRouterAddress,
-    eventsRead: events.length,
+    eventsRead: eventReadResult.events.length,
     fromBlock: fromBlock.toString(),
     insertedTips: inserted.insertedTips,
     latestBlock: latestBlock.toString(),
     ok: true,
     safeToBlock: safeToBlock.toString(),
+    skippedInvalidProjectIds: eventReadResult.skippedInvalidProjectIds,
     skippedUnknownProjects: inserted.skippedUnknownProjects,
+    skippedRecipientMismatches: inserted.skippedRecipientMismatches,
     toBlock: safeToBlock.toString(),
+    recipientMismatches: inserted.recipientMismatches,
     unknownProjects: inserted.unknownProjects,
   };
 }
@@ -185,8 +198,9 @@ async function readTipEventsInChunks({
   publicClient: PublicClient;
   tipRouterAddress: Address;
   toBlock: bigint;
-}) {
+}): Promise<TipEventReadResult> {
   const events: TipEvent[] = [];
+  let skippedInvalidProjectIds = 0;
   let cursor = fromBlock;
 
   while (cursor <= toBlock) {
@@ -213,11 +227,18 @@ async function readTipEventsInChunks({
         continue;
       }
 
+      const projectSlug = parseProjectId(projectId);
+
+      if (!projectSlug) {
+        skippedInvalidProjectIds += 1;
+        continue;
+      }
+
       events.push({
         amountUsdcMicro: amount,
         blockNumber: log.blockNumber,
         message: message || null,
-        projectSlug: projectId.trim(),
+        projectSlug,
         recipientAddress: getAddress(recipient),
         tipperAddress: getAddress(tipper),
         transactionHash: log.transactionHash,
@@ -227,7 +248,10 @@ async function readTipEventsInChunks({
     cursor = chunkTo + 1n;
   }
 
-  return events;
+  return {
+    events,
+    skippedInvalidProjectIds,
+  };
 }
 
 async function cacheTipEvents(
@@ -247,12 +271,19 @@ async function cacheTipEvents(
   const projectRows = await database
     .select({
       id: projects.id,
+      projectWallet: projects.projectWallet,
       slug: projects.slug,
     })
     .from(projects)
     .where(inArray(projects.slug, projectSlugs));
   const projectsBySlug = new Map(
-    projectRows.map((project) => [project.slug, project.id]),
+    projectRows.map((project) => [
+      project.slug,
+      {
+        id: project.id,
+        projectWallet: project.projectWallet.toLowerCase(),
+      },
+    ]),
   );
   const blockTimestamps = await getBlockTimestamps(
     publicClient,
@@ -265,11 +296,42 @@ async function cacheTipEvents(
         .map((event) => event.projectSlug),
     ),
   ];
+  const skippedUnknownProjects = events.filter(
+    (event) => !projectsBySlug.has(event.projectSlug),
+  ).length;
+  const skippedRecipientMismatches = events.filter((event) => {
+    const project = projectsBySlug.get(event.projectSlug);
+
+    return (
+      project && project.projectWallet !== event.recipientAddress.toLowerCase()
+    );
+  }).length;
+  const recipientMismatches = [
+    ...new Set(
+      events
+        .filter((event) => {
+          const project = projectsBySlug.get(event.projectSlug);
+
+          return (
+            project &&
+            project.projectWallet !== event.recipientAddress.toLowerCase()
+          );
+        })
+        .map(
+          (event) =>
+            `${event.projectSlug}:${event.recipientAddress.toLowerCase()}`,
+        ),
+    ),
+  ];
   const values = events
     .map((event) => {
-      const projectId = projectsBySlug.get(event.projectSlug);
+      const project = projectsBySlug.get(event.projectSlug);
 
-      if (!projectId) {
+      if (!project) {
+        return null;
+      }
+
+      if (project.projectWallet !== event.recipientAddress.toLowerCase()) {
         return null;
       }
 
@@ -278,7 +340,7 @@ async function cacheTipEvents(
         blockNumber: event.blockNumber,
         createdAt: blockTimestamps.get(event.blockNumber) ?? new Date(),
         message: event.message,
-        projectId,
+        projectId: project.id,
         recipientAddress: event.recipientAddress.toLowerCase(),
         tipperAddress: event.tipperAddress.toLowerCase(),
         transactionHash: event.transactionHash,
@@ -289,7 +351,9 @@ async function cacheTipEvents(
   if (values.length === 0) {
     return {
       insertedTips: 0,
-      skippedUnknownProjects: events.length,
+      skippedUnknownProjects,
+      skippedRecipientMismatches,
+      recipientMismatches,
       unknownProjects,
     };
   }
@@ -306,7 +370,9 @@ async function cacheTipEvents(
 
   return {
     insertedTips: inserted.length,
-    skippedUnknownProjects: events.length - values.length,
+    skippedUnknownProjects,
+    skippedRecipientMismatches,
+    recipientMismatches,
     unknownProjects,
   };
 }
