@@ -11,14 +11,6 @@ export const submissionCategories = [
   "Developer Tools",
 ] as const;
 
-export const submissionStages = [
-  "Prototype",
-  "Public Testnet",
-  "Community",
-  "Partner",
-  "Research",
-] as const;
-
 const optionalUrl = z
   .string()
   .trim()
@@ -45,7 +37,6 @@ export const projectSubmissionSchema = z.object({
     .min(40, "Description should explain what the project does")
     .max(900),
   category: z.enum(submissionCategories),
-  stage: z.enum(submissionStages),
   builderName: z.string().trim().min(2, "Builder name is required").max(120),
   contact: z.string().trim().max(160).optional(),
   projectWallet: z
@@ -55,7 +46,8 @@ export const projectSubmissionSchema = z.object({
     .optional()
     .or(z.literal("")),
   websiteUrl: optionalUrl,
-  xUrl: optionalUrl,
+  projectXUrl: optionalUrl,
+  builderXUrl: optionalUrl,
   discordUrl: optionalUrl,
   githubUrl: optionalUrl,
 });

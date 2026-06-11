@@ -2,12 +2,10 @@ import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 import { drizzle } from "drizzle-orm/postgres-js";
-import { eq } from "drizzle-orm";
 import postgres from "postgres";
 
 import { projects as seedProjects } from "@/data/projects";
-import { projectTips } from "@/data/tips";
-import { projects, tips } from "@/server/db/schema";
+import { projects } from "@/server/db/schema";
 import type { Project } from "@/types/project";
 
 loadLocalEnv();
@@ -29,7 +27,6 @@ main().catch(async (error) => {
 
 async function main() {
   await seedProjectsIntoDatabase();
-  await seedTipsIntoDatabase();
   await client.end();
 }
 
@@ -56,11 +53,7 @@ async function seedProjectsIntoDatabase() {
           profile: values.profile,
           projectWallet: values.projectWallet,
           rank: values.rank,
-          signalScore: values.signalScore,
           socialLinks: values.socialLinks,
-          stage: values.stage,
-          status: values.status,
-          supporters: values.supporters,
           tagline: values.tagline,
           tags: values.tags,
           totalTipsUsdcMicro: values.totalTipsUsdcMicro,
@@ -72,45 +65,6 @@ async function seedProjectsIntoDatabase() {
   }
 
   console.log(`Seeded ${seedProjects.length} ArcRadar projects.`);
-}
-
-async function seedTipsIntoDatabase() {
-  for (const project of seedProjects) {
-    const [projectRow] = await db
-      .select({
-        id: projects.id,
-      })
-      .from(projects)
-      .where(eq(projects.slug, project.slug))
-      .limit(1);
-
-    if (!projectRow) {
-      continue;
-    }
-
-    const projectTipRows = projectTips.filter(
-      (tip) => tip.projectSlug === project.slug,
-    );
-
-    for (const tip of projectTipRows) {
-      await db
-        .insert(tips)
-        .values({
-          amountUsdcMicro: toUsdcMicro(tip.amountUsdc),
-          createdAt: new Date(tip.timestamp),
-          message: tip.message,
-          projectId: projectRow.id,
-          recipientAddress: project.walletAddress,
-          tipperAddress: tip.tipperAddress,
-          transactionHash: tip.transactionHash,
-        })
-        .onConflictDoNothing({
-          target: tips.transactionHash,
-        });
-    }
-  }
-
-  console.log(`Seeded ${projectTips.length} ArcRadar tips.`);
 }
 
 function mapProjectToRow(project: Project) {
@@ -133,22 +87,14 @@ function mapProjectToRow(project: Project) {
     profile: project.profile,
     projectWallet: project.walletAddress,
     rank: project.metrics.rank,
-    signalScore: project.metrics.signalScore,
     slug: project.slug,
     socialLinks: project.links,
-    stage: project.stage,
-    status: project.status,
-    supporters: project.metrics.supporters,
     tagline: project.tagline,
     tags: project.tags,
-    totalTipsUsdcMicro: toUsdcMicro(project.metrics.tipsUsdc),
+    totalTipsUsdcMicro: 0n,
     websiteUrl,
-    weeklyTipsUsdcMicro: toUsdcMicro(project.metrics.weeklyTipsUsdc),
+    weeklyTipsUsdcMicro: 0n,
   };
-}
-
-function toUsdcMicro(value: number) {
-  return BigInt(Math.round(value * 1_000_000));
 }
 
 function loadLocalEnv() {

@@ -102,9 +102,9 @@ npm run contracts:deploy:arc
 - Product identity system for ArcRadar as an Arc ecosystem command center.
 - Data-backed radar visual for project signal and ranking.
 - Searchable, filterable, sortable project directory.
-- Richer project model with stage, signal score, weekly tips, featured state,
+- Richer project model with signal score, weekly tips, featured state,
   last signal, and accent metadata.
-- Upgraded leaderboard with total tips, supporters, and weekly momentum.
+- Upgraded leaderboard with total tips, tip events, and weekly momentum.
 - Stronger Arc Testnet onboarding strip for chain, gas, RPC, finality, faucet,
   explorer, and ERC-20 USDC reference.
 - Footer and navigation aligned with the product information architecture.
@@ -197,12 +197,11 @@ needs a real `DATABASE_URL`.
   tips, and advances the processed block checkpoint.
 - First sync requires `TIP_INDEXER_START_BLOCK` so ArcRadar starts from the
   actual TipRouter deployment block instead of scanning the entire testnet.
-- Leaderboard data now prefers indexed TipRouter events and falls back to the
-  curated warm-start data when the contract is not deployed yet.
+- Leaderboard data only uses indexed TipRouter events and shows zero-state UI
+  before real events exist.
 - Home leaderboard upgraded with total ecosystem support, tip event count,
   unique tippers, active supported projects, top projects, top tippers, fresh
-  project signals, weekly ranking, monthly ranking, and badges such as
-  `Most Tipped`, `Rising`, and `Fresh Signal`.
+  project signals, weekly ranking, and monthly ranking.
 
 ## Phase Seven Scope
 
@@ -213,8 +212,8 @@ needs a real `DATABASE_URL`.
 - `/admin/submissions` upgraded into a full moderation desk with queue counts,
   readiness checks, review notes, approve, reject, reopen, and publish actions.
 - Approved candidates can be published into the public directory as real
-  project profiles with generated profile scaffolding, social links, stage-based
-  status, rank, signal score, curation notes, and activity history.
+  project profiles with generated profile scaffolding, social links,
+  rank, signal score, and activity history.
 - Publish actions guard against duplicate project slugs and missing Arc tip
   wallets before creating public project rows.
 
@@ -222,20 +221,14 @@ needs a real `DATABASE_URL`.
 
 - Social signal layer added on top of project and tip data without opening
   public project submissions.
-- Project badges now combine curated labels, verified/claim-ready status,
-  weekly momentum, tip message activity, and hackathon fit.
-- Signal score is now shown as a derived composition of tip support, weekly
-  velocity, freshness, social proof links, and curation quality.
-- Home page includes project collections such as `Arc AI Agents`,
-  `Arc Payments Stack`, `Arc Builder Infra`, and `Arc Ops Treasury`.
+- Signal score is shown as a derived composition of tip support, weekly
+  velocity, social proof links, and profile quality.
 - Hackathon mode groups projects into build tracks for agentic USDC, builder
   operations, and stablecoin operations.
 - Mini activity feed turns tip messages and curation signals into a live-like
   crypto-native feed.
-- Project profiles now show Signal DNA, collection membership, claim status,
-  verified builder badge support, and a tip message wall.
-- Claim profile is prepared as a wallet-oriented UI surface, but no public
-  claim transaction or public builder submission flow is enabled yet.
+- Project profiles show a compact Signal DNA breakdown, project context, an
+  honest disabled Tip interface, and an indexed tipper board.
 
 ## Phase Nine Scope
 

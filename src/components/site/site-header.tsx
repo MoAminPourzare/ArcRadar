@@ -1,6 +1,7 @@
 import { Activity, ExternalLink, Radar } from "lucide-react";
 import Link from "next/link";
 
+import { SiteNavigation } from "@/components/site/site-navigation";
 import { ConnectWalletButton } from "@/components/wallet/connect-wallet-button";
 import { siteConfig } from "@/config/site";
 
@@ -22,24 +23,10 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-semibold text-ink/60 md:flex">
-          <Link className="transition hover:text-ink" href="/#projects">
-            Projects
-          </Link>
-          <Link className="transition hover:text-ink" href="/#signals">
-            Signals
-          </Link>
-          <Link className="transition hover:text-ink" href="/#leaderboard">
-            Leaderboard
-          </Link>
-          <Link className="transition hover:text-ink" href="/#network">
-            Network
-          </Link>
-          <Link className="transition hover:text-ink" href="/#wallet">
-            Wallet
-          </Link>
+        <div className="hidden items-center gap-6 md:flex">
+          <SiteNavigation />
           <a
-            className="inline-flex items-center gap-1.5 transition hover:text-ink"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-ink/60 transition hover:text-ink"
             href={siteConfig.links.explorer}
             rel="noreferrer"
             target="_blank"
@@ -47,7 +34,7 @@ export function SiteHeader() {
             Explorer
             <ExternalLink aria-hidden className="size-3.5" />
           </a>
-        </nav>
+        </div>
 
         <div className="flex items-center gap-2">
           <a
@@ -62,6 +49,7 @@ export function SiteHeader() {
           <ConnectWalletButton />
         </div>
       </div>
+      <SiteNavigation mobile />
     </header>
   );
 }

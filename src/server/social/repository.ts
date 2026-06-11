@@ -1,32 +1,21 @@
-import {
-  collectionDefinitions,
-  hackathonTrackDefinitions,
-  manualProjectBadges,
-} from "@/data/social";
-import { projectTips } from "@/data/tips";
+import { hackathonTrackDefinitions } from "@/data/social";
 import { db } from "@/server/db/client";
 import { projects as projectsTable, tips as tipsTable } from "@/server/db/schema";
 import type { Project, ProjectTip } from "@/types/project";
 import type {
   EcosystemActivityItem,
-  ProjectClaimStatus,
-  ProjectCollection,
-  ProjectSocialBadge,
   ProjectSocialSignal,
-  ProjectShoutout,
+  ProjectTipMessage,
   SignalScoreBreakdown,
   SocialLayerData,
 } from "@/types/social";
-import { desc, eq, ne } from "drizzle-orm";
+import { desc, eq, isNotNull } from "drizzle-orm";
 
 export async function getSocialLayerData(
   projects: Project[],
 ): Promise<SocialLayerData> {
   const tips = await getTipRows();
-  const collections = buildCollections(projects);
-  const collectionIdsByProject = getCollectionIdsByProject(collections);
   const signals = buildProjectSocialSignals({
-    collectionIdsByProject,
     projects,
     tips,
   });
@@ -35,28 +24,20 @@ export async function getSocialLayerData(
 
   return {
     activityFeed,
-    collections,
     hackathonTracks,
     projects: signals,
     stats: {
-      claimReadyProfiles: signals.filter(
-        (signal) => signal.claimStatus === "claim-ready",
-      ).length,
-      collectionCount: collections.length,
-      shoutoutCount: signals.reduce(
-        (total, signal) => total + signal.shoutouts.length,
+      tipMessageCount: signals.reduce(
+        (total, signal) => total + signal.tipMessages.length,
         0,
       ),
-      verifiedBuilders: signals.filter(
-        (signal) => signal.claimStatus === "verified",
-      ).length,
     },
   };
 }
 
 async function getTipRows(): Promise<ProjectTip[]> {
   if (!db) {
-    return projectTips;
+    return [];
   }
 
   try {
@@ -72,12 +53,8 @@ async function getTipRows(): Promise<ProjectTip[]> {
       })
       .from(tipsTable)
       .innerJoin(projectsTable, eq(tipsTable.projectId, projectsTable.id))
-      .where(ne(projectsTable.status, "archived"))
+      .where(isNotNull(tipsTable.blockNumber))
       .orderBy(desc(tipsTable.createdAt));
-
-    if (rows.length === 0) {
-      return projectTips;
-    }
 
     return rows.map((row) => ({
       amountUsdc: Number(row.amountUsdcMicro) / 1_000_000,
@@ -89,25 +66,45 @@ async function getTipRows(): Promise<ProjectTip[]> {
       transactionHash: row.transactionHash as `0x${string}`,
     }));
   } catch {
-    return projectTips;
+    return [];
   }
 }
 
 function buildProjectSocialSignals({
-  collectionIdsByProject,
   projects,
   tips,
 }: {
-  collectionIdsByProject: Map<string, string[]>;
   projects: Project[];
   tips: ProjectTip[];
 }): ProjectSocialSignal[] {
+  const weekCutoff = new Date(Date.now() - 7 * 24 * 60 * 60 * 1_000);
+  const tipTotalsByProject = new Map<string, { total: number; weekly: number }>();
+
+  for (const tip of tips) {
+    const current = tipTotalsByProject.get(tip.projectSlug) ?? {
+      total: 0,
+      weekly: 0,
+    };
+
+    current.total += tip.amountUsdc;
+
+    if (new Date(tip.timestamp) >= weekCutoff) {
+      current.weekly += tip.amountUsdc;
+    }
+
+    tipTotalsByProject.set(tip.projectSlug, current);
+  }
+
   const maxTips = Math.max(
-    ...projects.map((project) => project.metrics.tipsUsdc),
+    ...projects.map(
+      (project) => tipTotalsByProject.get(project.slug)?.total ?? 0,
+    ),
     1,
   );
   const maxWeeklyTips = Math.max(
-    ...projects.map((project) => project.metrics.weeklyTipsUsdc),
+    ...projects.map(
+      (project) => tipTotalsByProject.get(project.slug)?.weekly ?? 0,
+    ),
     1,
   );
 
@@ -116,19 +113,18 @@ function buildProjectSocialSignals({
       const projectTipRows = tips
         .filter((tip) => tip.projectSlug === project.slug)
         .sort((a, b) => b.timestamp.localeCompare(a.timestamp));
-      const score = buildSignalScore(project, projectTipRows, {
+      const tipTotals = tipTotalsByProject.get(project.slug) ?? {
+        total: 0,
+        weekly: 0,
+      };
+      const score = buildSignalScore(project, tipTotals, {
         maxTips,
         maxWeeklyTips,
       });
-      const badges = buildProjectBadges(project, score, projectTipRows);
-
       return {
-        badges,
-        claimStatus: getClaimStatus(project, badges),
-        collections: collectionIdsByProject.get(project.slug) ?? [],
         project,
         score,
-        shoutouts: projectTipRows.slice(0, 5).map(mapTipToShoutout),
+        tipMessages: projectTipRows.slice(0, 5).map(mapTipToMessage),
       };
     })
     .sort((a, b) => b.score.total - a.score.total);
@@ -136,110 +132,45 @@ function buildProjectSocialSignals({
 
 function buildSignalScore(
   project: Project,
-  tips: ProjectTip[],
+  tipTotals: {
+    total: number;
+    weekly: number;
+  },
   maximums: {
     maxTips: number;
     maxWeeklyTips: number;
   },
 ): SignalScoreBreakdown {
-  const socialWeight = getSocialLinkWeight(project);
-  const freshestSignal = getFreshestSignalDate(project, tips);
-  const daysSinceFreshestSignal = Math.max(
-    0,
-    (Date.now() - freshestSignal.getTime()) / (24 * 60 * 60 * 1_000),
-  );
-  const tip = normalize(project.metrics.tipsUsdc, maximums.maxTips, 35);
+  const tip = normalize(tipTotals.total, maximums.maxTips, 35);
   const velocity = normalize(
-    project.metrics.weeklyTipsUsdc,
+    tipTotals.weekly,
     maximums.maxWeeklyTips,
     25,
   );
-  const freshness = clamp(Math.round(15 - daysSinceFreshestSignal * 2), 4, 15);
-  const social = clamp(socialWeight, 2, 15);
-  const curation = clamp(
-    4 +
-      (project.featured ? 3 : 0) +
-      (project.profile.curationNotes.length >= 2 ? 2 : 0) +
-      (project.status === "testnet" ? 1 : 0),
-    4,
-    10,
-  );
+  const social = clamp(getSocialLinkWeight(project), 0, 15);
+  const curation = getProfileQualityScore(project);
 
   return {
     curation,
-    freshness,
     social,
     tip,
-    total: clamp(tip + velocity + freshness + social + curation, 1, 100),
+    total: clamp(tip + velocity + social + curation, 0, 100),
     velocity,
   };
 }
 
-function buildProjectBadges(
-  project: Project,
-  score: SignalScoreBreakdown,
-  tips: ProjectTip[],
-): ProjectSocialBadge[] {
-  const badges: ProjectSocialBadge[] = [];
-  const manualBadges =
-    manualProjectBadges[project.slug as keyof typeof manualProjectBadges] ?? [];
+function getProfileQualityScore(project: Project) {
+  let score = 0;
 
-  badges.push(...manualBadges);
+  if (project.profile.problem.trim().length >= 80) score += 5;
+  if (project.profile.solution.trim().length >= 80) score += 5;
+  if (project.profile.whyArc.trim().length >= 80) score += 5;
+  if (project.description.trim().length >= 100) score += 4;
+  if (project.tagline.trim().length >= 24) score += 2;
+  if (project.tags.length >= 3) score += 2;
+  if (project.builder.trim().length >= 3) score += 2;
 
-  if (project.featured && project.links.length > 0) {
-    badges.push({
-      description: "ArcRadar has enough public proof links to mark this builder.",
-      label: "Verified Builder",
-      tone: "forest",
-    });
-  } else if (project.walletAddress) {
-    badges.push({
-      description: "Project has a tip wallet and is ready for future claim flow.",
-      label: "Claim Ready",
-      tone: "ink",
-    });
-  }
-
-  if (score.velocity >= 20 || project.metrics.weeklyTipsUsdc >= 15) {
-    badges.push({
-      description: "Weekly USDC support is moving faster than the rest of the map.",
-      label: "Rising Signal",
-      tone: "mint",
-    });
-  }
-
-  if (tips.length >= 2) {
-    badges.push({
-      description: "Supporters are leaving useful public messages with their tips.",
-      label: "Message Wall",
-      tone: "blueprint",
-    });
-  }
-
-  if (
-    project.stage === "Prototype" ||
-    project.stage === "Community" ||
-    project.tags.some((tag) => ["Deploy", "Tooling", "Events"].includes(tag))
-  ) {
-    badges.push({
-      description: "Good candidate for a focused Arc hackathon sprint.",
-      label: "Hackathon Fit",
-      tone: "amber",
-    });
-  }
-
-  return dedupeBadges(badges).slice(0, 5);
-}
-
-function buildCollections(projects: Project[]): ProjectCollection[] {
-  return collectionDefinitions
-    .map(({ categories, tags, ...definition }) => ({
-      ...definition,
-      projectSlugs: projects
-        .filter((project) => matchesProject(project, { categories, tags }))
-        .map((project) => project.slug),
-    }))
-    .filter((collection) => collection.projectSlugs.length > 0);
+  return clamp(score, 0, 25);
 }
 
 function buildHackathonTracks(projects: Project[]) {
@@ -286,16 +217,13 @@ function buildActivityFeed(
   const socialItems = signals.slice(0, 4).map((signal) => ({
     href: `/projects/${signal.project.slug}`,
     id: `signal-${signal.project.slug}`,
-    message: `${signal.badges[0]?.label ?? "Signal"} badge active with score ${
-      signal.score.total
-    }.`,
+    message: `Automatic signal score: ${signal.score.total}.`,
     projectName: signal.project.name,
     projectSlug: signal.project.slug,
-    timestamp: getFreshestSignalDate(signal.project, signal.shoutouts).toISOString().slice(
-      0,
-      10,
-    ),
-    type: signal.claimStatus === "verified" ? "claim" : "curation",
+    timestamp: getFreshestSignalDate(signal.project, signal.tipMessages)
+      .toISOString()
+      .slice(0, 10),
+    type: "curation",
   })) satisfies EcosystemActivityItem[];
 
   return [...tipItems, ...socialItems]
@@ -303,44 +231,15 @@ function buildActivityFeed(
     .slice(0, 10);
 }
 
-function getCollectionIdsByProject(collections: ProjectCollection[]) {
-  const map = new Map<string, string[]>();
-
-  for (const collection of collections) {
-    for (const slug of collection.projectSlugs) {
-      const current = map.get(slug) ?? [];
-      current.push(collection.id);
-      map.set(slug, current);
-    }
-  }
-
-  return map;
-}
-
-function getClaimStatus(
-  project: Project,
-  badges: ProjectSocialBadge[],
-): ProjectClaimStatus {
-  if (badges.some((badge) => badge.label === "Verified Builder")) {
-    return "verified";
-  }
-
-  if (project.walletAddress) {
-    return "claim-ready";
-  }
-
-  return "unclaimed";
-}
-
 function getSocialLinkWeight(project: Project) {
   const labels = new Set(project.links.map((link) => link.label));
 
   return (
-    project.links.length * 3 +
     (labels.has("Website") ? 3 : 0) +
-    (labels.has("GitHub") ? 3 : 0) +
-    (labels.has("Docs") ? 2 : 0) +
-    (labels.has("X") ? 2 : 0)
+    (labels.has("Project X") ? 3 : 0) +
+    (labels.has("Builder X") ? 2 : 0) +
+    (labels.has("Discord") ? 2 : 0) +
+    (labels.has("GitHub") ? 5 : 0)
   );
 }
 
@@ -373,7 +272,7 @@ function matchesProject(
   return categoryMatch || tagMatch;
 }
 
-function mapTipToShoutout(tip: ProjectTip): ProjectShoutout {
+function mapTipToMessage(tip: ProjectTip): ProjectTipMessage {
   return {
     amountUsdc: tip.amountUsdc,
     id: tip.id,
@@ -382,19 +281,6 @@ function mapTipToShoutout(tip: ProjectTip): ProjectShoutout {
     tipperAddress: tip.tipperAddress,
     transactionHash: tip.transactionHash,
   };
-}
-
-function dedupeBadges(badges: readonly ProjectSocialBadge[]) {
-  const seen = new Set<string>();
-
-  return badges.filter((badge) => {
-    if (seen.has(badge.label)) {
-      return false;
-    }
-
-    seen.add(badge.label);
-    return true;
-  });
 }
 
 function normalize(value: number, max: number, weight: number) {

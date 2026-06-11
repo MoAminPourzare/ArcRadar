@@ -11,11 +11,10 @@ import {
 import Link from "next/link";
 
 import { arcLinks } from "@/config/arc";
-import { cn, formatCompactNumber, shortenAddress } from "@/lib/utils";
+import { formatCompactNumber, shortenAddress } from "@/lib/utils";
 import type {
   LeaderboardData,
   LeaderboardProjectRow,
-  ProjectBadge,
   TipperLeaderboardRow,
 } from "@/types/project";
 
@@ -23,34 +22,16 @@ type LeaderboardProps = {
   data: LeaderboardData;
 };
 
-const badgeClass: Record<ProjectBadge, string> = {
-  "Fresh Signal": "bg-cyan/15 text-cyan",
-  "Most Tipped": "bg-amber/20 text-amber",
-  Rising: "bg-mint/20 text-mint",
-};
-
 export function Leaderboard({ data }: LeaderboardProps) {
-  const sourceLabel =
-    data.source === "indexed" ? "TipRouter indexed" : "Curated warm start";
-  const sourceTone =
-    data.source === "indexed"
-      ? "border-mint/30 bg-mint/15 text-mint"
-      : "border-amber/30 bg-amber/15 text-amber";
-
   return (
     <section className="bg-ink py-14 text-paper" id="leaderboard">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-7 grid gap-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div>
             <div className="mb-3 flex flex-wrap items-center gap-2">
-              <span
-                className={cn(
-                  "inline-flex min-h-8 items-center gap-2 rounded-md border px-2.5 text-xs font-black uppercase",
-                  sourceTone,
-                )}
-              >
+              <span className="inline-flex min-h-8 items-center gap-2 rounded-md border border-mint/30 bg-mint/15 px-2.5 text-xs font-black uppercase text-mint">
                 <Activity aria-hidden className="size-3.5" />
-                {sourceLabel}
+                TipRouter indexed
               </span>
               <span className="inline-flex min-h-8 items-center rounded-md border border-paper/10 bg-paper/[0.04] px-2.5 text-xs font-black uppercase text-paper/50">
                 Arc Testnet USDC
@@ -59,9 +40,9 @@ export function Leaderboard({ data }: LeaderboardProps) {
             <p className="text-sm font-black uppercase text-mint">
               Leaderboard and stats
             </p>
-            <h2 className="mt-2 max-w-3xl text-2xl font-black leading-tight sm:text-3xl">
+            <h1 className="mt-2 max-w-3xl text-2xl font-black leading-tight sm:text-3xl">
               Onchain support signals for the Arc builder map
-            </h2>
+            </h1>
           </div>
           <div className="flex items-center gap-3 rounded-lg border border-paper/10 bg-paper/[0.04] px-4 py-3">
             <Clock3 aria-hidden className="size-4 text-paper/45" />
@@ -159,24 +140,13 @@ function ProjectRankRow({
       </span>
 
       <div className="min-w-0">
-        <div className="mb-2 flex flex-wrap items-center gap-2">
+        <div className="mb-2">
           <Link
             className="min-w-0 truncate text-lg font-black transition hover:text-mint"
             href={`/projects/${row.project.slug}`}
           >
             {row.project.name}
           </Link>
-          {row.badges.map((badge) => (
-            <span
-              className={cn(
-                "inline-flex min-h-6 items-center rounded-md px-2 text-[11px] font-black uppercase",
-                badgeClass[badge],
-              )}
-              key={badge}
-            >
-              {badge}
-            </span>
-          ))}
         </div>
         <p className="truncate text-sm font-semibold text-paper/55">
           {row.project.category} / {row.project.builder}
@@ -329,7 +299,7 @@ function MomentumPanel({
                   {row.project.name}
                 </Link>
                 <p className="truncate text-xs font-bold text-paper/45">
-                  {row.supporterCount} supporters / {row.tipCount} tips
+                  {row.tipCount} tip events
                 </p>
               </div>
               <span className="font-mono text-sm font-black text-cyan">

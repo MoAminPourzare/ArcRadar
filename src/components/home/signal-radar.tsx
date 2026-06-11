@@ -1,6 +1,7 @@
 import { Activity, Crosshair, Radio, ScanLine } from "lucide-react";
 
 import type { Project } from "@/types/project";
+import type { ProjectSocialSignal } from "@/types/social";
 
 const accentClass: Record<Project["accent"], string> = {
   amber: "bg-amber text-ink",
@@ -19,11 +20,12 @@ const nodePositions = [
   { left: "52%", top: "45%" },
 ];
 
-export function SignalRadar({ projects }: { projects: Project[] }) {
-  const featuredProjects = projects.slice(0, 6);
-  const strongestProject = [...projects].sort(
-    (a, b) => b.metrics.signalScore - a.metrics.signalScore,
-  )[0];
+export function SignalRadar({ signals }: { signals: ProjectSocialSignal[] }) {
+  const rankedSignals = [...signals].sort(
+    (a, b) => b.score.total - a.score.total,
+  );
+  const featuredSignals = rankedSignals.slice(0, 6);
+  const strongestSignal = rankedSignals[0];
 
   return (
     <div className="relative min-h-[420px] overflow-hidden rounded-lg bg-ink text-paper shadow-sm">
@@ -38,21 +40,21 @@ export function SignalRadar({ projects }: { projects: Project[] }) {
         <Crosshair aria-hidden className="size-7" />
       </div>
 
-      {featuredProjects.map((project, index) => (
+      {featuredSignals.map((signal, index) => (
         <div
           className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-2"
-          key={project.id}
+          key={signal.project.id}
           style={nodePositions[index]}
         >
           <span
-            className={`grid size-8 rotate-45 place-items-center rounded-md ${accentClass[project.accent]}`}
+            className={`grid size-8 rotate-45 place-items-center rounded-md ${accentClass[signal.project.accent]}`}
           >
             <span className="-rotate-45 font-mono text-xs font-black">
-              {project.metrics.rank}
+              {index + 1}
             </span>
           </span>
           <span className="hidden rounded-md border border-paper/10 bg-ink/80 px-2 py-1 text-xs font-black text-paper shadow-sm backdrop-blur sm:block">
-            {project.name}
+            {signal.project.name}
           </span>
         </div>
       ))}
@@ -74,10 +76,10 @@ export function SignalRadar({ projects }: { projects: Project[] }) {
             <span className="text-xs font-black uppercase">Top signal</span>
           </div>
           <p className="text-xl font-black">
-            {strongestProject?.name ?? "Awaiting projects"}
+            {strongestSignal?.project.name ?? "Awaiting projects"}
           </p>
           <p className="mt-1 text-sm font-semibold text-paper/55">
-            {strongestProject?.lastSignal ?? "No signal indexed yet"}
+            {strongestSignal?.project.lastSignal ?? "No signal indexed yet"}
           </p>
         </div>
 
@@ -87,7 +89,7 @@ export function SignalRadar({ projects }: { projects: Project[] }) {
             Signal score
           </span>
           <p className="mt-2 font-mono text-4xl font-black">
-            {strongestProject?.metrics.signalScore ?? 0}
+            {strongestSignal?.score.total ?? 0}
           </p>
         </div>
       </div>

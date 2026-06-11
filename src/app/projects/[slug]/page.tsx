@@ -66,7 +66,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       <ProjectProfilePage
         project={project}
         relatedProjects={relatedProjects}
-        socialData={socialData}
         socialSignal={socialSignal}
         tipData={tipData}
       />

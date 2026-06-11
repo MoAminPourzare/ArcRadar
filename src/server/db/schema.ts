@@ -14,21 +14,7 @@ import {
 } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
-export const projectStatus = pgEnum("project_status", [
-  "live",
-  "testnet",
-  "building",
-  "watchlist",
-  "archived",
-]);
-
-export const projectStage = pgEnum("project_stage", [
-  "Prototype",
-  "Public Testnet",
-  "Community",
-  "Partner",
-  "Research",
-]);
+import type { ProjectLink } from "@/types/project";
 
 export const projectCategory = pgEnum("project_category", [
   "AI Agents",
@@ -54,8 +40,6 @@ export const projects = pgTable(
     tagline: varchar("tagline", { length: 180 }).notNull(),
     description: text("description").notNull(),
     category: projectCategory("category").notNull(),
-    status: projectStatus("status").default("watchlist").notNull(),
-    stage: projectStage("stage").default("Prototype").notNull(),
     builderName: varchar("builder_name", { length: 120 }).notNull(),
     builderWallet: varchar("builder_wallet", { length: 42 }),
     projectWallet: varchar("project_wallet", { length: 42 }).notNull(),
@@ -66,13 +50,9 @@ export const projects = pgTable(
     tags: jsonb("tags").$type<string[]>().default([]).notNull(),
     profile: jsonb("profile")
       .$type<{
-        builderNote: string;
         problem: string;
         solution: string;
         whyArc: string;
-        idealFor: string[];
-        roadmap: Array<{ label: string; status: string }>;
-        curationNotes: string[];
       }>()
       .notNull(),
     activity: jsonb("activity")
@@ -80,14 +60,12 @@ export const projects = pgTable(
       .default([])
       .notNull(),
     socialLinks: jsonb("social_links")
-      .$type<Array<{ label: string; href: string }>>()
+      .$type<ProjectLink[]>()
       .default([])
       .notNull(),
     featured: boolean("featured").default(false).notNull(),
     rank: integer("rank").default(0).notNull(),
-    signalScore: integer("signal_score").default(0).notNull(),
     launches: integer("launches").default(0).notNull(),
-    supporters: integer("supporters").default(0).notNull(),
     totalTipsUsdcMicro: bigint("total_tips_usdc_micro", {
       mode: "bigint",
     })
@@ -108,7 +86,6 @@ export const projects = pgTable(
   (table) => [
     uniqueIndex("projects_slug_idx").on(table.slug),
     index("projects_category_idx").on(table.category),
-    index("projects_status_idx").on(table.status),
   ],
 );
 
@@ -161,12 +138,12 @@ export const projectSubmissions = pgTable(
     tagline: varchar("tagline", { length: 180 }).notNull(),
     description: text("description").notNull(),
     category: projectCategory("category").notNull(),
-    stage: projectStage("stage").default("Prototype").notNull(),
     builderName: varchar("builder_name", { length: 120 }).notNull(),
     contact: varchar("contact", { length: 160 }),
     projectWallet: varchar("project_wallet", { length: 42 }),
     websiteUrl: text("website_url"),
-    xUrl: text("x_url"),
+    projectXUrl: text("x_url"),
+    builderXUrl: text("builder_x_url"),
     discordUrl: text("discord_url"),
     githubUrl: text("github_url"),
     status: submissionStatus("status").default("pending").notNull(),

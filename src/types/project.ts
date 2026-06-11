@@ -1,12 +1,3 @@
-export type ProjectStatus = "live" | "testnet" | "building" | "watchlist";
-
-export type ProjectStage =
-  | "Prototype"
-  | "Public Testnet"
-  | "Community"
-  | "Partner"
-  | "Research";
-
 export type ProjectCategory =
   | "AI Agents"
   | "Payments"
@@ -16,15 +7,8 @@ export type ProjectCategory =
   | "Developer Tools";
 
 export type ProjectLink = {
-  label: "Website" | "X" | "Discord" | "GitHub" | "Docs" | "Explorer";
+  label: "Website" | "Project X" | "Builder X" | "Discord" | "GitHub";
   href: string;
-};
-
-export type ProjectMilestoneStatus = "done" | "building" | "planned";
-
-export type ProjectMilestone = {
-  label: string;
-  status: ProjectMilestoneStatus;
 };
 
 export type ProjectActivity = {
@@ -34,13 +18,9 @@ export type ProjectActivity = {
 };
 
 export type ProjectProfile = {
-  builderNote: string;
   problem: string;
   solution: string;
   whyArc: string;
-  idealFor: string[];
-  roadmap: ProjectMilestone[];
-  curationNotes: string[];
 };
 
 export type ProjectTip = {
@@ -60,21 +40,18 @@ export type ProjectTipperRank = {
 };
 
 export type ProjectTipData = {
-  latestTips: ProjectTip[];
   leaderboard: ProjectTipperRank[];
+  totalUsdc: number;
+  weeklyUsdc: number;
 };
 
-export type LeaderboardSource = "indexed" | "curated";
-
-export type ProjectBadge = "Fresh Signal" | "Most Tipped" | "Rising";
+export type LeaderboardSource = "indexed";
 
 export type LeaderboardProjectRow = {
-  badges: ProjectBadge[];
   lastTippedAt: string | null;
   lastTransactionHash: `0x${string}` | null;
   monthlyUsdc: number;
   project: Project;
-  supporterCount: number;
   tipCount: number;
   totalUsdc: number;
   weeklyUsdc: number;
@@ -117,8 +94,6 @@ export type Project = {
   tagline: string;
   description: string;
   category: ProjectCategory;
-  status: ProjectStatus;
-  stage: ProjectStage;
   builder: string;
   walletAddress: `0x${string}`;
   links: ProjectLink[];
@@ -131,9 +106,7 @@ export type Project = {
   metrics: {
     tipsUsdc: number;
     weeklyTipsUsdc: number;
-    supporters: number;
     rank: number;
-    signalScore: number;
     launches: number;
   };
 };

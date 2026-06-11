@@ -29,6 +29,7 @@ async function main() {
   const suffix = Date.now().toString().slice(-5);
   const input = projectSubmissionSchema.parse({
     builderName: "ArcRadar QA",
+    builderXUrl: "",
     category: "AI Agents",
     contact: "",
     description:
@@ -37,16 +38,16 @@ async function main() {
     githubUrl: "",
     name: `ArcRadar DB Smoke ${suffix}`,
     projectWallet: "0x00000000000000000000000000000000000000bb",
-    stage: "Prototype",
     tagline: "Database-backed submission verification for ArcRadar.",
     websiteUrl: "https://example.com",
-    xUrl: "",
+    projectXUrl: "",
   });
 
   const [inserted] = await db
     .insert(projectSubmissions)
     .values({
       builderName: input.builderName,
+      builderXUrl: input.builderXUrl || null,
       category: input.category,
       contact: input.contact || null,
       description: input.description,
@@ -54,10 +55,9 @@ async function main() {
       githubUrl: input.githubUrl || null,
       name: input.name,
       projectWallet: input.projectWallet || null,
-      stage: input.stage,
       tagline: input.tagline,
       websiteUrl: input.websiteUrl || null,
-      xUrl: input.xUrl || null,
+      projectXUrl: input.projectXUrl || null,
     })
     .returning({
       id: projectSubmissions.id,

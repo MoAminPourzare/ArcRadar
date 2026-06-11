@@ -1,4 +1,3 @@
-import { projectTips } from "@/data/tips";
 import { db } from "@/server/db/client";
 import { projects as projectsTable, tips as tipsTable } from "@/server/db/schema";
 import type {
@@ -6,10 +5,9 @@ import type {
   LeaderboardProjectRow,
   LeaderboardSource,
   Project,
-  ProjectBadge,
   TipperLeaderboardRow,
 } from "@/types/project";
-import { and, desc, eq, isNotNull, ne } from "drizzle-orm";
+import { desc, eq, isNotNull } from "drizzle-orm";
 
 const USDC_MICRO = 1_000_000;
 
@@ -27,11 +25,7 @@ export async function getLeaderboardData(
 ): Promise<LeaderboardData> {
   const indexedTips = await getIndexedTipRows();
 
-  if (indexedTips.length > 0) {
-    return buildLeaderboard(projectList, indexedTips, "indexed");
-  }
-
-  return buildLeaderboard(projectList, getCuratedTipRows(), "curated");
+  return buildLeaderboard(projectList, indexedTips, "indexed");
 }
 
 async function getIndexedTipRows(): Promise<TipLedgerRow[]> {
@@ -51,9 +45,7 @@ async function getIndexedTipRows(): Promise<TipLedgerRow[]> {
       })
       .from(tipsTable)
       .innerJoin(projectsTable, eq(tipsTable.projectId, projectsTable.id))
-      .where(
-        and(ne(projectsTable.status, "archived"), isNotNull(tipsTable.blockNumber)),
-      )
+      .where(isNotNull(tipsTable.blockNumber))
       .orderBy(desc(tipsTable.createdAt));
 
     return rows.map((row) => ({
@@ -67,17 +59,6 @@ async function getIndexedTipRows(): Promise<TipLedgerRow[]> {
   } catch {
     return [];
   }
-}
-
-function getCuratedTipRows(): TipLedgerRow[] {
-  return projectTips.map((tip) => ({
-    amountUsdc: tip.amountUsdc,
-    blockNumber: null,
-    projectSlug: tip.projectSlug,
-    timestamp: new Date(tip.timestamp),
-    tipperAddress: tip.tipperAddress,
-    transactionHash: tip.transactionHash,
-  }));
 }
 
 function buildLeaderboard(
@@ -97,8 +78,6 @@ function buildLeaderboard(
       weekCutoff,
     }),
   );
-
-  applyBadges(rows);
 
   const topProjects = [...rows]
     .sort((a, b) => b.totalUsdc - a.totalUsdc || b.tipCount - a.tipCount)
@@ -141,12 +120,7 @@ function buildProjectRow(
   const weeklyFromTips = sumTipsSince(tips, options.weekCutoff);
   const monthlyFromTips = sumTipsSince(tips, options.monthCutoff);
   const latestTip = getLatestTip(tips);
-  const uniqueTippers = new Set(
-    tips.map((tip) => tip.tipperAddress.toLowerCase()),
-  );
-
   return {
-    badges: [],
     lastTippedAt: latestTip?.timestamp.toISOString() ?? null,
     lastTransactionHash: latestTip?.transactionHash ?? null,
     monthlyUsdc: roundUsdc(
@@ -155,8 +129,6 @@ function buildProjectRow(
         : Math.max(monthlyFromTips, project.metrics.weeklyTipsUsdc),
     ),
     project,
-    supporterCount:
-      options.source === "indexed" ? uniqueTippers.size : project.metrics.supporters,
     tipCount: tips.length,
     totalUsdc: roundUsdc(
       options.source === "indexed" ? totalFromTips : project.metrics.tipsUsdc,
@@ -202,26 +174,6 @@ function buildStats(
         : rows.reduce((total, row) => total + row.weeklyUsdc, 0),
     ),
   };
-}
-
-function applyBadges(rows: LeaderboardProjectRow[]) {
-  const mostTipped = [...rows].sort((a, b) => b.totalUsdc - a.totalUsdc)[0];
-  const rising = [...rows]
-    .filter((row) => row.weeklyUsdc > 0)
-    .sort((a, b) => b.weeklyUsdc - a.weeklyUsdc)[0];
-  const freshSignal = [...rows].filter((row) => row.lastTippedAt).sort(compareLatestTip)[0];
-
-  addBadge(mostTipped, "Most Tipped");
-  addBadge(rising, "Rising");
-  addBadge(freshSignal, "Fresh Signal");
-}
-
-function addBadge(row: LeaderboardProjectRow | undefined, badge: ProjectBadge) {
-  if (!row || row.badges.includes(badge)) {
-    return;
-  }
-
-  row.badges.push(badge);
 }
 
 function buildTopTippers(tipRows: TipLedgerRow[]): TipperLeaderboardRow[] {

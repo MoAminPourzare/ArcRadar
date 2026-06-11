@@ -11,7 +11,6 @@ import {
 import {
   projectSubmissionSchema,
   submissionCategories,
-  submissionStages,
   type ProjectSubmissionInput,
 } from "@/lib/project-submission";
 import { slugifyProjectName } from "@/lib/slug";
@@ -20,6 +19,7 @@ type FieldErrors = Partial<Record<keyof ProjectSubmissionInput, string>>;
 
 const initialValues: ProjectSubmissionInput = {
   builderName: "",
+  builderXUrl: "",
   category: "AI Agents",
   contact: "",
   description: "",
@@ -28,10 +28,9 @@ const initialValues: ProjectSubmissionInput = {
   name: "",
   projectWallet: "",
   slug: "",
-  stage: "Prototype",
   tagline: "",
   websiteUrl: "",
-  xUrl: "",
+  projectXUrl: "",
 };
 
 export function SubmitProjectForm() {
@@ -56,7 +55,11 @@ export function SubmitProjectForm() {
       {
         label: "Public proof link",
         done: Boolean(
-          values.websiteUrl || values.xUrl || values.githubUrl || values.discordUrl,
+          values.websiteUrl ||
+            values.projectXUrl ||
+            values.builderXUrl ||
+            values.githubUrl ||
+            values.discordUrl,
         ),
       },
       {
@@ -181,50 +184,27 @@ export function SubmitProjectForm() {
           {errors.description ? <ErrorText text={errors.description} /> : null}
         </label>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          <label className="grid gap-2">
-            <span className="text-xs font-black uppercase text-ink/45">
-              Category
-            </span>
-            <select
-              className="min-h-11 rounded-lg border border-ink/10 bg-paper px-3 text-sm font-black text-ink outline-none transition focus:border-blueprint"
-              value={values.category}
-              onChange={(event) =>
-                updateField(
-                  "category",
-                  event.target.value as ProjectSubmissionInput["category"],
-                )
-              }
-            >
-              {submissionCategories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className="grid gap-2">
-            <span className="text-xs font-black uppercase text-ink/45">
-              Stage
-            </span>
-            <select
-              className="min-h-11 rounded-lg border border-ink/10 bg-paper px-3 text-sm font-black text-ink outline-none transition focus:border-blueprint"
-              value={values.stage}
-              onChange={(event) =>
-                updateField(
-                  "stage",
-                  event.target.value as ProjectSubmissionInput["stage"],
-                )
-              }
-            >
-              {submissionStages.map((stage) => (
-                <option key={stage} value={stage}>
-                  {stage}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
+        <label className="grid gap-2 md:w-1/2">
+          <span className="text-xs font-black uppercase text-ink/45">
+            Category
+          </span>
+          <select
+            className="min-h-11 rounded-lg border border-ink/10 bg-paper px-3 text-sm font-black text-ink outline-none transition focus:border-blueprint"
+            value={values.category}
+            onChange={(event) =>
+              updateField(
+                "category",
+                event.target.value as ProjectSubmissionInput["category"],
+              )
+            }
+          >
+            {submissionCategories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </label>
 
         <div className="grid gap-4 md:grid-cols-2">
           <TextField
@@ -249,10 +229,16 @@ export function SubmitProjectForm() {
             onChange={(value) => updateField("websiteUrl", value)}
           />
           <TextField
-            error={errors.xUrl}
-            label="X / Twitter"
-            value={values.xUrl ?? ""}
-            onChange={(value) => updateField("xUrl", value)}
+            error={errors.projectXUrl}
+            label="Project X / Twitter"
+            value={values.projectXUrl ?? ""}
+            onChange={(value) => updateField("projectXUrl", value)}
+          />
+          <TextField
+            error={errors.builderXUrl}
+            label="Builder X / Twitter"
+            value={values.builderXUrl ?? ""}
+            onChange={(value) => updateField("builderXUrl", value)}
           />
           <TextField
             error={errors.discordUrl}

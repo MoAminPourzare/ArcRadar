@@ -1,21 +1,19 @@
 import { projects } from "@/data/projects";
-import { projectTips } from "@/data/tips";
 import { db } from "@/server/db/client";
 import { projects as projectsTable, tips as tipsTable } from "@/server/db/schema";
 import type {
   Project,
   ProjectCategory,
+  ProjectLink,
   ProjectProfile,
-  ProjectStatus,
   ProjectTip,
   ProjectTipData,
   ProjectTipperRank,
 } from "@/types/project";
-import { asc, desc, eq } from "drizzle-orm";
+import { and, asc, desc, eq, isNotNull } from "drizzle-orm";
 
 export type ProjectFilters = {
   category?: ProjectCategory;
-  status?: ProjectStatus;
   featured?: boolean;
 };
 
@@ -25,10 +23,6 @@ export async function getProjects(filters: ProjectFilters = {}) {
 
   if (filters.category) {
     result = result.filter((project) => project.category === filters.category);
-  }
-
-  if (filters.status) {
-    result = result.filter((project) => project.status === filters.status);
   }
 
   if (typeof filters.featured === "boolean") {
@@ -49,7 +43,7 @@ export async function getProjectBySlug(slug: string) {
         .where(eq(projectsTable.slug, slug))
         .limit(1);
 
-      if (project && project.status !== "archived") {
+      if (project) {
         return mapDatabaseProject(project);
       }
     } catch {
@@ -99,25 +93,23 @@ export async function getProjectStats(projectList = projects) {
       (total, project) => total + project.metrics.weeklyTipsUsdc,
       0,
     ),
-    totalSupporters: projectList.reduce(
-      (total, project) => total + project.metrics.supporters,
-      0,
-    ),
   };
 }
 
 export async function getProjectTipData(project: Project): Promise<ProjectTipData> {
-  const databaseTips = await getDatabaseTips(project);
-  const tips =
-    databaseTips.length > 0
-      ? databaseTips
-      : projectTips
-          .filter((tip) => tip.projectSlug === project.slug)
-          .sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+  const tips = await getDatabaseTips(project);
+  const weekCutoff = new Date(Date.now() - 7 * 24 * 60 * 60 * 1_000);
 
   return {
-    latestTips: tips.slice(0, 5),
     leaderboard: buildTipLeaderboard(tips).slice(0, 5),
+    totalUsdc: tips.reduce((total, tip) => total + tip.amountUsdc, 0),
+    weeklyUsdc: tips.reduce(
+      (total, tip) =>
+        new Date(tip.timestamp) >= weekCutoff
+          ? total + tip.amountUsdc
+          : total,
+      0,
+    ),
   };
 }
 
@@ -131,13 +123,21 @@ async function getDatabaseProjects() {
       .select()
       .from(projectsTable)
       .orderBy(asc(projectsTable.rank), asc(projectsTable.name));
-    const activeProjects = rows.filter((row) => row.status !== "archived");
-
-    if (activeProjects.length === 0) {
+    if (rows.length === 0) {
       return null;
     }
 
-    return activeProjects.map(mapDatabaseProject);
+    const indexedTipRows = await db
+      .select({
+        amountUsdcMicro: tipsTable.amountUsdcMicro,
+        createdAt: tipsTable.createdAt,
+        projectId: tipsTable.projectId,
+      })
+      .from(tipsTable)
+      .where(isNotNull(tipsTable.blockNumber));
+    const indexedMetrics = buildIndexedProjectMetrics(indexedTipRows);
+
+    return rows.map((row) => mapDatabaseProject(row, indexedMetrics.get(row.id)));
   } catch {
     return null;
   }
@@ -145,7 +145,13 @@ async function getDatabaseProjects() {
 
 type DatabaseProject = typeof projectsTable.$inferSelect;
 
-function mapDatabaseProject(row: DatabaseProject): Project {
+function mapDatabaseProject(
+  row: DatabaseProject,
+  indexedMetrics: { tipsUsdc: number; weeklyTipsUsdc: number } = {
+    tipsUsdc: 0,
+    weeklyTipsUsdc: 0,
+  },
+): Project {
   return {
     accent: row.accent as Project["accent"],
     activity: row.activity,
@@ -155,24 +161,35 @@ function mapDatabaseProject(row: DatabaseProject): Project {
     featured: row.featured,
     id: row.id,
     lastSignal: row.lastSignal ?? "Indexed in ArcRadar",
-    links: row.socialLinks as Project["links"],
+    links: normalizeProjectLinks(row.socialLinks),
     metrics: {
       launches: row.launches,
       rank: row.rank,
-      signalScore: row.signalScore,
-      supporters: row.supporters,
-      tipsUsdc: fromUsdcMicro(row.totalTipsUsdcMicro),
-      weeklyTipsUsdc: fromUsdcMicro(row.weeklyTipsUsdcMicro),
+      tipsUsdc: indexedMetrics.tipsUsdc,
+      weeklyTipsUsdc: indexedMetrics.weeklyTipsUsdc,
     },
     name: row.name,
     profile: row.profile as ProjectProfile,
     slug: row.slug,
-    stage: row.stage as Project["stage"],
-    status: row.status as ProjectStatus,
     tagline: row.tagline,
     tags: row.tags,
     walletAddress: row.projectWallet as `0x${string}`,
   };
+}
+
+function normalizeProjectLinks(links: ProjectLink[]) {
+  const allowedLabels = new Set<ProjectLink["label"]>([
+    "Website",
+    "Project X",
+    "Builder X",
+    "Discord",
+    "GitHub",
+  ]);
+
+  return links.filter(
+    (link): link is ProjectLink =>
+      allowedLabels.has(link.label) && Boolean(link.href?.trim()),
+  );
 }
 
 function fromUsdcMicro(value: bigint) {
@@ -188,9 +205,14 @@ async function getDatabaseTips(project: Project): Promise<ProjectTip[]> {
     const rows = await db
       .select()
       .from(tipsTable)
-      .where(eq(tipsTable.projectId, project.id))
+      .where(
+        and(
+          eq(tipsTable.projectId, project.id),
+          isNotNull(tipsTable.blockNumber),
+        ),
+      )
       .orderBy(desc(tipsTable.createdAt))
-      .limit(20);
+      .limit(200);
 
     return rows.map((row) => ({
       amountUsdc: fromUsdcMicro(row.amountUsdcMicro),
@@ -204,6 +226,38 @@ async function getDatabaseTips(project: Project): Promise<ProjectTip[]> {
   } catch {
     return [];
   }
+}
+
+function buildIndexedProjectMetrics(
+  rows: Array<{
+    amountUsdcMicro: bigint;
+    createdAt: Date;
+    projectId: string;
+  }>,
+) {
+  const weekCutoff = new Date(Date.now() - 7 * 24 * 60 * 60 * 1_000);
+  const metrics = new Map<
+    string,
+    { tipsUsdc: number; weeklyTipsUsdc: number }
+  >();
+
+  for (const row of rows) {
+    const current = metrics.get(row.projectId) ?? {
+      tipsUsdc: 0,
+      weeklyTipsUsdc: 0,
+    };
+    const amountUsdc = fromUsdcMicro(row.amountUsdcMicro);
+
+    current.tipsUsdc += amountUsdc;
+
+    if (row.createdAt >= weekCutoff) {
+      current.weeklyTipsUsdc += amountUsdc;
+    }
+
+    metrics.set(row.projectId, current);
+  }
+
+  return metrics;
 }
 
 function buildTipLeaderboard(tips: ProjectTip[]): ProjectTipperRank[] {
@@ -231,8 +285,6 @@ function getRelatednessScore(source: Project, candidate: Project) {
 
   return (
     (source.category === candidate.category ? 30 : 0) +
-    (source.status === candidate.status ? 10 : 0) +
-    sharedTags * 8 +
-    candidate.metrics.signalScore / 10
+    sharedTags * 8
   );
 }

@@ -1,15 +1,18 @@
 import { ArrowRight, Database, Fuel, Radar, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 import { SignalRadar } from "@/components/home/signal-radar";
 import { arcLinks, arcTestnet } from "@/config/arc";
 import { formatCompactNumber } from "@/lib/utils";
 import type { Project } from "@/types/project";
+import type { ProjectSocialSignal } from "@/types/social";
 
 type HeroSectionProps = {
   projects: Project[];
+  socialSignals: ProjectSocialSignal[];
 };
 
-export function HeroSection({ projects }: HeroSectionProps) {
+export function HeroSection({ projects, socialSignals }: HeroSectionProps) {
   const totalTips = projects.reduce(
     (total, project) => total + project.metrics.tipsUsdc,
     0,
@@ -18,10 +21,7 @@ export function HeroSection({ projects }: HeroSectionProps) {
     (total, project) => total + project.metrics.weeklyTipsUsdc,
     0,
   );
-  const totalSupporters = projects.reduce(
-    (total, project) => total + project.metrics.supporters,
-    0,
-  );
+  const categoryCount = new Set(projects.map((project) => project.category)).size;
   const heroStats = [
     {
       icon: Database,
@@ -40,8 +40,8 @@ export function HeroSection({ projects }: HeroSectionProps) {
     },
     {
       icon: Radar,
-      label: "Supporters",
-      value: formatCompactNumber(totalSupporters),
+      label: "Categories",
+      value: categoryCount.toString(),
     },
   ];
 
@@ -70,10 +70,10 @@ export function HeroSection({ projects }: HeroSectionProps) {
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <a className="btn-primary min-h-12" href="#projects">
+              <Link className="btn-primary min-h-12" href="/projects">
                 Explore projects
                 <ArrowRight aria-hidden className="size-4" />
-              </a>
+              </Link>
               <a
                 className="btn-secondary min-h-12"
                 href={arcLinks.faucet}
@@ -109,7 +109,7 @@ export function HeroSection({ projects }: HeroSectionProps) {
           </div>
         </div>
 
-        <SignalRadar projects={projects} />
+        <SignalRadar signals={socialSignals} />
       </div>
     </section>
   );

@@ -1,23 +1,14 @@
 import type { Project } from "@/types/project";
 
-export type ProjectSocialBadge = {
-  description: string;
-  label: string;
-  tone: "amber" | "blueprint" | "coral" | "cyan" | "forest" | "ink" | "mint";
-};
-
 export type SignalScoreBreakdown = {
   curation: number;
-  freshness: number;
   social: number;
   tip: number;
   total: number;
   velocity: number;
 };
 
-export type ProjectClaimStatus = "claim-ready" | "unclaimed" | "verified";
-
-export type ProjectShoutout = {
+export type ProjectTipMessage = {
   amountUsdc: number;
   id: string;
   message: string;
@@ -27,21 +18,9 @@ export type ProjectShoutout = {
 };
 
 export type ProjectSocialSignal = {
-  badges: ProjectSocialBadge[];
-  claimStatus: ProjectClaimStatus;
-  collections: string[];
   project: Project;
   score: SignalScoreBreakdown;
-  shoutouts: ProjectShoutout[];
-};
-
-export type ProjectCollection = {
-  accent: Project["accent"];
-  description: string;
-  id: string;
-  projectSlugs: string[];
-  title: string;
-  track: string;
+  tipMessages: ProjectTipMessage[];
 };
 
 export type EcosystemActivityItem = {
@@ -52,7 +31,7 @@ export type EcosystemActivityItem = {
   projectName: string;
   projectSlug: string;
   timestamp: string;
-  type: "claim" | "collection" | "curation" | "tip";
+  type: "curation" | "tip";
   walletAddress?: `0x${string}`;
 };
 
@@ -65,13 +44,9 @@ export type HackathonTrack = {
 
 export type SocialLayerData = {
   activityFeed: EcosystemActivityItem[];
-  collections: ProjectCollection[];
   hackathonTracks: HackathonTrack[];
   projects: ProjectSocialSignal[];
   stats: {
-    claimReadyProfiles: number;
-    collectionCount: number;
-    shoutoutCount: number;
-    verifiedBuilders: number;
+    tipMessageCount: number;
   };
 };

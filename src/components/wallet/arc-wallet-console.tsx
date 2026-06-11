@@ -249,9 +249,9 @@ export function ArcWalletConsole() {
               <p className="text-sm font-black uppercase text-blueprint">
                 Wallet onboarding
               </p>
-              <h2 className="mt-2 text-3xl font-black text-ink">
+              <h1 className="mt-2 text-3xl font-black text-ink">
                 Connect, fund, and verify Arc Testnet
-              </h2>
+              </h1>
               <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-ink/55">
                 ArcRadar checks the active network, the wallet address, native
                 USDC for gas, and ERC-20 USDC for future project tips.

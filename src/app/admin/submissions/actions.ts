@@ -6,6 +6,7 @@ import { slugifyProjectName } from "@/lib/slug";
 import { db } from "@/server/db/client";
 import { projectSubmissions, projects } from "@/server/db/schema";
 import { checkRateLimit } from "@/server/security/rate-limit";
+import type { ProjectLink } from "@/types/project";
 import { desc, eq } from "drizzle-orm";
 import { z } from "zod";
 
@@ -21,22 +22,6 @@ const accentByCategory = {
   Infrastructure: "coral",
   Payments: "cyan",
   Wallets: "blueprint",
-} as const;
-
-const statusByStage = {
-  Community: "building",
-  Partner: "building",
-  Prototype: "building",
-  "Public Testnet": "testnet",
-  Research: "watchlist",
-} as const;
-
-const signalScoreByStage = {
-  Community: 64,
-  Partner: 68,
-  Prototype: 58,
-  "Public Testnet": 72,
-  Research: 52,
 } as const;
 
 export async function approveSubmission(formData: FormData) {
@@ -220,7 +205,6 @@ export async function publishSubmission(formData: FormData) {
       nextRank,
       now,
       projectWallet: submission.projectWallet,
-      reviewNotes: input.reviewNotes,
       slug,
       submission,
     });
@@ -266,14 +250,12 @@ function buildProjectValues({
   nextRank,
   now,
   projectWallet,
-  reviewNotes,
   slug,
   submission,
 }: {
   nextRank: number;
   now: Date;
   projectWallet: string;
-  reviewNotes?: string;
   slug: string;
   submission: typeof projectSubmissions.$inferSelect;
 }) {
@@ -281,21 +263,18 @@ function buildProjectValues({
     submission.websiteUrl
       ? { href: submission.websiteUrl, label: "Website" }
       : null,
-    submission.xUrl ? { href: submission.xUrl, label: "X" } : null,
+    submission.projectXUrl
+      ? { href: submission.projectXUrl, label: "Project X" }
+      : null,
+    submission.builderXUrl
+      ? { href: submission.builderXUrl, label: "Builder X" }
+      : null,
     submission.discordUrl
       ? { href: submission.discordUrl, label: "Discord" }
       : null,
     submission.githubUrl ? { href: submission.githubUrl, label: "GitHub" } : null,
-  ].filter((link): link is { href: string; label: string } => Boolean(link));
+  ].filter((link): link is ProjectLink => Boolean(link));
   const activityDate = now.toISOString().slice(0, 10);
-  const curationNotes = [
-    "Added through ArcRadar internal moderation.",
-    reviewNotes || submission.reviewNotes || "Needs deeper curation notes.",
-    socialLinks.length > 0
-      ? "At least one public proof link was captured before publishing."
-      : "No public proof link is attached yet; keep this project on watchlist.",
-  ];
-
   return {
     accent: accentByCategory[submission.category],
     activity: [
@@ -315,31 +294,18 @@ function buildProjectValues({
     logoUrl: null,
     name: submission.name,
     profile: {
-      builderNote:
-        "This profile was created by ArcRadar curation. Expand it after the builder/project ships more public proof.",
-      curationNotes,
-      idealFor: [submission.category, submission.stage, "Arc Testnet builders"],
       problem:
         "ArcRadar is tracking this project because it may add useful surface area to the Arc Testnet builder map.",
-      roadmap: [
-        { label: "Internal candidate captured", status: "done" },
-        { label: "Admin moderation completed", status: "done" },
-        { label: "Project profile enrichment", status: "planned" },
-      ],
       solution: submission.tagline,
       whyArc:
         "The project is listed for Arc Testnet exploration and should be evaluated around USDC-native UX, finality, and builder usefulness.",
     },
     projectWallet,
     rank: nextRank,
-    signalScore: signalScoreByStage[submission.stage],
     slug,
     socialLinks,
-    stage: submission.stage,
-    status: statusByStage[submission.stage],
-    supporters: 0,
     tagline: submission.tagline,
-    tags: [submission.category, submission.stage, "Curated"],
+    tags: [],
     totalTipsUsdcMicro: 0n,
     updatedAt: now,
     websiteUrl: submission.websiteUrl,

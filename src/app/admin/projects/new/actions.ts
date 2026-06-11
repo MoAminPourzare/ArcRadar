@@ -60,6 +60,7 @@ export async function createProjectSubmission(
     .insert(projectSubmissions)
     .values({
       builderName: parsed.data.builderName,
+      builderXUrl: parsed.data.builderXUrl || null,
       category: parsed.data.category,
       contact: parsed.data.contact || null,
       description: parsed.data.description,
@@ -68,10 +69,9 @@ export async function createProjectSubmission(
       name: parsed.data.name,
       projectWallet: parsed.data.projectWallet || null,
       slug: slugifyProjectName(parsed.data.slug || parsed.data.name),
-      stage: parsed.data.stage,
       tagline: parsed.data.tagline,
       websiteUrl: parsed.data.websiteUrl || null,
-      xUrl: parsed.data.xUrl || null,
+      projectXUrl: parsed.data.projectXUrl || null,
     })
     .returning({
       id: projectSubmissions.id,

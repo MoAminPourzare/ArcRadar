@@ -133,7 +133,8 @@ function SubmissionCard({ submission }: { submission: Submission }) {
     {
       done: Boolean(
         submission.websiteUrl ||
-          submission.xUrl ||
+          submission.projectXUrl ||
+          submission.builderXUrl ||
           submission.discordUrl ||
           submission.githubUrl,
       ),
@@ -156,9 +157,6 @@ function SubmissionCard({ submission }: { submission: Submission }) {
           <div className="mb-3 flex flex-wrap gap-2">
             <span className="rounded-md bg-cyan/15 px-2.5 py-1 text-xs font-black uppercase text-blueprint">
               {submission.category}
-            </span>
-            <span className="rounded-md bg-ink/5 px-2.5 py-1 text-xs font-black uppercase text-ink/55">
-              {submission.stage}
             </span>
             <span className={getStatusClass(statusLabel)}>{statusLabel}</span>
           </div>
@@ -213,7 +211,8 @@ function SubmissionCard({ submission }: { submission: Submission }) {
 
           <div className="mt-5 flex flex-wrap gap-2 border-t border-ink/10 pt-4">
             <SubmissionLink label="Website" href={submission.websiteUrl} />
-            <SubmissionLink label="X" href={submission.xUrl} />
+            <SubmissionLink label="Project X" href={submission.projectXUrl} />
+            <SubmissionLink label="Builder X" href={submission.builderXUrl} />
             <SubmissionLink label="Discord" href={submission.discordUrl} />
             <SubmissionLink label="GitHub" href={submission.githubUrl} />
           </div>
