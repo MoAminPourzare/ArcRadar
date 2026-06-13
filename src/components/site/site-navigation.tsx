@@ -6,11 +6,11 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const navigationItems = [
-  { href: "/projects", label: "Projects" },
-  { href: "/signals", label: "Signals" },
-  { href: "/leaderboard", label: "Leaderboard" },
-  { href: "/network", label: "Network" },
-  { href: "/wallet", label: "Wallet" },
+  { disabled: false, href: "/projects", label: "Projects" },
+  { disabled: true, href: "/agent", label: "Agent" },
+  { disabled: false, href: "/leaderboard", label: "Leaderboard" },
+  { disabled: false, href: "/network", label: "Network" },
+  { disabled: false, href: "/wallet", label: "Wallet" },
 ] as const;
 
 export function SiteNavigation({ mobile = false }: { mobile?: boolean }) {
@@ -26,6 +26,27 @@ export function SiteNavigation({ mobile = false }: { mobile?: boolean }) {
       )}
     >
       {navigationItems.map((item) => {
+        if (item.disabled) {
+          return (
+            <span
+              aria-disabled="true"
+              className={cn(
+                "shrink-0 cursor-not-allowed text-ink/25",
+                mobile
+                  ? "rounded-md px-3 py-2 text-xs font-black"
+                  : "inline-flex items-center gap-1.5",
+              )}
+              key={item.href}
+              title="Coming soon"
+            >
+              {item.label}
+              <span className="rounded bg-ink/5 px-1.5 py-0.5 text-[9px] font-black uppercase">
+                Soon
+              </span>
+            </span>
+          );
+        }
+
         const isActive =
           pathname === item.href || pathname.startsWith(`${item.href}/`);
 

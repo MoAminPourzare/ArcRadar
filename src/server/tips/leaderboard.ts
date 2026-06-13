@@ -3,7 +3,6 @@ import { projects as projectsTable, tips as tipsTable } from "@/server/db/schema
 import type {
   LeaderboardData,
   LeaderboardProjectRow,
-  LeaderboardSource,
   Project,
   TipperLeaderboardRow,
 } from "@/types/project";
@@ -25,7 +24,7 @@ export async function getLeaderboardData(
 ): Promise<LeaderboardData> {
   const indexedTips = await getIndexedTipRows();
 
-  return buildLeaderboard(projectList, indexedTips, "indexed");
+  return buildLeaderboard(projectList, indexedTips);
 }
 
 async function getIndexedTipRows(): Promise<TipLedgerRow[]> {
@@ -64,19 +63,12 @@ async function getIndexedTipRows(): Promise<TipLedgerRow[]> {
 function buildLeaderboard(
   projectList: Project[],
   tipRows: TipLedgerRow[],
-  source: LeaderboardSource,
 ): LeaderboardData {
   const now = new Date();
-  const weekCutoff = getDayCutoff(now, 7);
-  const monthCutoff = getDayCutoff(now, 30);
   const tipsByProject = groupTipsByProject(tipRows);
 
   const rows = projectList.map((project) =>
-    buildProjectRow(project, tipsByProject.get(project.slug) ?? [], {
-      monthCutoff,
-      source,
-      weekCutoff,
-    }),
+    buildProjectRow(project, tipsByProject.get(project.slug) ?? []),
   );
 
   const topProjects = [...rows]
@@ -86,66 +78,35 @@ function buildLeaderboard(
     .filter((row) => row.lastTippedAt)
     .sort(compareLatestTip)
     .slice(0, 6);
-  const weeklyRanking = [...rows]
-    .filter((row) => row.weeklyUsdc > 0)
-    .sort((a, b) => b.weeklyUsdc - a.weeklyUsdc || b.tipCount - a.tipCount)
-    .slice(0, 6);
-  const monthlyRanking = [...rows]
-    .filter((row) => row.monthlyUsdc > 0)
-    .sort((a, b) => b.monthlyUsdc - a.monthlyUsdc || b.tipCount - a.tipCount)
-    .slice(0, 6);
   const topTippers = buildTopTippers(tipRows).slice(0, 6);
 
   return {
-    monthlyRanking,
     recentProjects,
-    source,
-    stats: buildStats(rows, tipRows, source, now, weekCutoff, monthCutoff),
+    stats: buildStats(rows, tipRows, now),
     topProjects,
     topTippers,
-    weeklyRanking,
   };
 }
 
 function buildProjectRow(
   project: Project,
   tips: TipLedgerRow[],
-  options: {
-    monthCutoff: Date;
-    source: LeaderboardSource;
-    weekCutoff: Date;
-  },
 ): LeaderboardProjectRow {
   const totalFromTips = sumTips(tips);
-  const weeklyFromTips = sumTipsSince(tips, options.weekCutoff);
-  const monthlyFromTips = sumTipsSince(tips, options.monthCutoff);
   const latestTip = getLatestTip(tips);
   return {
     lastTippedAt: latestTip?.timestamp.toISOString() ?? null,
     lastTransactionHash: latestTip?.transactionHash ?? null,
-    monthlyUsdc: roundUsdc(
-      options.source === "indexed"
-        ? monthlyFromTips
-        : Math.max(monthlyFromTips, project.metrics.weeklyTipsUsdc),
-    ),
     project,
     tipCount: tips.length,
-    totalUsdc: roundUsdc(
-      options.source === "indexed" ? totalFromTips : project.metrics.tipsUsdc,
-    ),
-    weeklyUsdc: roundUsdc(
-      options.source === "indexed" ? weeklyFromTips : project.metrics.weeklyTipsUsdc,
-    ),
+    totalUsdc: roundUsdc(totalFromTips),
   };
 }
 
 function buildStats(
   rows: LeaderboardProjectRow[],
   tipRows: TipLedgerRow[],
-  source: LeaderboardSource,
   now: Date,
-  weekCutoff: Date,
-  monthCutoff: Date,
 ) {
   const latestTip = getLatestTip(tipRows);
   const uniqueTippers = new Set(
@@ -156,23 +117,9 @@ function buildStats(
     activeProjects: rows.filter((row) => row.totalUsdc > 0).length,
     generatedAt: now.toISOString(),
     latestTipAt: latestTip?.timestamp.toISOString() ?? null,
-    monthlyUsdc: roundUsdc(
-      source === "indexed"
-        ? sumTipsSince(tipRows, monthCutoff)
-        : rows.reduce((total, row) => total + row.monthlyUsdc, 0),
-    ),
     totalTips: tipRows.length,
-    totalUsdc: roundUsdc(
-      source === "indexed"
-        ? sumTips(tipRows)
-        : rows.reduce((total, row) => total + row.totalUsdc, 0),
-    ),
+    totalUsdc: roundUsdc(sumTips(tipRows)),
     uniqueTippers: uniqueTippers.size,
-    weeklyUsdc: roundUsdc(
-      source === "indexed"
-        ? sumTipsSince(tipRows, weekCutoff)
-        : rows.reduce((total, row) => total + row.weeklyUsdc, 0),
-    ),
   };
 }
 
@@ -254,16 +201,6 @@ function compareLatestTip(a: LeaderboardProjectRow, b: LeaderboardProjectRow) {
 
 function sumTips(tips: TipLedgerRow[]) {
   return tips.reduce((total, tip) => total + tip.amountUsdc, 0);
-}
-
-function sumTipsSince(tips: TipLedgerRow[], cutoff: Date) {
-  return tips
-    .filter((tip) => tip.timestamp >= cutoff)
-    .reduce((total, tip) => total + tip.amountUsdc, 0);
-}
-
-function getDayCutoff(now: Date, days: number) {
-  return new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
 }
 
 function fromUsdcMicro(value: bigint) {

@@ -12,7 +12,6 @@ import {
   LinkIcon,
   LogOut,
   PlugZap,
-  ReceiptText,
   RefreshCw,
   ShieldCheck,
   Wallet,
@@ -31,7 +30,6 @@ import {
 } from "wagmi";
 
 import { arcContracts, arcCurrency, arcLinks, arcTestnet } from "@/config/arc";
-import { tipRouterConfig } from "@/config/tip-router";
 import { cn, shortenAddress } from "@/lib/utils";
 import { erc20BalanceAbi } from "@/wallet/erc20";
 
@@ -370,12 +368,6 @@ export function ArcWalletConsole() {
         </div>
 
         <aside className="grid content-start gap-3">
-          <TransactionReadinessPanel
-            erc20BalanceValue={erc20BalanceValue}
-            isConnected={isConnected}
-            isOnArc={isOnArc}
-            nativeBalanceValue={nativeBalanceValue}
-          />
           {readiness.map((item) => (
             <ReadinessCard item={item} key={item.label} />
           ))}
@@ -403,79 +395,6 @@ function WalletErrorPanel({ message }: { message: null | string }) {
           {message}
         </p>
       </div>
-    </div>
-  );
-}
-
-function TransactionReadinessPanel({
-  erc20BalanceValue,
-  isConnected,
-  isOnArc,
-  nativeBalanceValue,
-}: {
-  erc20BalanceValue: bigint;
-  isConnected: boolean;
-  isOnArc: boolean;
-  nativeBalanceValue: bigint;
-}) {
-  const blockers = [
-    !tipRouterConfig.address ? "TipRouter address missing" : null,
-    !isConnected ? "Wallet not connected" : null,
-    isConnected && !isOnArc ? "Wrong network" : null,
-    isConnected && nativeBalanceValue === zeroBalance ? "Gas empty" : null,
-    isConnected && erc20BalanceValue === zeroBalance ? "ERC-20 USDC empty" : null,
-  ].filter((blocker): blocker is string => Boolean(blocker));
-  const isReady = blockers.length === 0;
-
-  return (
-    <div
-      className={cn(
-        "rounded-lg border p-4 shadow-sm",
-        isReady
-          ? "border-forest/20 bg-mint/20"
-          : "border-amber/30 bg-amber/15",
-      )}
-    >
-      <div className="mb-3 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
-          <ReceiptText
-            aria-hidden
-            className={cn("size-4", isReady ? "text-forest" : "text-ink")}
-          />
-          <span className="text-xs font-black uppercase text-ink/45">
-            Transaction guard
-          </span>
-        </div>
-        <span
-          className={cn(
-            "rounded-md px-2 py-1 text-xs font-black uppercase",
-            isReady ? "bg-white/70 text-forest" : "bg-white/70 text-ink",
-          )}
-        >
-          {isReady ? "Ready" : "Blocked"}
-        </span>
-      </div>
-      <p className="font-black text-ink">
-        {tipRouterConfig.address
-          ? shortenAddress(tipRouterConfig.address)
-          : "TipRouter not configured"}
-      </p>
-      {blockers.length > 0 ? (
-        <div className="mt-3 flex flex-wrap gap-2">
-          {blockers.map((blocker) => (
-            <span
-              className="rounded-md bg-white/70 px-2 py-1 text-xs font-black uppercase text-ink/55"
-              key={blocker}
-            >
-              {blocker}
-            </span>
-          ))}
-        </div>
-      ) : (
-        <p className="mt-2 text-sm font-semibold leading-6 text-forest">
-          Wallet, network, gas, ERC-20 USDC, and TipRouter config are aligned.
-        </p>
-      )}
     </div>
   );
 }

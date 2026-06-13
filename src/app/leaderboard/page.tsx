@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Leaderboard",
   description:
-    "Compare Arc Testnet project support, momentum, and top tipping wallets.",
+    "Review indexed Arc Testnet project support and top tipping wallets.",
 };
 
 export default async function LeaderboardPage() {
@@ -19,7 +19,7 @@ export default async function LeaderboardPage() {
   const leaderboardData = await getLeaderboardData(projects);
 
   return (
-    <div className="min-h-screen bg-ink text-paper">
+    <div className="min-h-screen bg-paper text-ink">
       <SiteHeader />
       <main>
         <Leaderboard data={leaderboardData} />

@@ -45,16 +45,12 @@ export type ProjectTipData = {
   weeklyUsdc: number;
 };
 
-export type LeaderboardSource = "indexed";
-
 export type LeaderboardProjectRow = {
   lastTippedAt: string | null;
   lastTransactionHash: `0x${string}` | null;
-  monthlyUsdc: number;
   project: Project;
   tipCount: number;
   totalUsdc: number;
-  weeklyUsdc: number;
 };
 
 export type TipperLeaderboardRow = {
@@ -70,21 +66,16 @@ export type EcosystemLeaderboardStats = {
   activeProjects: number;
   generatedAt: string;
   latestTipAt: string | null;
-  monthlyUsdc: number;
   totalTips: number;
   totalUsdc: number;
   uniqueTippers: number;
-  weeklyUsdc: number;
 };
 
 export type LeaderboardData = {
-  monthlyRanking: LeaderboardProjectRow[];
   recentProjects: LeaderboardProjectRow[];
-  source: LeaderboardSource;
   stats: EcosystemLeaderboardStats;
   topProjects: LeaderboardProjectRow[];
   topTippers: TipperLeaderboardRow[];
-  weeklyRanking: LeaderboardProjectRow[];
 };
 
 export type Project = {

@@ -152,6 +152,9 @@ function mapDatabaseProject(
     weeklyTipsUsdc: 0,
   },
 ): Project {
+  const seedProject = projects.find((project) => project.slug === row.slug);
+  const databaseLinks = normalizeProjectLinks(row.socialLinks);
+
   return {
     accent: row.accent as Project["accent"],
     activity: row.activity,
@@ -161,7 +164,8 @@ function mapDatabaseProject(
     featured: row.featured,
     id: row.id,
     lastSignal: row.lastSignal ?? "Indexed in ArcRadar",
-    links: normalizeProjectLinks(row.socialLinks),
+    links:
+      databaseLinks.length > 0 ? databaseLinks : (seedProject?.links ?? []),
     metrics: {
       launches: row.launches,
       rank: row.rank,

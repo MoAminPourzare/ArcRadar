@@ -1,9 +1,9 @@
 import {
   ArrowRight,
+  Bot,
   ChartNoAxesCombined,
   FolderSearch2,
   RadioTower,
-  Sparkles,
   WalletCards,
 } from "lucide-react";
 import Link from "next/link";
@@ -13,22 +13,25 @@ const sections = [
     description:
       "Browse the curated Arc Testnet directory, filter projects, and open full builder profiles.",
     href: "/projects",
+    disabled: false,
     icon: FolderSearch2,
     label: "Projects",
     tone: "bg-mint/25 text-forest",
   },
   {
     description:
-      "Explore automatic signal scores, tip activity, and public project context.",
-    href: "/signals",
-    icon: Sparkles,
-    label: "Signals",
+      "An Arc-focused assistant will be added here in a future phase.",
+    disabled: true,
+    href: "/agent",
+    icon: Bot,
+    label: "Agent",
     tone: "bg-cyan/25 text-blueprint",
   },
   {
     description:
       "Compare project support, weekly momentum, recent activity, and top tipping wallets.",
     href: "/leaderboard",
+    disabled: false,
     icon: ChartNoAxesCombined,
     label: "Leaderboard",
     tone: "bg-amber/25 text-ink",
@@ -37,6 +40,7 @@ const sections = [
     description:
       "Review Arc Testnet chain details, official resources, USDC contracts, and faucet links.",
     href: "/network",
+    disabled: false,
     icon: RadioTower,
     label: "Network",
     tone: "bg-coral/15 text-coral",
@@ -45,6 +49,7 @@ const sections = [
     description:
       "Connect a wallet and check Arc network, native gas USDC, and ERC-20 tip balance separately.",
     href: "/wallet",
+    disabled: false,
     icon: WalletCards,
     label: "Wallet",
     tone: "bg-blueprint/10 text-blueprint",
@@ -64,14 +69,44 @@ export function ExploreSections() {
           </h2>
           <p className="mt-3 text-sm font-semibold leading-6 text-ink/55">
             Each area now has its own route, data surface, and purpose. Start
-            with the directory, then move through signals, support, network,
-            and wallet readiness.
+            with the directory, then move through support, network, and wallet
+            readiness. Agent functionality is reserved for a future phase.
           </p>
         </div>
 
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
           {sections.map((section) => {
             const Icon = section.icon;
+
+            if (section.disabled) {
+              return (
+                <div
+                  aria-disabled="true"
+                  className="flex min-h-64 cursor-not-allowed flex-col rounded-lg border border-dashed border-ink/15 bg-paper/60 p-5 opacity-65"
+                  key={section.href}
+                >
+                  <span
+                    className={`grid size-11 place-items-center rounded-lg ${section.tone}`}
+                  >
+                    <Icon aria-hidden className="size-5" />
+                  </span>
+                  <div className="mt-6 flex items-center gap-2">
+                    <h3 className="text-xl font-black text-ink">
+                      {section.label}
+                    </h3>
+                    <span className="rounded-md bg-ink/5 px-2 py-1 text-[10px] font-black uppercase text-ink/40">
+                      Coming soon
+                    </span>
+                  </div>
+                  <p className="mt-3 flex-1 text-sm font-semibold leading-6 text-ink/45">
+                    {section.description}
+                  </p>
+                  <span className="mt-6 text-sm font-black text-ink/30">
+                    Not available yet
+                  </span>
+                </div>
+              );
+            }
 
             return (
               <Link
