@@ -1,17 +1,18 @@
 "use client";
 
 import { ChevronDown, LogOut, PlugZap, Wallet } from "lucide-react";
-import { formatUnits } from "viem";
 import {
   useAccount,
-  useBalance,
   useConnect,
   useDisconnect,
+  useReadContract,
   useSwitchChain,
 } from "wagmi";
 
-import { arcCurrency, arcTestnet } from "@/config/arc";
+import { arcContracts, arcCurrency, arcTestnet } from "@/config/arc";
 import { cn, shortenAddress } from "@/lib/utils";
+import { erc20BalanceAbi } from "@/wallet/erc20";
+import { formatWalletBalance } from "@/wallet/format-balance";
 
 type ConnectWalletButtonProps = {
   className?: string;
@@ -22,9 +23,12 @@ export function ConnectWalletButton({ className }: ConnectWalletButtonProps) {
   const { connectors, connect, isPending } = useConnect();
   const { disconnect } = useDisconnect();
   const { switchChain, isPending: isSwitching } = useSwitchChain();
-  const { data: balance } = useBalance({
-    address,
+  const { data: balance } = useReadContract({
+    abi: erc20BalanceAbi,
+    address: arcContracts.usdc,
+    args: address ? [address] : undefined,
     chainId: arcTestnet.id,
+    functionName: "balanceOf",
     query: {
       enabled: Boolean(address),
     },
@@ -32,12 +36,8 @@ export function ConnectWalletButton({ className }: ConnectWalletButtonProps) {
 
   const preferredConnector = connectors[0];
   const isWrongNetwork = isConnected && chainId !== arcTestnet.id;
-  const formattedBalance = balance
-    ? Number(
-        formatUnits(balance.value, arcCurrency.nativeUsdcDecimals),
-      ).toLocaleString("en", {
-        maximumFractionDigits: 3,
-      })
+  const formattedBalance = balance !== undefined
+    ? formatWalletBalance(balance, arcCurrency.erc20UsdcDecimals)
     : null;
 
   if (!isConnected) {
@@ -81,7 +81,7 @@ export function ConnectWalletButton({ className }: ConnectWalletButtonProps) {
         <span className="font-mono text-xs text-ink">
           {address ? shortenAddress(address) : "Connected"}
         </span>
-        {formattedBalance ? (
+        {formattedBalance !== null ? (
           <span className="rounded bg-mint/15 px-2 py-1 text-xs font-semibold text-forest">
             {formattedBalance} USDC
           </span>

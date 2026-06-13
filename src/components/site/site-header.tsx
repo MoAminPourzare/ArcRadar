@@ -1,4 +1,4 @@
-import { Activity, ExternalLink, Radar } from "lucide-react";
+import { ExternalLink, Radar } from "lucide-react";
 import Link from "next/link";
 
 import { SiteNavigation } from "@/components/site/site-navigation";
@@ -39,15 +39,6 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <a
-            aria-label="Arc network status"
-            className="hidden size-10 place-items-center rounded-lg border border-ink/10 bg-white text-forest shadow-sm transition hover:border-forest/40 md:grid"
-            href={siteConfig.links.status}
-            rel="noreferrer"
-            target="_blank"
-          >
-            <Activity aria-hidden className="size-4" />
-          </a>
           <ConnectWalletButton />
         </div>
       </div>

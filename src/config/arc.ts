@@ -1,5 +1,12 @@
 import { defineChain } from "viem";
 
+export const arcRpcUrls = [
+  "https://rpc.testnet.arc.network",
+  "https://rpc.blockdaemon.testnet.arc.network",
+  "https://rpc.drpc.testnet.arc.network",
+  "https://rpc.quicknode.testnet.arc.network",
+] as const;
+
 export const arcTestnet = defineChain({
   id: 5_042_002,
   name: "Arc Testnet",
@@ -10,7 +17,7 @@ export const arcTestnet = defineChain({
   },
   rpcUrls: {
     default: {
-      http: ["https://rpc.testnet.arc.network"],
+      http: [...arcRpcUrls],
       webSocket: ["wss://rpc.testnet.arc.network"],
     },
   },

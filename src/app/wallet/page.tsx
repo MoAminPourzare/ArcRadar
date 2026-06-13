@@ -7,7 +7,7 @@ import { ArcWalletConsole } from "@/components/wallet/arc-wallet-console";
 export const metadata: Metadata = {
   title: "Wallet",
   description:
-    "Connect a wallet and verify Arc Testnet network, gas, and ERC-20 USDC readiness.",
+    "Connect a wallet and verify its Arc Testnet network and canonical USDC balance.",
 };
 
 export default function WalletPage() {

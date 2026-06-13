@@ -19,10 +19,8 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useMemo, useState } from "react";
-import { formatUnits } from "viem";
 import {
   useAccount,
-  useBalance,
   useConnect,
   useDisconnect,
   useReadContract,
@@ -32,6 +30,7 @@ import {
 import { arcContracts, arcCurrency, arcLinks, arcTestnet } from "@/config/arc";
 import { cn, shortenAddress } from "@/lib/utils";
 import { erc20BalanceAbi } from "@/wallet/erc20";
+import { formatWalletBalance } from "@/wallet/format-balance";
 
 type ReadinessItem = {
   done: boolean;
@@ -90,27 +89,14 @@ export function ArcWalletConsole() {
     : arcLinks.explorer;
 
   const {
-    data: nativeBalance,
-    error: nativeBalanceError,
-    isLoading: isNativeBalanceLoading,
-    refetch: refetchNativeBalance,
-  } = useBalance({
-    address,
-    chainId: arcTestnet.id,
-    query: {
-      enabled: Boolean(address),
-    },
-  });
-
-  const {
-    data: erc20Balance,
-    error: erc20BalanceError,
-    isLoading: isErc20BalanceLoading,
-    refetch: refetchErc20Balance,
+    data: usdcBalance,
+    error: usdcBalanceError,
+    isLoading: isUsdcBalanceLoading,
+    refetch: refetchUsdcBalance,
   } = useReadContract({
     abi: erc20BalanceAbi,
     address: arcContracts.usdc,
-    args: [address ?? zeroAddress],
+    args: address ? [address] : [zeroAddress],
     chainId: arcTestnet.id,
     functionName: "balanceOf",
     query: {
@@ -118,16 +104,13 @@ export function ArcWalletConsole() {
     },
   });
 
-  const nativeBalanceValue = nativeBalance?.value ?? zeroBalance;
-  const erc20BalanceValue = erc20Balance ?? zeroBalance;
-  const formattedNativeBalance = formatDisplayBalance(
-    nativeBalanceValue,
-    arcCurrency.nativeUsdcDecimals,
-  );
-  const formattedErc20Balance = formatDisplayBalance(
-    erc20BalanceValue,
+  const usdcBalanceValue = usdcBalance ?? zeroBalance;
+  const formattedUsdcBalance = formatWalletBalance(
+    usdcBalanceValue,
     arcCurrency.erc20UsdcDecimals,
   );
+  const isBalanceSynchronized =
+    Boolean(address) && usdcBalance !== undefined && !usdcBalanceError;
 
   const readiness = useMemo<ReadinessItem[]>(
     () => [
@@ -146,42 +129,36 @@ export function ArcWalletConsole() {
           : "Use switch/add network before claiming faucet funds.",
       },
       {
-        done: nativeBalanceValue > zeroBalance,
-        label: "Gas balance funded",
+        done: usdcBalanceValue > zeroBalance,
+        label: "USDC balance funded",
         supporting:
-          nativeBalanceValue > zeroBalance
-            ? `${formattedNativeBalance} native USDC`
-            : "Native USDC pays Arc Testnet gas.",
+          usdcBalanceValue > zeroBalance
+            ? `${formattedUsdcBalance} USDC available`
+            : "Arc USDC pays gas and supports app transfers.",
       },
       {
-        done: erc20BalanceValue > zeroBalance,
-        label: "Tip balance funded",
-        supporting:
-          erc20BalanceValue > zeroBalance
-            ? `${formattedErc20Balance} ERC-20 USDC`
-            : "ERC-20 USDC is the future tip transfer surface.",
+        done: isBalanceSynchronized,
+        label: "Balance synchronized",
+        supporting: isBalanceSynchronized
+          ? "Read through Arc's canonical USDC interface."
+          : "Waiting for a successful Arc balance read.",
       },
     ],
     [
       address,
-      erc20BalanceValue,
-      formattedErc20Balance,
-      formattedNativeBalance,
+      formattedUsdcBalance,
       isConnected,
+      isBalanceSynchronized,
       isOnArc,
-      nativeBalanceValue,
+      usdcBalanceValue,
     ],
   );
   const readyCount = readiness.filter((item) => item.done).length;
-  const hasAnyBalance =
-    nativeBalanceValue > zeroBalance || erc20BalanceValue > zeroBalance;
+  const hasAnyBalance = usdcBalanceValue > zeroBalance;
+  const walletRequestError = switchError ?? connectError ?? usdcBalanceError;
   const walletError =
     refreshError ??
-    switchError?.message ??
-    connectError?.message ??
-    nativeBalanceError?.message ??
-    erc20BalanceError?.message ??
-    null;
+    (walletRequestError ? getReadableWalletError(walletRequestError) : null);
 
   async function copyAddress() {
     if (!address) {
@@ -229,7 +206,12 @@ export function ArcWalletConsole() {
     setIsRefreshing(true);
 
     try {
-      await Promise.all([refetchNativeBalance(), refetchErc20Balance()]);
+      const result = await refetchUsdcBalance();
+
+      if (result.error) {
+        throw result.error;
+      }
+
       setLastRefreshedAt(new Date());
     } catch (error) {
       setRefreshError(getReadableWalletError(error));
@@ -251,8 +233,8 @@ export function ArcWalletConsole() {
                 Connect, fund, and verify Arc Testnet
               </h1>
               <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-ink/55">
-                ArcRadar checks the active network, the wallet address, native
-                USDC for gas, and ERC-20 USDC for future project tips.
+                ArcRadar checks the active network, wallet address, and the
+                canonical Arc USDC balance used for gas and app transfers.
               </p>
             </div>
             <StatusBadge
@@ -281,19 +263,13 @@ export function ArcWalletConsole() {
               />
               <div className="grid gap-4 md:grid-cols-2">
                 <BalancePanel
-                  icon={Fuel}
-                  isLoading={isNativeBalanceLoading}
-                  label="Native gas USDC"
-                  supporting="Transaction gas on Arc Testnet"
-                  value={`${formattedNativeBalance} USDC`}
-                />
-                <BalancePanel
                   icon={BadgeDollarSign}
-                  isLoading={isErc20BalanceLoading}
-                  label="ERC-20 USDC"
-                  supporting="Balance checked through balanceOf"
-                  value={`${formattedErc20Balance} USDC`}
+                  isLoading={isUsdcBalanceLoading}
+                  label="Arc USDC balance"
+                  supporting="Read through the official 6-decimal USDC interface"
+                  value={`${formattedUsdcBalance} USDC`}
                 />
+                <UnifiedBalancePanel hasBalance={hasAnyBalance} />
               </div>
             </div>
           )}
@@ -628,6 +604,26 @@ function BalancePanel({
   );
 }
 
+function UnifiedBalancePanel({ hasBalance }: { hasBalance: boolean }) {
+  return (
+    <div className="rounded-lg border border-ink/10 bg-paper p-4">
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <Fuel aria-hidden className="size-5 text-blueprint" />
+        <span className="text-right text-xs font-black uppercase text-ink/40">
+          Gas and transfers
+        </span>
+      </div>
+      <p className="text-xl font-black text-ink">
+        {hasBalance ? "Ready to use" : "USDC required"}
+      </p>
+      <p className="mt-2 text-sm font-bold leading-6 text-ink/55">
+        Arc uses one underlying USDC balance for native gas and the ERC-20
+        interface. It is not two separate assets.
+      </p>
+    </div>
+  );
+}
+
 function StatusBadge({
   icon: Icon,
   label,
@@ -689,14 +685,6 @@ function getConnectionState(isConnected: boolean, isOnArc: boolean) {
   };
 }
 
-function formatDisplayBalance(value: bigint, decimals: number) {
-  const formatted = Number(formatUnits(value, decimals));
-
-  return formatted.toLocaleString("en", {
-    maximumFractionDigits: formatted >= 1 ? 3 : 6,
-  });
-}
-
 function getReadableWalletError(error: unknown) {
   if (!(error instanceof Error)) {
     return "Wallet request failed. Check the wallet popup and try again.";
@@ -710,5 +698,9 @@ function getReadableWalletError(error: unknown) {
     return "Network request failed. Switch to Arc Testnet and try again.";
   }
 
-  return error.message || "Wallet request failed. Try again.";
+  if (/failed to fetch|http request failed|timeout/i.test(error.message)) {
+    return "Arc balance service did not respond. Check your connection and refresh the balance.";
+  }
+
+  return "Wallet request failed. Refresh the balance or reconnect the wallet.";
 }

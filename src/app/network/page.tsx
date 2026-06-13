@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { RadioTower } from "lucide-react";
 
 import { ArcOnboarding } from "@/components/network/arc-onboarding";
 import { SiteFooter } from "@/components/site/site-footer";
@@ -20,10 +19,7 @@ export default function NetworkPage() {
         <section className="relative overflow-hidden border-b border-ink/10 bg-paper">
           <div className="radar-grid absolute inset-0 opacity-[0.08] [background-size:44px_44px]" />
           <div className="relative mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-            <span className="grid size-12 place-items-center rounded-lg bg-blueprint text-paper">
-              <RadioTower aria-hidden className="size-6" />
-            </span>
-            <p className="mt-6 text-sm font-black uppercase text-blueprint">
+            <p className="text-sm font-black uppercase text-blueprint">
               Arc Testnet reference
             </p>
             <h1 className="mt-2 max-w-4xl text-4xl font-black leading-tight sm:text-5xl">

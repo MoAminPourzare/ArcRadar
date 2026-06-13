@@ -1,9 +1,10 @@
 "use client";
 
-import { http, createConfig } from "wagmi";
+import { fallback, http } from "viem";
+import { createConfig } from "wagmi";
 import { coinbaseWallet, injected, metaMask, walletConnect } from "wagmi/connectors";
 
-import { arcTestnet } from "@/config/arc";
+import { arcRpcUrls, arcTestnet } from "@/config/arc";
 import { clientEnv } from "@/lib/env";
 import { siteConfig } from "@/config/site";
 
@@ -27,7 +28,14 @@ export const wagmiConfig = createConfig({
   connectors,
   ssr: true,
   transports: {
-    [arcTestnet.id]: http(arcTestnet.rpcUrls.default.http[0]),
+    [arcTestnet.id]: fallback(
+      arcRpcUrls.map((url) =>
+        http(url, {
+          retryCount: 0,
+          timeout: 8_000,
+        }),
+      ),
+    ),
   },
 });
 

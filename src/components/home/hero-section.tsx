@@ -2,7 +2,7 @@ import { ArrowRight, Database, Fuel, Radar, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 import { SignalRadar } from "@/components/home/signal-radar";
-import { arcLinks, arcTestnet } from "@/config/arc";
+import { arcLinks } from "@/config/arc";
 import { formatCompactNumber } from "@/lib/utils";
 import type { Project } from "@/types/project";
 import type { ProjectSocialSignal } from "@/types/social";
@@ -55,9 +55,6 @@ export function HeroSection({ projects, socialSignals }: HeroSectionProps) {
               <span className="inline-flex min-h-9 items-center gap-2 rounded-lg border border-ink/10 bg-white px-3 text-sm font-black text-forest shadow-sm">
                 <Radar aria-hidden className="size-4" />
                 Arc Testnet
-              </span>
-              <span className="inline-flex min-h-9 items-center rounded-lg border border-ink/10 bg-white px-3 font-mono text-sm font-black text-ink/65 shadow-sm">
-                Chain {arcTestnet.id}
               </span>
             </div>
 
