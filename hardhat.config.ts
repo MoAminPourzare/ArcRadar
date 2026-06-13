@@ -3,6 +3,10 @@ import hardhatViem from "@nomicfoundation/hardhat-viem";
 import hardhatViemAssertions from "@nomicfoundation/hardhat-viem-assertions";
 import { configVariable, defineConfig } from "hardhat/config";
 
+import { loadLocalEnv } from "./src/server/env/load-local-env.js";
+
+loadLocalEnv();
+
 export default defineConfig({
   plugins: [hardhatViem, hardhatViemAssertions, hardhatNodeTestRunner],
   solidity: {

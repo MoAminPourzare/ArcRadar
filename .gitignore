@@ -41,6 +41,9 @@ yarn-error.log*
 .env*
 !.env.example
 
+# local reference applications and their secrets
+/arc-commerce/
+
 # vercel
 .vercel
 

@@ -180,7 +180,11 @@ export function ProjectProfilePage({
                   value={formatUsdc(tipData.totalUsdc)}
                 />
               </div>
-              <ProjectTipPanel projectName={project.name} />
+              <ProjectTipPanel
+                projectName={project.name}
+                projectSlug={project.slug}
+                projectWallet={project.walletAddress}
+              />
             </aside>
           </div>
         </div>

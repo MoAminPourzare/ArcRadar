@@ -11,7 +11,7 @@ import {
 
 import { arcContracts, arcCurrency, arcTestnet } from "@/config/arc";
 import { cn, shortenAddress } from "@/lib/utils";
-import { erc20BalanceAbi } from "@/wallet/erc20";
+import { arcUsdcAbi } from "@/wallet/erc20";
 import { formatWalletBalance } from "@/wallet/format-balance";
 
 type ConnectWalletButtonProps = {
@@ -24,7 +24,7 @@ export function ConnectWalletButton({ className }: ConnectWalletButtonProps) {
   const { disconnect } = useDisconnect();
   const { switchChain, isPending: isSwitching } = useSwitchChain();
   const { data: balance } = useReadContract({
-    abi: erc20BalanceAbi,
+    abi: arcUsdcAbi,
     address: arcContracts.usdc,
     args: address ? [address] : undefined,
     chainId: arcTestnet.id,

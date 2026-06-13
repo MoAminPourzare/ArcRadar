@@ -10,7 +10,7 @@ export const projects: Project[] = [
       "A reference workflow for creating jobs, holding funds, validating deliverables, and releasing USDC on Arc Testnet.",
     category: "AI Agents",
     builder: "Circle sample builders",
-    walletAddress: "0x0000000000000000000000000000000000000001",
+    walletAddress: "0x7D98f82EE1B3f05c181e933f3574BE158E6d1839",
     links: [
       { label: "Website", href: "https://example.com/arc-escrow" },
       { label: "Project X", href: "https://example.com/arc-escrow/x" },
@@ -58,7 +58,7 @@ export const projects: Project[] = [
       "A commerce starter for accepting Arc Testnet USDC payments and tracking order settlement with deterministic finality.",
     category: "Payments",
     builder: "Arc sample apps",
-    walletAddress: "0x0000000000000000000000000000000000000002",
+    walletAddress: "0x7D98f82EE1B3f05c181e933f3574BE158E6d1839",
     links: [
       { label: "Website", href: "https://example.com/arc-commerce" },
       { label: "GitHub", href: "https://example.com/arc-commerce/github" },
@@ -103,7 +103,7 @@ export const projects: Project[] = [
       "A multichain wallet concept using Circle Gateway and App Kits to deposit, view, and spend USDC across supported networks.",
     category: "Wallets",
     builder: "Gateway experimenters",
-    walletAddress: "0x0000000000000000000000000000000000000003",
+    walletAddress: "0x7D98f82EE1B3f05c181e933f3574BE158E6d1839",
     links: [
       { label: "Project X", href: "https://example.com/unified-usdc/x" },
       { label: "Discord", href: "https://example.com/unified-usdc/discord" },
@@ -143,7 +143,7 @@ export const projects: Project[] = [
       "A treasury operations concept for routing Arc Testnet USDC between working wallets, vault addresses, and app modules.",
     category: "DeFi",
     builder: "Independent builders",
-    walletAddress: "0x0000000000000000000000000000000000000004",
+    walletAddress: "0x7D98f82EE1B3f05c181e933f3574BE158E6d1839",
     links: [
       { label: "Website", href: "https://example.com/arc-router" },
       { label: "Builder X", href: "https://example.com/arc-router/builder" },
@@ -182,7 +182,7 @@ export const projects: Project[] = [
       "An infrastructure starter for syncing contract events, normalizing project activity, and serving leaderboard-ready data.",
     category: "Infrastructure",
     builder: "Data infra builders",
-    walletAddress: "0x0000000000000000000000000000000000000005",
+    walletAddress: "0x7D98f82EE1B3f05c181e933f3574BE158E6d1839",
     links: [
       { label: "GitHub", href: "https://example.com/arc-index-kit/github" },
     ],
@@ -221,7 +221,7 @@ export const projects: Project[] = [
       "A developer tools concept for chain config, faucet links, contract snippets, explorer shortcuts, and deployment checklists.",
     category: "Developer Tools",
     builder: "Tooling contributors",
-    walletAddress: "0x0000000000000000000000000000000000000006",
+    walletAddress: "0x7D98f82EE1B3f05c181e933f3574BE158E6d1839",
     links: [
       { label: "Website", href: "https://example.com/arc-dev-console" },
       { label: "Project X", href: "https://example.com/arc-dev-console/x" },

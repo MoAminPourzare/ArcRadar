@@ -29,7 +29,7 @@ import {
 
 import { arcContracts, arcCurrency, arcLinks, arcTestnet } from "@/config/arc";
 import { cn, shortenAddress } from "@/lib/utils";
-import { erc20BalanceAbi } from "@/wallet/erc20";
+import { arcUsdcAbi } from "@/wallet/erc20";
 import { formatWalletBalance } from "@/wallet/format-balance";
 
 type ReadinessItem = {
@@ -94,7 +94,7 @@ export function ArcWalletConsole() {
     isLoading: isUsdcBalanceLoading,
     refetch: refetchUsdcBalance,
   } = useReadContract({
-    abi: erc20BalanceAbi,
+    abi: arcUsdcAbi,
     address: arcContracts.usdc,
     args: address ? [address] : [zeroAddress],
     chainId: arcTestnet.id,

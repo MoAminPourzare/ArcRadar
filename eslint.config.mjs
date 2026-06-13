@@ -14,6 +14,7 @@ const eslintConfig = defineConfig([
     "artifacts/**",
     "cache/**",
     "types/**",
+    "arc-commerce/**",
     "next-env.d.ts",
   ]),
 ]);

@@ -8,6 +8,7 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 import {
   createPublicClient,
+  fallback,
   getAddress,
   http,
   type Address,
@@ -34,6 +35,7 @@ type TipEvent = {
 type TipEventReadResult = {
   events: TipEvent[];
   skippedInvalidProjectIds: number;
+  skippedSelfTips: number;
 };
 
 main().catch((error) => {
@@ -68,10 +70,21 @@ async function main() {
   const database = drizzle(client);
 
   try {
-    const rpcUrl = process.env.ARC_TESTNET_RPC_URL ?? arcTestnet.rpcUrls.default.http[0];
+    const configuredRpcUrl = process.env.ARC_TESTNET_RPC_URL;
+    const rpcUrls = [
+      ...(configuredRpcUrl ? [configuredRpcUrl] : []),
+      ...arcTestnet.rpcUrls.default.http,
+    ].filter((url, index, urls) => urls.indexOf(url) === index);
     const publicClient = createPublicClient({
       chain: arcTestnet,
-      transport: http(rpcUrl),
+      transport: fallback(
+        rpcUrls.map((url) =>
+          http(url, {
+            retryCount: 0,
+            timeout: 8_000,
+          }),
+        ),
+      ),
     });
 
     const summary = await syncTipRouterEvents({
@@ -178,6 +191,7 @@ async function syncTipRouterEvents({
     ok: true,
     safeToBlock: safeToBlock.toString(),
     skippedInvalidProjectIds: eventReadResult.skippedInvalidProjectIds,
+    skippedSelfTips: eventReadResult.skippedSelfTips,
     skippedUnknownProjects: inserted.skippedUnknownProjects,
     skippedRecipientMismatches: inserted.skippedRecipientMismatches,
     toBlock: safeToBlock.toString(),
@@ -201,6 +215,7 @@ async function readTipEventsInChunks({
 }): Promise<TipEventReadResult> {
   const events: TipEvent[] = [];
   let skippedInvalidProjectIds = 0;
+  let skippedSelfTips = 0;
   let cursor = fromBlock;
 
   while (cursor <= toBlock) {
@@ -224,6 +239,11 @@ async function readTipEventsInChunks({
         !recipient ||
         !tipper
       ) {
+        continue;
+      }
+
+      if (tipper.toLowerCase() === recipient.toLowerCase()) {
+        skippedSelfTips += 1;
         continue;
       }
 
@@ -251,6 +271,7 @@ async function readTipEventsInChunks({
   return {
     events,
     skippedInvalidProjectIds,
+    skippedSelfTips,
   };
 }
 

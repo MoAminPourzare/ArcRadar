@@ -10,42 +10,16 @@ export const tipRouterAddress =
 
 export const tipRouterConfig = {
   address: tipRouterAddress,
-  projectIdMaxLength: 96,
   messageMaxLength: 280,
+  projectIdMaxLength: 96,
   usdc: arcContracts.usdc,
   usdcDecimals: 6,
 } as const;
 
 export const tipRouterAbi = [
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "usdcAddress",
-        type: "address",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
     inputs: [],
     name: "AmountMustBePositive",
-    type: "error",
-  },
-  {
-    inputs: [],
-    name: "EmptyProjectId",
-    type: "error",
-  },
-  {
-    inputs: [],
-    name: "InvalidRecipient",
-    type: "error",
-  },
-  {
-    inputs: [],
-    name: "InvalidUsdc",
     type: "error",
   },
   {
@@ -55,7 +29,7 @@ export const tipRouterAbi = [
   },
   {
     inputs: [],
-    name: "ProjectIdTooLong",
+    name: "ProjectNotRegistered",
     type: "error",
   },
   {
@@ -66,88 +40,34 @@ export const tipRouterAbi = [
   {
     anonymous: false,
     inputs: [
-      {
-        indexed: false,
-        internalType: "string",
-        name: "projectId",
-        type: "string",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "tipper",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "recipient",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "string",
-        name: "message",
-        type: "string",
-      },
+      { indexed: false, name: "projectId", type: "string" },
+      { indexed: true, name: "tipper", type: "address" },
+      { indexed: true, name: "recipient", type: "address" },
+      { indexed: false, name: "amount", type: "uint256" },
+      { indexed: false, name: "message", type: "string" },
     ],
     name: "ProjectTipped",
     type: "event",
   },
   {
-    inputs: [],
-    name: "MAX_MESSAGE_LENGTH",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
+    inputs: [{ name: "projectId", type: "string" }],
+    name: "getProjectRecipient",
+    outputs: [{ name: "", type: "address" }],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
-    name: "MAX_PROJECT_ID_LENGTH",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
+    name: "owner",
+    outputs: [{ name: "", type: "address" }],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      {
-        internalType: "string",
-        name: "projectId",
-        type: "string",
-      },
-      {
-        internalType: "address",
-        name: "recipient",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-      {
-        internalType: "string",
-        name: "message",
-        type: "string",
-      },
+      { name: "projectId", type: "string" },
+      { name: "amount", type: "uint256" },
+      { name: "message", type: "string" },
     ],
     name: "tip",
     outputs: [],
@@ -157,13 +77,7 @@ export const tipRouterAbi = [
   {
     inputs: [],
     name: "usdc",
-    outputs: [
-      {
-        internalType: "contract IERC20",
-        name: "",
-        type: "address",
-      },
-    ],
+    outputs: [{ name: "", type: "address" }],
     stateMutability: "view",
     type: "function",
   },
