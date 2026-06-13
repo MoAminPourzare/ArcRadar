@@ -18,7 +18,7 @@ export default function NetworkPage() {
       <SiteHeader />
       <main>
         <section className="relative overflow-hidden border-b border-ink/10 bg-paper">
-          <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(#111312_1px,transparent_1px),linear-gradient(90deg,#111312_1px,transparent_1px)] [background-size:44px_44px]" />
+          <div className="radar-grid absolute inset-0 opacity-[0.08] [background-size:44px_44px]" />
           <div className="relative mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
             <span className="grid size-12 place-items-center rounded-lg bg-blueprint text-paper">
               <RadioTower aria-hidden className="size-6" />

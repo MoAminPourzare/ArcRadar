@@ -4,11 +4,11 @@ import type { Project } from "@/types/project";
 import type { ProjectSocialSignal } from "@/types/social";
 
 const accentClass: Record<Project["accent"], string> = {
-  amber: "bg-amber text-ink",
+  amber: "bg-amber text-accent-ink",
   blueprint: "bg-blueprint text-paper",
   coral: "bg-coral text-paper",
-  cyan: "bg-cyan text-ink",
-  mint: "bg-mint text-ink",
+  cyan: "bg-cyan text-accent-ink",
+  mint: "bg-mint text-accent-ink",
 };
 
 const nodePositions = [
@@ -29,7 +29,7 @@ export function SignalRadar({ signals }: { signals: ProjectSocialSignal[] }) {
 
   return (
     <div className="relative min-h-[420px] overflow-hidden rounded-lg bg-ink text-paper shadow-sm">
-      <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(#f5f2ea_1px,transparent_1px),linear-gradient(90deg,#f5f2ea_1px,transparent_1px)] [background-size:32px_32px]" />
+      <div className="radar-grid-inverse absolute inset-0 opacity-20 [background-size:32px_32px]" />
       <div className="absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-paper/10" />
       <div className="absolute left-1/2 top-1/2 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-paper/10" />
       <div className="absolute left-1/2 top-1/2 h-[210px] w-[210px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-paper/10" />

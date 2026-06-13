@@ -2,6 +2,7 @@ import { Activity, ExternalLink, Radar } from "lucide-react";
 import Link from "next/link";
 
 import { SiteNavigation } from "@/components/site/site-navigation";
+import { ThemeToggle } from "@/components/site/theme-toggle";
 import { ConnectWalletButton } from "@/components/wallet/connect-wallet-button";
 import { siteConfig } from "@/config/site";
 
@@ -37,6 +38,7 @@ export function SiteHeader() {
         </div>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <a
             aria-label="Arc network status"
             className="hidden size-10 place-items-center rounded-lg border border-ink/10 bg-white text-forest shadow-sm transition hover:border-forest/40 md:grid"

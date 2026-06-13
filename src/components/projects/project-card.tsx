@@ -10,11 +10,11 @@ import type { Project } from "@/types/project";
 import type { ProjectSocialSignal } from "@/types/social";
 
 const accentClass: Record<Project["accent"], string> = {
-  amber: "bg-amber text-ink",
+  amber: "bg-amber text-accent-ink",
   blueprint: "bg-blueprint text-paper",
   coral: "bg-coral text-paper",
-  cyan: "bg-cyan text-ink",
-  mint: "bg-mint text-ink",
+  cyan: "bg-cyan text-accent-ink",
+  mint: "bg-mint text-accent-ink",
 };
 
 export function ProjectCard({

@@ -29,11 +29,11 @@ type ProjectProfilePageProps = {
 };
 
 const accentClass: Record<Project["accent"], string> = {
-  amber: "bg-amber text-ink",
+  amber: "bg-amber text-accent-ink",
   blueprint: "bg-blueprint text-paper",
   coral: "bg-coral text-paper",
-  cyan: "bg-cyan text-ink",
-  mint: "bg-mint text-ink",
+  cyan: "bg-cyan text-accent-ink",
+  mint: "bg-mint text-accent-ink",
 };
 
 const officialLinkMeta: Record<
@@ -100,7 +100,7 @@ export function ProjectProfilePage({
   return (
     <main>
       <section className="relative overflow-hidden border-b border-ink/10 bg-paper">
-        <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(#111312_1px,transparent_1px),linear-gradient(90deg,#111312_1px,transparent_1px)] [background-size:44px_44px]" />
+        <div className="radar-grid absolute inset-0 opacity-[0.08] [background-size:44px_44px]" />
         <div className="relative mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
           <Link
             className="mb-6 inline-flex items-center gap-2 text-sm font-black text-ink/60 transition hover:text-ink"

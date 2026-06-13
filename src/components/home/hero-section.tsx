@@ -47,7 +47,7 @@ export function HeroSection({ projects, socialSignals }: HeroSectionProps) {
 
   return (
     <section className="relative overflow-hidden border-b border-ink/10 bg-paper">
-      <div className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(#111312_1px,transparent_1px),linear-gradient(90deg,#111312_1px,transparent_1px)] [background-size:44px_44px]" />
+      <div className="radar-grid absolute inset-0 opacity-[0.08] [background-size:44px_44px]" />
       <div className="relative mx-auto grid w-full max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[minmax(0,1fr)_460px] lg:px-8 lg:py-12">
         <div className="flex min-h-[460px] flex-col justify-between">
           <div>
