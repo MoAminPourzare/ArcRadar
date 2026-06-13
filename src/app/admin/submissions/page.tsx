@@ -211,6 +211,7 @@ function SubmissionCard({ submission }: { submission: Submission }) {
 
           <div className="mt-5 flex flex-wrap gap-2 border-t border-ink/10 pt-4">
             <SubmissionLink label="Website" href={submission.websiteUrl} />
+            <SubmissionLink label="Logo" href={submission.logoUrl} />
             <SubmissionLink label="Project X" href={submission.projectXUrl} />
             <SubmissionLink label="Builder X" href={submission.builderXUrl} />
             <SubmissionLink label="Discord" href={submission.discordUrl} />

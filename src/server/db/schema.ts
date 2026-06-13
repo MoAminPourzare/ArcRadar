@@ -142,6 +142,7 @@ export const projectSubmissions = pgTable(
     contact: varchar("contact", { length: 160 }),
     projectWallet: varchar("project_wallet", { length: 42 }),
     websiteUrl: text("website_url"),
+    logoUrl: text("logo_url"),
     projectXUrl: text("x_url"),
     builderXUrl: text("builder_x_url"),
     discordUrl: text("discord_url"),

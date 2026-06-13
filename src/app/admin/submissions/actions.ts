@@ -291,7 +291,7 @@ function buildProjectValues({
     featured: false,
     lastSignal: "Published through ArcRadar moderation",
     launches: 0,
-    logoUrl: null,
+    logoUrl: submission.logoUrl,
     name: submission.name,
     profile: {
       problem:

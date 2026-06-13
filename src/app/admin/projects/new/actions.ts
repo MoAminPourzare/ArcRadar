@@ -66,6 +66,7 @@ export async function createProjectSubmission(
       description: parsed.data.description,
       discordUrl: parsed.data.discordUrl || null,
       githubUrl: parsed.data.githubUrl || null,
+      logoUrl: parsed.data.logoUrl || null,
       name: parsed.data.name,
       projectWallet: parsed.data.projectWallet || null,
       slug: slugifyProjectName(parsed.data.slug || parsed.data.name),

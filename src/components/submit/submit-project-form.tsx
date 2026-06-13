@@ -8,6 +8,7 @@ import {
   createProjectSubmission,
   type SubmissionActionResult,
 } from "@/app/admin/projects/new/actions";
+import { ProjectLogo } from "@/components/projects/project-logo";
 import {
   projectSubmissionSchema,
   submissionCategories,
@@ -25,6 +26,7 @@ const initialValues: ProjectSubmissionInput = {
   description: "",
   discordUrl: "",
   githubUrl: "",
+  logoUrl: "",
   name: "",
   projectWallet: "",
   slug: "",
@@ -156,6 +158,27 @@ export function SubmitProjectForm() {
             value={values.builderName}
             onChange={(value) => updateField("builderName", value)}
           />
+        </div>
+
+        <div className="grid gap-4 rounded-lg border border-ink/10 bg-paper p-4 md:grid-cols-[auto_minmax(0,1fr)] md:items-center">
+          <ProjectLogo
+            accent="blueprint"
+            logoUrl={values.logoUrl}
+            name={values.name || "New project"}
+            size="lg"
+          />
+          <div>
+            <TextField
+              error={errors.logoUrl}
+              label="Project logo URL"
+              value={values.logoUrl ?? ""}
+              onChange={(value) => updateField("logoUrl", value)}
+            />
+            <p className="mt-2 text-xs font-semibold leading-5 text-ink/45">
+              Use the project&apos;s official square logo when available. PNG,
+              WebP, or SVG works best.
+            </p>
+          </div>
         </div>
 
         <TextField

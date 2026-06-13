@@ -45,6 +45,7 @@ export const projectSubmissionSchema = z.object({
     .regex(/^0x[a-fA-F0-9]{40}$/, "Use a valid EVM wallet address")
     .optional()
     .or(z.literal("")),
+  logoUrl: optionalUrl,
   websiteUrl: optionalUrl,
   projectXUrl: optionalUrl,
   builderXUrl: optionalUrl,

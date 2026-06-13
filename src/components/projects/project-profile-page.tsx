@@ -1,23 +1,20 @@
 import {
-  AtSign,
   ArrowLeft,
   BadgeDollarSign,
-  Code2,
   ExternalLink,
   Gauge,
-  Globe2,
   Info,
   Layers3,
-  MessagesSquare,
   ShieldCheck,
   Trophy,
-  UserRound,
 } from "lucide-react";
 import Link from "next/link";
 
 import { ProjectCard } from "@/components/projects/project-card";
+import { ProjectLinkIcon } from "@/components/projects/project-link-icon";
+import { ProjectLogo } from "@/components/projects/project-logo";
 import { ProjectTipPanel } from "@/components/projects/project-tip-panel";
-import { cn, shortenAddress } from "@/lib/utils";
+import { shortenAddress } from "@/lib/utils";
 import type { Project, ProjectLink, ProjectTipData } from "@/types/project";
 import type { ProjectSocialSignal } from "@/types/social";
 
@@ -28,37 +25,24 @@ type ProjectProfilePageProps = {
   tipData: ProjectTipData;
 };
 
-const accentClass: Record<Project["accent"], string> = {
-  amber: "bg-amber text-accent-ink",
-  blueprint: "bg-blueprint text-paper",
-  coral: "bg-coral text-paper",
-  cyan: "bg-cyan text-accent-ink",
-  mint: "bg-mint text-accent-ink",
-};
-
 const officialLinkMeta: Record<
   ProjectLink["label"],
-  { description: string; icon: typeof Globe2 }
+  { description: string }
 > = {
   "Builder X": {
     description: "Builder profile",
-    icon: UserRound,
   },
   Discord: {
     description: "Community server",
-    icon: MessagesSquare,
   },
   GitHub: {
     description: "Project source",
-    icon: Code2,
   },
   "Project X": {
     description: "Project updates",
-    icon: AtSign,
   },
   Website: {
     description: "Official website",
-    icon: Globe2,
   },
 };
 
@@ -113,14 +97,12 @@ export function ProjectProfilePage({
           <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm sm:p-7">
               <div className="flex items-start gap-4">
-                <div
-                  className={cn(
-                    "grid size-16 shrink-0 place-items-center rounded-lg text-2xl font-black",
-                    accentClass[project.accent],
-                  )}
-                >
-                  {project.name.slice(0, 2).toUpperCase()}
-                </div>
+                <ProjectLogo
+                  accent={project.accent}
+                  logoUrl={project.logoUrl}
+                  name={project.name}
+                  size="lg"
+                />
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="text-sm font-black uppercase text-blueprint">
@@ -308,7 +290,7 @@ export function ProjectProfilePage({
 }
 
 function OfficialLink({ link }: { link: ProjectLink }) {
-  const { description, icon: Icon } = officialLinkMeta[link.label];
+  const { description } = officialLinkMeta[link.label];
 
   return (
     <a
@@ -317,9 +299,7 @@ function OfficialLink({ link }: { link: ProjectLink }) {
       rel="noreferrer"
       target="_blank"
     >
-      <span className="grid size-9 shrink-0 place-items-center rounded-md bg-white text-blueprint shadow-sm transition group-hover:bg-blueprint group-hover:text-paper">
-        <Icon aria-hidden className="size-4" />
-      </span>
+      <ProjectLinkIcon label={link.label} />
       <span className="min-w-0 flex-1">
         <span className="block text-sm font-black text-ink">{link.label}</span>
         <span className="mt-0.5 block text-xs font-semibold text-ink/45">

@@ -57,6 +57,13 @@
       "when": 1781184939139,
       "tag": "0007_lean_leo",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1781361100593,
+      "tag": "0008_dark_trish_tilby",
+      "breakpoints": true
     }
   ]
 }

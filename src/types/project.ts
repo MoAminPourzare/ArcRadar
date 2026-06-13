@@ -86,6 +86,7 @@ export type Project = {
   description: string;
   category: ProjectCategory;
   builder: string;
+  logoUrl?: string | null;
   walletAddress: `0x${string}`;
   links: ProjectLink[];
   tags: string[];

@@ -166,6 +166,7 @@ function mapDatabaseProject(
     lastSignal: row.lastSignal ?? "Indexed in ArcRadar",
     links:
       databaseLinks.length > 0 ? databaseLinks : (seedProject?.links ?? []),
+    logoUrl: row.logoUrl,
     metrics: {
       launches: row.launches,
       rank: row.rank,

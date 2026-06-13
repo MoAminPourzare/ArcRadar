@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+import { ProjectLogo } from "@/components/projects/project-logo";
 import { arcLinks } from "@/config/arc";
 import { formatCompactNumber, shortenAddress } from "@/lib/utils";
 import type {
@@ -138,7 +139,14 @@ function ProjectRankRow({
         {index + 1}
       </span>
 
-      <div className="min-w-0">
+      <div className="flex min-w-0 items-center gap-3">
+        <ProjectLogo
+          accent={row.project.accent}
+          logoUrl={row.project.logoUrl}
+          name={row.project.name}
+          size="sm"
+        />
+        <div className="min-w-0">
         <Link
           className="block truncate text-lg font-black text-ink transition hover:text-blueprint"
           href={`/projects/${row.project.slug}`}
@@ -148,6 +156,7 @@ function ProjectRankRow({
         <p className="mt-1 truncate text-sm font-semibold text-ink/50">
           {row.project.category} / {row.project.builder}
         </p>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-2 text-right">
@@ -238,12 +247,20 @@ function RecentProjectsPanel({
               href={`/projects/${row.project.slug}`}
               key={row.project.id}
             >
-              <span className="min-w-0">
-                <span className="block truncate font-black text-ink">
-                  {row.project.name}
-                </span>
-                <span className="block text-xs font-bold text-ink/45">
-                  {formatDate(row.lastTippedAt)}
+              <span className="flex min-w-0 items-center gap-3">
+                <ProjectLogo
+                  accent={row.project.accent}
+                  logoUrl={row.project.logoUrl}
+                  name={row.project.name}
+                  size="xs"
+                />
+                <span className="min-w-0">
+                  <span className="block truncate font-black text-ink">
+                    {row.project.name}
+                  </span>
+                  <span className="block text-xs font-bold text-ink/45">
+                    {formatDate(row.lastTippedAt)}
+                  </span>
                 </span>
               </span>
               <span className="font-mono text-sm font-black text-forest">

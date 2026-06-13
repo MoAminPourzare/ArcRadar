@@ -6,16 +6,9 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+import { ProjectLogo } from "@/components/projects/project-logo";
 import type { Project } from "@/types/project";
 import type { ProjectSocialSignal } from "@/types/social";
-
-const accentClass: Record<Project["accent"], string> = {
-  amber: "bg-amber text-accent-ink",
-  blueprint: "bg-blueprint text-paper",
-  coral: "bg-coral text-paper",
-  cyan: "bg-cyan text-accent-ink",
-  mint: "bg-mint text-accent-ink",
-};
 
 export function ProjectCard({
   project,
@@ -31,11 +24,11 @@ export function ProjectCard({
       <div>
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div
-              className={`grid size-12 place-items-center rounded-lg text-lg font-black ${accentClass[project.accent]}`}
-            >
-              {project.name.slice(0, 2).toUpperCase()}
-            </div>
+            <ProjectLogo
+              accent={project.accent}
+              logoUrl={project.logoUrl}
+              name={project.name}
+            />
             <div>
               <h3 className="text-lg font-black text-ink">{project.name}</h3>
               <p className="text-sm font-semibold text-ink/55">

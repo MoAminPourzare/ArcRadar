@@ -82,7 +82,7 @@ function mapProjectToRow(project: Project) {
     featured: Boolean(project.featured),
     lastSignal: project.lastSignal,
     launches: project.metrics.launches,
-    logoUrl: null,
+    logoUrl: project.logoUrl ?? null,
     name: project.name,
     profile: project.profile,
     projectWallet: project.walletAddress,
