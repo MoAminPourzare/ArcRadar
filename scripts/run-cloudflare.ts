@@ -6,6 +6,7 @@ const supportedCommands = ["deploy", "preview", "upload"] as const;
 type CloudflareCommand = (typeof supportedCommands)[number];
 
 const command = process.argv[2] as CloudflareCommand | undefined;
+const skipBuild = process.argv.includes("--skip-build");
 
 if (!command || !supportedCommands.includes(command)) {
   throw new Error(
@@ -21,9 +22,14 @@ const localDatabaseUrl =
 if (localDatabaseUrl) {
   process.env.CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE ??=
     localDatabaseUrl;
+} else if (command !== "preview") {
+  process.env.CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_HYPERDRIVE ??=
+    "postgresql://local:local@127.0.0.1:5432/arcradar";
 }
 
-run(process.platform === "win32" ? "npm.cmd" : "npm", ["run", "cf:build"]);
+if (!skipBuild) {
+  run(process.platform === "win32" ? "npm.cmd" : "npm", ["run", "cf:build"]);
+}
 
 const openNextArguments = ["opennextjs-cloudflare", command];
 

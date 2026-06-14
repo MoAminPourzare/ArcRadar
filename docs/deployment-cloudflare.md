@@ -96,11 +96,13 @@ Use these settings:
 | Production branch | `main` |
 | Root directory | Repository root |
 | Build command | `npm run cf:build` |
-| Deploy command | `npx wrangler deploy --keep-vars` |
+| Deploy command | `npm run deploy:built` |
 | Non-production branch deploys | Enabled only when preview deployments are needed |
 
-`--keep-vars` prevents a Git deployment from deleting variables configured in
-the Cloudflare dashboard.
+The deployment wrapper preserves dashboard secrets, uses the already generated
+OpenNext artifact, and provides only the local placeholder Hyperdrive requires
+while preparing an upload. Production traffic still uses the bound Hyperdrive
+configuration.
 
 ## Custom Domain
 
