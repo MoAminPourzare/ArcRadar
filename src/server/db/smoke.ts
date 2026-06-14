@@ -34,7 +34,6 @@ async function main() {
     contact: "",
     description:
       "This is a database-backed ArcRadar smoke submission used to confirm that the Neon project submission queue is working end to end.",
-    discordUrl: "",
     githubUrl: "",
     name: `ArcRadar DB Smoke ${suffix}`,
     projectWallet: "0x00000000000000000000000000000000000000bb",
@@ -51,7 +50,6 @@ async function main() {
       category: input.category,
       contact: input.contact || null,
       description: input.description,
-      discordUrl: input.discordUrl || null,
       githubUrl: input.githubUrl || null,
       name: input.name,
       projectWallet: input.projectWallet || null,

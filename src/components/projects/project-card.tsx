@@ -1,9 +1,9 @@
 import {
-  ArrowUpRight,
-  CircleDollarSign,
-  Gauge,
-  TrendingUp,
-} from "lucide-react";
+  ArrowUpRightIcon as ArrowUpRight,
+  CurrencyCircleDollarIcon as CircleDollarSign,
+  GaugeIcon as Gauge,
+  TrendUpIcon as TrendingUp,
+} from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 
 import { ProjectLogo } from "@/components/projects/project-logo";
@@ -38,7 +38,7 @@ export function ProjectCard({
           </div>
           <div className="rounded-lg border border-blueprint/15 bg-blueprint/5 px-3 py-2 text-right">
             <span className="flex items-center justify-end gap-1.5 text-[10px] font-black uppercase text-blueprint/65">
-              <Gauge aria-hidden className="size-3" />
+              <Gauge aria-hidden className="size-3.5" weight="duotone" />
               Signal
             </span>
             <span className="font-mono text-2xl font-black text-blueprint">
@@ -79,7 +79,7 @@ export function ProjectCard({
           href={`/projects/${project.slug}`}
         >
           Profile
-          <ArrowUpRight aria-hidden className="size-4" />
+          <ArrowUpRight aria-hidden className="size-4" weight="bold" />
         </Link>
       </div>
     </article>
@@ -98,7 +98,7 @@ function CompactMetric({
   return (
     <div className="rounded-lg border border-ink/10 bg-paper px-3 py-2">
       <span className="flex items-center gap-1 text-[10px] font-black uppercase text-ink/35">
-        <Icon aria-hidden className="size-3" />
+        <Icon aria-hidden className="size-3.5" weight="duotone" />
         {label}
       </span>
       <span className="mt-1 block font-mono text-sm font-black text-ink">

@@ -1,12 +1,12 @@
 import {
-  ArrowUpRight,
-  BadgeDollarSign,
-  Fuel,
-  Landmark,
-  Wallet,
-  RadioTower,
-  ShieldCheck,
-} from "lucide-react";
+  ArrowUpRightIcon as ArrowUpRight,
+  CellTowerIcon as RadioTower,
+  CubeIcon as Landmark,
+  CurrencyCircleDollarIcon as BadgeDollarSign,
+  GasPumpIcon as Fuel,
+  ShieldCheckIcon as ShieldCheck,
+  WalletIcon as Wallet,
+} from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 
 import { arcContracts, arcLinks, arcTestnet } from "@/config/arc";
@@ -48,7 +48,7 @@ export function ArcOnboarding() {
                 key={fact.label}
               >
                 <span className="grid size-9 place-items-center rounded-md bg-mint/20 text-forest">
-                  <Icon aria-hidden className="size-4" />
+                  <Icon aria-hidden className="size-5" weight="duotone" />
                 </span>
                 <span>
                   <span className="block text-xs font-bold uppercase text-ink/40">
@@ -71,7 +71,7 @@ export function ArcOnboarding() {
             target="_blank"
           >
             Arc faucet
-            <ArrowUpRight aria-hidden className="size-4" />
+            <ArrowUpRight aria-hidden className="size-4" weight="bold" />
           </a>
           <a
             className="btn-ghost"
@@ -80,15 +80,15 @@ export function ArcOnboarding() {
             target="_blank"
           >
             Explorer
-            <ArrowUpRight aria-hidden className="size-4" />
+            <ArrowUpRight aria-hidden className="size-4" weight="bold" />
           </a>
           <Link className="btn-primary" href="/wallet">
             Wallet console
-            <Wallet aria-hidden className="size-4" />
+            <Wallet aria-hidden className="size-4" weight="duotone" />
           </Link>
           <div className="flex min-h-16 items-center gap-3 rounded-lg border border-ink/10 bg-paper px-4 sm:col-span-2 lg:col-span-1">
             <span className="grid size-9 place-items-center rounded-md bg-blueprint text-paper">
-              <BadgeDollarSign aria-hidden className="size-4" />
+              <BadgeDollarSign aria-hidden className="size-4" weight="duotone" />
             </span>
             <span className="min-w-0">
               <span className="block text-xs font-bold uppercase text-ink/40">

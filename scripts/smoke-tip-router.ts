@@ -18,7 +18,13 @@ import { privateKeyToAccount } from "viem/accounts";
 
 loadLocalEnv();
 
-const projectSlug = process.env.TIP_SMOKE_PROJECT_SLUG ?? "arc-escrow";
+const projectSlug = process.env.TIP_SMOKE_PROJECT_SLUG?.trim();
+
+if (!projectSlug) {
+  throw new Error(
+    "TIP_SMOKE_PROJECT_SLUG must name a curated project registered in TipRouter.",
+  );
+}
 const amount = parseUnits(process.env.TIP_SMOKE_AMOUNT_USDC ?? "0.01", 6);
 const message = process.env.TIP_SMOKE_MESSAGE ?? "ArcRadar end-to-end test";
 const privateKey = readPrivateKey();

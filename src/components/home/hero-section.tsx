@@ -1,7 +1,14 @@
-import { ArrowRight, Database, Fuel, Radar, Sparkles } from "lucide-react";
+import {
+  ArrowRightIcon as ArrowRight,
+  CirclesFourIcon as Radar,
+  CurrencyCircleDollarIcon as Sparkles,
+  DatabaseIcon as Database,
+  TrendUpIcon as Fuel,
+} from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 
 import { SignalRadar } from "@/components/home/signal-radar";
+import { BrandMark } from "@/components/site/brand-mark";
 import { arcLinks } from "@/config/arc";
 import { formatCompactNumber } from "@/lib/utils";
 import type { Project } from "@/types/project";
@@ -53,14 +60,21 @@ export function HeroSection({ projects, socialSignals }: HeroSectionProps) {
           <div>
             <div className="mb-5 flex flex-wrap gap-2">
               <span className="inline-flex min-h-9 items-center gap-2 rounded-lg border border-ink/10 bg-white px-3 text-sm font-black text-forest shadow-sm">
-                <Radar aria-hidden className="size-4" />
+                <Radar aria-hidden className="size-4" weight="duotone" />
                 Arc Testnet
               </span>
             </div>
 
-            <h1 className="max-w-4xl text-5xl font-black leading-[1.02] text-ink sm:text-6xl lg:text-7xl">
-              ArcRadar
-            </h1>
+            <div className="flex items-center gap-4 sm:gap-5">
+              <BrandMark
+                className="size-16 rounded-xl sm:size-20"
+                priority
+                sizes="(min-width: 640px) 80px, 64px"
+              />
+              <h1 className="max-w-4xl text-5xl font-black leading-[1.02] text-ink sm:text-6xl lg:text-7xl">
+                ArcRadar
+              </h1>
+            </div>
             <p className="mt-5 max-w-2xl text-lg font-semibold leading-8 text-ink/65">
               A curated signal board for Arc builders, testnet projects, USDC
               support, and the apps gaining momentum across the new Circle L1.
@@ -69,7 +83,7 @@ export function HeroSection({ projects, socialSignals }: HeroSectionProps) {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link className="btn-primary min-h-12" href="/projects">
                 Explore projects
-                <ArrowRight aria-hidden className="size-4" />
+                <ArrowRight aria-hidden className="size-4" weight="bold" />
               </Link>
               <a
                 className="btn-secondary min-h-12"
@@ -78,7 +92,7 @@ export function HeroSection({ projects, socialSignals }: HeroSectionProps) {
                 target="_blank"
               >
                 Get testnet USDC
-                <ArrowRight aria-hidden className="size-4" />
+                <ArrowRight aria-hidden className="size-4" weight="bold" />
               </a>
             </div>
           </div>
@@ -93,7 +107,11 @@ export function HeroSection({ projects, socialSignals }: HeroSectionProps) {
                   key={stat.label}
                 >
                   <div className="mb-4 flex items-center justify-between">
-                    <Icon aria-hidden className="size-5 text-blueprint" />
+                    <Icon
+                      aria-hidden
+                      className="size-6 text-blueprint"
+                      weight="duotone"
+                    />
                     <span className="h-2 w-8 rounded-sm bg-mint" />
                   </div>
                   <p className="font-mono text-2xl font-black">{stat.value}</p>

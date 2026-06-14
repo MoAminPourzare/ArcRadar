@@ -26,7 +26,7 @@ describe("TipRouter", async function () {
 
   async function registerProject(
     fixture: Awaited<ReturnType<typeof deployFixture>>,
-    projectId = "arc-escrow",
+    projectId = "project-alpha",
   ) {
     await fixture.tipRouter.write.setProjectRecipient(
       [projectId, fixture.recipient.account.address],
@@ -48,24 +48,24 @@ describe("TipRouter", async function () {
 
     await viem.assertions.emitWithArgs(
       fixture.tipRouter.write.setProjectRecipient(
-        ["arc-escrow", fixture.recipient.account.address],
+        ["project-alpha", fixture.recipient.account.address],
         { account: fixture.owner.account },
       ),
       fixture.tipRouter,
       "ProjectRecipientSet",
-      ["arc-escrow", fixture.recipient.account.address],
+      ["project-alpha", fixture.recipient.account.address],
     );
 
     assert.equal(
       (
-        await fixture.tipRouter.read.getProjectRecipient(["arc-escrow"])
+        await fixture.tipRouter.read.getProjectRecipient(["project-alpha"])
       ).toLowerCase(),
       fixture.recipient.account.address.toLowerCase(),
     );
 
     await viem.assertions.revertWithCustomError(
       fixture.tipRouter.write.setProjectRecipient(
-        ["arc-escrow", fixture.attacker.account.address],
+        ["project-alpha", fixture.attacker.account.address],
         { account: fixture.attacker.account },
       ),
       fixture.tipRouter,
@@ -77,7 +77,7 @@ describe("TipRouter", async function () {
     const fixture = await deployFixture();
     const amount = 1_000_000n;
     const message = "Shipping on Arc";
-    const projectId = "arc-escrow";
+    const projectId = "project-alpha";
 
     await registerProject(fixture, projectId);
     await fixture.usdc.write.mint([fixture.tipper.account.address, amount]);
@@ -115,7 +115,7 @@ describe("TipRouter", async function () {
 
     await fixture.tipRouter.write.setProjectRecipients(
       [
-        ["arc-escrow", "arc-commerce"],
+        ["project-alpha", "project-beta"],
         [fixture.recipient.account.address, fixture.attacker.account.address],
       ],
       { account: fixture.owner.account },
@@ -123,21 +123,21 @@ describe("TipRouter", async function () {
 
     assert.equal(
       (
-        await fixture.tipRouter.read.getProjectRecipient(["arc-commerce"])
+        await fixture.tipRouter.read.getProjectRecipient(["project-beta"])
       ).toLowerCase(),
       fixture.attacker.account.address.toLowerCase(),
     );
 
     await fixture.tipRouter.write.setProjectRecipient(
-      ["arc-commerce", fixture.recipient.account.address],
+      ["project-beta", fixture.recipient.account.address],
       { account: fixture.owner.account },
     );
-    await fixture.tipRouter.write.removeProjectRecipient(["arc-commerce"], {
+    await fixture.tipRouter.write.removeProjectRecipient(["project-beta"], {
       account: fixture.owner.account,
     });
 
     assert.equal(
-      await fixture.tipRouter.read.getProjectRecipient(["arc-commerce"]),
+      await fixture.tipRouter.read.getProjectRecipient(["project-beta"]),
       "0x0000000000000000000000000000000000000000",
     );
   });
@@ -147,13 +147,13 @@ describe("TipRouter", async function () {
     const amount = 2_500_000n;
     const deploymentBlockNumber = await publicClient.getBlockNumber();
 
-    await registerProject(fixture, "arc-commerce");
+    await registerProject(fixture, "project-beta");
     await fixture.usdc.write.mint([fixture.tipper.account.address, amount]);
     await fixture.usdc.write.approve([fixture.tipRouter.address, amount], {
       account: fixture.tipper.account,
     });
     await fixture.tipRouter.write.tip(
-      ["arc-commerce", amount, "Index this"],
+      ["project-beta", amount, "Index this"],
       { account: fixture.tipper.account },
     );
 
@@ -166,7 +166,7 @@ describe("TipRouter", async function () {
     });
 
     assert.equal(events.length, 1);
-    assert.equal(events[0].args.projectId, "arc-commerce");
+    assert.equal(events[0].args.projectId, "project-beta");
     assert.equal(events[0].args.amount, amount);
   });
 
@@ -206,14 +206,14 @@ describe("TipRouter", async function () {
     await registerProject(fixture);
 
     await viem.assertions.revertWithCustomError(
-      fixture.tipRouter.write.tip(["arc-escrow", 0n, ""], {
+      fixture.tipRouter.write.tip(["project-alpha", 0n, ""], {
         account: fixture.tipper.account,
       }),
       fixture.tipRouter,
       "AmountMustBePositive",
     );
     await viem.assertions.revertWithCustomError(
-      fixture.tipRouter.write.tip(["arc-escrow", 1n, "x".repeat(281)], {
+      fixture.tipRouter.write.tip(["project-alpha", 1n, "x".repeat(281)], {
         account: fixture.tipper.account,
       }),
       fixture.tipRouter,
@@ -222,7 +222,7 @@ describe("TipRouter", async function () {
 
     await fixture.usdc.write.mint([fixture.tipper.account.address, amount]);
     await viem.assertions.revertWithCustomError(
-      fixture.tipRouter.write.tip(["arc-escrow", amount, "No allowance"], {
+      fixture.tipRouter.write.tip(["project-alpha", amount, "No allowance"], {
         account: fixture.tipper.account,
       }),
       fixture.tipRouter,
@@ -233,7 +233,7 @@ describe("TipRouter", async function () {
       account: fixture.tipper.account,
     });
     await viem.assertions.revertWithCustomError(
-      fixture.tipRouter.write.tip(["arc-escrow", amount * 2n, "No balance"], {
+      fixture.tipRouter.write.tip(["project-alpha", amount * 2n, "No balance"], {
         account: fixture.tipper.account,
       }),
       fixture.tipRouter,
@@ -251,7 +251,7 @@ describe("TipRouter", async function () {
 
     await viem.assertions.revertWithCustomError(
       fixture.tipRouter.write.setProjectRecipient(
-        ["arc-escrow", fixture.recipient.account.address],
+        ["project-alpha", fixture.recipient.account.address],
         { account: fixture.owner.account },
       ),
       fixture.tipRouter,
@@ -259,7 +259,7 @@ describe("TipRouter", async function () {
     );
 
     await fixture.tipRouter.write.setProjectRecipient(
-      ["arc-escrow", fixture.recipient.account.address],
+      ["project-alpha", fixture.recipient.account.address],
       { account: fixture.attacker.account },
     );
   });

@@ -1,14 +1,18 @@
+"use client";
+
 import {
-  Activity,
-  ArrowUpRight,
-  CircleDollarSign,
-  Clock3,
-  ReceiptText,
-  Trophy,
-  Users,
-  Wallet,
-} from "lucide-react";
+  ArrowUpRightIcon as ArrowUpRight,
+  CaretDownIcon as CaretDown,
+  ClockCountdownIcon as Clock3,
+  CurrencyCircleDollarIcon as CircleDollarSign,
+  PulseIcon as Activity,
+  ReceiptIcon as ReceiptText,
+  TrophyIcon as Trophy,
+  UsersThreeIcon as Users,
+  WalletIcon as Wallet,
+} from "@phosphor-icons/react";
 import Link from "next/link";
+import { useState } from "react";
 
 import { ProjectLogo } from "@/components/projects/project-logo";
 import { arcLinks } from "@/config/arc";
@@ -23,7 +27,17 @@ type LeaderboardProps = {
   data: LeaderboardData;
 };
 
+const PROJECT_PAGE_SIZE = 8;
+
 export function Leaderboard({ data }: LeaderboardProps) {
+  const [visibleProjectCount, setVisibleProjectCount] =
+    useState(PROJECT_PAGE_SIZE);
+  const visibleProjects = data.topProjects.slice(0, visibleProjectCount);
+  const remainingProjectCount = Math.max(
+    data.topProjects.length - visibleProjects.length,
+    0,
+  );
+
   return (
     <section className="bg-paper py-12 text-ink" id="leaderboard">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -31,7 +45,7 @@ export function Leaderboard({ data }: LeaderboardProps) {
           <div>
             <div className="mb-3 flex flex-wrap items-center gap-2">
               <span className="inline-flex min-h-8 items-center gap-2 rounded-md border border-mint/40 bg-mint/20 px-2.5 text-xs font-black uppercase text-forest">
-                <Activity aria-hidden className="size-3.5" />
+                <Activity aria-hidden className="size-4" weight="duotone" />
                 TipRouter indexed
               </span>
               <span className="inline-flex min-h-8 items-center rounded-md border border-ink/10 bg-white px-2.5 text-xs font-black uppercase text-ink/45">
@@ -50,7 +64,7 @@ export function Leaderboard({ data }: LeaderboardProps) {
             </p>
           </div>
           <div className="flex items-center gap-3 rounded-lg border border-ink/10 bg-white px-4 py-3 shadow-sm">
-            <Clock3 aria-hidden className="size-4 text-blueprint" />
+            <Clock3 aria-hidden className="size-4 text-blueprint" weight="duotone" />
             <div>
               <p className="text-xs font-black uppercase text-ink/40">
                 Latest tip
@@ -100,12 +114,12 @@ export function Leaderboard({ data }: LeaderboardProps) {
                   USDC support table
                 </h2>
               </div>
-              <Trophy aria-hidden className="size-6 text-amber" />
+              <Trophy aria-hidden className="size-7 text-amber" weight="duotone" />
             </div>
 
             <div className="divide-y divide-ink/10">
               {data.topProjects.length > 0 ? (
-                data.topProjects.map((row, index) => (
+                visibleProjects.map((row, index) => (
                   <ProjectRankRow index={index} key={row.project.id} row={row} />
                 ))
               ) : (
@@ -114,6 +128,29 @@ export function Leaderboard({ data }: LeaderboardProps) {
                 </div>
               )}
             </div>
+
+            {remainingProjectCount > 0 ? (
+              <div className="flex flex-col gap-3 border-t border-ink/10 bg-paper/60 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+                <p className="text-xs font-black uppercase text-ink/40">
+                  Showing {visibleProjects.length} of {data.topProjects.length}
+                </p>
+                <button
+                  className="inline-flex min-h-10 items-center justify-center gap-2 rounded-md border border-ink/15 bg-white px-4 text-sm font-black text-ink shadow-sm transition hover:border-blueprint/40 hover:text-blueprint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blueprint focus-visible:ring-offset-2"
+                  onClick={() =>
+                    setVisibleProjectCount((current) =>
+                      Math.min(
+                        current + PROJECT_PAGE_SIZE,
+                        data.topProjects.length,
+                      ),
+                    )
+                  }
+                  type="button"
+                >
+                  Load {Math.min(PROJECT_PAGE_SIZE, remainingProjectCount)} more
+                  <CaretDown aria-hidden className="size-4" weight="bold" />
+                </button>
+              </div>
+            ) : null}
           </section>
 
           <aside className="grid content-start gap-4">
@@ -177,7 +214,7 @@ function TopTippersPanel({ tippers }: { tippers: TipperLeaderboardRow[] }) {
           </p>
           <h2 className="mt-1 text-xl font-black text-ink">Wallet support</h2>
         </div>
-        <Wallet aria-hidden className="size-5 text-forest" />
+        <Wallet aria-hidden className="size-5 text-forest" weight="duotone" />
       </div>
       <div className="grid gap-2">
         {tippers.length > 0 ? (
@@ -237,7 +274,7 @@ function RecentProjectsPanel({
           </p>
           <h2 className="mt-1 text-xl font-black text-ink">Latest projects</h2>
         </div>
-        <Activity aria-hidden className="size-5 text-blueprint" />
+        <Activity aria-hidden className="size-5 text-blueprint" weight="duotone" />
       </div>
       <div className="grid gap-2">
         {projects.length > 0 ? (
@@ -290,7 +327,7 @@ function MetricTile({
   return (
     <div className="rounded-lg border border-ink/10 bg-white p-4 shadow-sm">
       <div className="mb-4 flex items-center justify-between gap-3">
-        <Icon aria-hidden className="size-5 text-blueprint" />
+        <Icon aria-hidden className="size-6 text-blueprint" weight="duotone" />
         <span className="text-xs font-black uppercase text-ink/40">
           {label}
         </span>

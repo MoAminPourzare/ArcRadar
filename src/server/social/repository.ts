@@ -161,9 +161,8 @@ function getSocialLinkWeight(project: Project) {
 
   return (
     (labels.has("Website") ? 3 : 0) +
-    (labels.has("Project X") ? 3 : 0) +
-    (labels.has("Builder X") ? 2 : 0) +
-    (labels.has("Discord") ? 2 : 0) +
+    (labels.has("Project X") ? 4 : 0) +
+    (labels.has("Builder X") ? 3 : 0) +
     (labels.has("GitHub") ? 5 : 0)
   );
 }

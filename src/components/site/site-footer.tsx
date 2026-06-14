@@ -1,5 +1,6 @@
-import { ArrowUpRight, Radar } from "lucide-react";
+import { ArrowUpRightIcon as ArrowUpRight } from "@phosphor-icons/react/ssr";
 
+import { BrandMark } from "@/components/site/brand-mark";
 import { siteConfig } from "@/config/site";
 
 export function SiteFooter() {
@@ -7,9 +8,7 @@ export function SiteFooter() {
     <footer className="border-t border-ink/10 bg-paper">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
         <div className="flex items-center gap-3">
-          <span className="grid size-9 place-items-center rounded-lg bg-ink text-paper">
-            <Radar aria-hidden className="size-5" />
-          </span>
+          <BrandMark className="size-10" sizes="40px" />
           <div>
             <p className="font-black text-ink">{siteConfig.name}</p>
             <p className="text-sm font-semibold text-ink/50">
@@ -25,7 +24,7 @@ export function SiteFooter() {
             target="_blank"
           >
             Arc docs
-            <ArrowUpRight aria-hidden className="size-3.5" />
+            <ArrowUpRight aria-hidden className="size-3.5" weight="bold" />
           </a>
           <a
             className="inline-flex items-center gap-1.5 transition hover:text-ink"
@@ -34,7 +33,7 @@ export function SiteFooter() {
             target="_blank"
           >
             Explorer
-            <ArrowUpRight aria-hidden className="size-3.5" />
+            <ArrowUpRight aria-hidden className="size-3.5" weight="bold" />
           </a>
         </div>
       </div>

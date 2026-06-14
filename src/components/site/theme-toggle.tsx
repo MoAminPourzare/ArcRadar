@@ -1,6 +1,6 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
+import { MoonStarsIcon as Moon, SunHorizonIcon as Sun } from "@phosphor-icons/react";
 
 export function ThemeToggle() {
   function toggleTheme() {
@@ -21,8 +21,8 @@ export function ThemeToggle() {
       title="Toggle color theme"
       type="button"
     >
-      <Moon aria-hidden className="size-4 dark:hidden" />
-      <Sun aria-hidden className="hidden size-4 dark:block" />
+      <Moon aria-hidden className="size-5 dark:hidden" weight="duotone" />
+      <Sun aria-hidden className="hidden size-5 dark:block" weight="duotone" />
     </button>
   );
 }

@@ -1,6 +1,11 @@
 "use client";
 
-import { ChevronDown, LogOut, PlugZap, Wallet } from "lucide-react";
+import {
+  CaretDownIcon as ChevronDown,
+  PlugsConnectedIcon as PlugZap,
+  SignOutIcon as LogOut,
+  WalletIcon as Wallet,
+} from "@phosphor-icons/react";
 import {
   useAccount,
   useConnect,
@@ -50,7 +55,7 @@ export function ConnectWalletButton({ className }: ConnectWalletButtonProps) {
           preferredConnector && connect({ connector: preferredConnector })
         }
       >
-        <PlugZap aria-hidden className="size-4" />
+        <PlugZap aria-hidden className="size-4" weight="duotone" />
         {isPending ? "Connecting" : "Connect wallet"}
       </button>
     );
@@ -64,7 +69,7 @@ export function ConnectWalletButton({ className }: ConnectWalletButtonProps) {
         type="button"
         onClick={() => switchChain({ chainId: arcTestnet.id })}
       >
-        <Wallet aria-hidden className="size-4" />
+        <Wallet aria-hidden className="size-4" weight="duotone" />
         {isSwitching ? "Switching" : "Switch / add Arc"}
       </button>
     );
@@ -93,9 +98,13 @@ export function ConnectWalletButton({ className }: ConnectWalletButtonProps) {
         type="button"
         onClick={() => disconnect()}
       >
-        <LogOut aria-hidden className="size-4" />
+        <LogOut aria-hidden className="size-4" weight="bold" />
       </button>
-      <ChevronDown aria-hidden className="hidden size-4 text-ink/35 sm:block" />
+      <ChevronDown
+        aria-hidden
+        className="hidden size-4 text-ink/35 sm:block"
+        weight="bold"
+      />
     </div>
   );
 }

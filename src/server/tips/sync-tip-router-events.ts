@@ -302,7 +302,7 @@ async function cacheTipEvents(
       project.slug,
       {
         id: project.id,
-        projectWallet: project.projectWallet.toLowerCase(),
+        projectWallet: project.projectWallet?.toLowerCase() ?? null,
       },
     ]),
   );

@@ -44,6 +44,9 @@ yarn-error.log*
 # local reference applications and their secrets
 /arc-commerce/
 
+# generated project website audit output
+/.tmp/
+
 # vercel
 .vercel
 

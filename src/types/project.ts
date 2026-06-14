@@ -1,13 +1,21 @@
 export type ProjectCategory =
   | "AI Agents"
+  | "Blockchain"
+  | "Dashboards"
+  | "DEX"
   | "Payments"
   | "DeFi"
+  | "Faucets"
+  | "Games"
   | "Infrastructure"
+  | "NFTs"
+  | "Other"
+  | "Security"
   | "Wallets"
   | "Developer Tools";
 
 export type ProjectLink = {
-  label: "Website" | "Project X" | "Builder X" | "Discord" | "GitHub";
+  label: "Website" | "Project X" | "Builder X" | "GitHub";
   href: string;
 };
 
@@ -87,7 +95,7 @@ export type Project = {
   category: ProjectCategory;
   builder: string;
   logoUrl?: string | null;
-  walletAddress: `0x${string}`;
+  walletAddress: `0x${string}` | null;
   links: ProjectLink[];
   tags: string[];
   featured?: boolean;

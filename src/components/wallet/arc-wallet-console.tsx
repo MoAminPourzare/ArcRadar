@@ -1,23 +1,23 @@
 "use client";
 
 import {
-  AlertTriangle,
-  ArrowUpRight,
-  BadgeDollarSign,
-  CheckCircle2,
-  ClipboardCheck,
-  Copy,
-  ExternalLink,
-  Fuel,
-  LinkIcon,
-  LogOut,
-  PlugZap,
-  RefreshCw,
-  ShieldCheck,
-  Wallet,
-  XCircle,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+  ArrowSquareOutIcon as ExternalLink,
+  ArrowUpRightIcon as ArrowUpRight,
+  ArrowsClockwiseIcon as RefreshCw,
+  CheckCircleIcon as CheckCircle2,
+  CopySimpleIcon as Copy,
+  CurrencyCircleDollarIcon as BadgeDollarSign,
+  GasPumpIcon as Fuel,
+  LinkSimpleIcon as LinkIcon,
+  ListChecksIcon as ClipboardCheck,
+  PlugsConnectedIcon as PlugZap,
+  ShieldCheckIcon as ShieldCheck,
+  SignOutIcon as LogOut,
+  WalletIcon as Wallet,
+  WarningIcon as AlertTriangle,
+  XCircleIcon as XCircle,
+} from "@phosphor-icons/react";
+import type { Icon as PhosphorIcon } from "@phosphor-icons/react";
 import { useMemo, useState } from "react";
 import {
   useAccount,
@@ -281,7 +281,7 @@ export function ArcWalletConsole() {
               type="button"
               onClick={() => switchChain({ chainId: arcTestnet.id })}
             >
-              <Wallet aria-hidden className="size-4" />
+              <Wallet aria-hidden className="size-4" weight="duotone" />
               {isSwitching
                 ? "Switching"
                 : isOnArc
@@ -294,7 +294,7 @@ export function ArcWalletConsole() {
               onClick={openFaucet}
             >
               Get Arc Testnet USDC
-              <ArrowUpRight aria-hidden className="size-4" />
+              <ArrowUpRight aria-hidden className="size-4" weight="bold" />
             </button>
             <button
               className="btn-ghost min-h-11"
@@ -305,6 +305,7 @@ export function ArcWalletConsole() {
               <RefreshCw
                 aria-hidden
                 className={cn("size-4", isRefreshing && "animate-spin")}
+                weight="bold"
               />
               {isRefreshing ? "Refreshing" : "Refresh balance"}
             </button>
@@ -313,7 +314,7 @@ export function ArcWalletConsole() {
               type="button"
               onClick={copyNetworkConfig}
             >
-              <Copy aria-hidden className="size-4" />
+              <Copy aria-hidden className="size-4" weight="duotone" />
               {copiedTarget === "network" ? "Copied" : "Copy network"}
             </button>
           </div>
@@ -338,7 +339,7 @@ export function ArcWalletConsole() {
                 </span>
                 <span className="mt-1 block">Arc network docs</span>
               </span>
-              <ExternalLink aria-hidden className="size-4" />
+              <ExternalLink aria-hidden className="size-4" weight="bold" />
             </a>
           </div>
         </div>
@@ -364,7 +365,11 @@ function WalletErrorPanel({ message }: { message: null | string }) {
 
   return (
     <div className="mt-5 flex items-start gap-3 rounded-lg border border-coral/30 bg-coral/10 p-4">
-      <AlertTriangle aria-hidden className="mt-0.5 size-5 shrink-0 text-coral" />
+      <AlertTriangle
+        aria-hidden
+        className="mt-0.5 size-5 shrink-0 text-coral"
+        weight="duotone"
+      />
       <div>
         <p className="font-black text-ink">Wallet action needs attention</p>
         <p className="mt-1 break-words text-sm font-semibold leading-6 text-ink/60">
@@ -400,7 +405,7 @@ function ConnectorGrid({
               Connect wallet
             </span>
           </span>
-          <PlugZap aria-hidden className="size-4 shrink-0" />
+          <PlugZap aria-hidden className="size-4 shrink-0" weight="duotone" />
         </button>
       ))}
     </div>
@@ -450,7 +455,7 @@ function WalletIdentity({
           type="button"
           onClick={onCopy}
         >
-          <Copy aria-hidden className="size-3.5" />
+          <Copy aria-hidden className="size-3.5" weight="duotone" />
           {copied ? "Copied" : "Copy"}
         </button>
         <a
@@ -460,14 +465,14 @@ function WalletIdentity({
           target="_blank"
         >
           Explorer
-          <ArrowUpRight aria-hidden className="size-3.5" />
+          <ArrowUpRight aria-hidden className="size-3.5" weight="bold" />
         </a>
         <button
           className="inline-flex min-h-9 items-center gap-1.5 rounded-lg border border-ink/10 bg-white px-3 text-xs font-black uppercase text-ink/55 transition hover:border-coral hover:text-coral"
           type="button"
           onClick={onDisconnect}
         >
-          <LogOut aria-hidden className="size-3.5" />
+          <LogOut aria-hidden className="size-3.5" weight="bold" />
           Disconnect
         </button>
       </div>
@@ -499,6 +504,7 @@ function FaucetReturnPanel({
           "mt-0.5 size-5 shrink-0",
           hasAnyBalance ? "text-forest" : "text-blueprint",
         )}
+        weight="duotone"
       />
       <div>
         <p className="font-black text-ink">
@@ -532,7 +538,7 @@ function NetworkReference({
     <div className="rounded-lg border border-ink/10 bg-ink p-4 text-paper shadow-sm">
       <div className="mb-3 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2 text-mint">
-          <LinkIcon aria-hidden className="size-4" />
+          <LinkIcon aria-hidden className="size-4" weight="duotone" />
           <span className="text-xs font-black uppercase">Arc setup</span>
         </div>
         <button
@@ -540,7 +546,7 @@ function NetworkReference({
           type="button"
           onClick={onCopy}
         >
-          <Copy aria-hidden className="size-3.5" />
+          <Copy aria-hidden className="size-3.5" weight="duotone" />
           {copied ? "Copied" : "Copy"}
         </button>
       </div>
@@ -567,9 +573,14 @@ function ReadinessCard({ item }: { item: ReadinessItem }) {
         <CheckCircle2
           aria-hidden
           className="mt-0.5 size-5 shrink-0 text-forest"
+          weight="fill"
         />
       ) : (
-        <XCircle aria-hidden className="mt-0.5 size-5 shrink-0 text-ink/25" />
+        <XCircle
+          aria-hidden
+          className="mt-0.5 size-5 shrink-0 text-ink/25"
+          weight="duotone"
+        />
       )}
       <div>
         <p className="font-black text-ink">{item.label}</p>
@@ -591,7 +602,7 @@ function BalancePanel({
   return (
     <div className="rounded-lg border border-ink/10 bg-paper p-4">
       <div className="mb-4 flex items-center justify-between gap-3">
-        <Icon aria-hidden className="size-5 text-blueprint" />
+        <Icon aria-hidden className="size-6 text-blueprint" weight="duotone" />
         <span className="text-right text-xs font-black uppercase text-ink/40">
           {label}
         </span>
@@ -608,7 +619,7 @@ function UnifiedBalancePanel({ hasBalance }: { hasBalance: boolean }) {
   return (
     <div className="rounded-lg border border-ink/10 bg-paper p-4">
       <div className="mb-4 flex items-center justify-between gap-3">
-        <Fuel aria-hidden className="size-5 text-blueprint" />
+        <Fuel aria-hidden className="size-6 text-blueprint" weight="duotone" />
         <span className="text-right text-xs font-black uppercase text-ink/40">
           Gas and transfers
         </span>
@@ -630,7 +641,7 @@ function StatusBadge({
   tone,
   value,
 }: {
-  icon: LucideIcon;
+  icon: PhosphorIcon;
   label: string;
   tone: "good" | "neutral" | "warn";
   value: string;
@@ -644,7 +655,7 @@ function StatusBadge({
         tone === "warn" && "border-amber/40 bg-amber/15 text-ink",
       )}
     >
-      <Icon aria-hidden className="size-4" />
+      <Icon aria-hidden className="size-4" weight="duotone" />
       <span>{label}</span>
       <span className="rounded-md bg-white/70 px-2 py-1 text-xs text-ink/55">
         {value}
@@ -654,7 +665,7 @@ function StatusBadge({
 }
 
 type BalancePanelProps = {
-  icon: LucideIcon;
+  icon: PhosphorIcon;
   isLoading: boolean;
   label: string;
   supporting: string;

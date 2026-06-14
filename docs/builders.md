@@ -15,7 +15,7 @@ internally so the signal board stays useful.
 
 ## Tip Safety
 
-- ArcRadar treats `projectId` as the project slug, for example `arc-escrow`.
+- ArcRadar treats `projectId` as the curated project slug, for example `your-project-slug`.
 - TipRouter events only count when the slug is already curated by ArcRadar and
   the event recipient matches the listed project wallet.
 - ERC-20 USDC tips use 6 decimals. Native Arc gas uses USDC with 18 decimals.

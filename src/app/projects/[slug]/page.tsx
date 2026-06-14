@@ -5,8 +5,8 @@ import { ProjectProfilePage } from "@/components/projects/project-profile-page";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { siteConfig } from "@/config/site";
-import { projects as seedProjects } from "@/data/projects";
 import {
+  getProjectBySlug,
   getProjects,
   getProjectTipData,
   getRelatedProjectsFromList,
@@ -25,7 +25,7 @@ export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const project = seedProjects.find((candidate) => candidate.slug === slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     return {

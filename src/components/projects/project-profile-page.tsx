@@ -1,13 +1,13 @@
 import {
-  ArrowLeft,
-  BadgeDollarSign,
-  ExternalLink,
-  Gauge,
-  Info,
-  Layers3,
-  ShieldCheck,
-  Trophy,
-} from "lucide-react";
+  ArrowLeftIcon as ArrowLeft,
+  ArrowSquareOutIcon as ExternalLink,
+  CurrencyCircleDollarIcon as BadgeDollarSign,
+  GaugeIcon as Gauge,
+  InfoIcon as Info,
+  ShieldCheckIcon as ShieldCheck,
+  StackIcon as Layers3,
+  TrophyIcon as Trophy,
+} from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 
 import { ProjectCard } from "@/components/projects/project-card";
@@ -32,9 +32,6 @@ const officialLinkMeta: Record<
   "Builder X": {
     description: "Builder profile",
   },
-  Discord: {
-    description: "Community server",
-  },
   GitHub: {
     description: "Project source",
   },
@@ -55,7 +52,7 @@ const signalPillars = {
   },
   social: {
     description:
-      "Official public links available for the project: website, project or builder X, Discord, and GitHub.",
+      "Official public links available for the project: website, project or builder X, and GitHub.",
     label: "Social",
     max: 15,
   },
@@ -162,11 +159,13 @@ export function ProjectProfilePage({
                   value={formatUsdc(tipData.totalUsdc)}
                 />
               </div>
-              <ProjectTipPanel
-                projectName={project.name}
-                projectSlug={project.slug}
-                projectWallet={project.walletAddress}
-              />
+              {project.walletAddress ? (
+                <ProjectTipPanel
+                  projectName={project.name}
+                  projectSlug={project.slug}
+                  projectWallet={project.walletAddress}
+                />
+              ) : null}
             </aside>
           </div>
         </div>
@@ -229,7 +228,7 @@ export function ProjectProfilePage({
         <aside className="grid content-start gap-4">
           <section className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm">
             <div className="mb-4 flex items-center justify-between">
-              <Trophy aria-hidden className="size-5 text-amber" />
+              <Trophy aria-hidden className="size-6 text-amber" weight="duotone" />
               <span className="text-xs font-black uppercase text-ink/40">
                 Tipper board
               </span>
@@ -328,7 +327,7 @@ function MetricPanel({
   return (
     <div className="rounded-lg border border-ink/10 bg-white p-4 shadow-sm">
       <div className="flex items-center justify-between gap-2">
-        <Icon aria-hidden className="size-4 text-blueprint" />
+        <Icon aria-hidden className="size-5 text-blueprint" weight="duotone" />
         <span className="text-[10px] font-black uppercase text-ink/40">
           {label}
         </span>
@@ -397,7 +396,7 @@ function NarrativeCard({
   return (
     <div className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm">
       <div className="mb-4 flex items-center justify-between">
-        <Icon aria-hidden className="size-5 text-blueprint" />
+        <Icon aria-hidden className="size-6 text-blueprint" weight="duotone" />
         <span className="text-xs font-black uppercase text-ink/40">
           {label}
         </span>

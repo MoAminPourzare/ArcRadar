@@ -48,7 +48,6 @@ export function ProjectLogo({
       )}
     >
       {showImage ? (
-        // Project logos may come from curated external URLs entered by admins.
         // eslint-disable-next-line @next/next/no-img-element
         <img
           alt={`${name} logo`}

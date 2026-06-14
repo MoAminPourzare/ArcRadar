@@ -1,6 +1,11 @@
 "use client";
 
-import { CheckCircle2, ClipboardCheck, Send, ShieldCheck } from "lucide-react";
+import {
+  CheckCircleIcon as CheckCircle2,
+  ListChecksIcon as ClipboardCheck,
+  PaperPlaneTiltIcon as Send,
+  ShieldCheckIcon as ShieldCheck,
+} from "@phosphor-icons/react";
 import { type FormEvent, useMemo, useState, useTransition } from "react";
 import type { z } from "zod";
 
@@ -24,7 +29,6 @@ const initialValues: ProjectSubmissionInput = {
   category: "AI Agents",
   contact: "",
   description: "",
-  discordUrl: "",
   githubUrl: "",
   logoUrl: "",
   name: "",
@@ -60,13 +64,8 @@ export function SubmitProjectForm() {
           values.websiteUrl ||
             values.projectXUrl ||
             values.builderXUrl ||
-            values.githubUrl ||
-            values.discordUrl,
+            values.githubUrl,
         ),
-      },
-      {
-        label: "Tip wallet ready",
-        done: /^0x[a-fA-F0-9]{40}$/.test(values.projectWallet ?? ""),
       },
     ],
     [values],
@@ -232,7 +231,7 @@ export function SubmitProjectForm() {
         <div className="grid gap-4 md:grid-cols-2">
           <TextField
             error={errors.projectWallet}
-            label="Arc tip wallet"
+            label="Arc tip wallet (optional)"
             value={values.projectWallet ?? ""}
             onChange={(value) => updateField("projectWallet", value)}
           />
@@ -264,12 +263,6 @@ export function SubmitProjectForm() {
             onChange={(value) => updateField("builderXUrl", value)}
           />
           <TextField
-            error={errors.discordUrl}
-            label="Discord"
-            value={values.discordUrl ?? ""}
-            onChange={(value) => updateField("discordUrl", value)}
-          />
-          <TextField
             error={errors.githubUrl}
             label="GitHub"
             value={values.githubUrl ?? ""}
@@ -283,14 +276,18 @@ export function SubmitProjectForm() {
           type="submit"
         >
           {isPending ? "Saving" : "Save internal candidate"}
-          <Send aria-hidden className="size-4" />
+          <Send aria-hidden className="size-4" weight="bold" />
         </button>
       </form>
 
       <aside className="grid content-start gap-4">
         <section className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm">
           <div className="mb-4 flex items-center justify-between">
-            <ClipboardCheck aria-hidden className="size-5 text-blueprint" />
+            <ClipboardCheck
+              aria-hidden
+              className="size-6 text-blueprint"
+              weight="duotone"
+            />
             <span className="text-xs font-black uppercase text-ink/40">
               Review readiness
             </span>
@@ -315,7 +312,11 @@ export function SubmitProjectForm() {
 
         <section className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm">
           <div className="mb-4 flex items-center justify-between">
-            <ShieldCheck aria-hidden className="size-5 text-forest" />
+            <ShieldCheck
+              aria-hidden
+              className="size-6 text-forest"
+              weight="duotone"
+            />
             <span className="text-xs font-black uppercase text-ink/40">
               Curation rules
             </span>

@@ -1,14 +1,14 @@
 "use client";
 
 import {
-  AlertTriangle,
-  ArrowUpRight,
-  CheckCircle2,
-  CircleDollarSign,
-  LoaderCircle,
-  ShieldCheck,
-  Wallet,
-} from "lucide-react";
+  ArrowUpRightIcon as ArrowUpRight,
+  CheckCircleIcon as CheckCircle2,
+  CurrencyCircleDollarIcon as CircleDollarSign,
+  ShieldCheckIcon as ShieldCheck,
+  SpinnerGapIcon as LoaderCircle,
+  WalletIcon as Wallet,
+  WarningIcon as AlertTriangle,
+} from "@phosphor-icons/react";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import { BaseError, formatUnits, parseUnits, zeroAddress } from "viem";
@@ -252,7 +252,7 @@ export function ProjectTipPanel({
           </h2>
         </div>
         <span className="grid size-9 place-items-center rounded-lg bg-blueprint/10 text-blueprint">
-          <CircleDollarSign aria-hidden className="size-5" />
+          <CircleDollarSign aria-hidden className="size-6" weight="duotone" />
         </span>
       </div>
 
@@ -332,6 +332,7 @@ export function ProjectTipPanel({
           <AlertTriangle
             aria-hidden
             className="mt-0.5 size-4 shrink-0 text-coral"
+            weight="duotone"
           />
           {error}
         </div>
@@ -340,7 +341,7 @@ export function ProjectTipPanel({
       {stage === "success" && tipHash ? (
         <div className="mt-3 rounded-lg border border-mint/40 bg-mint/15 p-3">
           <p className="flex items-center gap-2 text-sm font-black text-forest">
-            <CheckCircle2 aria-hidden className="size-4" />
+            <CheckCircle2 aria-hidden className="size-4" weight="fill" />
             Tip confirmed and indexed
           </p>
           <a
@@ -350,7 +351,7 @@ export function ProjectTipPanel({
             target="_blank"
           >
             View transaction
-            <ArrowUpRight aria-hidden className="size-3" />
+            <ArrowUpRight aria-hidden className="size-3" weight="bold" />
           </a>
         </div>
       ) : null}
@@ -362,11 +363,11 @@ export function ProjectTipPanel({
         onClick={handleTip}
       >
         {isBusy || isConnecting || isSwitching ? (
-          <LoaderCircle aria-hidden className="size-4 animate-spin" />
+          <LoaderCircle aria-hidden className="size-4 animate-spin" weight="bold" />
         ) : isConnected ? (
-          <ShieldCheck aria-hidden className="size-4" />
+          <ShieldCheck aria-hidden className="size-4" weight="duotone" />
         ) : (
-          <Wallet aria-hidden className="size-4" />
+          <Wallet aria-hidden className="size-4" weight="duotone" />
         )}
         {actionLabel}
       </button>

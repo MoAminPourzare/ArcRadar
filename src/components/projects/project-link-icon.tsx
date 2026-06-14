@@ -1,4 +1,4 @@
-import { Globe2 } from "lucide-react";
+import { GlobeHemisphereWestIcon as Globe2 } from "@phosphor-icons/react/ssr";
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
@@ -11,19 +11,6 @@ export function ProjectLinkIcon({
   className?: string;
   label: ProjectLink["label"];
 }) {
-  if (label === "Discord") {
-    return (
-      <span
-        className={cn(
-          "grid size-9 shrink-0 place-items-center rounded-md bg-[#5865F2] shadow-sm",
-          className,
-        )}
-      >
-        <Image alt="" aria-hidden height={16} src="/brands/discord.svg" width={22} />
-      </span>
-    );
-  }
-
   if (label === "GitHub") {
     return (
       <span
@@ -57,7 +44,7 @@ export function ProjectLinkIcon({
         className,
       )}
     >
-      <Globe2 aria-hidden className="size-4" />
+      <Globe2 aria-hidden className="size-5" weight="duotone" />
     </span>
   );
 }

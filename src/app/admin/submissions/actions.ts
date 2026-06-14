@@ -17,10 +17,18 @@ const moderationActionSchema = z.object({
 
 const accentByCategory = {
   "AI Agents": "mint",
+  Blockchain: "blueprint",
+  Dashboards: "cyan",
   DeFi: "amber",
+  DEX: "amber",
   "Developer Tools": "mint",
+  Faucets: "cyan",
+  Games: "coral",
   Infrastructure: "coral",
+  NFTs: "coral",
+  Other: "blueprint",
   Payments: "cyan",
+  Security: "mint",
   Wallets: "blueprint",
 } as const;
 
@@ -146,24 +154,6 @@ export async function publishSubmission(formData: FormData) {
       };
     }
 
-    if (!submission.projectWallet) {
-      await tx
-        .update(projectSubmissions)
-        .set({
-          reviewNotes: mergeReviewNotes(
-            submission.reviewNotes,
-            "Publish blocked: Arc tip wallet is required.",
-          ),
-          reviewedAt: new Date(),
-        })
-        .where(eq(projectSubmissions.id, input.id));
-
-      return {
-        publishedSlug: null,
-        systemNote: null,
-      };
-    }
-
     const slug = slugifyProjectName(submission.slug || submission.name);
     const [existingProject] = await tx
       .select({
@@ -255,7 +245,7 @@ function buildProjectValues({
 }: {
   nextRank: number;
   now: Date;
-  projectWallet: string;
+  projectWallet: string | null;
   slug: string;
   submission: typeof projectSubmissions.$inferSelect;
 }) {
@@ -268,9 +258,6 @@ function buildProjectValues({
       : null,
     submission.builderXUrl
       ? { href: submission.builderXUrl, label: "Builder X" }
-      : null,
-    submission.discordUrl
-      ? { href: submission.discordUrl, label: "Discord" }
       : null,
     submission.githubUrl ? { href: submission.githubUrl, label: "GitHub" } : null,
   ].filter((link): link is ProjectLink => Boolean(link));

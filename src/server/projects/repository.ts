@@ -178,7 +178,7 @@ function mapDatabaseProject(
     slug: row.slug,
     tagline: row.tagline,
     tags: row.tags,
-    walletAddress: row.projectWallet as `0x${string}`,
+    walletAddress: row.projectWallet as `0x${string}` | null,
   };
 }
 
@@ -187,7 +187,6 @@ function normalizeProjectLinks(links: ProjectLink[]) {
     "Website",
     "Project X",
     "Builder X",
-    "Discord",
     "GitHub",
   ]);
 

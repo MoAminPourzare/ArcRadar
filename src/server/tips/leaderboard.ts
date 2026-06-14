@@ -72,8 +72,12 @@ function buildLeaderboard(
   );
 
   const topProjects = [...rows]
-    .sort((a, b) => b.totalUsdc - a.totalUsdc || b.tipCount - a.tipCount)
-    .slice(0, 8);
+    .sort(
+      (a, b) =>
+        b.totalUsdc - a.totalUsdc ||
+        b.tipCount - a.tipCount ||
+        a.project.metrics.rank - b.project.metrics.rank,
+    );
   const recentProjects = [...rows]
     .filter((row) => row.lastTippedAt)
     .sort(compareLatestTip)

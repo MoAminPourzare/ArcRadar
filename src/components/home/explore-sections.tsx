@@ -1,11 +1,11 @@
 import {
-  ArrowRight,
-  Bot,
-  ChartNoAxesCombined,
-  FolderSearch2,
-  RadioTower,
-  WalletCards,
-} from "lucide-react";
+  ArrowRightIcon as ArrowRight,
+  CardsIcon as WalletCards,
+  CellTowerIcon as RadioTower,
+  ChartLineUpIcon as ChartNoAxesCombined,
+  FolderOpenIcon as FolderSearch2,
+  RobotIcon as Bot,
+} from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 
 const sections = [
@@ -88,7 +88,7 @@ export function ExploreSections() {
                   <span
                     className={`grid size-11 place-items-center rounded-lg ${section.tone}`}
                   >
-                    <Icon aria-hidden className="size-5" />
+                    <Icon aria-hidden className="size-6" weight="duotone" />
                   </span>
                   <div className="mt-6 flex items-center gap-2">
                     <h3 className="text-xl font-black text-ink">
@@ -117,7 +117,7 @@ export function ExploreSections() {
                 <span
                   className={`grid size-11 place-items-center rounded-lg ${section.tone}`}
                 >
-                  <Icon aria-hidden className="size-5" />
+                  <Icon aria-hidden className="size-6" weight="duotone" />
                 </span>
                 <h3 className="mt-6 text-xl font-black text-ink">
                   {section.label}

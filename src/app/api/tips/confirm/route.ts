@@ -117,6 +117,13 @@ export async function POST(request: NextRequest) {
       return jsonResponse({ error: "The tipped project is not published." }, 404);
     }
 
+    if (!project.projectWallet) {
+      return jsonResponse(
+        { error: "Tipping is not enabled for this project." },
+        422,
+      );
+    }
+
     if (
       project.projectWallet.toLowerCase() !==
       tipEvent.args.recipient.toLowerCase()

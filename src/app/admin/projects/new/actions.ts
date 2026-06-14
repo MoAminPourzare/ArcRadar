@@ -64,7 +64,6 @@ export async function createProjectSubmission(
       category: parsed.data.category,
       contact: parsed.data.contact || null,
       description: parsed.data.description,
-      discordUrl: parsed.data.discordUrl || null,
       githubUrl: parsed.data.githubUrl || null,
       logoUrl: parsed.data.logoUrl || null,
       name: parsed.data.name,

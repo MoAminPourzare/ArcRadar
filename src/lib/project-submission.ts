@@ -4,9 +4,17 @@ import { PROJECT_ID_MAX_LENGTH, PROJECT_ID_PATTERN } from "@/lib/project-id";
 
 export const submissionCategories = [
   "AI Agents",
+  "Blockchain",
+  "Dashboards",
+  "DEX",
   "Payments",
   "DeFi",
+  "Faucets",
+  "Games",
   "Infrastructure",
+  "NFTs",
+  "Other",
+  "Security",
   "Wallets",
   "Developer Tools",
 ] as const;
@@ -49,7 +57,6 @@ export const projectSubmissionSchema = z.object({
   websiteUrl: optionalUrl,
   projectXUrl: optionalUrl,
   builderXUrl: optionalUrl,
-  discordUrl: optionalUrl,
   githubUrl: optionalUrl,
 });
 

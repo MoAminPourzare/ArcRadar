@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import {
-  AlertTriangle,
-  ArrowUpRight,
-  BadgeCheck,
-  CheckCircle2,
-  CircleDot,
-  ExternalLink,
-  Inbox,
-  Rocket,
-  RotateCcw,
-  ShieldCheck,
-  XCircle,
-} from "lucide-react";
+  ArrowCounterClockwiseIcon as RotateCcw,
+  ArrowSquareOutIcon as ExternalLink,
+  ArrowUpRightIcon as ArrowUpRight,
+  CheckCircleIcon as CheckCircle2,
+  CircleIcon as CircleDot,
+  RocketLaunchIcon as Rocket,
+  SealCheckIcon as BadgeCheck,
+  ShieldCheckIcon as ShieldCheck,
+  TrayIcon as Inbox,
+  WarningIcon as AlertTriangle,
+  XCircleIcon as XCircle,
+} from "@phosphor-icons/react/ssr";
 import { desc } from "drizzle-orm";
 import Link from "next/link";
 
@@ -51,7 +51,11 @@ export default async function AdminSubmissionsPage() {
       <main className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="mb-6 rounded-lg border border-amber/40 bg-amber/15 p-4">
           <div className="flex items-start gap-3">
-            <AlertTriangle aria-hidden className="mt-0.5 size-5 text-ink" />
+            <AlertTriangle
+              aria-hidden
+              className="mt-0.5 size-5 text-ink"
+              weight="duotone"
+            />
             <div>
               <p className="font-black text-ink">Internal-only moderation</p>
               <p className="mt-1 text-sm font-semibold leading-6 text-ink/60">
@@ -101,6 +105,7 @@ export default async function AdminSubmissionsPage() {
                   <ShieldCheck
                     aria-hidden
                     className="mx-auto mb-4 size-8 text-forest"
+                    weight="duotone"
                   />
                   <p className="text-xl font-black text-ink">Queue is empty</p>
                   <p className="mt-2 text-sm font-semibold text-ink/55">
@@ -135,7 +140,6 @@ function SubmissionCard({ submission }: { submission: Submission }) {
         submission.websiteUrl ||
           submission.projectXUrl ||
           submission.builderXUrl ||
-          submission.discordUrl ||
           submission.githubUrl,
       ),
       label: "Public proof link",
@@ -173,7 +177,7 @@ function SubmissionCard({ submission }: { submission: Submission }) {
             {isPublished ? (
               <Link className="btn-secondary shrink-0" href={`/projects/${slug}`}>
                 Open profile
-                <ArrowUpRight aria-hidden className="size-4" />
+                <ArrowUpRight aria-hidden className="size-4" weight="bold" />
               </Link>
             ) : null}
           </div>
@@ -214,7 +218,6 @@ function SubmissionCard({ submission }: { submission: Submission }) {
             <SubmissionLink label="Logo" href={submission.logoUrl} />
             <SubmissionLink label="Project X" href={submission.projectXUrl} />
             <SubmissionLink label="Builder X" href={submission.builderXUrl} />
-            <SubmissionLink label="Discord" href={submission.discordUrl} />
             <SubmissionLink label="GitHub" href={submission.githubUrl} />
           </div>
 
@@ -246,6 +249,7 @@ function SubmissionCard({ submission }: { submission: Submission }) {
                     className={`size-5 ${
                       check.done ? "text-forest" : "text-ink/25"
                     }`}
+                    weight={check.done ? "fill" : "duotone"}
                   />
                   <span className="text-sm font-bold text-ink/65">
                     {check.label}
@@ -290,7 +294,7 @@ function ModerationForms({
           <ReviewNotesField label="Approval notes" />
           <button className="btn-secondary mt-3 w-full" type="submit">
             Approve candidate
-            <BadgeCheck aria-hidden className="size-4" />
+            <BadgeCheck aria-hidden className="size-4" weight="duotone" />
           </button>
         </form>
       ) : null}
@@ -304,7 +308,7 @@ function ModerationForms({
           <ReviewNotesField label="Publish notes" />
           <button className="btn-primary mt-3 w-full" type="submit">
             Publish to directory
-            <Rocket aria-hidden className="size-4" />
+            <Rocket aria-hidden className="size-4" weight="duotone" />
           </button>
         </form>
       ) : null}
@@ -318,7 +322,7 @@ function ModerationForms({
           <ReviewNotesField label="Rejection notes" />
           <button className="btn-warning mt-3 w-full" type="submit">
             Reject candidate
-            <XCircle aria-hidden className="size-4" />
+            <XCircle aria-hidden className="size-4" weight="duotone" />
           </button>
         </form>
       ) : null}
@@ -328,7 +332,7 @@ function ModerationForms({
           <input name="id" type="hidden" value={submission.id} />
           <button className="btn-ghost w-full" type="submit">
             Return to pending
-            <RotateCcw aria-hidden className="size-4" />
+            <RotateCcw aria-hidden className="size-4" weight="bold" />
           </button>
         </form>
       ) : null}
@@ -361,7 +365,7 @@ function QueueStat({
   return (
     <div className="rounded-lg border border-ink/10 bg-white p-4 shadow-sm">
       <div className="mb-4 flex items-center justify-between gap-3">
-        <Icon aria-hidden className="size-5 text-blueprint" />
+        <Icon aria-hidden className="size-6 text-blueprint" weight="duotone" />
         <span className="text-xs font-black uppercase text-ink/40">
           {label}
         </span>

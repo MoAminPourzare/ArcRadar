@@ -1,4 +1,9 @@
-import { Activity, ArrowUpRight, Radio, ScanLine } from "lucide-react";
+import {
+  ArrowUpRightIcon as ArrowUpRight,
+  BroadcastIcon as Radio,
+  PulseIcon as Activity,
+  ScanIcon as ScanLine,
+} from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 
 import { ProjectLogo } from "@/components/projects/project-logo";
@@ -20,7 +25,7 @@ export function SignalRadar({ signals }: { signals: ProjectSocialSignal[] }) {
     <div className="overflow-hidden rounded-lg border border-[#f5f2ea]/10 bg-[#111312] text-[#f5f2ea] shadow-sm">
       <div className="flex items-center justify-between border-b border-[#f5f2ea]/10 bg-[#111312]/90 px-4 py-3 backdrop-blur">
         <span className="inline-flex items-center gap-2 text-xs font-black uppercase text-mint">
-          <Radio aria-hidden className="size-4" />
+          <Radio aria-hidden className="size-4" weight="duotone" />
           Live signal map
         </span>
         <span className="font-mono text-xs font-black text-[#f5f2ea]/55">
@@ -61,12 +66,17 @@ export function SignalRadar({ signals }: { signals: ProjectSocialSignal[] }) {
           {featuredSignals.map((signal, index) => {
             const position = getRadarPosition(index, featuredSignals.length);
 
-            const opensLeft = position.x > 58;
+            const tooltipAlignment =
+              position.x < 24
+                ? "left-0"
+                : position.x > 76
+                  ? "right-0"
+                  : "left-1/2 -translate-x-1/2";
 
             return (
               <Link
                 aria-label={`${signal.project.name}, signal score ${signal.score.total}`}
-                className="group absolute z-10 size-9 -translate-x-1/2 -translate-y-1/2 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint"
+                className="group absolute z-10 size-9 -translate-x-1/2 -translate-y-1/2 rounded-full focus-visible:z-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint hover:z-30"
                 href={`/projects/${signal.project.slug}`}
                 key={signal.project.id}
                 style={{ left: `${position.x}%`, top: `${position.y}%` }}
@@ -85,8 +95,8 @@ export function SignalRadar({ signals }: { signals: ProjectSocialSignal[] }) {
                 </span>
                 <span
                   className={cn(
-                    "absolute top-1/2 hidden min-w-0 -translate-y-1/2 items-center gap-1 rounded-md border border-[#f5f2ea]/10 bg-[#111312]/95 px-2.5 py-1.5 shadow-lg backdrop-blur sm:flex",
-                    opensLeft ? "right-12 flex-row-reverse" : "left-12",
+                    "pointer-events-none absolute top-[calc(100%+10px)] flex w-max max-w-40 translate-y-1 items-center gap-1 rounded-md border border-[#f5f2ea]/15 bg-[#111312]/95 px-2.5 py-1.5 opacity-0 shadow-xl backdrop-blur transition duration-150 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100",
+                    tooltipAlignment,
                   )}
                 >
                   <span className="max-w-32 truncate whitespace-nowrap text-[11px] font-black text-[#f5f2ea] lg:max-w-36">
@@ -116,7 +126,7 @@ export function SignalRadar({ signals }: { signals: ProjectSocialSignal[] }) {
       <div className="grid gap-3 border-t border-[#f5f2ea]/10 p-3 sm:grid-cols-[1fr_auto] sm:items-stretch sm:p-4">
         <div className="rounded-lg border border-[#f5f2ea]/10 bg-[#f5f2ea]/[0.06] p-3 sm:p-4">
           <div className="mb-2 flex items-center gap-2 text-mint">
-            <Activity aria-hidden className="size-4" />
+            <Activity aria-hidden className="size-4" weight="duotone" />
             <span className="text-xs font-black uppercase">Top signal</span>
           </div>
           <div className="flex items-center gap-3">
@@ -139,7 +149,7 @@ export function SignalRadar({ signals }: { signals: ProjectSocialSignal[] }) {
 
         <div className="min-w-32 rounded-lg border border-[#f5f2ea]/10 bg-[#f5f2ea] p-3 text-[#111312] sm:p-4">
           <span className="flex items-center gap-2 text-xs font-black uppercase text-[#111312]/45">
-            <ScanLine aria-hidden className="size-4" />
+            <ScanLine aria-hidden className="size-4" weight="duotone" />
             Signal score
           </span>
           <p className="mt-2 font-mono text-4xl font-black">
