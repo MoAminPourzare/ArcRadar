@@ -1,0 +1,30 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "arcradar",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2026-06-14",
+	"compatibility_flags": [
+		"nodejs_compat",
+		"global_fetch_strictly_public"
+	],
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"vars": {
+		"NEXT_PUBLIC_APP_URL": "https://arcradar.goldenphoenix021021.workers.dev",
+		"ARC_TESTNET_RPC_URL": "https://rpc.testnet.arc.network",
+		"TIP_ROUTER_ADDRESS": "0x0028d7dFa53a5834350c096bb183b3235068a82E",
+		"NEXT_PUBLIC_TIP_ROUTER_ADDRESS": "0x0028d7dFa53a5834350c096bb183b3235068a82E",
+		"ADMIN_USERNAME": "admin"
+	},
+	"hyperdrive": [
+		{
+			"binding": "HYPERDRIVE",
+			"id": "b102df4e06a649d9a63751bbff9d14a9"
+		}
+	]
+}

@@ -24,7 +24,7 @@ import {
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { slugifyProjectName } from "@/lib/slug";
-import { db } from "@/server/db/client";
+import { getDb } from "@/server/db/client";
 import { projectSubmissions } from "@/server/db/schema";
 
 export const dynamic = "force-dynamic";
@@ -37,6 +37,7 @@ export const metadata: Metadata = {
 type Submission = typeof projectSubmissions.$inferSelect;
 
 export default async function AdminSubmissionsPage() {
+  const db = getDb();
   const submissions = db
     ? await db
         .select()

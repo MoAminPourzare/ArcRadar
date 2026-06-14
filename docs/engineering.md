@@ -34,3 +34,15 @@
 - Public image upload remains disabled until managed storage, MIME validation,
   size limits, and safe object paths are configured.
 - External project URLs are curated data and must be validated before import.
+
+## Cloudflare Runtime
+
+- Production runs as a Cloudflare Worker through the OpenNext adapter.
+- Runtime PostgreSQL access uses a request-scoped Drizzle client through the
+  `HYPERDRIVE` binding and a dedicated Neon application role.
+- Database migrations, seed operations, contract administration, and event
+  indexing remain trusted Node.js tasks outside the public Worker.
+- `DATABASE_URL`, `DATABASE_URL_UNPOOLED`, and `ARC_TESTNET_PRIVATE_KEY` must
+  never be configured as Worker variables or secrets.
+- Static assets are served by Cloudflare and receive explicit immutable or
+  seven-day cache headers depending on their path.

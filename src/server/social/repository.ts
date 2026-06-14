@@ -1,4 +1,4 @@
-import { db } from "@/server/db/client";
+import { getDb } from "@/server/db/client";
 import { projects as projectsTable, tips as tipsTable } from "@/server/db/schema";
 import type { Project, ProjectTip } from "@/types/project";
 import type {
@@ -23,6 +23,8 @@ export async function getSocialLayerData(
 }
 
 async function getTipRows(): Promise<ProjectTip[]> {
+  const db = getDb();
+
   if (!db) {
     return [];
   }

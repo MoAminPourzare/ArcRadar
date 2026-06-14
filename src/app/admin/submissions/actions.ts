@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 
 import { slugifyProjectName } from "@/lib/slug";
-import { db } from "@/server/db/client";
+import { getDb } from "@/server/db/client";
 import { projectSubmissions, projects } from "@/server/db/schema";
 import { checkRateLimit } from "@/server/security/rate-limit";
 import type { ProjectLink } from "@/types/project";
@@ -33,6 +33,7 @@ const accentByCategory = {
 } as const;
 
 export async function approveSubmission(formData: FormData) {
+  const db = getDb();
   if (!canRunModerationAction("approve")) {
     return;
   }
@@ -56,6 +57,7 @@ export async function approveSubmission(formData: FormData) {
 }
 
 export async function rejectSubmission(formData: FormData) {
+  const db = getDb();
   if (!canRunModerationAction("reject")) {
     return;
   }
@@ -79,6 +81,7 @@ export async function rejectSubmission(formData: FormData) {
 }
 
 export async function reopenSubmission(formData: FormData) {
+  const db = getDb();
   if (!canRunModerationAction("reopen")) {
     return;
   }
@@ -116,6 +119,7 @@ export async function reopenSubmission(formData: FormData) {
 }
 
 export async function publishSubmission(formData: FormData) {
+  const db = getDb();
   if (!canRunModerationAction("publish")) {
     return;
   }
@@ -301,6 +305,7 @@ function buildProjectValues({
 }
 
 async function recordSystemNote(id: string, note: string) {
+  const db = getDb();
   if (!db) {
     return;
   }

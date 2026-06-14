@@ -1,5 +1,5 @@
 import { projects } from "@/data/projects";
-import { db } from "@/server/db/client";
+import { getDb } from "@/server/db/client";
 import { projects as projectsTable, tips as tipsTable } from "@/server/db/schema";
 import type {
   Project,
@@ -35,6 +35,8 @@ export async function getProjects(filters: ProjectFilters = {}) {
 }
 
 export async function getProjectBySlug(slug: string) {
+  const db = getDb();
+
   if (db) {
     try {
       const [project] = await db
@@ -114,6 +116,8 @@ export async function getProjectTipData(project: Project): Promise<ProjectTipDat
 }
 
 async function getDatabaseProjects() {
+  const db = getDb();
+
   if (!db) {
     return null;
   }
@@ -201,6 +205,8 @@ function fromUsdcMicro(value: bigint) {
 }
 
 async function getDatabaseTips(project: Project): Promise<ProjectTip[]> {
+  const db = getDb();
+
   if (!db) {
     return [];
   }

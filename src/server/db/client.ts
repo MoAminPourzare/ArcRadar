@@ -1,28 +1,49 @@
-import { drizzle } from "drizzle-orm/postgres-js";
-import postgres from "postgres";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { Pool } from "pg";
+import { cache } from "react";
 
 import * as schema from "@/server/db/schema";
 
-const databaseUrl = process.env.DATABASE_URL;
-const poolMax = readPositiveInteger(process.env.DATABASE_POOL_MAX, 5);
+type HyperdriveBinding = {
+  connectionString: string;
+};
 
-export const db = databaseUrl
-  ? drizzle(
-      postgres(databaseUrl, {
-        connect_timeout: 10,
-        idle_timeout: 20,
-        max: poolMax,
-      }),
-      { schema },
-    )
-  : null;
+export const getDb = cache(() => {
+  const connectionString = getRuntimeConnectionString();
 
-function readPositiveInteger(value: string | undefined, fallback: number) {
-  if (!value) {
-    return fallback;
+  if (!connectionString) {
+    return null;
   }
 
-  const parsed = Number(value);
+  const pool = new Pool({
+    allowExitOnIdle: true,
+    connectionString,
+    connectionTimeoutMillis: 10_000,
+    idleTimeoutMillis: 5_000,
+    max: 1,
+    maxUses: 1,
+  });
 
-  return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
+  return drizzle({ client: pool, schema });
+});
+
+function getRuntimeConnectionString() {
+  try {
+    const { env } = getCloudflareContext();
+    const hyperdrive = (env as CloudflareEnv & { HYPERDRIVE?: HyperdriveBinding })
+      .HYPERDRIVE;
+
+    if (hyperdrive?.connectionString) {
+      return hyperdrive.connectionString;
+    }
+
+    if (process.env.NODE_ENV === "production") {
+      return null;
+    }
+  } catch {
+    // Node.js development and maintenance tasks use DATABASE_URL directly.
+  }
+
+  return process.env.DATABASE_URL ?? null;
 }

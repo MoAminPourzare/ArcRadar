@@ -5,7 +5,7 @@ import { z } from "zod";
 import { tipRouterAbi, tipRouterAddress } from "@/config/tip-router";
 import { parseProjectId } from "@/lib/project-id";
 import { arcPublicClient } from "@/server/arc/public-client";
-import { db } from "@/server/db/client";
+import { getDb } from "@/server/db/client";
 import { projects, tips } from "@/server/db/schema";
 import { checkRateLimit } from "@/server/security/rate-limit";
 import { eq } from "drizzle-orm";
@@ -32,6 +32,7 @@ const requestSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
+  const db = getDb();
   const rateLimit = checkRateLimit({
     key: `tip-confirm:${getClientKey(request)}`,
     limit: 20,

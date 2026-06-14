@@ -6,7 +6,7 @@ const adminAuthMaxFailures = 10;
 const adminAuthFailures = new Map<string, { count: number; resetAt: number }>();
 const minimumProductionPasswordLength = 16;
 
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const password = process.env.ADMIN_PASSWORD;
   const clientKey = getClientKey(request);
 

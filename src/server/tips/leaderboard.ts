@@ -1,4 +1,4 @@
-import { db } from "@/server/db/client";
+import { getDb } from "@/server/db/client";
 import { projects as projectsTable, tips as tipsTable } from "@/server/db/schema";
 import type {
   LeaderboardData,
@@ -28,6 +28,8 @@ export async function getLeaderboardData(
 }
 
 async function getIndexedTipRows(): Promise<TipLedgerRow[]> {
+  const db = getDb();
+
   if (!db) {
     return [];
   }

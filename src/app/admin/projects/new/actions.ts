@@ -7,7 +7,7 @@ import {
   type ProjectSubmissionInput,
 } from "@/lib/project-submission";
 import { slugifyProjectName } from "@/lib/slug";
-import { db } from "@/server/db/client";
+import { getDb } from "@/server/db/client";
 import { projectSubmissions } from "@/server/db/schema";
 import {
   checkRateLimit,
@@ -27,6 +27,7 @@ export type SubmissionActionResult =
 export async function createProjectSubmission(
   input: ProjectSubmissionInput,
 ): Promise<SubmissionActionResult> {
+  const db = getDb();
   const rateLimit = checkRateLimit({
     key: "admin:create-project-submission",
     limit: 20,

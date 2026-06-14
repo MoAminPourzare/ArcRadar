@@ -14,7 +14,7 @@ onboarding, signal scoring, and an onchain tipping leaderboard.
 - TipRouter-based ERC-20 USDC support with verifiable onchain events.
 - Project and tipper leaderboards backed by indexed contract events.
 - Internal project administration and moderation routes protected by Basic Auth.
-- Responsive light and dark interfaces with Vercel Web Analytics.
+- Responsive light and dark interfaces deployed through Cloudflare Workers.
 
 Public project submission is intentionally disabled. ArcRadar maintains the
 directory through its internal curation workflow.
@@ -26,9 +26,9 @@ directory through its internal curation workflow.
 - Tailwind CSS 4
 - wagmi, viem, and TanStack Query
 - Solidity and Hardhat 3
-- Drizzle ORM and PostgreSQL
+- Drizzle ORM, PostgreSQL, and Cloudflare Hyperdrive
 - Neon for managed PostgreSQL
-- Vercel for application hosting and analytics
+- Cloudflare Workers and OpenNext for application hosting
 
 ## Arc Testnet
 
@@ -68,11 +68,9 @@ Open `http://localhost:3000`.
 | Variable | Purpose |
 | --- | --- |
 | `NEXT_PUBLIC_APP_URL` | Canonical application URL |
-| `NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID` | Optional WalletConnect project ID |
 | `NEXT_PUBLIC_TIP_ROUTER_ADDRESS` | Public TipRouter contract address |
-| `DATABASE_URL` | Pooled PostgreSQL runtime connection |
+| `DATABASE_URL` | Local Node.js PostgreSQL runtime connection |
 | `DATABASE_URL_UNPOOLED` | Direct PostgreSQL migration connection |
-| `DATABASE_POOL_MAX` | Maximum application database pool size |
 | `ADMIN_USERNAME` | Internal admin username |
 | `ADMIN_PASSWORD` | Internal admin password, minimum 16 characters in production |
 | `ARC_TESTNET_RPC_URL` | Preferred Arc Testnet RPC endpoint |
@@ -84,6 +82,10 @@ Open `http://localhost:3000`.
 
 Never expose database credentials, admin credentials, or private keys through a
 `NEXT_PUBLIC_` variable.
+
+Cloudflare Workers access Neon through the `HYPERDRIVE` binding in
+`wrangler.jsonc`. Database URLs are used only for local development, migrations,
+and trusted maintenance tasks.
 
 ## Project Data
 
@@ -123,6 +125,7 @@ npm run typecheck
 npm run lint
 npm run contracts:test
 npm run build
+npm run cf:build
 npm audit --omit=dev
 ```
 
@@ -131,15 +134,18 @@ npm audit --omit=dev
 1. Create a Neon project and apply the Drizzle migrations with
    `npm run db:migrate`.
 2. Import and validate the curated project dataset.
-3. Create a Vercel project from this repository.
-4. Configure all production environment variables in Vercel.
+3. Authenticate Wrangler with `npx wrangler login`.
+4. Create the `HYPERDRIVE` binding and configure Worker secrets and variables.
 5. Set `NEXT_PUBLIC_APP_URL` to the final production domain.
 6. Confirm the TipRouter address and deployment block match ArcScan.
 7. Configure `npm run tips:sync` as a scheduled job or external worker.
-8. Enable Vercel Web Analytics.
-9. Verify public routes, wallet connection, Arc network switching, and admin
+8. Deploy with `npm run deploy`.
+9. Attach the custom domain in the Cloudflare Worker dashboard.
+10. Verify public routes, wallet connection, Arc network switching, and admin
    authentication on the production deployment.
 
-Additional architecture notes are available in
+The complete Cloudflare checklist is in
+[`docs/deployment-cloudflare.md`](docs/deployment-cloudflare.md). Additional
+architecture notes are available in
 [`docs/engineering.md`](docs/engineering.md), and builder-facing requirements
 are documented in [`docs/builders.md`](docs/builders.md).

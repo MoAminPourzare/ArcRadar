@@ -119,7 +119,7 @@ export function ArcWalletConsole() {
         label: "Wallet connected",
         supporting: address
           ? shortenAddress(address)
-          : "MetaMask, Coinbase Wallet, or injected wallet.",
+          : "MetaMask, Coinbase Wallet, Rabby, or another browser wallet.",
       },
       {
         done: isConnected && isOnArc,
