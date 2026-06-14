@@ -32,6 +32,8 @@
     "projects:audit-websites": "tsx scripts/audit-project-websites.ts",
     "projects:import": "tsx scripts/import-arc-projects.ts",
     "projects:check": "tsx scripts/check-project-import.ts",
+    "tips:configure-projects": "tsx scripts/configure-project-tipping.ts",
+    "tips:check-projects": "tsx scripts/configure-project-tipping.ts --check",
     "tips:sync": "tsx src/server/tips/sync-tip-router-events.ts"
   },
   "dependencies": {

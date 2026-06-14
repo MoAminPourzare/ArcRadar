@@ -15,7 +15,7 @@
 		"enabled": true
 	},
 	"vars": {
-		"NEXT_PUBLIC_APP_URL": "https://arcradar.goldenphoenix021021.workers.dev",
+		"NEXT_PUBLIC_APP_URL": "https://arc-radar.xyz",
 		"ARC_TESTNET_RPC_URL": "https://rpc.testnet.arc.network",
 		"TIP_ROUTER_ADDRESS": "0x0028d7dFa53a5834350c096bb183b3235068a82E",
 		"NEXT_PUBLIC_TIP_ROUTER_ADDRESS": "0x0028d7dFa53a5834350c096bb183b3235068a82E",
