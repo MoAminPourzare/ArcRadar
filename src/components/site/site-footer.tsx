@@ -1,4 +1,5 @@
 import { ArrowUpRightIcon as ArrowUpRight } from "@phosphor-icons/react/ssr";
+import Link from "next/link";
 
 import { BrandMark } from "@/components/site/brand-mark";
 import { siteConfig } from "@/config/site";
@@ -17,6 +18,9 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="flex flex-wrap gap-3 text-sm font-bold text-ink/60">
+          <Link className="transition hover:text-ink" href="/builders">
+            Builders
+          </Link>
           <a
             className="inline-flex items-center gap-1.5 transition hover:text-ink"
             href={siteConfig.links.docs}

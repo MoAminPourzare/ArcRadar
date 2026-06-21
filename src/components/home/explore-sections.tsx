@@ -1,5 +1,6 @@
 import {
   ArrowRightIcon as ArrowRight,
+  BookOpenTextIcon as BookOpenText,
   CardsIcon as WalletCards,
   CellTowerIcon as RadioTower,
   ChartLineUpIcon as ChartNoAxesCombined,
@@ -17,6 +18,15 @@ const sections = [
     icon: FolderSearch2,
     label: "Projects",
     tone: "bg-mint/25 text-forest",
+  },
+  {
+    description:
+      "Jump into practical Arc and Circle docs by intent: setup, USDC payments, contracts, liquidity, agents, and production readiness.",
+    href: "/builders",
+    disabled: false,
+    icon: BookOpenText,
+    label: "Builders",
+    tone: "bg-mint/20 text-forest",
   },
   {
     description:
@@ -69,12 +79,13 @@ export function ExploreSections() {
           </h2>
           <p className="mt-3 text-sm font-semibold leading-6 text-ink/55">
             Each area now has its own route, data surface, and purpose. Start
-            with the directory, then move through support, network, and wallet
-            readiness. Agent functionality is reserved for a future phase.
+            with the directory, use the builder hub for docs shortcuts, then
+            move through support, network, and wallet readiness. Agent
+            functionality is reserved for a future phase.
           </p>
         </div>
 
-        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {sections.map((section) => {
             const Icon = section.icon;
 

@@ -4,6 +4,10 @@ ArcRadar is a curated Arc Testnet directory. Builders can submit projects at
 `/submit`; the ArcRadar team reviews each entry before it is published so the
 signal board stays useful.
 
+The public builder resource hub lives at `/builders`. It is intentionally
+task-first: builders choose the thing they want to do, then jump to the right
+Arc, Circle, App Kit, Gateway, CCTP, contract, wallet, or agent documentation.
+
 ## What To Prepare
 
 - Project name, short tagline, category, and current stage.
