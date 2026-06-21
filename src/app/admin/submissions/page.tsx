@@ -21,6 +21,7 @@ import {
   rejectSubmission,
   reopenSubmission,
 } from "@/app/admin/submissions/actions";
+import { ProjectLogo } from "@/components/projects/project-logo";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { slugifyProjectName } from "@/lib/slug";
@@ -58,11 +59,10 @@ export default async function AdminSubmissionsPage() {
               weight="duotone"
             />
             <div>
-              <p className="font-black text-ink">Internal-only moderation</p>
+              <p className="font-black text-ink">Moderated publishing</p>
               <p className="mt-1 text-sm font-semibold leading-6 text-ink/60">
-                Builders cannot submit projects directly. ArcRadar creates
-                internal candidates, reviews them here, and only publishes
-                approved entries to the public directory.
+                Public builder submissions and internal candidates enter this
+                queue. Only reviewed entries are published to the directory.
               </p>
             </div>
           </div>
@@ -77,8 +77,8 @@ export default async function AdminSubmissionsPage() {
               Curation moderation
             </h1>
             <p className="mt-3 max-w-2xl text-sm font-semibold leading-6 text-ink/55">
-              Move candidates from pending review to approved, rejected, or
-              published project profiles without opening a public submit flow.
+              Review identity, links, logo, Arc relevance, and wallet details
+              before publishing a project profile.
             </p>
           </div>
           <Link className="btn-primary min-h-11" href="/admin/projects/new">
@@ -110,7 +110,7 @@ export default async function AdminSubmissionsPage() {
                   />
                   <p className="text-xl font-black text-ink">Queue is empty</p>
                   <p className="mt-2 text-sm font-semibold text-ink/55">
-                    New validated internal candidates will appear here.
+                    New public submissions and internal candidates appear here.
                   </p>
                 </div>
               </div>
@@ -159,11 +159,19 @@ function SubmissionCard({ submission }: { submission: Submission }) {
     <article className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm">
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_360px]">
         <div className="min-w-0">
-          <div className="mb-3 flex flex-wrap gap-2">
+          <div className="mb-3 flex flex-wrap items-center gap-3">
+            <ProjectLogo
+              accent="blueprint"
+              logoUrl={submission.logoUrl}
+              name={submission.name}
+              size="md"
+            />
+            <div className="flex flex-wrap gap-2">
             <span className="rounded-md bg-cyan/15 px-2.5 py-1 text-xs font-black uppercase text-blueprint">
               {submission.category}
             </span>
             <span className={getStatusClass(statusLabel)}>{statusLabel}</span>
+            </div>
           </div>
 
           <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">

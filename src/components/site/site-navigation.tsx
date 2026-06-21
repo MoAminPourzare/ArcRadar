@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 const navigationItems = [
   { disabled: false, href: "/projects", label: "Projects" },
+  { disabled: false, href: "/submit", label: "Submit" },
   { disabled: true, href: "/agent", label: "Agent" },
   { disabled: false, href: "/leaderboard", label: "Leaderboard" },
   { disabled: false, href: "/network", label: "Network" },

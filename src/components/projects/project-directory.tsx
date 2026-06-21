@@ -2,9 +2,11 @@
 
 import {
   MagnifyingGlassIcon as Search,
+  PlusIcon as Plus,
   SlidersHorizontalIcon as SlidersHorizontal,
   XIcon as X,
 } from "@phosphor-icons/react";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { ProjectCard } from "@/components/projects/project-card";
@@ -93,13 +95,19 @@ export function ProjectDirectory({
           </p>
         </div>
 
-        <div className="flex items-center gap-2 rounded-lg border border-ink/10 bg-white px-3 py-2 text-sm font-black text-ink/60 shadow-sm">
-          <SlidersHorizontal
-            aria-hidden
-            className="size-5 text-blueprint"
-            weight="duotone"
-          />
-          {filteredProjects.length} visible
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="flex items-center gap-2 rounded-lg border border-ink/10 bg-white px-3 py-2 text-sm font-black text-ink/60 shadow-sm">
+            <SlidersHorizontal
+              aria-hidden
+              className="size-5 text-blueprint"
+              weight="duotone"
+            />
+            {filteredProjects.length} visible
+          </div>
+          <Link className="btn-primary min-h-10" href="/submit">
+            <Plus aria-hidden className="size-4" weight="bold" />
+            Submit project
+          </Link>
         </div>
       </div>
 

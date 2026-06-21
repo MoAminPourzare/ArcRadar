@@ -66,6 +66,9 @@ secrets**. Next.js needs those public values during compilation.
 
 ## First Deployment
 
+Project logos are stored in the existing Neon database and served through
+`/api/project-logos/:key`; no separate object-storage account is required.
+
 ```bash
 npm run deploy
 ```
@@ -79,6 +82,8 @@ Verify these endpoints before attaching a domain:
 - `/api/health`
 - `/`
 - `/projects`
+- `/submit`
+- `/api/project-logos/:key`
 - `/leaderboard`
 - `/network`
 - `/wallet`

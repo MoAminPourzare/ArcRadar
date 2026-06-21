@@ -1,6 +1,7 @@
 import {
   bigint,
   boolean,
+  customType,
   index,
   integer,
   jsonb,
@@ -15,6 +16,12 @@ import {
 import { sql } from "drizzle-orm";
 
 import type { ProjectLink } from "@/types/project";
+
+const bytea = customType<{ data: Buffer; driverData: Buffer }>({
+  dataType() {
+    return "bytea";
+  },
+});
 
 export const projectCategory = pgEnum("project_category", [
   "AI Agents",
@@ -133,6 +140,16 @@ export const tipIndexerState = pgTable("tip_indexer_state", {
     .notNull(),
   lastProcessedAt: timestamp("last_processed_at", { withTimezone: true }),
   updatedAt: timestamp("updated_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+});
+
+export const projectLogoAssets = pgTable("project_logo_assets", {
+  key: varchar("key", { length: 48 }).primaryKey(),
+  contentType: varchar("content_type", { length: 32 }).notNull(),
+  bytes: bytea("bytes").notNull(),
+  size: integer("size").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true })
     .defaultNow()
     .notNull(),
 });

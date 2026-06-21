@@ -1,8 +1,8 @@
 # ArcRadar Builder Notes
 
-ArcRadar is a curated Arc Testnet directory. Builders cannot publish directly to
-the public directory yet; the ArcRadar team adds and moderates profiles
-internally so the signal board stays useful.
+ArcRadar is a curated Arc Testnet directory. Builders can submit projects at
+`/submit`; the ArcRadar team reviews each entry before it is published so the
+signal board stays useful.
 
 ## What To Prepare
 
@@ -31,6 +31,6 @@ builder badge is granted.
 
 ## Assets
 
-Public image upload is disabled. Future logo or screenshot uploads must enforce
-the ArcRadar image policy: JPG, PNG, or WebP only, 2 MB maximum, no SVG, and no
+Project-logo upload accepts JPG, PNG, or WebP files up to 2 MB. Files are checked
+by MIME type and binary signature, stored under generated keys, and never use a
 client-controlled storage path.

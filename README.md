@@ -13,11 +13,12 @@ onboarding, signal scoring, and an onchain tipping leaderboard.
   native-gas and ERC-20 USDC balances.
 - TipRouter-based ERC-20 USDC support with verifiable onchain events.
 - Project and tipper leaderboards backed by indexed contract events.
+- Public project submissions with moderated publishing and secure logo uploads.
 - Internal project administration and moderation routes protected by Basic Auth.
 - Responsive light and dark interfaces deployed through Cloudflare Workers.
 
-Public project submission is intentionally disabled. ArcRadar maintains the
-directory through its internal curation workflow.
+Builders can submit projects through `/submit`. New entries remain pending until
+an ArcRadar moderator validates and publishes them.
 
 ## Technology
 
@@ -29,6 +30,7 @@ directory through its internal curation workflow.
 - Drizzle ORM, PostgreSQL, and Cloudflare Hyperdrive
 - Neon for managed PostgreSQL
 - Cloudflare Workers and OpenNext for application hosting
+- Neon PostgreSQL binary storage for moderated project logos
 
 ## Arc Testnet
 

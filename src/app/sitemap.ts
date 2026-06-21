@@ -2,7 +2,14 @@ import type { MetadataRoute } from "next";
 
 import { siteConfig } from "@/config/site";
 
-const publicRoutes = ["", "/projects", "/leaderboard", "/network", "/wallet"];
+const publicRoutes = [
+  "",
+  "/projects",
+  "/submit",
+  "/leaderboard",
+  "/network",
+  "/wallet",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();

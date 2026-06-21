@@ -19,12 +19,19 @@ export const submissionCategories = [
   "Developer Tools",
 ] as const;
 
+const webUrl = z
+  .string()
+  .url()
+  .refine((value) => ["http:", "https:"].includes(new URL(value).protocol), {
+    message: "Use an HTTP or HTTPS URL",
+  });
+
 const optionalUrl = z
   .string()
   .trim()
   .optional()
   .transform((value) => value || undefined)
-  .pipe(z.string().url().optional());
+  .pipe(webUrl.optional());
 
 export const projectSubmissionSchema = z.object({
   slug: z
@@ -60,4 +67,31 @@ export const projectSubmissionSchema = z.object({
   githubUrl: optionalUrl,
 });
 
+export const publicProjectSubmissionSchema = projectSubmissionSchema
+  .omit({ logoUrl: true })
+  .extend({
+    contact: z
+      .string()
+      .trim()
+      .min(3, "A contact email or handle is required")
+      .max(160),
+  })
+  .superRefine((value, context) => {
+    if (
+      !value.websiteUrl &&
+      !value.projectXUrl &&
+      !value.builderXUrl &&
+      !value.githubUrl
+    ) {
+      context.addIssue({
+        code: "custom",
+        message: "Add at least one public project or builder link",
+        path: ["websiteUrl"],
+      });
+    }
+  });
+
 export type ProjectSubmissionInput = z.infer<typeof projectSubmissionSchema>;
+export type PublicProjectSubmissionInput = z.infer<
+  typeof publicProjectSubmissionSchema
+>;
