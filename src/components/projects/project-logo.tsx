@@ -41,9 +41,9 @@ export function ProjectLogo({
   return (
     <span
       className={cn(
-        "relative grid shrink-0 place-items-center overflow-hidden border border-ink/10 bg-gradient-to-br font-black shadow-sm",
+        "relative grid shrink-0 place-items-center overflow-hidden border border-ink/10 font-black shadow-sm",
         sizeClass[size],
-        accentClass[accent],
+        showImage ? "bg-white text-ink" : `bg-gradient-to-br ${accentClass[accent]}`,
         className,
       )}
     >
@@ -51,7 +51,7 @@ export function ProjectLogo({
         // eslint-disable-next-line @next/next/no-img-element
         <img
           alt={`${name} logo`}
-          className="size-full bg-[#ffffff] object-contain p-[12%]"
+          className="size-full bg-white object-contain p-[8%] drop-shadow-sm"
           loading="lazy"
           referrerPolicy="no-referrer"
           src={logoUrl ?? undefined}

@@ -31,37 +31,23 @@ export function BuilderHub() {
   return (
     <section className="border-b border-ink/10 bg-paper py-10 sm:py-14">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-4 lg:grid-cols-[0.82fr_1.18fr]">
-          <aside className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm sm:p-6">
-            <p className="text-sm font-black uppercase text-blueprint">
-              Choose a builder path
-            </p>
-            <h2 className="mt-2 text-3xl font-black leading-tight text-ink">
-              What are you trying to ship?
-            </h2>
-            <p className="mt-3 text-sm font-semibold leading-6 text-ink/55">
-              Pick the closest intent. ArcRadar will narrow the docs to the
-              shortest useful path instead of making builders dig through every
-              product page.
-            </p>
-
-            <div className="mt-5 flex flex-wrap gap-2">
-              <FilterButton
-                active={activeFilter === "all"}
-                label="All"
-                onClick={() => setActiveFilter("all")}
-              />
-              {builderPaths.map((path) => (
-                <FilterButton
-                  active={activeFilter === path.id}
-                  key={path.id}
-                  label={path.label}
-                  onClick={() => setActiveFilter(path.id)}
-                />
-              ))}
+        <div className="rounded-lg border border-ink/10 bg-white p-5 shadow-sm sm:p-6">
+          <div className="grid gap-5 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+            <div>
+              <p className="text-sm font-black uppercase text-blueprint">
+                Choose a builder path
+              </p>
+              <h2 className="mt-2 text-3xl font-black leading-tight text-ink">
+                What are you trying to ship?
+              </h2>
+              <p className="mt-3 max-w-3xl text-sm font-semibold leading-6 text-ink/55">
+                Pick the closest intent. ArcRadar will narrow the docs to the
+                shortest useful path instead of making builders dig through
+                every product page.
+              </p>
             </div>
 
-            <div className="mt-6 rounded-lg border border-ink/10 bg-paper p-4">
+            <div className="rounded-lg border border-ink/10 bg-paper p-4">
               <p className="text-xs font-black uppercase text-ink/40">
                 Current focus
               </p>
@@ -73,25 +59,42 @@ export function BuilderHub() {
                   "A complete shortcut board for Arc setup, USDC payments, contracts, liquidity, agents, and production readiness."}
               </p>
             </div>
+          </div>
 
-            <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-              {builderFacts.map((fact) => (
-                <div
-                  className="rounded-lg border border-ink/10 bg-white px-3 py-2 text-xs font-black uppercase leading-5 text-ink/55"
-                  key={fact}
-                >
-                  {fact}
-                </div>
-              ))}
-            </div>
-          </aside>
+          <div className="mt-5 flex gap-2 overflow-x-auto pb-1">
+            <FilterButton
+              active={activeFilter === "all"}
+              label="All"
+              onClick={() => setActiveFilter("all")}
+            />
+            {builderPaths.map((path) => (
+              <FilterButton
+                active={activeFilter === path.id}
+                key={path.id}
+                label={path.label}
+                onClick={() => setActiveFilter(path.id)}
+              />
+            ))}
+          </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
-            {shortcuts.map((shortcut) => (
-              <article
-                className="group flex min-h-full flex-col rounded-lg border border-ink/10 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-ink/25"
-                key={shortcut.id}
+          <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+            {builderFacts.map((fact) => (
+              <div
+                className="rounded-lg border border-ink/10 bg-white px-3 py-2 text-xs font-black uppercase leading-5 text-ink/55"
+                key={fact}
               >
+                {fact}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          {shortcuts.map((shortcut) => (
+            <article
+              className="group flex min-h-full flex-col rounded-lg border border-ink/10 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-ink/25"
+              key={shortcut.id}
+            >
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="text-xs font-black uppercase text-blueprint">
@@ -157,9 +160,8 @@ export function BuilderHub() {
                     ))}
                   </div>
                 </div>
-              </article>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
 
         <div className="mt-4 rounded-lg border border-ink/10 bg-white p-5 shadow-sm sm:p-6">
@@ -211,7 +213,7 @@ function FilterButton({
   return (
     <button
       className={cn(
-        "min-h-10 rounded-lg border px-3 text-sm font-black uppercase transition",
+        "min-h-10 shrink-0 rounded-lg border px-3 text-sm font-black uppercase transition",
         active
           ? "border-ink bg-ink text-paper"
           : "border-ink/10 bg-white text-ink/55 hover:border-ink/25 hover:text-ink",
