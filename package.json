@@ -30,6 +30,7 @@
     "db:remove-self-tips": "tsx scripts/remove-self-tips.ts",
     "db:smoke": "tsx src/server/db/smoke.ts",
     "projects:audit-websites": "tsx scripts/audit-project-websites.ts",
+    "projects:audit-logos": "tsx scripts/audit-project-logos.ts",
     "projects:import": "tsx scripts/import-arc-projects.ts",
     "projects:check": "tsx scripts/check-project-import.ts",
     "tips:configure-projects": "tsx scripts/configure-project-tipping.ts",

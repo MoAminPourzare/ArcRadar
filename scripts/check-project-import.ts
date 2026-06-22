@@ -1,4 +1,4 @@
-import { count, eq, isNull, sql } from "drizzle-orm";
+import { count, eq, isNotNull, isNull, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
@@ -18,13 +18,27 @@ const client = postgres(databaseUrl, { max: 1 });
 const database = drizzle(client);
 
 try {
-  const [totals, withoutWallet, categoryRows, duplicateSlugs, discordLinks] =
+  const [
+    totals,
+    withoutWallet,
+    withLogo,
+    categoryRows,
+    duplicateSlugs,
+    duplicateWebsites,
+    discordLinks,
+    invalidLogoUrls,
+    invalidWebsiteUrls,
+  ] =
     await Promise.all([
       database.select({ count: count() }).from(projects),
       database
         .select({ count: count() })
         .from(projects)
         .where(isNull(projects.projectWallet)),
+      database
+        .select({ count: count() })
+        .from(projects)
+        .where(isNotNull(projects.logoUrl)),
       database
         .select({ category: projects.category, count: count() })
         .from(projects)
@@ -37,9 +51,26 @@ try {
         having count(*) > 1
       `),
       database.execute(sql`
+        select website_url, count(*)::int as count
+        from projects
+        where website_url is not null
+        group by website_url
+        having count(*) > 1
+      `),
+      database.execute(sql`
         select count(*)::int as count
         from projects
         where social_links @> '[{"label":"Discord"}]'::jsonb
+      `),
+      database.execute(sql`
+        select count(*)::int as count
+        from projects
+        where logo_url is not null and logo_url !~ '^https://'
+      `),
+      database.execute(sql`
+        select count(*)::int as count
+        from projects
+        where website_url is not null and website_url !~ '^https://'
       `),
     ]);
 
@@ -56,7 +87,11 @@ try {
         ),
         discordProjectLinks: Number(discordLinks[0]?.count ?? 0),
         duplicateSlugs: duplicateSlugs.length,
+        duplicateWebsites: duplicateWebsites.length,
         importedProjects: importedCount[0]?.count ?? 0,
+        invalidLogoUrls: Number(invalidLogoUrls[0]?.count ?? 0),
+        invalidWebsiteUrls: Number(invalidWebsiteUrls[0]?.count ?? 0),
+        projectsWithLogo: withLogo[0]?.count ?? 0,
         projectsWithoutTipWallet: withoutWallet[0]?.count ?? 0,
         totalProjects: totals[0]?.count ?? 0,
       },

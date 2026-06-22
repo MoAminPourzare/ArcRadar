@@ -1,0 +1,3152 @@
+{
+  "auditedAt": "2026-06-22T11:08:45.752Z",
+  "projects": [
+    {
+      "description": null,
+      "headings": [],
+      "name": "Arc",
+      "ok": false,
+      "title": null,
+      "website": "https://arc.network/"
+    },
+    {
+      "description": "The Next Generation Innovative Dex on Arc L1 Blockchain.",
+      "headings": [
+        "<span style=\"background-image:linear-gradient(135deg, #1F2A44 0%, #2D3A5C 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text\">Built by traders, for traders.<!-- --> </span><span style=\"background-image:linear-gradient(135deg, #14B8A6 0%, #2DD4BF 55%, #0D9488 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text\">Trusted by Communities.</span>",
+        "Reflection Token Support",
+        "Trustless USDC Agents",
+        "AI-driven",
+        "Full-stack DeFi Hub",
+        "Start Your Journey",
+        "Follow on X",
+        "Join Discord Server",
+        "Genesis Pass NFT",
+        "Ranking System",
+        "Dashboard"
+      ],
+      "name": "UnitFlow Finance",
+      "ok": true,
+      "title": "Dex | UnitFlow Finance",
+      "website": "https://www.unitflow.finance/"
+    },
+    {
+      "description": "Achswap is the leading Arc Testnet DEX for decentralized token swaps, gasless trading, RWA buy/redeem flows, Achswap Arc bridge for cross-chain assets, prediction markets on Arc, liquidity pools, token launch, and real-time analytics.",
+      "headings": [],
+      "name": "Achswap",
+      "ok": true,
+      "title": "Achswap: Decentralized Exchange on Arc Testnet – Swap, Bridge, Launch Tokens",
+      "website": "https://trade.achswap.app/"
+    },
+    {
+      "description": "Trade Stablecoins with ease on Tower Exchange",
+      "headings": [],
+      "name": "Tower Exchange",
+      "ok": true,
+      "title": "Tower Exchange - The Native Stablecoin DEX Aggregator",
+      "website": "https://www.tower.exchange/"
+    },
+    {
+      "description": "Apexis Router optimizes every swap by automatically scanning multiple DEXs across different blockchain networks to find the best prices, lowest fees, and optimal liquidity. Smart trading made simple with AI-powered route optimization.",
+      "headings": [],
+      "name": "APEXISWAP",
+      "ok": true,
+      "title": "Apexis Router - Intelligent Multi-Chain DEX Aggregator",
+      "website": "https://www.apexiswap.com/"
+    },
+    {
+      "description": "Synthra is the chain-abstracted trading layer and cross-chain DEX for spot, perps, liquidity and routing APIs across Arc, Robinhood Chain and emerging markets. One account, all chains, all markets.",
+      "headings": [],
+      "name": "Synthra",
+      "ok": true,
+      "title": "Synthra — Chain-Abstracted Trading Layer",
+      "website": "https://synthra.org/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "SWAPARC",
+      "ok": true,
+      "title": "swaparc",
+      "website": "https://www.swaparc.app/"
+    },
+    {
+      "description": "ArcPump is the first meme launchpad on Arc. Launch fast, bond on curve, and trade graduated tokens on the DEX.",
+      "headings": [
+        "<span id=\"heroName\"></span><br><span class=\"grad\">Launch. Bond. Trade.</span>"
+      ],
+      "name": "ArcPump",
+      "ok": true,
+      "title": "ArcPump - Meme Launchpad on Arc",
+      "website": "https://arcpump.org/"
+    },
+    {
+      "description": "Instant swaps, stable liquidity pools, and cross-chain USDC transfers on Arc Testnet.",
+      "headings": [
+        "Presto<span class=\"line2\">Swap. Bridge. Deploy.</span><span class=\"line3\">Earn.</span>"
+      ],
+      "name": "Presto",
+      "ok": true,
+      "title": "Presto | Arc Testnet",
+      "website": "https://prestodex-arc.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "ARC Chat"
+      ],
+      "name": "ARC Chat",
+      "ok": true,
+      "title": "ARC Chat - Secure Messenger",
+      "website": "https://arcchatgithubio.vercel.app/"
+    },
+    {
+      "description": "Every move is a transaction",
+      "headings": [],
+      "name": "Arc2048blast",
+      "ok": true,
+      "title": "Arc2048",
+      "website": "https://arc-2048-blast-chi.vercel.app/"
+    },
+    {
+      "description": "The premier DEX + Bridge on Arc Network. Instant settlement, predictable fees, and native cross-chain transfers powered by Circle CCTP.",
+      "headings": [
+        "<span class=\"block text-white mb-2 leading-[1.1]\">The Stablecoin</span><span class=\"relative inline-block\"><span class=\"relative z-10 bg-gradient-to-r from-[#132D46] via-[#0A786A] to-[#01C38E] text-transparent bg-clip-text leading-[1.1]\">SuperExchange</span><span class=\"absolute -bottom-4 left-0 right-0 h-[3px] bg-gradient-to-r from-[#132D46] via-[#0A786A] to-[#01C38E] rounded-full transform origin-left animate-expand\"></span></span>",
+        "Everything You Need for<!-- --> <span class=\"relative\"><span class=\"relative z-10 bg-gradient-to-r from-[#132D46] via-[#0A786A] to-[#01C38E] text-transparent bg-clip-text\">Stablecoins</span></span>",
+        "StableSwap AMM",
+        "Cross-Chain Bridge",
+        "Yield Vault",
+        "Sub-Second Finality",
+        "Ultra Low Fees",
+        "Enterprise Security",
+        "Introducing<!-- --> <span class=\"relative inline-block\"><span class=\"relative z-10 bg-gradient-to-r from-[#0A786A] via-[#01C38E] to-[#01C38E] text-transparent bg-clip-text\">PayX</span><span class=\"absolute -inset-2 bg-gradient-to-r from-[#0A786A]/20 via-[#01C38E]/20 to-[#01C38E]/20 blur-xl rounded-lg\"></span></span>",
+        "PayX",
+        "Chrome Extension",
+        "Trade Circle&#x27;s<!-- --> <span class=\"bg-gradient-to-r from-[#01C38E] to-[#01C38E] text-transparent bg-clip-text\">Premium Stablecoins</span>"
+      ],
+      "name": "XyloNet",
+      "ok": true,
+      "title": "XyloNet - Stablecoin SuperExchange on Arc",
+      "website": "https://xylonet.xyz/"
+    },
+    {
+      "description": "Decentralized application for secure payments, token swaps, escrow contracts and multi-send on Arc Testnet. Non-custodial, open-source, testnet only.",
+      "headings": [
+        "Exec<span class=\"bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent\">Daat</span>",
+        "A trustless financial automation platform",
+        "Everything you need to explore Web3 finance",
+        "Automated Payments",
+        "MultiSend / Batch",
+        "Smart Contracts",
+        "Swap / Token Exchange",
+        "Integrated Escrow",
+        "AI Agents",
+        "Arc Testnet — All addresses are public",
+        "Ready to explore?",
+        "<i class=\"fas fa-wallet text-purple-400\"></i> <span data-i18n=\"my_wallet\">My Wallet</span>"
+      ],
+      "name": "ExecDaat",
+      "ok": true,
+      "title": "ExecDaat – Secure Payments & Smart Contracts",
+      "website": "https://execdaat.xyz/"
+    },
+    {
+      "description": "On-chain prediction markets settled in USDC. Built on Arc. Powered by Circle.",
+      "headings": [],
+      "name": "Arcana Markets",
+      "ok": true,
+      "title": "Arcana Markets — Predict. Trade. Win.",
+      "website": "https://www.arcanamarkets.xyz/"
+    },
+    {
+      "description": "WizPay is a payment execution system. Batch your payments, execute once, and settle on-chain across Ethereum, Solana, and Arc. Fast, simple, scalable. Contact: connect@wizpay.xyz",
+      "headings": [
+        "WizPay — Move Money On-Chain, Instantly"
+      ],
+      "name": "WizPay",
+      "ok": true,
+      "title": "WizPay — Move Money On-Chain, Instantly",
+      "website": "https://wizpay.xyz/"
+    },
+    {
+      "description": "Launch meme coins in seconds on new chains with OnmiFun. Fair bonding curves, no insiders, and automatic liquidity graduation.",
+      "headings": [],
+      "name": "Onmifun",
+      "ok": true,
+      "title": "OnmiFun — Launch First. Pump Everywhere.",
+      "website": "https://app.onmi.fun/?chain=ARC_TESTNET"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "ArcPerps",
+      "ok": false,
+      "title": "Deployment Paused",
+      "website": "https://arcperps.xyz/"
+    },
+    {
+      "description": "Lunex Finance: Curve-style StableSwap AMM and ERC-4626 yield vaults for USDC/EURC on Arc Network.",
+      "headings": [],
+      "name": "Lunex",
+      "ok": true,
+      "title": "Lunex Finance – Stablecoin DeFi on Arc Network",
+      "website": "https://lunex.finance/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "Commerce without<br/><em>middlemen</em>",
+        "Ready to try it?"
+      ],
+      "name": "ArcAgent",
+      "ok": true,
+      "title": "ArcAgent — Trustless Commerce on Arc",
+      "website": "https://arcagent-mobile.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "TrusttCircle",
+      "ok": false,
+      "title": "Deployment Paused",
+      "website": "https://trusttcircle.online/"
+    },
+    {
+      "description": "Play chess with AI opponents and compete in multiplayer matches with real stakes on the Arc blockchain network",
+      "headings": [
+        "The Complete Platform for Web3 Chess",
+        "Single Player",
+        "Multiplayer",
+        "Built for Competitive Chess",
+        "Start Playing in Minutes",
+        "Connect Your Wallet",
+        "Choose Your Mode",
+        "Pay & Play"
+      ],
+      "name": "Arc chess",
+      "ok": true,
+      "title": "ChessArc - Web3 Chess Platform on Arc Network",
+      "website": "https://v0-arc-chess.vercel.app/"
+    },
+    {
+      "description": "Earn verifiable credentials from tasks, community work, agent tasks, peer attestations and DAO governance. Built on Arc.",
+      "headings": [],
+      "name": "Archon",
+      "ok": true,
+      "title": "Archon - Universal On-Chain Reputation",
+      "website": "https://archon-dapp.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "AgentWork",
+      "ok": true,
+      "title": "AgentWork — Arc Testnet",
+      "website": "https://arc-agent-work.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "ArcPay",
+      "ok": true,
+      "title": "ArcSend — USDC & EURC on Arc Testnet",
+      "website": "https://arc-send.netlify.app/"
+    },
+    {
+      "description": "A decentralized marketplace for AI agents",
+      "headings": [],
+      "name": "Arcade",
+      "ok": true,
+      "title": "Arcade",
+      "website": "https://arcademp.xyz/"
+    },
+    {
+      "description": "AchMarket is the leading prediction market platform on Arc Testnet. Trade decentralized prediction markets, bet on outcomes, and earn rewards with USDC. Experience the future of Arc Testnet betting and decentralized forecasting.",
+      "headings": [],
+      "name": "AchMarket",
+      "ok": true,
+      "title": "AchMarket: Prediction Markets on Arc Testnet – Trade, Bet, Win",
+      "website": "https://prediction.achswap.app/"
+    },
+    {
+      "description": "Testnet-only DeFi lending platform on Arc Network. No real funds, no financial risk. Built for testing and development.",
+      "headings": [
+        "Global Decentralized<br/> <span class=\"hero-gradient\">Lending Protocol</span>",
+        "Apply for a Loan",
+        "Choose your collateral type",
+        "Review your loan request",
+        "Daat<span class=\"logo-fi\">FI</span>",
+        "About This Platform",
+        "Testnet Environment",
+        "Security & Transparency",
+        "Disclaimer"
+      ],
+      "name": "DaatFI",
+      "ok": true,
+      "title": "DaatFI — Testnet DeFi Lending on Arc Network",
+      "website": "https://daatfi.xyz/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "ARC Testnet Leaderboard"
+      ],
+      "name": "Push Ninja",
+      "ok": true,
+      "title": "Push Ninja — ARC Testnet",
+      "website": "https://pushninja-github-io.vercel.app/"
+    },
+    {
+      "description": "Stream, invoice, and monetize with native USDC on Arc.",
+      "headings": [
+        "Payments,<span class=\"block text-[#ffb38a]\">reimagined</span><span class=\"block text-white/85\">as a living system.</span>",
+        "One system,<span class=\"block text-white/65\">three payment flows.</span>",
+        "Stream",
+        "Invoice",
+        "Paywall",
+        "Payments today<span class=\"block text-[#ffb38a]\">are fragmented.</span>"
+      ],
+      "name": "ArcFlow",
+      "ok": true,
+      "title": "Arc Flow",
+      "website": "https://www.flowonarc.net/"
+    },
+    {
+      "description": "CronPay on cronpay.in — USDC payments on Arc Testnet: direct pay, tracked escrow, disputes, and a jobs portal with on-chain settlement.",
+      "headings": [],
+      "name": "cronpay",
+      "ok": true,
+      "title": "CronPay",
+      "website": "https://cronpay.in/"
+    },
+    {
+      "description": "An open-source routing and validation service that enables customers to connect directly with utilities.",
+      "headings": [],
+      "name": "OpenVPP",
+      "ok": true,
+      "title": "OpenVPP Energy",
+      "website": "https://arc.openvpp.energy/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "FlowOnArc",
+      "ok": true,
+      "title": "Flow On Arc - DeFi on Arc Network",
+      "website": "https://flowonarc.xyz/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Zentryx",
+      "ok": false,
+      "title": "Deployment Paused",
+      "website": "https://zentryxapp.xyz/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "BUNNY<br>BUILDER",
+        "ENTER YOUR WALLET",
+        "🏅 TOP PLAYERS",
+        "⏸ PAUSED",
+        "LEVEL COMPLETE!",
+        "YOU WON!",
+        "GAME OVER"
+      ],
+      "name": "BUNNY BUILDER",
+      "ok": true,
+      "title": "🐰 Bunny Builder - Arc Testnet Game",
+      "website": "https://arcade-arc.pages.dev/"
+    },
+    {
+      "description": "Seller creates a payment link. Buyer opens it, funds the deal, and settles transparently on Arc Network.",
+      "headings": [],
+      "name": "ArcEscrow",
+      "ok": true,
+      "title": "ArcEscrow",
+      "website": "https://arc-escrow-blue.vercel.app/"
+    },
+    {
+      "description": "Pay-to-access content, usage-based credits, and advanced payment routing on Arc Testnet.",
+      "headings": [
+        "FLOWFI",
+        "Programmable<br/><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-[#FFE600] via-[#00FF87] to-[#00D9FF]\">Monetization</span>",
+        "Core Infrastructure",
+        "Execution Flow"
+      ],
+      "name": "Flowfi",
+      "ok": true,
+      "title": "FlowFi — Programmable Payment Hub",
+      "website": "https://flowfi-three.vercel.app/"
+    },
+    {
+      "description": "Explore Drops, Take on Quests, Earn NFTs, and Be Part of Your Favorite Web3 Community.",
+      "headings": [
+        "Explore <span class=\"text-primary\">Drops</span>, Take on Quests,<br/>Earn <span class=\"text-primary\">NFTs</span>, and Be Part of Your Favorite <span class=\"text-primary\">Web3</span> Community.",
+        "Daily Streak"
+      ],
+      "name": "Sweep",
+      "ok": true,
+      "title": "SweepHaus | NFT Launchpad",
+      "website": "https://sweep.haus/"
+    },
+    {
+      "description": "Decentralized marketplace powered by smart contracts on Arc Testnet. Explore, test, and experience Web3 commerce in a secure environment.",
+      "headings": [
+        "Shop the <span class=\"home-hero-gradient-text\">Future</span> <br/>of Decentralized<br/> <span class=\"home-hero-muted\">Commerce.</span>",
+        "Latest Products",
+        "About Shukly Store",
+        "Recent Sales",
+        "No Products Listed Yet",
+        "${name}",
+        "Unable to load data. Please try again.",
+        "No recent sales yet",
+        "Unable to load data. Please try again.",
+        "Blockchain Transaction"
+      ],
+      "name": "Shukly Store",
+      "ok": true,
+      "title": "Shukly Store – Web3 Marketplace",
+      "website": "https://www.shuklystore.xyz/"
+    },
+    {
+      "description": "ArcLendVault — Institutional-grade lending & borrowing on Arc Network",
+      "headings": [],
+      "name": "ArcLendVault",
+      "ok": true,
+      "title": "ArcLendVault | Arc Network",
+      "website": "https://arcvault-five.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "<span class=\"pixel-arrow\">></span> SELECT DUNGEON",
+        "&#x23F8; PAUSED",
+        "DUNGEON CLEARED!",
+        "<span class=\"pixel-arrow\">></span> ITEM SHOP",
+        "<span class=\"pixel-arrow\">></span> YOUR INVENTORY",
+        "<span class=\"pixel-arrow\">></span> SEASON LEADERBOARD"
+      ],
+      "name": "Arc Dungeons",
+      "ok": true,
+      "title": "Arc Dungeons",
+      "website": "https://arcescape.vercel.app/"
+    },
+    {
+      "description": "Stream payments in bits on-chain.",
+      "headings": [],
+      "name": "Dripflow",
+      "ok": true,
+      "title": "DripFlow",
+      "website": "https://drip-flow-stream.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "Arc Transfer",
+        "Upload To Blockchain",
+        "Your Smart Contract Inbox"
+      ],
+      "name": "Arc Transfer",
+      "ok": true,
+      "title": "Arc Transfer",
+      "website": "https://gayanerangadev.github.io/arctransfer.github.io/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Orixa",
+      "ok": false,
+      "title": "Vercel Security Checkpoint",
+      "website": "https://orixa.live/"
+    },
+    {
+      "description": "Kudi Arc — Africa-first stablecoin FX swap and remittance. Swap USDC ↔ EURC, send to 10 African countries, earn 4.86% APY. Built on Arc Network.",
+      "headings": [],
+      "name": "KudiArc",
+      "ok": true,
+      "title": "Kudi Arc — Stablecoin FX & Remittance for Africa",
+      "website": "https://kudiarc.xyz/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Puls Market",
+      "ok": false,
+      "title": null,
+      "website": "https://pulsmarket.bond/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "Bid USDC.<br>Reach <em>anyone.</em><br>Trustlessly.",
+        "Creator registers",
+        "Company bids",
+        "AI agent filters",
+        "Reply = payment",
+        "14-day auto-refund"
+      ],
+      "name": "PitchSlotArc",
+      "ok": true,
+      "title": "PitchSlotArc — Bid for Attention on Arc",
+      "website": "https://pitchslotarc.vercel.app/"
+    },
+    {
+      "description": "Salden — Decentralized payroll for modern organizations. Fast, transparent, and secure on-chain salary distribution powered by Arc Network.",
+      "headings": [],
+      "name": "SALDEN",
+      "ok": true,
+      "title": "Salden — Decentralized Payroll",
+      "website": "https://salden.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "Hire <i>AI Agents</i><br>That Actually<br>Deliver."
+      ],
+      "name": "AgentMarket",
+      "ok": true,
+      "title": "AgentMarket — AI Agent Economy on Arc",
+      "website": "https://agentmarket-5ll3.vercel.app/"
+    },
+    {
+      "description": "DeFi Platform - Bridge, Swap, and Manage Liquidity on Arc Testnet. Cross-chain bridging, token swapping, and liquidity provision.",
+      "headings": [],
+      "name": "Defi on Arc",
+      "ok": true,
+      "title": "DeFi on ARC - Bridge, Swap, and Manage Liquidity",
+      "website": "https://defi-on-arc.org/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Arctimes",
+      "ok": false,
+      "title": null,
+      "website": "https://arctimes.net/"
+    },
+    {
+      "description": "Secure, instant cross-chain settlements powered by Circle.",
+      "headings": [
+        "<span class=\"block text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50\">Unified</span><span class=\"block text-transparent bg-clip-text bg-gradient-to-tr from-primary via-secondary to-accent\">Liquidity.</span>",
+        "Unified Balance Value"
+      ],
+      "name": "Transvy Protocol",
+      "ok": true,
+      "title": "Transvy | Universal Cross-Chain Protocol",
+      "website": "https://transvyprotocol.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "<span data-translate=\"error\">Error</span> <span>1033</span>",
+        "Cloudflare Tunnel error",
+        "What happened?",
+        "What can I do?"
+      ],
+      "name": "Simiri",
+      "ok": false,
+      "title": "Cloudflare Tunnel error | app.simiri.xyz | Cloudflare",
+      "website": "https://app.simiri.xyz/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Doge forge",
+      "ok": false,
+      "title": "404: NOT_FOUND",
+      "website": "https://dogeforge.fun/"
+    },
+    {
+      "description": "Premium USDC payment requests on Arc",
+      "headings": [
+        "Turn a wallet transfer<span class=\"block bg-gradient-to-r from-white via-zinc-300 to-zinc-500 bg-clip-text text-transparent\">into a premium payment experience</span>",
+        "More elegant than sending a wallet address",
+        "Freelancers, builders, and crypto-native teams",
+        "MVP with real shared payment state",
+        "Need test funds before you build?"
+      ],
+      "name": "FinArc",
+      "ok": true,
+      "title": "FinArc",
+      "website": "https://finarc.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "ARCWORLD",
+      "ok": false,
+      "title": null,
+      "website": "https://arcworld.io/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "arc puzzle",
+      "ok": true,
+      "title": "Arc Match-3 Puzzle",
+      "website": "https://arc-puzzle-v2.vercel.app/"
+    },
+    {
+      "description": "Launch memecoins with bonding curves and trade them on ARC Testnet.",
+      "headings": [],
+      "name": "Noxara",
+      "ok": true,
+      "title": "Noxara — Token Launchpad on ARC Testnet",
+      "website": "https://noxara.xyz/"
+    },
+    {
+      "description": "ArcFirstSwap - Bridge, swap, and send stablecoins on the Arc L1 blockchain.",
+      "headings": [
+        "ArcFirstSwap 控制台"
+      ],
+      "name": "Arcfirstswap",
+      "ok": true,
+      "title": "ArcFirstSwap | Testnet",
+      "website": "https://arcfirstswap.vercel.app/"
+    },
+    {
+      "description": "Lend and borrow on Arc Network",
+      "headings": [
+        "MARKETS",
+        "TESTNET POOL",
+        "ARC NATIVE TOKENS"
+      ],
+      "name": "ArcBank",
+      "ok": true,
+      "title": "Arc Lending",
+      "website": "https://agentloan.vercel.app/markets"
+    },
+    {
+      "description": "Pay anyone with just their username. Paytag makes crypto payments as easy as sending a text.",
+      "headings": [],
+      "name": "Paytag",
+      "ok": true,
+      "title": "Paytag - Social Payment Gateway",
+      "website": "https://paytagg.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "ACTFUN",
+      "ok": false,
+      "title": null,
+      "website": "https://actfun.xyz/"
+    },
+    {
+      "description": "Decentralized YES/NO prediction markets on Arc Network powered by native USDC.",
+      "headings": [
+        "Prediction Markets"
+      ],
+      "name": "Arcbet",
+      "ok": true,
+      "title": "ArcBet — Prediction Markets",
+      "website": "https://arc-bet.vercel.app/"
+    },
+    {
+      "description": "Trustless USDC prediction markets on Arc Network",
+      "headings": [
+        "Predict anything.<br/><span style=\"color:var(--usdc2)\">Get paid in USDC.</span>"
+      ],
+      "name": "Arcdict Markets",
+      "ok": true,
+      "title": "ArcDict — Prediction Markets on Arc",
+      "website": "https://arcdict-markets.vercel.app/"
+    },
+    {
+      "description": "Create a wallet, send and receive USDC or EURC, and manage payment links from one simple VeloxPay workspace.",
+      "headings": [
+        "One wallet for sending, receiving, and getting paid by request.",
+        "1. Create your wallet",
+        "2. Send, receive, or link",
+        "3. Track everything",
+        "Built for simple stablecoin payments"
+      ],
+      "name": "VeloxPay",
+      "ok": true,
+      "title": "VeloxPay",
+      "website": "https://veloxpay.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "The Arc-Native Launchpad<br /><span>for Real Assets</span>",
+        "0",
+        "$0",
+        "$0",
+        "~0.8s",
+        "Live Listings",
+        "Project Detail",
+        "Investment Returns",
+        "Live Order Book",
+        "Founder Bidding Interface",
+        "Launch Project",
+        "Portfolio"
+      ],
+      "name": "ArcVault",
+      "ok": true,
+      "title": "ArcVault - Arc-Native Launchpad for Real Assets",
+      "website": "https://arc-launchpad.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "This app isn't live yet",
+        "We couldn't find a Replit App at this address. If you're the owner, publish your app to make it reachable."
+      ],
+      "name": "Arc vault",
+      "ok": false,
+      "title": "This app isn't live yet",
+      "website": "https://block-chain-build--anointingkalu1.replit.app/arc-vault/"
+    },
+    {
+      "description": "Intelligent autonomous regime-adaptive portfolio manager on Arc Testnet",
+      "headings": [],
+      "name": "Port",
+      "ok": true,
+      "title": "Port",
+      "website": "https://portai-nu.vercel.app/"
+    },
+    {
+      "description": "SynArc is governance infrastructure for the agentic economy — enabling DAOs, AI agents, and autonomous systems to coordinate, vote, and manage USDC-native treasuries on Arc. The first multi-DAO governance layer built natively on Arc with Circle’s full stablecoin stack.",
+      "headings": [
+        "Launch Your Creator DAO <br class=\"hidden md:block\"/><span class=\"gradient-text\">on Arc</span>",
+        "Enterprise-Grade Coordination",
+        "Encrypted Analytics",
+        "USDC-Native Treasury",
+        "Secure Delegation",
+        "AI-Powered Governance",
+        "Governance Infrastructure <br/><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-primary via-arc-blue to-accent\">for the Arc Ecosystem</span>",
+        "Programmable Capital Infrastructure<br/><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-primary via-arc-blue to-accent\">for the Agentic Internet</span>",
+        "Autonomous Agent Fund",
+        "Human Campaigns",
+        "Milestone Escrow",
+        "1:1 USDC Releases"
+      ],
+      "name": "SynArc Dao",
+      "ok": true,
+      "title": "SynArc — Governance Infrastructure",
+      "website": "https://www.synarcdao.xyz/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "MirtanaProtocol",
+      "ok": false,
+      "title": null,
+      "website": "https://http//mirtana.github.io/Protocol/"
+    },
+    {
+      "description": "ArcVault is a trustless USDC escrow gateway on Arc testnet. Lock, deliver, and release funds on-chain.",
+      "headings": [],
+      "name": "arcvaults",
+      "ok": true,
+      "title": "ArcVault — Programmable USDC Escrow",
+      "website": "https://arcvaults.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "ArcForge",
+      "ok": true,
+      "title": "Arc Forge",
+      "website": "https://www.arcforgeapp.com/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "15market",
+      "ok": true,
+      "title": "15market",
+      "website": "https://15market.online/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "AuraPredict",
+      "ok": true,
+      "title": "AuraPredict",
+      "website": "https://aurapredict.xyz/"
+    },
+    {
+      "description": "Swap USDC and tokens on Arc via the Arcade V2 AMM and V3 router.",
+      "headings": [],
+      "name": "ArcadeSwap",
+      "ok": true,
+      "title": "Arcade | Swap",
+      "website": "https://www.arcade.trading/swap"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Painite Pay",
+      "ok": true,
+      "title": "Painite Pay",
+      "website": "https://painite-pay-xeyb.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Jpeg World",
+      "ok": false,
+      "title": null,
+      "website": "https://jpegworld.io/"
+    },
+    {
+      "description": "Arcade é uma camada de prova de habilidade e engajamento para a comunidade Arc.",
+      "headings": [
+        "O hub brasileiro para builders Arc.",
+        "Escolha por onde entrar no ecossistema.",
+        "Leia o contexto",
+        "Entregue bounties",
+        "Construa reputação",
+        "Entre, jogue e construa sua trilha on-chain."
+      ],
+      "name": "ArcadeLearn",
+      "ok": true,
+      "title": "Arcade",
+      "website": "https://arcade-nu-blush.vercel.app/"
+    },
+    {
+      "description": "Batch USDC payments, swap and bridge on Arc Testnet. Send to 500 recipients in one transaction. Powered by Elligentt Contracts.",
+      "headings": [
+        "Payment Links",
+        "Select Network"
+      ],
+      "name": "Elligentt",
+      "ok": true,
+      "title": "Elligentt — Batch Payments on Arc Testnet",
+      "website": "https://elligentt.vercel.app/"
+    },
+    {
+      "description": "Decentralized job escrow and proof platform on Arc Testnet",
+      "headings": [
+        "Trust Through Chain",
+        "Build.<br/>Verify.<br/>Earn.",
+        "Fast Settlement",
+        "Global Network",
+        "How it Works",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-plus\" aria-hidden=\"true\"><path d=\"M5 12h14\"></path><path d=\"M12 5v14\"></path></svg>Post a Job",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-circle-check-big\" aria-hidden=\"true\"><path d=\"M21.801 10A10 10 0 1 1 17 3.335\"></path><path d=\"m9 11 3 3L22 4\"></path></svg>Build & Submit",
+        "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"lucide lucide-circle-check-big\" aria-hidden=\"true\"><path d=\"M21.801 10A10 10 0 1 1 17 3.335\"></path><path d=\"m9 11 3 3L22 4\"></path></svg>Verify & Earn"
+      ],
+      "name": "ArcHire",
+      "ok": true,
+      "title": "ArcHire",
+      "website": "https://archire-one.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Lockforge",
+      "ok": true,
+      "title": "My Google AI Studio App",
+      "website": "https://arcflow-vert.vercel.app/"
+    },
+    {
+      "description": "On-chain bounty board on Arc Testnet",
+      "headings": [],
+      "name": "BountyBoard",
+      "ok": true,
+      "title": "BountyBoard",
+      "website": "https://bounty-board-nine.vercel.app/"
+    },
+    {
+      "description": "Create and manage smart contracts and OTC deals on Arc Testnet. Escrow, milestone-based payments, and over-the-counter token deals.",
+      "headings": [
+        "<div class=\"w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center\"> <i class=\"fas fa-handshake text-white text-base\"></i> </div> OTC Contracts <span class=\"text-xs bg-indigo-600 text-white px-2 py-0.5 rounded-full font-semibold\">NEW</span>",
+        "Connect Wallet",
+        "New OTC Deal",
+        "<i class=\"fas fa-list-alt text-indigo-400\"></i>My OTC Contracts",
+        "Create Listing",
+        "<i class=\"fas fa-store text-purple-400\"></i>Active Listings"
+      ],
+      "name": "Conttracts",
+      "ok": true,
+      "title": "Conttracts — Smart Contracts & OTC Deals on Arc Network",
+      "website": "https://conttracts.pages.dev/"
+    },
+    {
+      "description": "Non-custodial conditional payments secured by smart contracts.",
+      "headings": [],
+      "name": "Custodex",
+      "ok": true,
+      "title": "Custodex | Hold. Verify. Release.",
+      "website": "https://custodex-dev.vercel.app/"
+    },
+    {
+      "description": "Nexora is an AI agent commerce and autonomous USDC earning platform on Arc.",
+      "headings": [],
+      "name": "Nexora",
+      "ok": true,
+      "title": "Nexora - The financial control layer for AI agents",
+      "website": "https://nexorafi.vercel.app/"
+    },
+    {
+      "description": "Batch settlements, payment streams, and AI agent commerce on Arc.",
+      "headings": [
+        "MOVE MONEY<br/><span style=\"background:linear-gradient(135deg, #0f766e, #14b8a6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text\">AUTONOMOUSLY</span>",
+        "Three steps to settlement",
+        "Connect & approve",
+        "Upload recipients",
+        "Settle in one tx",
+        "Built for the<br/>agentic economy",
+        "Frequently asked questions",
+        "Ready to move money at the speed of code?"
+      ],
+      "name": "Flux",
+      "ok": true,
+      "title": "Flux — Programmable USDC Payment Rails",
+      "website": "https://www.fluxonarc.xyz/"
+    },
+    {
+      "description": "FunSwap — The fastest DEX aggregator on Arc Testnet. Swap tokens across Circle Arc, Synthra, AchSwap & Presto with smart routing for the best rates.",
+      "headings": [],
+      "name": "FunSwap",
+      "ok": true,
+      "title": "FunSwap — Fast, Fun, Token Swap",
+      "website": "https://www.funswap.app/"
+    },
+    {
+      "description": "Send tokens to hundreds of wallets in a single transaction. Built for Arc Testnet with Circle USDC & EURC.",
+      "headings": [
+        "Send Tokens & NFTs to<!-- --> <span class=\"gradient-text-brand\">hundreds of wallets</span> <!-- -->in one click",
+        "Everything you need to<!-- --> <span class=\"gradient-text-brand\">distribute at scale</span>",
+        "Gas-optimized batching",
+        "Multi-token support",
+        "Pre-flight validation",
+        "CSV upload & paste",
+        "Transaction history",
+        "Address book",
+        "How it works",
+        "Connect your wallet",
+        "Add recipients",
+        "Review the summary"
+      ],
+      "name": "Sender",
+      "ok": true,
+      "title": "Sender MultiSend",
+      "website": "https://arcsender.xyz/"
+    },
+    {
+      "description": "Launch your store. Sell anything. Get paid in USDC.",
+      "headings": [
+        "Sell anything.<br/><span class=\"v4amber\">Keep all of it.</span>",
+        "List it.<span class=\"v4seq\"> Sell it.</span><br/>Get paid <span class=\"v4seq\">instantly.</span>",
+        "Snap and list in minutes",
+        "Funds held safely in escrow",
+        "Paid the second it clears",
+        "Real goods. Real people.<br/>Zero middlemen.",
+        "Trust that lives on-chain,<br/>not in a support ticket.",
+        "Protected by code",
+        "A reputation you own",
+        "Paid in seconds, anywhere",
+        "Open your store<br/>in <span class=\"v4amber\">minutes.</span>"
+      ],
+      "name": "Vendra",
+      "ok": true,
+      "title": "Vendra — Web3 Commerce on Arc",
+      "website": "https://vendramarket.xyz/"
+    },
+    {
+      "description": "Premium cross-chain USDC teleportation portal for the agentic economy.",
+      "headings": [
+        "Quantum<span>Bridge</span>",
+        "Quantum<span>Bridge</span>",
+        "Teleport USDC",
+        "Teleportation Status",
+        "Activity Portal",
+        "Manual Recovery",
+        "Teleportation Successful",
+        "Link Quantum Fleet"
+      ],
+      "name": "QuantumBridge",
+      "ok": true,
+      "title": "QuantumBridge | Cross-Chain USDC Teleport",
+      "website": "https://quantum-bridge-zeta.vercel.app/"
+    },
+    {
+      "description": "The complete stablecoin wallet on Arc. Send, swap, bridge and earn with USDC and EURC. Zero gas fees. Non-custodial. Powered by Circle.",
+      "headings": [],
+      "name": "Nan",
+      "ok": true,
+      "title": "NAN Wallet — Payments Without Borders",
+      "website": "https://nanarc.xyz/"
+    },
+    {
+      "description": "Autonomous USDC capital flow execution on Arc Network. Powered by Claude AI, Circle Gateway, CCTP V2, and ERC-8004.",
+      "headings": [],
+      "name": "Flowfi-Agent",
+      "ok": true,
+      "title": "FlowFi Agent — Capital Flow Engine on Arc",
+      "website": "https://flowfiagent.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "AUTONOMA"
+      ],
+      "name": "AUTONOMAMOBILE",
+      "ok": true,
+      "title": "AUTONOMA | The World's First Intent-Driven Phone",
+      "website": "https://autonomamobile.com/"
+    },
+    {
+      "description": "Agent-mediated, USDC-settled, milestone-escrowed deals on Arc. Built on Circle.",
+      "headings": [
+        "Agree. Escrow.<br/>Deliver.<!-- --> <span class=\"text-[var(--lp-accent)]\">Settle.</span>",
+        "Bring your own counterparty.",
+        "Name the wallet",
+        "Release in tranches",
+        "No counterparty yet? Agents bid for you.",
+        "Agents negotiate",
+        "Escrow on acceptance",
+        "Three rails.<!-- --> <span class=\"text-[var(--lp-accent)]\">One</span> <!-- -->deal.",
+        "Escrow in USDC",
+        "Milestone release",
+        "On-chain proof",
+        "A deal, end to end."
+      ],
+      "name": "karwan",
+      "ok": true,
+      "title": "Karwan · cross-border SME settlement",
+      "website": "https://karwan.site/"
+    },
+    {
+      "description": "Liqdx is an intelligent AI-driven cross-chain agent for Ethereum, Solana, Base, Arbitrum, and Avalanche.",
+      "headings": [
+        "THE SMART",
+        "PORTFOLIO &",
+        "<span class=\"aww-serif\">cross-chain</span> AGENT.",
+        "TRI AGENT <br/><span class=\"aww-serif\" style=\"font-size:clamp(3.5rem, 7vw, 6rem)\">engine</span>",
+        "Flux Agent",
+        "Atlas Agent",
+        "Oracle Agent",
+        "CORE <br/><span class=\"aww-serif\">features</span>",
+        "Intent Engine",
+        "Unified Liquidity",
+        "Zero Friction",
+        "Instantly Social"
+      ],
+      "name": "Liqdx",
+      "ok": true,
+      "title": "Liqdx | Intent-Powered Cross-Chain Wallet",
+      "website": "https://liqdx.app/"
+    },
+    {
+      "description": "Register your AI Agent onchain, mint identity NFTs, and trade in a USDC-native marketplace. Built on Arc.",
+      "headings": [
+        "Onchain identity for AI Agents",
+        "Verifiable Identity",
+        "Marketplace Access",
+        "Secure Execution"
+      ],
+      "name": "Loom",
+      "ok": true,
+      "title": "Loom — AI Agent Identity & NFT Marketplace",
+      "website": "https://loomonarc.xyz/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "PayNote",
+      "ok": false,
+      "title": null,
+      "website": "https://paynote.space/"
+    },
+    {
+      "description": "Get 100 USDC daily on Arc testnet. For developers building on Arc network. Connect your GitHub and claim your testnet tokens.",
+      "headings": [
+        "<span class=\"gradient-text\">Get Testnet USDC</span>",
+        "Claim USDC",
+        "How it works",
+        "Connect GitHub",
+        "Enter Wallet",
+        "Receive 100 USDC"
+      ],
+      "name": "Arc Dev Faucet",
+      "ok": true,
+      "title": "Arc Dev Faucet",
+      "website": "https://arc-faucet.dev/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "payee",
+      "ok": false,
+      "title": "404: NOT_FOUND",
+      "website": "https://www.stablepayee.xyz/"
+    },
+    {
+      "description": "Rivet: Chromium EVM wallet, Arc testnet, and X-Link for public Claim and allowlist Pay.",
+      "headings": [
+        "Your EVM wallet. Distribution and payouts with X-Link.",
+        "Multi-network",
+        "X-Link",
+        "Your keys",
+        "Watch the demo",
+        "Product screenshots"
+      ],
+      "name": "Rivet Pay",
+      "ok": true,
+      "title": "Rivet — EVM wallet & X-Link",
+      "website": "https://rivetpay.xyz/"
+    },
+    {
+      "description": "Prediction and opinion markets on Arc.",
+      "headings": [],
+      "name": "Presto Markets",
+      "ok": true,
+      "title": "Presto Markets",
+      "website": "https://presto-markets.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "WARC<br><span class=\"y\">GARAGE</span><br><span class=\"r\">IS LIVE</span>",
+        "MINT YOUR RIDE",
+        "PIXEL GARAGE",
+        "ROADMAP",
+        "VISION & MISSION",
+        "FAQ"
+      ],
+      "name": "WarcGarage",
+      "ok": true,
+      "title": "Cool Cars NFT — Pixel Garage",
+      "website": "https://warcgarages.netlify.app/"
+    },
+    {
+      "description": "Autonomous Credit & Yield Engine — Intelligent USDC account with behavioral scoring, dynamic credit, and conservative yield strategies.",
+      "headings": [],
+      "name": "Yieldra",
+      "ok": true,
+      "title": "Yieldra — Autonomous Credit & Yield",
+      "website": "https://yieldra-gamma.vercel.app/"
+    },
+    {
+      "description": "Create and send invoices on Arc Network",
+      "headings": [
+        "Onchain Invoices,<br/><span class=\"text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-500\">Trustless Payments</span>"
+      ],
+      "name": "InvoiceChain",
+      "ok": true,
+      "title": "InvoiceChain",
+      "website": "https://arc-invoicechain.vercel.app/"
+    },
+    {
+      "description": "SendArc — Africa",
+      "headings": [],
+      "name": "Sendarc",
+      "ok": true,
+      "title": "SendArc — Send Money to Africa Instantly",
+      "website": "https://www.sendarc.xyz/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "The Stablecoin DEX<br/>Built for Arc",
+        "Explore NovaDEX",
+        "Built Different.",
+        "Swap in 3 Steps.",
+        "Circle-Native Assets.",
+        "Ready to Swap?"
+      ],
+      "name": "NovaDEX",
+      "ok": true,
+      "title": "NovaDEX — Stablecoin DEX on Arc",
+      "website": "https://novadex-opal.vercel.app/"
+    },
+    {
+      "description": "Onchain IP licensing on Arc Testnet.",
+      "headings": [
+        "<span class=\"block whitespace-nowrap text-zinc-100\"><span class=\"whitespace-nowrap\">Own your IP,</span> <span class=\"whitespace-nowrap\">set your terms.</span></span><span class=\"block text-zinc-100\">License your<!-- --> <div aria-hidden=\"true\" class=\"absolute opacity-0 pointer-events-none\" style=\"visibility:hidden\"><span class=\"font-bold inline-block bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-700\">music</span><span class=\"font-bold inline-block bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-700\">images</span><span class=\"font-bold inline-block bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-700\">text</span><span class=\"font-bold inline-block bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-700\">design files</span><span class=\"font-bold inline-block bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-700\">code</span></div><span class=\"relative inline-block\"><span class=\"inline-block font-bold inline-block bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-700\" style=\"white-space:nowrap;opacity:1;filter:blur(0px);transform:none\">music</span></span><span class=\"inline-block bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 via-zinc-400 to-zinc-700\">.</span></span>",
+        "Proof of Authorship",
+        "Rights Policy Builder",
+        "Wallet-Ready Access",
+        "One Schema, Many Formats",
+        "Register in One Pass",
+        "USDC Rights Settlement",
+        "Street Photo Set",
+        "Public proof ready",
+        "Upload Supported Asset",
+        "Launch your licensing stack."
+      ],
+      "name": "ArcIP",
+      "ok": true,
+      "title": "ArcIP | Onchain IP Licensing on Arc",
+      "website": "https://www.arcipdemo.xyz/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Hibachi",
+      "ok": false,
+      "title": "Just a moment...",
+      "website": "https://hibachi.xyz/"
+    },
+    {
+      "description": "Decentralized naming service for Arc Testnet. Register .arc and .circle domains.",
+      "headings": [
+        "Your identity <span class=\"arcns-gradient-text\">on Arc</span>",
+        "NFT Ownership",
+        "Pay with USDC",
+        "Reverse Resolution",
+        "Simple, transparent pricing",
+        "ArcNS",
+        "Protocol",
+        "Developers",
+        "Community",
+        "Legal / Brand"
+      ],
+      "name": "Arc Name Service(ArcNS)",
+      "ok": true,
+      "title": "ArcNS — Arc Name Service",
+      "website": "https://arcname.services/"
+    },
+    {
+      "description": "Ebe is the reading community for African readers. Track your shelf, earn Book Points ($BP), join reading rooms, and discover African literature. Where solitude finds company.",
+      "headings": [
+        "The reading home<br> <em>Africa</em> has been<br> waiting <strong>for.</strong>",
+        "Everything a reader <em>deserves</em>",
+        "Earn as you <em>read</em>",
+        "Your reading home<br>is <em>almost ready.</em>"
+      ],
+      "name": "Ebe digital",
+      "ok": true,
+      "title": "Ebe — African Reading Community | Track Books & Earn Book Points",
+      "website": "https://www.useebe.com/"
+    },
+    {
+      "description": "Send and receive USDC instantly on Arc Testnet",
+      "headings": [],
+      "name": "FlowPay",
+      "ok": true,
+      "title": "FlowPay — Instant USDC Transfers",
+      "website": "https://flowpay-bay.vercel.app/"
+    },
+    {
+      "description": "While your agents wait, your USDC earns. FLOAT routes idle capital into USYC and recalls in seconds. Built on Arc.",
+      "headings": [],
+      "name": "Float",
+      "ok": true,
+      "title": "FLOAT — Yield middleware for agents on Arc",
+      "website": "https://float-yield-router.vercel.app/"
+    },
+    {
+      "description": "Real-time block intelligence, pay-per-query API, and autonomous agent on Arc Testnet.",
+      "headings": [],
+      "name": "ArcSense",
+      "ok": true,
+      "title": "ArcSense — Signal Intelligence for Arc",
+      "website": "https://arcsense-lite.vercel.app/"
+    },
+    {
+      "description": "Non-custodial stablecoin payment console. Issue a QR invoice, settle across Arc, Base Sepolia, or Monad, and export a verifiable receipt derived from onchain Transfer logs.",
+      "headings": [],
+      "name": "Disburse",
+      "ok": true,
+      "title": "Disburse - Stablecoin invoices with verifiable receipts",
+      "website": "https://disburse-virid.vercel.app/"
+    },
+    {
+      "description": "Pay creators only when they deliver. Condition-based USDC escrow on ARC Network.",
+      "headings": [
+        "Pay Creators<br><span class=\"accent\">Only When They Deliver</span>",
+        "Ready to get started?",
+        "How It Works",
+        "Why Nexrow?",
+        "📊 My Dashboard",
+        "🎯 Milestone Campaigns",
+        "⚡ Single Payments",
+        "📌 My Listings",
+        "🙋 Applications",
+        "💰 Pay a Creator",
+        "💰 Single Payment",
+        "🎯 Milestone Deal"
+      ],
+      "name": "Nexrow",
+      "ok": true,
+      "title": "Nexrow",
+      "website": "https://nexrow.xyz/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Verity",
+      "ok": false,
+      "title": "404: NOT_FOUND",
+      "website": "https://veritymarket.vercel.app/"
+    },
+    {
+      "description": "Maple is the leader in onchain asset management, with decades of traditional finance and crypto experience. Maple combines deep capital markets expertise with DeFi innovation to offer digital asset lending and yield products.",
+      "headings": [
+        "Asset Management<br><span class=\"font-medium\">Onchain</span>",
+        "<span>$</span><number-flow-react><template shadowroot=\"open\" shadowrootmode=\"open\" ><style> :host{display:inline-block;direction:ltr;white-space:nowrap;line-height:var(--number-flow-char-height, 1em) !important}span{display:inline-block}:host([data-will-change]) span{will-change:transform}.number,.digit{padding:calc(var(--number-flow-mask-height, 0.25em) / 2) 0}.symbol{white-space:pre}</style ><span role=\"img\" aria-label=\"4.00\" ><span part=\"left\"></span><span part=\"number\" class=\"number\" ><span part=\"integer\"><span class=\"digit\" part=\"digit integer-digit\">4</span></span><span part=\"fraction\"><span class=\"symbol\" part=\"symbol decimal\">.</span><span class=\"digit\" part=\"digit fraction-digit\">0</span><span class=\"digit\" part=\"digit fraction-digit\">0</span></span></span ><span part=\"right\"></span></span ></template ><span style=\"font-kerning: none; display: inline-block; line-height: var(--number-flow-char-height, 1em) !important; padding: var(--number-flow-mask-height, 0.25em) 0;\" >4.00</span ></number-flow-react>B",
+        "syrupUSDC/USDT",
+        "Liquid Yielding Dollar",
+        "4.7",
+        "<span class=\"whitespace-nowrap\">Maple Institutional -</span> <span class=\"whitespace-nowrap\">Secured Lending</span>",
+        "5.1",
+        "Borrow",
+        "Amount Borrowed",
+        "Total Borrowers",
+        "Total Loans Issued",
+        "Funding Time"
+      ],
+      "name": "Maple",
+      "ok": true,
+      "title": "Maple Finance | The Leader in Onchain Asset Management",
+      "website": "https://maple.finance/"
+    },
+    {
+      "description": "Real-time Weather on the Arc Blockchain",
+      "headings": [
+        "Real weather,<br/><span class=\"text-sky-500\">on-chain forever.</span>",
+        "Search any city or country"
+      ],
+      "name": "ArcCast",
+      "ok": true,
+      "title": "ArcCast",
+      "website": "https://arccast.vercel.app/"
+    },
+    {
+      "description": "Arfi is the unified interface for stablecoin DeFi on Arc Testnet. Swap, bridge, send, and track USDC and Circle ecosystem assets — where USDC is the native gas token.",
+      "headings": [
+        "The unified interface<br> for <span class=\"grad-text\">stablecoin</span> DeFi",
+        "What is Arfi?",
+        "Native burn-and-mint cross-chain",
+        "Built on Circle's ecosystem",
+        "Built for clarity"
+      ],
+      "name": "Arfi",
+      "ok": true,
+      "title": "Arfi — Stablecoin DeFi on Arc Testnet",
+      "website": "https://home.arfi.finance/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Agora agent market",
+      "ok": true,
+      "title": "Agora Agent Market",
+      "website": "https://agora-agent-market.netlify.app/"
+    },
+    {
+      "description": "Cross-border USDC payments on Arc Testnet",
+      "headings": [
+        "ArcCrossPay",
+        "Payment Dashboard",
+        "Create Payment Request",
+        "Recent Requests"
+      ],
+      "name": "ArcCrossPay",
+      "ok": true,
+      "title": "ArcCrossPay | USDC Payments",
+      "website": "https://arccrosspay-ai.vercel.app/"
+    },
+    {
+      "description": "Buy airtime, data, electricity tokens with USDC on Arc Network. Waka pay your bills without stress.",
+      "headings": [
+        "Connect Your Wallet"
+      ],
+      "name": "CirclePay_NG",
+      "ok": true,
+      "title": "CirclePay NG",
+      "website": "https://circlepay-ng.vercel.app/"
+    },
+    {
+      "description": "Pay employees and bills with USDC on Arc Testnet",
+      "headings": [
+        "Pay employees globally<br/><span class=\"text-brand-200\">with one USDC balance.</span>",
+        "How It Works",
+        "Create your account",
+        "Fund from any chain",
+        "Run payroll or send payments",
+        "Use Cases",
+        "Global Payroll",
+        "Vendor Payments",
+        "Cross-Chain Treasury",
+        "Instant Settlements",
+        "Documentation",
+        "Circle CCTP V2"
+      ],
+      "name": "Architect Pay",
+      "ok": true,
+      "title": "Architect Pay",
+      "website": "https://architect.pay.98pro.xyz/"
+    },
+    {
+      "description": "AI-powered wallet reputation scoring & sybil detection on Arc Network. Mint your reputation NFT.",
+      "headings": [
+        "Prove your wallet is real",
+        "Wallet proof engine",
+        "Reputation that financial apps can verify",
+        "Paste address",
+        "Score signals",
+        "Verify & mint"
+      ],
+      "name": "ProveArc",
+      "ok": true,
+      "title": "ProveArc",
+      "website": "https://provearc.xyz/"
+    },
+    {
+      "description": "Quote, swap and automate stablecoin moves with deep liquidity.",
+      "headings": [],
+      "name": "Liquira/fx",
+      "ok": true,
+      "title": "Liquira - Stablecoin FX rail",
+      "website": "https://app.liquiralabs.online/"
+    },
+    {
+      "description": "Curve-frontend is a user interface application designed to connect to Curve",
+      "headings": [],
+      "name": "Curve",
+      "ok": true,
+      "title": "Curve.finance",
+      "website": "https://www.curve.finance/"
+    },
+    {
+      "description": "Set up your crypto wallet, buy and sell BTC, ETH, SOL and more. Enjoy total control over your data and assets. The go-to crypto wallet for 100+ million users.",
+      "headings": [
+        "Buy",
+        "Earn",
+        "Swaps",
+        "RWAs",
+        "Predict",
+        "Perps",
+        "Explore More",
+        "About MetaMask",
+        "Follow",
+        "MetaMask Connect",
+        "Web3 Services",
+        "Dashboard"
+      ],
+      "name": "MetaMask",
+      "ok": true,
+      "title": "MetaMask Crypto Wallet. Buy and Sell Bitcoin, Ethereum, Solana",
+      "website": "https://metamask.io/"
+    },
+    {
+      "description": "duude.fun — the ultimate memecoin launchpad",
+      "headings": [],
+      "name": "duude.fun",
+      "ok": true,
+      "title": "duude.fun",
+      "website": "https://duude.fun/"
+    },
+    {
+      "description": "AI agents compete onchain for USDC prize pools. Winners get paid, on Arc.",
+      "headings": [
+        "<span class=\"block whitespace-nowrap\">THE ARENA FOR</span><span class=\"block whitespace-nowrap\">AI AGENTS</span>",
+        "BY THE NUMBERS",
+        "HOW IT WORKS",
+        "PUT UP A POOL",
+        "AGENTS COMPETE",
+        "THE CHAIN PAYS",
+        "AGENTS EARN. AGENTS SPEND. AGENTS WIN.",
+        "AGENTS PAY FOR RESEARCH",
+        "AGENTS DO REAL WORK",
+        "FINAL IN UNDER A SECOND",
+        "SYNDICATES",
+        "REAL ADOPTION, FIXED COST."
+      ],
+      "name": "ArcRun",
+      "ok": true,
+      "title": "ArcRun: the arena for AI agents on Arc",
+      "website": "https://arcrun.xyz/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "SubScript",
+      "ok": false,
+      "title": null,
+      "website": "https://sub-script-two.vercel.app/dashboard"
+    },
+    {
+      "description": "CHRONOS - Multi-Token Time-Locked Savings & Vesting Infrastructure",
+      "headings": [
+        "Lock USDC, <br/><span class=\"text-primary\">Unlock Discipline</span>",
+        "Why CHRONOS?",
+        "Non-Custodial",
+        "FIXED Vaults",
+        "FLEXIBLE Vaults",
+        "Multi-Chain",
+        "Proof of Reserves",
+        "Add to Vault",
+        "How It Works",
+        "Create Vault",
+        "Bridge & Lock",
+        "Wait & Watch"
+      ],
+      "name": "CHRONOS",
+      "ok": true,
+      "title": "CHRONOS | Time-Locked Vaults on Arc Testnet",
+      "website": "https://chronosfinance.vercel.app/"
+    },
+    {
+      "description": "A public job marketplace on Arc Network. Post tasks with USDC bounties, agents discover and claim them, Gemini evaluates deliverables onchain.",
+      "headings": [
+        "Work, posted. <em>Settled</em> onchain.",
+        "Three moves from <em>brief</em> to settlement.",
+        "The contracts of <em>record</em>.",
+        "Have work? <em>Post it.</em>"
+      ],
+      "name": "Arc job & board",
+      "ok": true,
+      "title": "Arc Job Board",
+      "website": "https://arc-job-board.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "Contribute together. Rotate the pot.",
+        "Members",
+        "How to join this round",
+        "Join the next circle",
+        "Create custom circle",
+        "Activity",
+        "Email login"
+      ],
+      "name": "AjoWay",
+      "ok": true,
+      "title": "AJO WAY",
+      "website": "https://ajoway.vercel.app/"
+    },
+    {
+      "description": "Veilarc supports open USDC payments today and private payments soon on Arc.",
+      "headings": [],
+      "name": "Veilarc",
+      "ok": true,
+      "title": "Veilarc",
+      "website": "https://veilarc.xyz/"
+    },
+    {
+      "description": "Making lending and borrowing on DeFi easier, safer, and more efficient.",
+      "headings": [],
+      "name": "Fluid",
+      "ok": true,
+      "title": "Fluid",
+      "website": "https://fluid.io/"
+    },
+    {
+      "description": "Archemist - Developer analytics, minus the developer part.",
+      "headings": [
+        "Deploy <span class=\"text-[#149e61]\">your token</span>",
+        "Elixir Lab"
+      ],
+      "name": "Archemist",
+      "ok": true,
+      "title": "Archemist",
+      "website": "https://archemist.fun/"
+    },
+    {
+      "description": "Create shareable USDC payment links in seconds. Get paid from any chain — Base, Ethereum, Arbitrum and more. Privacy-first with stealth mode. Instant settlement on Arc Network.",
+      "headings": [],
+      "name": "Conduit Pay",
+      "ok": true,
+      "title": "Conduit - USDC Payment Links on Arc Network",
+      "website": "https://conduitpay.xyz/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Mlswap",
+      "ok": true,
+      "title": "Mlswap",
+      "website": "https://app.mlswapx.xyz/"
+    },
+    {
+      "description": "Archive is the agent intelligence layer for Arc Network. Discover, hire, and evaluate",
+      "headings": [],
+      "name": "ArcHive",
+      "ok": true,
+      "title": "Archive — Agent Intelligence Layer",
+      "website": "https://arcs-hive.vercel.app/"
+    },
+    {
+      "description": "Shop premium fashion for men, women, and children. Pay with USDC on Arc Blockchain — sub-second finality, AI-powered shopping agent.",
+      "headings": [],
+      "name": "ArcWear",
+      "ok": true,
+      "title": "ArcWear — Fashion Powered by Arc Blockchain",
+      "website": "https://arcwear.vercel.app/"
+    },
+    {
+      "description": "Send USDC wages to Nigerian employees instantly on Arc Testnet. Real-time Naira equivalent. Fast, borderless payroll.",
+      "headings": [
+        "<span class=\"gradient-text\">Zolt</span>",
+        "Instant USDC Payroll",
+        "Live Naira Rate",
+        "Arc Network Native"
+      ],
+      "name": "Zolt",
+      "ok": true,
+      "title": "Zolt — Nigerian Payroll on Arc",
+      "website": "https://zolt-tau.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Sanwo",
+      "ok": true,
+      "title": "SANWO — USDC Payments on Arc",
+      "website": "https://sanwoapp.netlify.app/"
+    },
+    {
+      "description": "The premium AI-powered IDE for Web3 development. Write, deploy, and interact with smart contracts on Arc Testnet. Powered by OpenRouter.",
+      "headings": [],
+      "name": "Glow IDE",
+      "ok": false,
+      "title": "GlowIDE — AI-Powered Web3 IDE",
+      "website": "https://glowaide.com/"
+    },
+    {
+      "description": "Swap and settle stablecoin liquidity on Arc Testnet with predictable USDC-based gas.",
+      "headings": [],
+      "name": "ArcFX",
+      "ok": true,
+      "title": "ArcFX | Stablecoin FX AMM",
+      "website": "https://arc-fx.vercel.app/"
+    },
+    {
+      "description": "Lumma — Cross-chain stablecoin settlement on Arc Network.",
+      "headings": [],
+      "name": "Lumma",
+      "ok": true,
+      "title": "Lumma — Cross-chain Stablecoin Settlement",
+      "website": "https://lumma.xyz/"
+    },
+    {
+      "description": "BNY is a global financial services platforms company at the heart of the world’s capital markets overseeing $59.4T in assets.",
+      "headings": [
+        "Search Results",
+        "<p>BUILT IN</p>",
+        "PAYMENTS<br />WITHOUT PAUSE",
+        "<span style=\"color: rgb(5,104,127);\" class=\"custom-color-rte\"><span class=\"bnym-corp-akkurat-pro-eyebrow\">What we do</span></span>",
+        "<span style=\"color: rgb(0,36,61);\" class=\"custom-color-rte\"><span class=\"font-druk\">EMPOWERING CLIENTS</span></span>",
+        "<span style=\"color: rgb(5,104,127);\" class=\"custom-color-rte\"><span class=\"bnym-corp-akkurat-pro-eyebrow\">About us</span></span>",
+        "GLOBAL REACH & SCALE",
+        "in assets under custody and/or administration<sup>*</sup>",
+        "in assets under management<sup>*</sup>",
+        "provides custody services to clients in over 100 markets",
+        "<p><span class=\"font-druk\">READY TO TALK ABOUT <br /> WHAT'S NEXT?</span></p>",
+        "Visit our websites around the world."
+      ],
+      "name": "BNY",
+      "ok": true,
+      "title": "BNY | Global Financial Services",
+      "website": "https://www.bny.com/corporate/global/en.html"
+    },
+    {
+      "description": "Trade stocks on Robinhood with commission-free investing & advanced trading tools. Access fractional shares, real-time market data, and more. Terms and fees may apply.",
+      "headings": [
+        "<div>The World is Flat</div>",
+        "Send your agent",
+        "to the market",
+        "<div>Agentic Trading</div>",
+        "<div>Agentic Credit Card</div>",
+        "<span class=\"css-17h97dp\">Intuitive trading tools</span>",
+        "<div>Build your strategy and track market trends, seamlessly</div>",
+        "<div>Get started with Robinhood Crypto Trade crypto 24/7</div>",
+        "<div>Your portfolio, handled by the pros</div>",
+        "<div>Robinhood Protection Guarantee</div>",
+        "<div>Become a better investor on the go, right in the app</div>",
+        "<div>Join a new generation of investors</div>"
+      ],
+      "name": "Robinhood",
+      "ok": true,
+      "title": "Robinhood: 24/5 Commission-Free Stock Trading & Investing",
+      "website": "https://robinhood.com/"
+    },
+    {
+      "description": "Across is the bridge that just works. Bridge and swap tokens between any supported chain in seconds. Enjoy low fees, no custodial risk, and the reliability to handle any transfer size. Over $34B moved. Never hacked.",
+      "headings": [
+        "Bridge & swap across chains",
+        "Move money across chains. Fast, cheap, secure.",
+        "Billions bridged. Trusted by the best.",
+        "Uniswap",
+        "Uniswap",
+        "Why Across?",
+        "Resources for a crosschain world",
+        "Supported Chains",
+        "Across Everywhere",
+        "X",
+        "Instagram",
+        "Telegram"
+      ],
+      "name": "Across",
+      "ok": true,
+      "title": "Across",
+      "website": "https://across.to/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "Not Found"
+      ],
+      "name": "Stablebooks",
+      "ok": false,
+      "title": "404 Not Found",
+      "website": "https://stablebooks-app.xyz/"
+    },
+    {
+      "description": "A global food rating dApp on Arc Testnet. Stake USDC, rate dishes from around the world.",
+      "headings": [
+        "The World<br/><span class=\"italic font-normal text-cream/40\">tastes</span> <span class=\"text-saffron transition-all duration-300\" style=\"opacity:1;transform:translateY(0);display:inline-block\">Ramen</span>",
+        "Recently Rated",
+        "Your taste,<br/><span class=\"italic font-normal text-cream/40\">on the record.</span>"
+      ],
+      "name": "GlobalBite",
+      "ok": true,
+      "title": "GlobalBite — Rate the World&#x27;s Food, Onchain",
+      "website": "https://globalbite-hemi.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Einherjar Agent",
+      "ok": true,
+      "title": "Einherjar Agent",
+      "website": "https://einherjar.online/"
+    },
+    {
+      "description": "Pick a side. Spin the bottle. Every outcome is on-chain. — SpinArc",
+      "headings": [],
+      "name": "SPINARC",
+      "ok": true,
+      "title": "SpinArc — Bull vs Bear",
+      "website": "https://spinarc.vercel.app/"
+    },
+    {
+      "description": "Autonomous AI Agent Marketplace powered by Arc Network",
+      "headings": [
+        "Execute AI-driven tasks instantly with<!-- --> <span class=\"bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 bg-clip-text text-transparent drop-shadow-sm\">USDC</span>",
+        "Active AI Worker Marketplace",
+        "MotionScript Agent",
+        "SocialPulse Marketer",
+        "YT Viral Catalyst",
+        "LinguaBridge AI",
+        "Solidity Guard AI",
+        "ScrapeMaster Pro",
+        "Arc App Kit Integration",
+        "Circle Agent Stack & Wallets"
+      ],
+      "name": "FluxArc",
+      "ok": true,
+      "title": "FluxArc | Autonomous AI Agent Marketplace",
+      "website": "https://fluxarc.netlify.app/"
+    },
+    {
+      "description": "Post bounties, lock USDC, get work done. The first trustless bounty platform on Arc Network.",
+      "headings": [
+        "<span class=\"text-text\">The Bounty Platform</span><br/><span class=\"text-gold-gradient\">Built for Arc Builders</span>",
+        "How It Works",
+        "Post Bounty",
+        "Lock USDC",
+        "Submit Work",
+        "Approve & Pay"
+      ],
+      "name": "Arc-Bounty",
+      "ok": true,
+      "title": "ArcBounty — USDC Bounty Escrow on Arc Network",
+      "website": "https://arc-bounty-psi.vercel.app/"
+    },
+    {
+      "description": "Share a link. Recipient signs in with Google or email, gets a Circle wallet, and claims USDC gaslessly on Arc.",
+      "headings": [
+        "Send or request USDC<br/><span class=\"accent\">just share a link.</span><br/><span class=\"dim\">No wallet needed on their end.</span>",
+        "Four steps.<br/>One link.",
+        "Fund the gift",
+        "Share the link",
+        "Recipient logs in",
+        "Funds arrive",
+        "The smoothest onboarding in crypto.",
+        "Built for real flows.",
+        "Birthday gift",
+        "Request payment",
+        "Pay a freelancer",
+        "Reward community"
+      ],
+      "name": "LinkCash",
+      "ok": true,
+      "title": "LinkCash — Send USDC like a message",
+      "website": "https://linkcash.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "StableFlow",
+      "ok": true,
+      "title": "StableFlow 16",
+      "website": "https://stableflow-ten.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "Simple <span class=\"text-primary\">Swap</span>",
+        "Swap"
+      ],
+      "name": "Simpleswap",
+      "ok": true,
+      "title": "SimpleDEX - Arc Testnet",
+      "website": "https://simple-swap-phi.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "Stake<br/>Earn",
+        "Create Pokémon NFTs",
+        "PikaGallery",
+        "<span style=\"background:linear-gradient(135deg,#1a2a6c 0%,#2e4fa3 20%,#a8c0ff 45%,#ffffff 55%,#7bafd4 75%,#1a3a7a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;\">ARC</span> Name Service"
+      ],
+      "name": "PikaStake",
+      "ok": true,
+      "title": "PikaStake — DeFi Staking",
+      "website": "https://pikastake-nine.vercel.app/"
+    },
+    {
+      "description": "The official Arc Network blockchain quiz game. Play once. Earn your SBT.",
+      "headings": [
+        "Arc<span class=\"text-indigo-400\">Trivia</span><span class=\"text-indigo-500/60 text-3xl ml-1\">1.0</span>"
+      ],
+      "name": "Arc Trivia",
+      "ok": true,
+      "title": "Arc Trivia 1.0",
+      "website": "https://arctrivia.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "CREDENCE",
+      "ok": true,
+      "title": "CREDENCE — Trust Intelligence for Arc",
+      "website": "https://credence-intelligence.netlify.app/"
+    },
+    {
+      "description": "Insurance Engine",
+      "headings": [],
+      "name": "Anzen_xyz",
+      "ok": true,
+      "title": "Anzen - Insurance Engine",
+      "website": "https://anzen.financial/"
+    },
+    {
+      "description": "Stablecoin-first DeFi + Agent Economy on Arc Testnet. USDC + EURC, native.",
+      "headings": [
+        "The stablecoin protocol<br/><span class=\"text-brand\">for the agent economy.</span>",
+        "Hold",
+        "Earn",
+        "Automate",
+        "Seven primitives, one wallet"
+      ],
+      "name": "HELIX",
+      "ok": true,
+      "title": "Helix — Two currencies. One protocol.",
+      "website": "https://helix-arc.vercel.app/"
+    },
+    {
+      "description": "Money movement infrastructure for the internet. Send, batch, request, swap, and settle stablecoins on Arc Testnet.",
+      "headings": [
+        "Choose how to sign in",
+        "Financial infrastructure for the internet.",
+        "One platform. Every payment workflow.",
+        "Send payments",
+        "Batch settlement",
+        "Payment requests",
+        "PrivSwiftPay",
+        "See how money moves.",
+        "Payment routing",
+        "Batch settlement",
+        "Payment requests",
+        "Built like fintech. Settles onchain."
+      ],
+      "name": "SwiftPay",
+      "ok": true,
+      "title": "SwiftPay | Financial infrastructure on Arc",
+      "website": "https://swiftpay2.vercel.app/"
+    },
+    {
+      "description": "Describe a task. Agents handle the rest.",
+      "headings": [
+        "GigaWork",
+        "What do you want to automate?",
+        "Initializing…",
+        "Polymarket Odds Monitor",
+        "Polymarket Address Monitor",
+        "DCA (Dollar Cost Averaging)",
+        "Ladder Buy & Sell",
+        "Wallet Monitor",
+        "Copy Trade",
+        "Send Alert",
+        "Token Pulse"
+      ],
+      "name": "Gigawork",
+      "ok": true,
+      "title": "GigaWork — Chat-driven AI workflow runner",
+      "website": "https://gigawork.xyz/"
+    },
+    {
+      "description": "Two AI agents make a claim. One is lying. Bet USDC, win up to 5×.",
+      "headings": [
+        "SIGN IN TO PLAY"
+      ],
+      "name": "Bluff",
+      "ok": true,
+      "title": "BLUFF — Spot the AI lie",
+      "website": "https://bluff-alpha.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Arclayer",
+      "ok": false,
+      "title": "Deployment Paused",
+      "website": "https://www.arclayers.xyz/"
+    },
+    {
+      "description": "WheelX is an AI-powered bridge & swap aggregator that enables cross-chain swapping of any token between multi-chains.",
+      "headings": [
+        "<style data-emotion=\"css 6cpqb8\">.css-6cpqb8{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;gap:var(--chakra-spacing-1);}</style><div class=\"chakra-stack css-6cpqb8\"><style data-emotion=\"css isilc1\">.css-isilc1{width:28px;height:28px;}@layer recipes{.css-isilc1{display:inline-block;line-height:1em;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;color:currentcolor;vertical-align:middle;}}</style><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 28 29\" focusable=\"false\" aria-hidden=\"true\" class=\"chakra-icon css-isilc1\"><path fill=\"#8143FF\" d=\"m14.65 23-4.507 5.066-.46-.41 4.507-5.066z\"></path><path fill=\"#8143FF\" d=\"m18.897 27.665-.46.41L13.92 23l.46-.41z\"></path><path fill=\"#8143FF\" d=\"M20.861 27.51v.74h-5.304v-.74zM12.966 27.51v.74H7.662v-.74z\"></path><g class=\"wheelx_svg__wheelx-path\"><path fill=\"#8143FF\" d=\"M23.33 13.335a8.988 8.988 0 1 0-17.977 0 8.988 8.988 0 0 0 17.977 0m.617 0a9.605 9.605 0 1 1-19.21 0 9.605 9.605 0 0 1 19.21 0\"></path><path fill=\"#FF76DC\" d=\"M14.243 15.604a2.239 2.239 0 1 0 0-4.478 2.239 2.239 0 0 0 0 4.478\"></path><path fill=\"#8143FF\" d=\"M16.235 13.365a1.992 1.992 0 1 0-3.984 0 1.992 1.992 0 0 0 3.984 0m.494 0a2.486 2.486 0 1 1-4.972 0 2.486 2.486 0 0 1 4.972 0\"></path><path fill=\"#8143FF\" d=\"M14.276 14.122a.757.757 0 1 0 0-1.514.757.757 0 0 0 0 1.514M14.57 15.544v7.154h-.74v-7.154z\"></path><path fill=\"#00CFFF\" d=\"M14.17 26.402a1.636 1.636 0 1 0 0-3.272 1.636 1.636 0 0 0 0 3.272\"></path><path fill=\"#8143FF\" d=\"M15.497 24.766a1.327 1.327 0 1 0-2.654 0 1.327 1.327 0 0 0 2.654 0m.617 0a1.944 1.944 0 1 1-3.888 0 1.944 1.944 0 0 1 3.888 0M14.57 11.167V4.012h-.74v7.155z\"></path><path fill=\"#00CFFF\" d=\"M14.17.308a1.636 1.636 0 1 1 0 3.272 1.636 1.636 0 0 1 0-3.272\"></path><path fill=\"#8143FF\" d=\"M15.497 1.944a1.327 1.327 0 1 1-2.654 0 1.327 1.327 0 0 1 2.654 0m.617 0a1.944 1.944 0 1 0-3.888 0 1.944 1.944 0 0 0 3.888 0M11.982 13.755H4.827v-.74h7.155z\"></path><path fill=\"#00CFFF\" d=\"M1.123 13.355a1.636 1.636 0 1 0 3.272 0 1.636 1.636 0 0 0-3.272 0\"></path><path fill=\"#8143FF\" d=\"M2.76 14.682a1.327 1.327 0 1 0-.001-2.654 1.327 1.327 0 0 0 0 2.654m0 .617a1.944 1.944 0 1 1 0-3.888 1.944 1.944 0 0 1 0 3.888M16.358 13.755h7.155v-.74h-7.155z\"></path><path fill=\"#00CFFF\" d=\"M27.217 13.355a1.636 1.636 0 1 1-3.272 0 1.636 1.636 0 0 1 3.272 0\"></path><path fill=\"#8143FF\" d=\"M25.58 14.682a1.327 1.327 0 1 1 0-2.654 1.327 1.327 0 0 1 0 2.654m0 .617a1.944 1.944 0 1 0 0-3.888 1.944 1.944 0 0 0 0 3.888M12.34 12.09 7.28 7.03l.524-.522 5.06 5.059z\"></path><path fill=\"#FF76DC\" d=\"M4.944 4.13a1.636 1.636 0 1 0 2.314 2.313A1.636 1.636 0 0 0 4.944 4.13\"></path><path fill=\"#8143FF\" d=\"M5.163 6.225A1.327 1.327 0 1 0 7.04 4.348a1.327 1.327 0 0 0-1.877 1.877m-.437.436a1.944 1.944 0 1 1 2.75-2.75 1.944 1.944 0 0 1-2.75 2.75M15.435 15.185l5.06 5.06.523-.524-5.06-5.06z\"></path><path fill=\"#FF76DC\" d=\"M23.395 22.58a1.636 1.636 0 1 1-2.313-2.313 1.636 1.636 0 0 1 2.313 2.314\"></path><path fill=\"#8143FF\" d=\"M21.3 22.362a1.327 1.327 0 1 1 1.877-1.877 1.327 1.327 0 0 1-1.877 1.877m-.436.437a1.944 1.944 0 1 0 2.75-2.75 1.944 1.944 0 0 0-2.75 2.75M15.435 11.525l5.06-5.06.523.524-5.06 5.06z\"></path><path fill=\"#FF76DC\" d=\"M23.395 4.13a1.636 1.636 0 1 0-2.313 2.313 1.636 1.636 0 0 0 2.313-2.313\"></path><path fill=\"#8143FF\" d=\"M21.3 4.348a1.327 1.327 0 1 0 1.877 1.877A1.327 1.327 0 0 0 21.3 4.348m-.436-.436a1.944 1.944 0 1 1 2.75 2.749 1.944 1.944 0 0 1-2.75-2.75M12.34 14.62l-5.06 5.06.524.523 5.06-5.06z\"></path><path fill=\"#FF76DC\" d=\"M4.945 22.58a1.636 1.636 0 1 1 2.313-2.313 1.636 1.636 0 0 1-2.313 2.314\"></path><path fill=\"#8143FF\" d=\"M5.163 20.485a1.327 1.327 0 1 1 1.877 1.877 1.327 1.327 0 0 1-1.877-1.877m-.436-.436a1.944 1.944 0 1 0 2.749 2.75 1.944 1.944 0 0 0-2.75-2.75\"></path></g></svg><style data-emotion=\"css 1l8pekc\">.css-1l8pekc{width:72px;}@layer recipes{.css-1l8pekc{display:inline-block;line-height:1em;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;color:currentcolor;vertical-align:middle;}}@media screen and (min-width: 48rem){.css-1l8pekc{width:100px;}}</style><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 100 21\" focusable=\"false\" aria-hidden=\"true\" class=\"chakra-icon css-1l8pekc\"><path fill=\"#8143FF\" d=\"M79.166 16.542c0 1.563.683 2.05 2.185 1.56.117-.038.237-.069.348-.119.385-.177.505-.053.573.359.217 1.327.237 1.322-1.11 1.633a4.7 4.7 0 0 1-1.949.037c-1.074-.2-1.73-.855-1.997-1.9-.12-.474-.142-.96-.141-1.45q.005-8.123.003-16.247h2.088zM30.876.526c1.46.03 1.461.008 1.461 1.448V8.71c1.053-1.284 2.183-2.202 3.635-2.635 1.831-.546 3.584-.491 4.986 1.013.934 1.003 1.257 2.265 1.267 3.595.02 2.902-.003 5.804.016 8.706.002.44-.142.561-.56.53-.529-.042-1.22.16-1.546-.103-.346-.28-.105-.992-.113-1.515-.036-2.394.058-4.788-.056-7.181-.035-.714-.182-1.408-.494-2.058-.541-1.131-1.603-1.679-2.829-1.394-1.598.371-2.864 1.26-3.821 2.576-.342.47-.496 1-.492 1.597.016 2.515-.004 5.032.017 7.55.004.433-.124.537-.548.535-1.551-.009-1.551.006-1.551-1.54 0-5.743.007-11.487-.013-17.23-.001-.512.135-.64.642-.629m17.144 5.44c2.381-1.332 4.845-1.31 7.161.168 2.324 1.482 3.492 3.631 3.37 6.421-.02.44-.183.524-.587.522-3.544-.015-7.087-.009-10.631-.009q-.806 0-.596.793c.691 2.62 2.568 4.142 5.086 4.098 1.543-.026 2.755-.725 3.65-1.935.28-.379.55-.465.972-.356.41.106.832.173 1.331.275l-.001.001c-.98 1.731-2.335 2.932-4.222 3.444-3.784 1.03-8.82-.988-9.024-6.704-.102-2.848.882-5.26 3.491-6.718m19.178-.92c3.885.066 7.182 3.742 6.83 7.58-.043.464-.281.446-.605.446q-5.344-.005-10.692-.002-.712 0-.538.695c.687 2.711 2.551 4.248 5.122 4.198 1.543-.031 2.753-.733 3.643-1.947.267-.362.52-.444.915-.351.432.1.87.178 1.375.28l-.215.36c-1.11 1.773-2.636 2.934-4.728 3.234-5.136.734-9.013-3.213-8.233-8.316.587-3.836 3.36-6.24 7.126-6.176M1.73.525c.554-.061.767.181.965.654 2.129 5.07 4.282 10.127 6.43 15.188.078.186.166.368.294.648.611-1.426 1.19-2.772 1.765-4.12.486-1.137.953-2.284 1.457-3.415.171-.385.158-.71-.006-1.095C11.6 5.938 10.585 3.48 9.563 1.027 9.51.898 9.46.768 9.37.54c.723 0 1.386.004 2.047-.003.325-.004.32.276.4.458.659 1.528 1.302 3.061 1.952 4.593.062.146.132.288.22.48.237-.207.291-.468.389-.695.622-1.455 1.252-2.907 1.841-4.376.15-.37.338-.488.72-.467.55.03 1.102.007 1.75.007-.525 1.268-1.024 2.478-1.526 3.687-.592 1.424-1.19 2.846-1.78 4.269-.093.222-.204.435-.087.696 1.141 2.577 2.276 5.159 3.461 7.846.578-1.372 1.116-2.648 1.649-3.926C22.09 9.063 23.78 5.021 25.45.97c.14-.34.312-.46.673-.44.566.027 1.136.006 1.788.006l-1.728 4.096c-2.03 4.8-4.066 9.6-6.083 14.408-.163.39-.35.575-.796.535-.628-.058-1.4.155-1.857-.137-.428-.273-.532-1.051-.772-1.61-.8-1.864-1.595-3.729-2.394-5.594-.063-.146-.135-.286-.263-.559-.433 1.002-.823 1.898-1.208 2.796-.656 1.53-1.323 3.052-1.952 4.592-.144.353-.3.52-.7.492-.651-.044-1.444.182-1.918-.115-.442-.277-.554-1.082-.799-1.659C5.079 12.213 2.725 6.644.367 1.078.305.932.213.798.134.658V.537c.533 0 1.07.046 1.597-.012m96.176.13c.647.032 1.298.009 2.088.009l-5.479 7.271c-.416.553-.805 1.127-1.256 1.65-.303.354-.246.59.017.937 2.088 2.759 4.155 5.535 6.227 8.306.133.178.261.36.47.647-.877 0-1.661.016-2.444-.008-.245-.008-.333-.279-.466-.453-1.717-2.248-3.44-4.492-5.132-6.76-.32-.428-.44-.343-.713.023-1.685 2.27-3.4 4.52-5.087 6.79-.232.313-.469.45-.86.43-.65-.03-1.303-.008-2.09-.008.204-.283.335-.473.473-.655 2.096-2.777 4.186-5.558 6.299-8.321.273-.357.27-.582 0-.936-2.122-2.785-4.22-5.586-6.326-8.384-.106-.14-.205-.288-.375-.53.844 0 1.59.006 2.335-.002.314-.004.4.25.539.435 1.705 2.258 3.415 4.511 5.097 6.786.303.408.433.377.72-.005 1.71-2.278 3.45-4.534 5.162-6.81.217-.288.425-.431.8-.413M67.098 6.73c-2.525-.018-4.58 1.784-4.971 4.333-.067.432.028.57.482.562 1.474-.025 2.949-.009 4.422-.01 1.515 0 3.03-.004 4.545.007.326.002.474-.046.422-.437-.342-2.508-2.45-4.436-4.9-4.455m-15.489.002c-2.521-.017-4.581 1.806-4.957 4.346-.068.46.072.552.498.546 1.494-.02 2.99-.007 4.483-.007h.001c1.494 0 2.99-.01 4.484.007.36.003.45-.102.403-.455-.334-2.5-2.449-4.42-4.912-4.437m48.39-6.07h-.004q.001-.003.004-.004z\"></path></svg></div>",
+        "Trade",
+        "Connect wallet",
+        "Bridge & Swap",
+        "Slippage Tolerance",
+        "From",
+        "ETH",
+        "To",
+        "ETH",
+        "Connect <!-- -->EVM<!-- --> Wallet",
+        "Trade"
+      ],
+      "name": "WheelX",
+      "ok": true,
+      "title": "WheelX | Instant Cross-Chain Bridge & Swap",
+      "website": "https://wheelx.fi/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "<span class=\"line-mask\"><span class=\"line-inner\">One USDC.</span></span> <span class=\"line-mask\"><span class=\"line-inner\">One Balance.</span></span> <span class=\"line-mask\"><span class=\"line-inner\"><span class=\"grad\">Everywhere.</span></span></span>",
+        "Spend. Automate.<br>Read the receipts.",
+        "One Balance.<br>Every Chain.",
+        "From Wallet to<br>Spend Anywhere",
+        "Loved by Arc<br>Testnet Builders",
+        "One USDC.<br>One Balance.<br><span class=\"grad\">Everywhere on Arc.</span>",
+        "Where We're Going"
+      ],
+      "name": "ArcSwap",
+      "ok": true,
+      "title": "Oneliq: One USDC. One Balance. Everywhere.",
+      "website": "https://arcswap.net/"
+    },
+    {
+      "description": "On-chain prediction markets settled in USDC. Trade YES or NO on the future. Built on Arc.",
+      "headings": [],
+      "name": "Arcmarkets",
+      "ok": true,
+      "title": "Arc Markets",
+      "website": "https://arcmarkets.fun/"
+    },
+    {
+      "description": "Buy Fear. Sell Greed. AI-powered auto trading on ARC Testnet using the Fear & Greed Index. Built with ERC-8183.",
+      "headings": [
+        "Automate Your Trades.<br/><span class=\"gradient-text\">Beat the Market</span><br/>Psychology.",
+        "Built different.<br/>Trades smarter.",
+        "Auto Trading Logic",
+        "Non-Custodial by Design",
+        "Powered by ARC Testnet",
+        "wBTC + Gold Strategy",
+        "Four steps to automated alpha.",
+        "Connect Wallet",
+        "Deposit USDC",
+        "Enable Auto Mode",
+        "AI Executes Trades",
+        "First 2 trades on us.<br/>Always."
+      ],
+      "name": "Fomo Trades",
+      "ok": true,
+      "title": "Fomo Trades",
+      "website": "https://fomo-trades-ai.vercel.app/"
+    },
+    {
+      "description": "Permissionless Infrastructure for a Better World",
+      "headings": [
+        "Permissionless infrastructure",
+        "LayerZero builds technology that makes<!-- --> <span class=\"text-muted\">decentralization possible, scalable, and inevitable.</span>",
+        "Interoperability",
+        "Interoperability",
+        "Interoperability",
+        "Interoperability",
+        "Stargate",
+        "Stargate",
+        "Stargate",
+        "Stargate",
+        "Zero",
+        "Zero"
+      ],
+      "name": "LayerZero",
+      "ok": true,
+      "title": "LayerZero",
+      "website": "https://layerzero.network/"
+    },
+    {
+      "description": "Bridge native USDC, USDT, ETH, BTC, and OFTs across 80+ chains using Stargate, the fastest, lowest-fee cross-chain bridge with wallet support and no wrapping.",
+      "headings": [],
+      "name": "Stargate",
+      "ok": true,
+      "title": "Bridge USDC, USDT, ETH, BTC & OFTs Across Chains",
+      "website": "https://stargate.finance/"
+    },
+    {
+      "description": "Exodus is the only platform you need for your money. Your favorite Bitcoin and crypto wallet is now supercharged with everyday payments and more.",
+      "headings": [
+        "Your money. <br class=\"block sm:hidden md:block lg:hidden\"/> Your rules.",
+        "Flip to Pay.<br/><span class=\"bg-gradient-to-r from-white from-30% via-green-pay via-85% to-green-pay-200 to-100% bg-clip-text text-transparent\">Your money is</span><br/><span class=\"bg-gradient-to-r from-white from-30% via-green-pay via-85% to-green-pay-200 to-100% bg-clip-text text-transparent\">truly yours.</span>",
+        "Seamless swaps, <br/>smooth performance",
+        "Buy and sell <br class=\"xs:hidden\"/> directly in your wallet",
+        "Boost your crypto holdings",
+        "1,000,000+ assets <br class=\"block md:hidden\"/> supported",
+        "Explore the power <br class=\"block md:hidden\"/>of Exodus",
+        "Passkey<br/> protection",
+        "Advanced security<br/> made easy",
+        "Customer<br/> Support",
+        "User-friendly<br/> interface",
+        "Multichain support"
+      ],
+      "name": "Exodus",
+      "ok": true,
+      "title": "Exodus | Send Money, Manage Crypto, Spend Worldwide",
+      "website": "https://www.exodus.com/"
+    },
+    {
+      "description": "Accept stablecoin payments, open financial accounts, and send money globally. USDC/USDT financial accounts for businesses and individuals in 90+ countries.",
+      "headings": [
+        "Stablecoin Payment Gateway",
+        "Stablecoin Financial Account",
+        "One platform for <span class=\"text-indigo-500\">Stablecoin</span> Payments",
+        "Stablecoin Payment Gateway",
+        "Stablecoin Financial Account",
+        "Trusted by beloved Partners and Customers",
+        "Simplifying payments for web3 businesses.",
+        "Features",
+        "Use-cases",
+        "Developers",
+        "Resources",
+        "About"
+      ],
+      "name": "Copperx",
+      "ok": true,
+      "title": "Copperx | Stablecoin Platform for Cross-Border Payments",
+      "website": "https://copperx.io/"
+    },
+    {
+      "description": "Aave is an Open Source Protocol to create Non-Custodial Liquidity Markets to earn interest on supplying and borrowing assets with a variable interest rate. The protocol is designed for easy integration into your products and services.",
+      "headings": [
+        "Resources",
+        "Developers",
+        "About",
+        "<span><span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">Savings</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">for</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">Everyone</span></span>",
+        "<span><span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">The</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">Full</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">Power</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">of</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">DeFi</span></span>",
+        "<span><span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">Markets</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">for</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">every</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">strategy.</span></span>",
+        "Main<!-- --> <span class=\"styles_cardSubheading__kcurR\">• <!-- -->Core</span>",
+        "Bluechip<!-- --> <span class=\"styles_cardSubheading__kcurR\">• <!-- -->Prime</span>",
+        "Ethena<!-- --> <span class=\"styles_cardSubheading__kcurR\">• <!-- -->Plus</span>",
+        "<span><span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">Build</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">with</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">Aave</span></span>",
+        "<span><span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">The</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">best</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">build</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">with</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">Aave.</span></span>",
+        "<span><span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">Trusted</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">by</span> <span style=\"display:inline-block;position:relative;opacity:0;transform:translateY(50%) rotateX(-45deg)\">Default</span></span>"
+      ],
+      "name": "Aave",
+      "ok": true,
+      "title": "Aave",
+      "website": "https://aave.com/"
+    },
+    {
+      "description": "Axelar is the Gateway to Onchain Finance, a decentralized network and development platform securely connecting the world&#x27;s blockchains and financial infrastructure.",
+      "headings": [
+        "THE GATEWAY TO ONCHAIN FINANCE<br/>",
+        "Trusted by <br/>Industry Leaders",
+        "All Of Crypto <br/>At Your Fingertips",
+        "Case Studies",
+        "80%",
+        "15+",
+        "100%"
+      ],
+      "name": "Axelar",
+      "ok": true,
+      "title": "Axelar | The Gateway To Onchain Finance",
+      "website": "https://www.axelar.network/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "Fundarc",
+        "Recent campaigns",
+        "How Fundarc works",
+        "Create milestones",
+        "Fund with USDC",
+        "Approve releases",
+        "Contributors can stay represented when they are unavailable."
+      ],
+      "name": "Fundarc",
+      "ok": true,
+      "title": null,
+      "website": "https://fundarc.netlify.app/"
+    },
+    {
+      "description": "Seamless USDC payments on the Arc blockchain.",
+      "headings": [
+        "ArcPay"
+      ],
+      "name": "Arcpayment",
+      "ok": true,
+      "title": "ArcPay — USDC Payments on Arc",
+      "website": "https://arcpayment.vercel.app/"
+    },
+    {
+      "description": "Social network for AI agents. Post, comment, vote, and anchor your identity on Arc Testnet via ERC-8004.",
+      "headings": [],
+      "name": "arcbook",
+      "ok": true,
+      "title": "Arcbook — Agent forums on Arc",
+      "website": "https://arcbook.xyz/"
+    },
+    {
+      "description": "Experience direct on-chain interactions, seamless swapping, and cross-chain bridging, all powered by the Arc App Kit.",
+      "headings": [],
+      "name": "Stac",
+      "ok": true,
+      "title": "Stac | Swap & Bridge with AppKit",
+      "website": "https://stacdefi.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Flowra",
+      "ok": false,
+      "title": "Deployment Paused",
+      "website": "https://agentflowra.xyz/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Archer Protocol",
+      "ok": false,
+      "title": "404: NOT_FOUND",
+      "website": "https://archeronarc.vercel.app/"
+    },
+    {
+      "description": "Pay freelancers instantly in USDC via escrow smart contracts on Arc.",
+      "headings": [],
+      "name": "Freelance",
+      "ok": true,
+      "title": "Freelance — USDC Payments on Arc",
+      "website": "https://freelance-arc-weld.vercel.app/"
+    },
+    {
+      "description": "Send, bridge, and manage USDC on Arc with AI.",
+      "headings": [
+        "Arc AI Wallet"
+      ],
+      "name": "ARC AI WALLET",
+      "ok": true,
+      "title": "Arc AI Wallet | Built on Arc",
+      "website": "https://arc-ai-wallet.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Liminal",
+      "ok": false,
+      "title": "404: NOT_FOUND",
+      "website": "https://liminalweb.vercel.app/"
+    },
+    {
+      "description": "Automate your USDC distributions on Arc Testnet with StableFlow.",
+      "headings": [
+        "Automate your <span class=\"text-blue-500\">Stablecoins</span> with precision",
+        "Flash Split",
+        "Circle&#x27;s Security",
+        "Viral Receipts"
+      ],
+      "name": "Stable Flow",
+      "ok": true,
+      "title": "StableFlow | Arc Stablecoin Splitter",
+      "website": "https://stable-flow-arc.vercel.app/"
+    },
+    {
+      "description": "Predict economic events — ECB rates, FX, crypto — and earn USDC on the Arc blockchain testnet.",
+      "headings": [
+        "ARC<span class=\"text-arc-accent\">PREDICT</span>",
+        "Will the ECB cut interest rates at its June 2026 meeting?",
+        "Will Bitcoin reach $120,000 before August 2026?",
+        "Will EUR/USD be above 1.15 on June 30, 2026?",
+        "Will the Fed keep rates unchanged at its July 2026 meeting?",
+        "Will S&P 500 close above 6,000 on June 28, 2026?",
+        "Will Ethereum ETF net inflows exceed $1B in June 2026?"
+      ],
+      "name": "Arc Predict",
+      "ok": true,
+      "title": "ArcPredict",
+      "website": "https://arc-predict-five.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "ArcNameHub",
+      "ok": false,
+      "title": null,
+      "website": "https://arcnamehub.xyz/"
+    },
+    {
+      "description": "Arc projects commission work, Architects claim it, USDC settles when it ships, reputation lives onchain.",
+      "headings": [
+        "A commission desk<br/><span class=\"text-smoke\">for the Architects of Arc.</span>",
+        "The commission is a five-stage protocol.<span class=\"text-smoke\"> Every stage is a state transition with a receipt.</span>",
+        "Post",
+        "Claim",
+        "Ship",
+        "Settle",
+        "Reputation",
+        "Reputation is a record,<span class=\"text-smoke\"> not a ranking.</span>",
+        "Real work.<br/>Real settlement.<br/><span class=\"text-gilt\">On Arc.</span>"
+      ],
+      "name": "Quill",
+      "ok": true,
+      "title": "Quill - Commissioning on Arc",
+      "website": "https://quillonarc.vercel.app/"
+    },
+    {
+      "description": "USDC payments for freelancers on Arc",
+      "headings": [
+        "Send payments with just an email address.",
+        "A production-grade fintech surface for USDC payment operations.",
+        "Email-first payments",
+        "Invisible payment rails",
+        "Built for real payouts"
+      ],
+      "name": "Arclink",
+      "ok": true,
+      "title": "ARCLINK",
+      "website": "https://arclink-zrxn.vercel.app/"
+    },
+    {
+      "description": "The most practical decentralized marketplace on Arc Network. Buy and sell with USDC escrow protection.",
+      "headings": [
+        "The Most Practical <br/><span class=\"text-gradient\">Web3 Marketplace</span>",
+        "Escrow Protection",
+        "Sub-second Finality",
+        "USDC Native",
+        "Trending <span class=\"text-gradient\">Deals</span>",
+        "Staking for Beginners",
+        "Full Stack Web Dev",
+        "Database Manager v5",
+        "Font Collection Pro",
+        "Machine Learning Adv",
+        "Arc OS Enterprise",
+        "Log Analysis Dash"
+      ],
+      "name": "ArcMart",
+      "ok": true,
+      "title": "Arc Mart | Premium Web3 Escrow Marketplace",
+      "website": "https://arcmart-app.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "Lock. Hold.<br><span class=\"grad\">Earn.</span>"
+      ],
+      "name": "ArcStash",
+      "ok": true,
+      "title": "Arc Stash",
+      "website": "https://arcstash.vercel.app/"
+    },
+    {
+      "description": "Lock money. Settle deals. No trust required. Create on-chain agreements backed by USDC escrow.",
+      "headings": [
+        "<span class=\"text-balance\">The trustless way to lock and <br class=\"hidden md:inline\"/>settle any deal</span>",
+        "Three steps to a settled deal",
+        "Built for any agreement",
+        "Ready to lock your first deal?"
+      ],
+      "name": "Clinch",
+      "ok": true,
+      "title": "Clinch — Trustless Escrow on Arc Network",
+      "website": "https://clinch-one.vercel.app/"
+    },
+    {
+      "description": "Scalar Market — premium USDC prediction markets on Arc Testnet. Trade outcomes with clarity.",
+      "headings": [],
+      "name": "Scalarmarket",
+      "ok": true,
+      "title": "Scalar Market — Prediction markets on Arc",
+      "website": "https://www.scalarmarket.xyz/"
+    },
+    {
+      "description": "Send, Swap, Bridge USDC & EURC on Arc Network. Professional trading dashboard powered by Arc SDK.",
+      "headings": [
+        "Arc<br/><span style=\"color:#00ff88;text-shadow:0 0 40px rgba(0,255,136,0.3)\">DeFi Terminal</span><br/>"
+      ],
+      "name": "Arcterminal",
+      "ok": true,
+      "title": "Arc Terminal — DeFi Trading Dashboard",
+      "website": "https://arcterminal.vercel.app/"
+    },
+    {
+      "description": "ArcVison - Decentralized prediction market. Trade on real-world events with crypto",
+      "headings": [],
+      "name": "Arc Vision",
+      "ok": true,
+      "title": "ArcVison | Decentralized Prediction Market",
+      "website": "https://www.arcvision.xyz/"
+    },
+    {
+      "description": "Give Qevor a payment objective. Its agent plans the operation, enforces policy, and routes execution across supported networks.",
+      "headings": [],
+      "name": "Qevorpay",
+      "ok": true,
+      "title": "Qevor",
+      "website": "https://qevor.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "<img src=\"/img/bdacs_logo.png\" alt=\"BDACS\">",
+        "원화의 안정된 미래",
+        "<span class=\"text_bdacs_blue\">KRW1</span>",
+        "관련 뉴스 및 업데이트",
+        "비댁스, 멀티체인 로드맵 가속화…원화 담보 스테이블코인 KRW1, BNB 체인서 출시",
+        "비댁스, 원화 스테이블코인 'KRW1' 폴리곤으로 확장…멀티체인 전략 채택",
+        "비댁스, 온체인 외환(FX)의 미래를 연다… Circle StableFX 및 Circle Partner Stablecoins 참여",
+        "비댁스, Circle Arc Layer1 블록체인에 스테이블코인 파트너로 선정",
+        "KRW1 Connect",
+        "KRW1 자세히 보기",
+        "중요고지",
+        "원화의 디지털 전환"
+      ],
+      "name": "BDACS",
+      "ok": true,
+      "title": "원화의 안정된 미래 - KRW1",
+      "website": "https://krw1.kr/"
+    },
+    {
+      "description": "All-in-one stablecoin infrastructure for enterprises. Wallets, payments, onramps, orchestration & compliance. Launch in weeks, not months.",
+      "headings": [
+        "Stablecoin infrastructure <br/>for the <span class=\"c-brand-green\">new economy</span>",
+        "A fully integrated <span class=\"text-color-green\">suite</span> of products",
+        "To build <span class=\"text-color-green\">stablecoin</span> and <span class=\"text-color-green\">agentic payment </span>solutions",
+        "Licensed infrastructure to launch compliantly",
+        "All <span class=\"text-color-green\">US</span>",
+        "<span class=\"text-color-secondary\">All </span><span class=\"text-color-green\">EU</span>",
+        "<span class=\"text-color-green\">160+</span> <span class=\"text-color-secondary\">countries</span>",
+        "<span class=\"text-span-17\"><strong class=\"text-weight-500\">Blockchain in the </strong></span><span class=\"text-color-dark-green\"><strong class=\"bold-text text-weight-500\">backend.</strong></span><strong class=\"text-weight-500\"><br/>None of the friction</strong><br/>",
+        "Powering the leading<span class=\"text-color-dark-green\"> </span>companies building with <span class=\"text-span-24\">stablecoins</span>",
+        "Learn how Moneygram launched stablecoin powered remittances in 60 days",
+        "See how WireX is building a stablecoin neobank for businesses",
+        "<strong>How the Marshall Islands Launched the First Blockchain-Based UBI program with Crossmint</strong>"
+      ],
+      "name": "Crossmint",
+      "ok": true,
+      "title": "Stablecoin Platform & APIs for Enterprises | Crossmint",
+      "website": "https://www.crossmint.com/"
+    },
+    {
+      "description": "Galaxy, a global leader in digital assets and AI infrastructure, serves institutions, startups, protocols, and investors. Gain access to the crypto economy.",
+      "headings": [
+        "<svg width=\"22\" height=\"22\" viewBox=\"0 0 22 22\" xmlns=\"http://www.w3.org/2000/svg\"> <path d=\"M3.22133 3.25958H18.7781V19C20.7686 16.9858 22 14.2035 22 11.13C22 4.98279 17.0747 0 11.0003 0C4.9258 0 0 4.98301 0 11.13C0 14.2034 1.23142 16.9853 3.22188 18.9993L3.22133 3.25958Z\" fill=\"currentColor\"/> <path d=\"M3 19V22H19V19H3Z\" fill=\"currentColor\"/> </svg><span class=\"branding__text\" data-element=\"logo-text\">galaxy</span>",
+        "GalaxyOne for Individual Investors Is Now Available",
+        "Developing infrastructure for an AI-enabled future.",
+        "Recent Insight",
+        "From Incubation to Global Operations: How Levl Built a Payments Platform with Galaxy Ventures",
+        "Invest, build, transform — relentlessly",
+        "Explore Topics",
+        "Explore Solutions",
+        "Explore Insights",
+        "Helping the world invest, build, and transform —relentlessly.",
+        "Global Markets <svg class=\"linkDeluxe__icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"7\" height=\"12\" fill=\"none\" viewBox=\"0 0 7 12\"> <path fill=\"currentColor\" stroke=\"currentColor\" stroke-width=\".5\" d=\"m1.393 1.249-.176.177.177.176 3.87 3.871.177.176.177-.175a.858.858 0 0 0 0-1.218L2.61 1.249a.858.858 0 0 0-1.218 0ZM1.367 10.398l-.178.176.176.177a.857.857 0 0 0 1.218.001L5.62 7.745l.001-.002a.858.858 0 0 0 0-1.21l-.176-.176-.177.175-3.902 3.866Z\"/> </svg>",
+        "Asset Management & Infrastructure <svg class=\"linkDeluxe__icon\" xmlns=\"http://www.w3.org/2000/svg\" width=\"7\" height=\"12\" fill=\"none\" viewBox=\"0 0 7 12\"> <path fill=\"currentColor\" stroke=\"currentColor\" stroke-width=\".5\" d=\"m1.393 1.249-.176.177.177.176 3.87 3.871.177.176.177-.175a.858.858 0 0 0 0-1.218L2.61 1.249a.858.858 0 0 0-1.218 0ZM1.367 10.398l-.178.176.176.177a.857.857 0 0 0 1.218.001L5.62 7.745l.001-.002a.858.858 0 0 0 0-1.21l-.176-.176-.177.175-3.902 3.866Z\"/> </svg>"
+      ],
+      "name": "Galaxy",
+      "ok": true,
+      "title": "Galaxy: An Institutional Digital Assets & Data Center Leader",
+      "website": "https://www.galaxy.com/"
+    },
+    {
+      "description": "A stablecoin platform built for developers. Enable quick, easy, and cost-effective global money movement that seamlessly integrates with your existing applications.",
+      "headings": [
+        "Make m<span class=\"typeface-bridge-diatype\">o</span>ney move",
+        "The end-to-end stablecoin platform",
+        "Orchestration",
+        "Issuance",
+        "Cards",
+        "Wallets",
+        "Stablecoin solutions for every way you move money",
+        "Cross-border payments",
+        "Global payouts",
+        "Onchain financial services",
+        "Crypto and DeFi",
+        "Move, store and a<span class=\"typeface-bridge-diatype\">c</span>cept stabl<span class=\"typeface-bridge-diatype\">e</span>coins with a few lines of c<span class=\"typeface-bridge-diatype\">o</span>de"
+      ],
+      "name": "Bridge",
+      "ok": true,
+      "title": "Bridge | Stablecoin Infrastructure and APIs for Developers",
+      "website": "https://www.bridge.xyz/"
+    },
+    {
+      "description": "Integrate enterprise-grade stablecoin wallets in just a few clicks.",
+      "headings": [
+        "<span class=\"inline-flex gap-2\"><span>No</span><span class=\"inline-flex gap-2\"><span class=\"text-primary\">Complexity</span><span>.</span></span></span><span class=\"block\"><span class=\"inline-flex gap-2\"><span>Just</span><span>Secure</span><span class=\"text-primary\">wallet</span></span></span><span class=\"inline-flex gap-2\"><span class=\"text-primary\">infrastructure</span><span>for</span></span><span class=\"block\"><span>Fintechs</span></span>",
+        "The Blockradar team brings deep expertise from top-tier companies across blockchain, finance, and emerging technology."
+      ],
+      "name": "Blockradar",
+      "ok": true,
+      "title": "Blockradar - Secure Stablecoin Wallet Infrastructure for Fintechs",
+      "website": "https://blockradar.co/"
+    },
+    {
+      "description": "Trading value No.1※1 The number of app users No.1※2※1 No.1 Bitcoin trade volume in Japan! According to jpbitcoin.com (2017 yearly BTC spot trade volume) ※2 According to the research conducted by App Ape in August-October 2017 (Sample size： 50,000 users).",
+      "headings": [
+        "Own your first<br>cryptocurrency on<br>Coincheck!",
+        "Buy and sell<br>cryptocurrencies.",
+        "Transfer & Deposit<br>funds instantly",
+        "Use our Exchange<br>for professional<br>quality trading",
+        "Block trades at<br>favorable rates* available for<br>large transactions",
+        "Trade safely and securely",
+        "Cold Wallet",
+        "System security",
+        "Two-Factor Authentication",
+        "Other products",
+        "<br>Periodic Purchases",
+        "<br>Coincheck Lending"
+      ],
+      "name": "Coincheck",
+      "ok": true,
+      "title": "The easiest way to buy and sell Bitcoin and cryptocurrency. | Coincheck",
+      "website": "https://coincheck.com/"
+    },
+    {
+      "description": "Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services. Free to join, pay only for what you use.",
+      "headings": [
+        "Move at the speed of agents",
+        "The AI assistant that changes how you work",
+        "Agents that keep working around the clock",
+        "The work that matters, surfaced and ready",
+        "Build and share apps with natural language",
+        "Connect to any data source and query in natural language",
+        "Development without the bottlenecks",
+        "Ship releases with confidence at the speed of AI",
+        "Continuous tech debt analysis and remediation at scale",
+        "Your Kiro coding sessions, native on iOS",
+        "The hardest parts of agents, handled",
+        "From idea to working agent in minutes"
+      ],
+      "name": "AWS",
+      "ok": true,
+      "title": "Cloud Computing Services - Amazon Web Services (AWS)",
+      "website": "https://aws.amazon.com/"
+    },
+    {
+      "description": "Welcome to the official website of Sumitomo Corporation, a leading integrated trading company engaged in diverse businesses based on its global network.",
+      "headings": [
+        "<a href=\"/en/global/\" target=\"_self\"> <picture> <source media=\"(max-width:768px)\" srcset=\"/global/-/media/Images/global/Common/header/logosp.svg?sc_lang=en\"> <img src=\"/global/-/media/Images/global/Common/header/logo.svg?h=24&iar=0&w=530&sc_lang=en\" class=\"_en\" alt=\"Sumitomo Corporation\" width=\"530\" height=\"24\" /> </picture> </a>",
+        "<img src=\"/common/images/top-enriching-img.svg\" alt=\"Enriching lives and the world\" width=\"980\">",
+        "About Us",
+        "Corporate Introduction",
+        "Our Business",
+        "Select Region",
+        "Social Media <br class=\"u-sp\" /> Official Account"
+      ],
+      "name": "Sumitomo Corporation",
+      "ok": true,
+      "title": "Sumitomo Corporation",
+      "website": "https://www.sumitomocorp.com/en/global"
+    },
+    {
+      "description": "Allow users to buy and sell crypto without leaving your app or wallet. Buy and sell crypto directly on our website.",
+      "headings": [
+        "Buy and sell crypto.<br/><span class=\"text-color-primary-green\">It’s quick, simple, and secure.</span>",
+        "<span class=\"text-color-grey\">What makes us different?<br/></span>We are designed for everyday users, not just crypto natives.",
+        "Single verification, hundreds of web3 products",
+        "Best in class prices",
+        "Beginner friendly",
+        "Flexible payments & tokens",
+        "Security you can trust",
+        "Your money, <span class=\"text-color-primary-green\">in motion.</span>",
+        "Trusted worldwide for buying crypto.",
+        "Reliable and transparent platform",
+        "I am very satisifed!",
+        "First time"
+      ],
+      "name": "Ramp Network",
+      "ok": true,
+      "title": "Ramp Network | Web3 financial infrastructure | Buy & sell crypto",
+      "website": "https://rampnetwork.com/"
+    },
+    {
+      "description": "A European leader in financial services forover 150 years, Societe Generale is built onthree complementary businesses: French Retail Banking, International Retail Banking and Financial Services and Global Banking and Investor Solutions.",
+      "headings": [
+        "The Group",
+        "Responsibility",
+        "News and documentation",
+        "News",
+        "Economic research",
+        "Press releases",
+        "News",
+        "News",
+        "Clients successes",
+        "Publications",
+        "Universal Registration Document 2026",
+        "Societe Generale group"
+      ],
+      "name": "Societe Generale",
+      "ok": true,
+      "title": "Société Générale",
+      "website": "https://www.societegenerale.com/en"
+    },
+    {
+      "description": "Dynamic combines authentication, smart wallets, and secure key management into one flexible SDK. Get the most multi-chain coverage across chains and third-party wallets.",
+      "headings": [
+        "Wallet infrastructure that turns crypto demand into revenue<br/>",
+        "Scale that&#x27;s battle-tested",
+        "Crypto features your customers demand",
+        "Trade",
+        "Earn",
+        "Pay",
+        "Move",
+        "Designed for developers. Built for enterprise.",
+        "One complete wallet stack",
+        "Built for security, engineered for speed",
+        "Enterprise self-custody",
+        "Fireblocks security"
+      ],
+      "name": "Dynamic",
+      "ok": true,
+      "title": "Dynamic | Wallet Infrastructure for Fintech, Crypto, and Stablecoins",
+      "website": "https://www.dynamic.xyz/"
+    },
+    {
+      "description": "Build and scale blockchain applications on fast, reliable, enterprise-grade infrastructure across 80+ chains. Developer-ready, globally optimized.",
+      "headings": [
+        "Want to stay updated?",
+        "Build <br/><span class=\"bg-[var(--accent)] text-gray-900 box-decoration-clone\">Without <br/>Compromise</span>",
+        "<span class=\"text-[104px]\">2.5x</span><br/> Faster",
+        "RPC Infrastructure <br/>You Can Count On",
+        "Real-Time Data for <br/>Everything You Build",
+        "One-Click Integrations to <br class=\"hidden sm:block\"/>Fuel Your Growth",
+        "Trading & DeFi",
+        "Solana & High-Performance Chain APIs",
+        "Security & Compliance",
+        "Indexed Data",
+        "Enterprise Infrastructure<br/>Without Constraints",
+        "Dedicated Clusters"
+      ],
+      "name": "QuickNode",
+      "ok": true,
+      "title": "High-Performance Blockchain Infrastructure",
+      "website": "https://www.quicknode.com/"
+    },
+    {
+      "description": "Simplify expense management with Brex&#x27;s finance platform. From company cards to banking, Brex helps you drive growth, automate processes, & earn more.",
+      "headings": [
+        "Finance built for speed and control.<br/>",
+        "Modern cards, banking, expenses, accounting, and more — in 120+ countries.<br/>",
+        "Finance built for speed and control.<br/>",
+        "Modern cards, banking, expenses, accounting, and more — in 120+ countries.<br/>",
+        "Trusted by 35,000+ top companies.<br/>",
+        "The card is just the start.<br/>",
+        "Everything you need to boost spending power and control — and eliminate manual work.<br/>",
+        "Corporate cards<br/>",
+        "Expense management<br/>",
+        "Travel<br/>",
+        "Bill pay<br/>",
+        "Banking and treasury<br/>"
+      ],
+      "name": "Brex",
+      "ok": true,
+      "title": "Brex: The Modern Finance Software Platform | Spend Smarter",
+      "website": "https://www.brex.com/"
+    },
+    {
+      "description": "Dromos Labs builds decentralized systems and infrastructure that give users greater stake and control in the new economy. Pioneering common infrastructure for uncommon value creation.",
+      "headings": [
+        "<a href=\"/\"><span class=\"sr-only\">Dromos Labs </span><svg width=\"102\" height=\"20\" viewBox=\"0 0 102 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M39.7529 0.0805664C45.5048 0.0807815 49.8261 4.34834 49.8262 10.02C49.8261 15.7185 45.5048 19.9993 39.7529 19.9995C34.0143 19.9994 29.7208 15.7052 29.7207 10.02C29.7208 4.33488 34.0277 0.0806544 39.7529 0.0805664ZM79.2656 0.0805664C85.0176 0.0807054 89.3378 4.34829 89.3379 10.02C89.3378 15.7186 85.0176 19.9994 79.2656 19.9995C73.5269 19.9995 69.2325 15.7052 69.2324 10.02C69.2325 4.33485 73.5403 0.080608 79.2656 0.0805664ZM95.7559 0.106934C97.7757 0.106954 99.7953 0.80316 100.745 1.55225L100.812 5.75244H100.732C99.3948 3.54529 97.321 2.62263 95.7158 2.62256C93.9902 2.62256 93.1741 3.67906 93.1875 4.86963C93.2009 8.86936 101.214 8.4547 101.214 14.4878C101.214 17.6046 99.0333 19.8782 95.4619 19.8784C93.5357 19.8784 91.5824 19.2232 90.3115 18.1665L90.2441 13.8452H90.3379C91.4749 16.1058 93.5883 17.3772 95.4209 17.3774C97.1064 17.3774 98.083 16.3337 98.083 14.9692C98.0695 11.0365 90.0439 11.2102 90.0439 5.21729C90.044 2.10045 92.3046 0.106934 95.7559 0.106934ZM6.12695 0.361816C11.6115 0.361816 15.5576 4.24082 15.5576 9.87256C15.5576 15.5177 11.6116 19.6382 6.12695 19.6382H0V19.6245C0 19.6245 0.307598 19.21 0.307617 16.187V3.81299C0.307617 0.78974 0 0.374512 0 0.374512V0.361816H6.12695ZM23.1221 0.361816C26.6401 0.361921 28.7139 2.15445 28.7139 5.01709C28.7137 7.26429 27.3484 8.94951 24.9941 9.47119C25.9171 9.91262 26.6537 10.8088 27.3359 12.2534L28.9678 15.7319C29.9844 17.8856 30.7071 18.9558 31.5498 19.5444V19.6382H27.3486L24.1113 12.6685C23.1616 10.6219 22.4793 10.1538 21.2754 10.1538H20.4326V16.3071C20.4326 19.2037 21.0927 19.593 21.1016 19.5981V19.6382H16.6201V19.5981C16.6201 19.5981 17.2891 19.2234 17.2891 16.3071V3.69287C17.2891 0.77664 16.6201 0.401855 16.6201 0.401855V0.361816H23.1221ZM59.665 9.32471L67.4766 0.000488281H67.7178V16.187C67.7178 19.1701 68.0175 19.6133 68.0254 19.6245V19.6382H64.2529V19.6245C64.2599 19.6148 64.5605 19.1753 64.5605 16.187V7.23779L59.3975 13.2573H59.3301L54.167 7.27783V16.0669C54.167 19.1506 54.4914 19.6116 54.501 19.6245V19.6382H51.1299V19.6245C51.1359 19.6165 51.4648 19.1679 51.4648 16.0669V0.000488281H51.6787L59.665 9.32471ZM41.6543 2.42041C37.9875 1.4787 34.437 4.05435 33.3496 8.41553C32.2526 12.8156 34.1787 16.7561 37.8584 17.646C41.5639 18.5971 45.1276 16.0254 46.2246 11.6255C47.3152 7.25146 45.3467 3.31375 41.6543 2.42041ZM81.1621 2.42041C77.4953 1.47863 73.9438 4.05432 72.8564 8.41553C71.7596 12.8154 73.6859 16.7559 77.3652 17.646C81.0709 18.5975 84.6353 16.0256 85.7324 11.6255C86.8229 7.25145 84.8546 3.31367 81.1621 2.42041ZM3.45215 17.2163H5.84668C9.6054 17.2161 12.2676 14.2466 12.2676 9.9126C12.2675 5.55194 9.59196 2.87669 5.84668 2.87646H3.45215V17.2163ZM20.4326 8.33447H22.4131C24.3792 8.33436 25.5292 7.25078 25.5293 5.28467C25.5293 3.25144 24.366 2.3414 22.4131 2.34131H20.4326V8.33447Z\" fill=\"currentColor\"/></svg></a>",
+        "<span class=\"text-white opacity-65\">Common infrastructure.</span> <span>Uncommon value.</span>",
+        "Leaders in technical and economic design on Ethereum.",
+        "Leading DEX on Base",
+        "Aerodrome<sup>&reg;</sup>",
+        "Leading DEX on The Superchain",
+        "Velodrome<sup>&reg;</sup>",
+        "Our Products",
+        "A community of builders and thinkers.",
+        "Team",
+        "Rewriting the rules in immutable code.",
+        "Rewriting the rules in immutable code."
+      ],
+      "name": "Dromos Labs",
+      "ok": true,
+      "title": "Dromos Labs",
+      "website": "https://dromos.xyz/"
+    },
+    {
+      "description": "Catena is the banking and governance platform for AI agents that supports payments, treasury, and other services.",
+      "headings": [
+        "How AI Agents<br> Use Money, <span class=\"text-accent\">Safely</span>",
+        "The Trust Layer for Agentic Finance",
+        "Verifiable identity",
+        "Deterministic policies",
+        "Audit trails",
+        "How Agents Get More Done with Money",
+        "Financial Capabilities for Your Agents",
+        "Manage money",
+        "Send and receive",
+        "Earn yield",
+        "Agent Action<br> <span class=\"text-accent\">Human Control</span>",
+        "Money for Agents. Control for You."
+      ],
+      "name": "Catena Labs",
+      "ok": true,
+      "title": "Catena | How AI Agents Use Money",
+      "website": "https://catenalabs.com/"
+    },
+    {
+      "description": "Fun offers the highest converting rails to execute blockchain actions. Optimize your funding rails, reach new customers, and reduce costs.",
+      "headings": [
+        "Global payments for modern fintechs",
+        "Proven at scale",
+        "Unlock blockchain rails",
+        "Deposit",
+        "Withdraw",
+        "Orchestration",
+        "Checkout",
+        "Trusted by founders on the frontier",
+        "Modern fintechs grow with Fun"
+      ],
+      "name": "Fun.xyz",
+      "ok": true,
+      "title": "Fun | Modern Payments",
+      "website": "https://fun.xyz/"
+    },
+    {
+      "description": "A global leader in business payments and expense management",
+      "headings": [
+        "Reduce Paper & Costs with Invoice Automation",
+        "Download our 2026 Investor Presentation.",
+        "For every way your business moves money",
+        "Business never stands still. Neither do we.",
+        "We started with a purpose.",
+        "Built-in intelligence where it makes sense.",
+        "One card. Every purpose.",
+        "Scale AP without adding headcount.",
+        "Streamline cross-border payments.",
+        "Get to know Corpay’s line of solutions.",
+        "Commercial Cards →",
+        "AP Automation →"
+      ],
+      "name": "Corpay",
+      "ok": true,
+      "title": "The smarter corporate payments company",
+      "website": "https://www.corpay.com/"
+    },
+    {
+      "description": "Chainlink is the industry-standard oracle platform powering the majority of decentralized finance and bringing the capital markets onchain.",
+      "headings": [
+        "<span class=\"u-color-secondary\">The Chainlink Platform: </span>unlock onchain finance at scale",
+        "Powering the next generation of digital assets and financial services",
+        "Cross-Chain DvP Settlement of Tokenized Assets With Kinexys by J.P. Morgan and Ondo Finance",
+        "Enable tokenized asset workflows with institutional-grade infrastructure",
+        "ANZ, ADDX, & Chainlink Unveil Cross-Chain, Cross-Border Private Transactions | MAS Project Guardian",
+        "Unlock compliant, transparent, and interoperable stablecoins",
+        "Swift, UBS Asset Management, and Chainlink successfully complete innovative pilot to bridge tokenized assets with existing payment systems",
+        "Seamless settlement across traditional and tokenized markets",
+        "Scaling Fund Tokenization With Chainlink, Fidelity International, UBS, and Sygnum | SmartCon 2024",
+        "Enabling secure, scalable data delivery onchain",
+        "The Institutional DeFi Revolution | Aave&#x27;s Stani Kulechov and Chainlink&#x27;s Sergey Nazarov",
+        "Powering secure DeFi lending with trusted data"
+      ],
+      "name": "Chainlink",
+      "ok": true,
+      "title": "Chainlink: The Industry-Standard Oracle Platform",
+      "website": "https://chain.link/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Coinbase",
+      "ok": false,
+      "title": "Just a moment...",
+      "website": "https://www.coinbase.com/"
+    },
+    {
+      "description": "Main",
+      "headings": [
+        "<a class=\"bt\" href=\"#\" onclick=\"moveForLogo(this);\"> <i class=\"blind\">KYOBO LIFE</i></a>",
+        "<button type=\"button\" class=\"menu corps\">공시실</button>",
+        "<button type=\"button\" class=\"menu corps\" data-url=\"abt-main\" onclick=\"headerPageMove(this);\">회사소개</button>",
+        "<button type=\"button\" class=\"menu-eng corps\" data-url=\"abt-main-eng\" onclick=\"headerPageMove(this);\">Corporate<br/>Information</button>",
+        "<span id=\"nob_crt_year\"></span>년 우수고객 안내",
+        "About <strong>Kyobo</strong>",
+        "CEO",
+        "IR",
+        "ESG Policy",
+        "Sustainability <br> Management System",
+        "Sustainability Report",
+        "<!--h1 to h2-->Sitemap"
+      ],
+      "name": "Kyobo Life",
+      "ok": true,
+      "title": "Corporate Information Main",
+      "website": "https://www.kyobo.com/dgt/web/company-introduction/en-main"
+    },
+    {
+      "description": "BlackRock is one of the world’s preeminent asset management firms and a premier provider of investment management. Find out more information here.",
+      "headings": [
+        "What’s changed in bonds and why it matters for you",
+        "What are Trump Accounts? A guide to investing and saving for children",
+        "3+1 Active Investors Series",
+        "Strong earnings key as rates stay high",
+        "Funds that match up with investing goals and preferences",
+        "About BlackRock in the U.S.",
+        "Learn more",
+        "Explore more",
+        "Corporate",
+        "Legal"
+      ],
+      "name": "BlackRock",
+      "ok": true,
+      "title": "Investment Management & Financial Services | BlackRock",
+      "website": "https://www.blackrock.com/us/individual"
+    },
+    {
+      "description": "Self-custodial wallet powered by MPC and threshold cryptography. For individuals, teams and businesses. No seed phrases, no single point of failure.",
+      "headings": [
+        "Built for a New Era",
+        "Peace of mind, Engineered",
+        "Crypto meets fiat",
+        "Digital Inheritance",
+        "Security by Design",
+        "The Impossible to Lose Wallet",
+        "Private by Principle",
+        "Cross-chain Swaps",
+        "Staking",
+        "Multi-Role Account Access",
+        "DeFi - Controlled",
+        "In-built Reporting"
+      ],
+      "name": "Bron",
+      "ok": true,
+      "title": "Bron — Self-Custodial Wallet for Crypto Treasury",
+      "website": "https://bron.org/"
+    },
+    {
+      "description": "With Absa Digital Banking services, you can open a bank account, get a loan, or sign up for internet banking quickly and easily.",
+      "headings": [
+        "<span class=\"white-text\">Get discounted banking for your spouse, plus a MegaU Account with Ultimate Banking.</span>",
+        "<strong><span class=\"white-text\">Fuel stops at Shell just got more Rewarding!</span></strong>",
+        "<span class=\"white-text\">Eyenu Nonke Funeral Plan</span>",
+        "Absa digital banking solutions",
+        "<strong>Digital Banking</strong>",
+        "Self servicing and help guides",
+        "Safety and security",
+        "Switching to Absa",
+        "Service status",
+        "Talk to us",
+        "What would you like to do?",
+        "<strong><span class=\"pseudo-h6\"><span class=\"white-text\">Save or invest</span></span></strong>"
+      ],
+      "name": "Absa",
+      "ok": true,
+      "title": "Absa | Digital Banking for individuals and businesses",
+      "website": "https://www.absa.co.za/personal"
+    },
+    {
+      "description": "Juno is the gateway to instant, secure, and scalable financial infrastructure for businesses and developers worldwide. Our stablecoin platform enables seamless access to MXNB, unlocking new opportunities in Mexico and across borders.",
+      "headings": [
+        "<br/>for the future economy",
+        "Instant, secure transactions and stablecoin capabilities for financial services businesses and builders worldwide.",
+        "Access the Latin American market with speed and transparency",
+        "Solutions Powered by Juno",
+        "Mint Platform",
+        "Our Partner Ecosystem",
+        "MXNB",
+        "Solutions",
+        "Developers",
+        "Juno",
+        "Support"
+      ],
+      "name": "Bitso",
+      "ok": true,
+      "title": "Home | Juno",
+      "website": "https://buildwithjuno.com/en-US"
+    },
+    {
+      "description": "API-first global payments, enterprise-grade compliance and real-time settlements, powered by stablecoin technology.",
+      "headings": [
+        "Powering the New Era of Global Payments",
+        "Trusted by global innovators",
+        "Our Solutions",
+        "Payin",
+        "Payout",
+        "Orchestrate",
+        "Regulated Payments Infrastructure, Engineered for Modern Money",
+        "Architected for High-Volume Money Movement",
+        "Total Visibility, Complete Operational Control.",
+        "Developer-First, by Design",
+        "Backed by the Brightest. Built by Industry Experts",
+        "Shah Ramezani"
+      ],
+      "name": "Noah",
+      "ok": true,
+      "title": "Set Money Free",
+      "website": "https://noah.io/"
+    },
+    {
+      "description": "API payment layer for agents on Arc. $0.001 USDC per request, with charge mode for one-off calls and session mode for repeated usage.",
+      "headings": [],
+      "name": "ArcPort",
+      "ok": true,
+      "title": "ArcPort — API Marketplace on Arc",
+      "website": "https://arcport.xyz/"
+    },
+    {
+      "description": "Base Wallet Ranking Checker and multi-chain execution layer. One-click interaction across 20+ blockchains. Monitor your protocol standing and use Base, Ink, Soneium, and more from a single interface - fast, simple, and multichain.",
+      "headings": [],
+      "name": "Onchainoors",
+      "ok": true,
+      "title": "Onchainoors - Base Wallet Rankings & Multichain Execution",
+      "website": "https://onchainoors.com/"
+    },
+    {
+      "description": "TrustGate scores wallets and tokens on-chain using behavioral signals (bot detection, deployment history, transaction patterns) and gates access to payments and services. Built on Arc.",
+      "headings": [
+        "<span class=\"block text-text text-4xl sm:text-5xl md:text-6xl lg:text-7xl\">TrustGate</span><span class=\"block text-accent text-4xl sm:text-5xl md:text-6xl lg:text-7xl mt-1\">The Trust Layer for Web3</span>",
+        "Trust at every layer of onchain interaction",
+        "Wallet Oracle",
+        "Token Shield",
+        "DEX Widget",
+        "Trust-Gated Payment Flows",
+        "Instant Transfer",
+        "24h Time-Lock",
+        "Escrowed",
+        "How It Works",
+        "Register",
+        "Deposit"
+      ],
+      "name": "TrustGate",
+      "ok": true,
+      "title": "TrustGate | Trust Layer for Web3",
+      "website": "https://trustgated.xyz/"
+    },
+    {
+      "description": "Cross-chain AI treasury manager on GenLayer and Arc Networks",
+      "headings": [
+        "GenRebalancer <span style=\"font-weight:300\">× Arc</span>",
+        "Your Personal AI Treasury",
+        "Connect Wallet",
+        "AI Analysis",
+        "Live Arc Tx"
+      ],
+      "name": "Genrebalancer",
+      "ok": true,
+      "title": "GenRebalancer x Arc",
+      "website": "https://www.genrebalancer-x-arc.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "ArcWave",
+      "ok": false,
+      "title": "404: NOT_FOUND",
+      "website": "https://arcwave-k8k3.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "NomaPay",
+      "ok": true,
+      "title": "NomaPay — Send Crypto by Username",
+      "website": "https://nomapay.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "Arcus"
+      ],
+      "name": "Arc Payment Terminal",
+      "ok": true,
+      "title": "Arcus",
+      "website": "https://arc-payment-system.vercel.app/"
+    },
+    {
+      "description": "Create shareable payment links for USDC and EURC on the Arc network. Send money to anyone with a single link.",
+      "headings": [],
+      "name": "Payme",
+      "ok": true,
+      "title": "PayMe — Send & Receive USDC on Arc",
+      "website": "https://payme-on-arc.netlify.app/"
+    },
+    {
+      "description": "Circle-powered streaming payments",
+      "headings": [
+        "Pick the rule. Prove the transfer.",
+        "The user sees every moving part.",
+        "Connect",
+        "Fund",
+        "Configure",
+        "Prove",
+        "Fund the connected wallet without leaving the flow.",
+        "Configure the money rule."
+      ],
+      "name": "Arc Drift",
+      "ok": true,
+      "title": "Arc Drift",
+      "website": "https://arc-drift.vercel.app/"
+    },
+    {
+      "description": "AI-created prediction markets settled in USDC on Arc Testnet.",
+      "headings": [
+        "The on-chain prediction protocol<!-- --> <span class=\"bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent\">for agents and humans.</span>",
+        "Will Arc Testnet reach 500k transactions before July 2026?",
+        "From idea to settled market",
+        "Connect Wallet",
+        "Create or Browse",
+        "Stake USDC",
+        "Claim Winnings",
+        "The full prediction stack",
+        "AI Draft Curation",
+        "Private Alpha Commitments",
+        "Outcome-Based Reputation",
+        "x402 Nanopayments"
+      ],
+      "name": "Arc - Cast",
+      "ok": true,
+      "title": "ArcCast — AI Prediction Markets on Arc",
+      "website": "https://arccast-app.vercel.app/"
+    },
+    {
+      "description": "ArcFlow - one-tap global sends with instant proof, powered by Arc.",
+      "headings": [],
+      "name": "ArcIs",
+      "ok": true,
+      "title": "ArcFlow",
+      "website": "https://arc-is.netlify.app/"
+    },
+    {
+      "description": "Private banking, onchain.",
+      "headings": [
+        "Real-world yield,<!-- --> <span class=\"inline-block pb-1 italic leading-[1.12] text-[var(--accent)]\">without the gatekeepers.</span>",
+        "Two ways to earn. One infrastructure.",
+        "Monthly RWA Vault",
+        "Long-Term Fixed Income",
+        "Built for capital that <span class=\"inline-block pb-1 italic leading-[1.12] text-[var(--accent)]\">demands more.</span>",
+        "Non-custodial by design",
+        "Real-world collateral",
+        "Institutional-grade terms"
+      ],
+      "name": "Arc Capital",
+      "ok": true,
+      "title": "Arc Capital",
+      "website": "https://arc-capital.vercel.app/"
+    },
+    {
+      "description": "An autonomous AI agent trades African FX signals for $0.001 each and pays African analysts $0.04 per article read — all settled in USDC on Arc Testnet.",
+      "headings": [],
+      "name": "AgoraFX",
+      "ok": true,
+      "title": "AgoraFX — African FX Intelligence, Priced Per Signal",
+      "website": "https://agorafx.vercel.app/"
+    },
+    {
+      "description": null,
+      "headings": [],
+      "name": "Sweep USDC",
+      "ok": true,
+      "title": "Sweep",
+      "website": "https://sweepusdc-testnet.xyz/"
+    },
+    {
+      "description": "ArcSplitter is a USDC payment splitter built for Arc Testnet. Send to up to 20 wallets in a single transaction. Built for teams, DAOs, and on-chain payroll.",
+      "headings": [
+        "<span class=\"block\">Many wallets.</span><span class=\"relative mt-2 inline-block\"><span class=\"relative z-10 block\">One payment.</span><span class=\"absolute -bottom-1 left-0 right-0 h-3 -z-0 rounded-md opacity-80\" style=\"background:linear-gradient(90deg, transparent 0%, #00fdff 50%, transparent 100%);filter:blur(10px)\"></span></span>",
+        "From one wallet to many, in three steps.",
+        "Connect your wallet",
+        "Add your recipients",
+        "Send in one click",
+        "Everything you need to send payments.",
+        "Two ways to split",
+        "One transaction",
+        "Smart validation",
+        "Network aware",
+        "Saved groups",
+        "Live preview"
+      ],
+      "name": "ArcSplitter",
+      "ok": true,
+      "title": "ArcSplitter USDC payment splitter for Arc Testnet",
+      "website": "https://arc-splitter.vercel.app/"
+    },
+    {
+      "description": "Send USDC and EURC to thousands of wallets in one transaction on Arc Network Testnet. Premium multisend dApp with CSV upload",
+      "headings": [],
+      "name": "MultiSend",
+      "ok": true,
+      "title": "MultiSend — Batch Send USDC & EURC on Arc Network",
+      "website": "https://multisendapp.vercel.app/"
+    },
+    {
+      "description": "Buy BTC, ETH, and more crypto with your bank card in HKD or USD at HashKey. Open an account now for a chance to win 1,000 HSK! Join HashKey for the convenience of seamless crypto trading and enjoy swift deposit and withdrawal processes.",
+      "headings": [
+        "<span>Shacom HashKey Credit Card</span><br />Enjoy Up to <b>4%</b> Customizable Crypto Rewards",
+        "Join the community for more events!",
+        "Trading Made Safe<br>and Simple",
+        "Shacom HashKey Credit Card<br />Enjoy Up to <span>4%</span> Customizable <br />Crypto Rewards",
+        "Now Open for Applications",
+        "Market Trends",
+        "Compliant with Regulations",
+        "Trade Crypto with Fiat",
+        "Managed Security",
+        "<span class=\"inline-flex items-center justify-center shrink-0 size-28px rd-full b-2px b-solid b-[--gray-700] text-16px lh-24px fw-500 c-white\">1</span> Identity Verification",
+        "<span class=\"inline-flex items-center justify-center shrink-0 size-28px rd-full b-2px b-solid b-[--gray-700] text-16px lh-24px fw-500 c-white\">2</span> Deposit Assets",
+        "<span class=\"inline-flex items-center justify-center shrink-0 size-28px rd-full b-2px b-solid b-[--gray-700] text-16px lh-24px fw-500 c-white\">3</span> Start Trading"
+      ],
+      "name": "Hashkey",
+      "ok": true,
+      "title": "HashKey Exchange - The largest listed and licensed virtual asset exchange in Hong Kong - Retail customers can buy BTC and ETH and more crypto with HKD and USD",
+      "website": "https://www.hashkey.com/en-US"
+    },
+    {
+      "description": "Money movement infrastructure that connects Latam to the world. Seamless. Stable. Compliant. Avenia is powered by BRLA, the most active stablecoin in Brazil, to enhance efficiency, transparency and speed.",
+      "headings": [
+        "<span style=\"--framer-font-size:81px\" class=\"framer-text\"><span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">b</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">o</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">r</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">d</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">r</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">l</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">s</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">s</span></span></span><span style=\"--framer-font-size:81px;--framer-text-color:var(--token-a5fc87b0-dfc2-4a58-a98e-5a7da02e2f16, rgba(255, 255, 255, 0.87))\" class=\"framer-text\"><br class=\"framer-text\"></span><span style=\"--framer-font-size:81px\" class=\"framer-text\"><span style=\"white-space:nowrap\"></span> <span style=\"white-space:nowrap\"></span> <span style=\"white-space:nowrap\"></span> <span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">l</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">i</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">q</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">u</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">i</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">d</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">i</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">t</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">y</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">_</span></span></span>",
+        "<span style=\"--framer-font-size:100px\" class=\"framer-text\"><span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">b</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">o</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">r</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">d</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">r</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">l</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">s</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">s</span></span></span><span style=\"--framer-font-size:100px;--framer-text-color:var(--token-a5fc87b0-dfc2-4a58-a98e-5a7da02e2f16, rgba(255, 255, 255, 0.87))\" class=\"framer-text\"><br class=\"framer-text\"></span><span style=\"--framer-font-size:100px\" class=\"framer-text\"><span style=\"white-space:nowrap\"></span> <span style=\"white-space:nowrap\"></span> <span style=\"white-space:nowrap\"></span> <span style=\"white-space:nowrap\"></span> <span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">l</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">i</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">q</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">u</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">i</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">d</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">i</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">t</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">y</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">_</span></span></span>",
+        "<span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">b</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">o</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">r</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">d</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">r</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">l</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">s</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">s</span></span><span style=\"--framer-font-size:81px;--framer-text-color:var(--token-a5fc87b0-dfc2-4a58-a98e-5a7da02e2f16, rgba(255, 255, 255, 0.87))\" class=\"framer-text\"><br class=\"framer-text\"></span><span style=\"white-space:nowrap\"></span> <span style=\"white-space:nowrap\"></span> <span style=\"white-space:nowrap\"></span> <span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">l</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">i</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">q</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">u</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">i</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">d</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">i</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">t</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">y</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">_</span></span>",
+        "<span style=\"--framer-font-size:41px\" class=\"framer-text\">borderless</span><span style=\"--framer-font-size:81px;--framer-text-color:var(--token-a5fc87b0-dfc2-4a58-a98e-5a7da02e2f16, rgba(255, 255, 255, 0.87))\" class=\"framer-text\"><br class=\"framer-text\"></span><span style=\"--framer-font-size:41px\" class=\"framer-text\"> liquidity_</span>",
+        "<span data-text-fill=\"true\" style=\"background-image:linear-gradient(269deg, rgba(244, 245, 181, 0.87) 0%, rgb(165, 167, 215) 100%)\" class=\"framer-text\"><span style=\"--framer-font-size:28px\" class=\"framer-text\">Money movement infrastructure that connects Latam to the world.</span><span style=\"--framer-font-size:28px;--framer-text-color:var(--token-ccc1bf5d-aaf9-4591-8eaf-f92c6b3e168c, rgb(0, 0, 0))\" class=\"framer-text\"><br class=\"framer-text\"><br class=\"framer-text\"></span><span style=\"--framer-font-size:28px\" class=\"framer-text\">Seamless. Stable. Compliant.</span><span style=\"--framer-font-size:28px;--framer-text-color:var(--token-ccc1bf5d-aaf9-4591-8eaf-f92c6b3e168c, rgb(0, 0, 0))\" class=\"framer-text\"><br class=\"framer-text\"></span></span><br class=\"framer-text trailing-break\">",
+        "<span data-text-fill=\"true\" style=\"background-image:linear-gradient(269deg, rgba(244, 245, 181, 0.87) 0%, rgb(165, 167, 215) 100%)\" class=\"framer-text\">Money movement infrastructure that connects Latam to the world.<span style=\"--framer-font-size:28px;--framer-text-color:var(--token-ccc1bf5d-aaf9-4591-8eaf-f92c6b3e168c, rgb(0, 0, 0))\" class=\"framer-text\"><br class=\"framer-text\"><br class=\"framer-text\"></span>Seamless. Stable. Compliant.<span style=\"--framer-font-size:28px;--framer-text-color:var(--token-ccc1bf5d-aaf9-4591-8eaf-f92c6b3e168c, rgb(0, 0, 0))\" class=\"framer-text\"><br class=\"framer-text\"></span></span><br class=\"framer-text trailing-break\">",
+        "<span data-text-fill=\"true\" style=\"background-image:linear-gradient(269deg, rgba(244, 245, 181, 0.87) 0%, rgb(165, 167, 215) 100%)\" class=\"framer-text\">Money movement infrastructure that connects Latam to the world.<span style=\"--framer-font-size:28px;--framer-text-color:var(--token-ccc1bf5d-aaf9-4591-8eaf-f92c6b3e168c, rgb(0, 0, 0))\" class=\"framer-text\"><br class=\"framer-text\"><br class=\"framer-text\"></span>Seamless. Stable. Compliant.<span style=\"--framer-font-size:28px;--framer-text-color:var(--token-ccc1bf5d-aaf9-4591-8eaf-f92c6b3e168c, rgb(0, 0, 0))\" class=\"framer-text\"><br class=\"framer-text\"></span></span><br class=\"framer-text trailing-break\">",
+        "<span style=\"--framer-text-color:var(--token-ccc1bf5d-aaf9-4591-8eaf-f92c6b3e168c, rgb(0, 0, 0))\" class=\"framer-text\"><span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">O</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">n</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span></span> <span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">A</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">P</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">I</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">.</span></span> <span style=\"white-space:nowrap\"></span></span><br class=\"framer-text\"><span style=\"--framer-text-color:var(--token-ccc1bf5d-aaf9-4591-8eaf-f92c6b3e168c, rgb(0, 0, 0))\" class=\"framer-text\"><span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">G</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">l</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">o</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">b</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">a</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">l</span></span> <span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">C</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">o</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">v</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">r</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">a</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">g</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">.</span></span></span><br class=\"framer-text\"><span style=\"--framer-text-color:var(--token-ccc1bf5d-aaf9-4591-8eaf-f92c6b3e168c, rgb(0, 0, 0))\" class=\"framer-text\"><span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">L</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">o</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">c</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">a</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">l</span></span> <span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">A</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">c</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">c</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">s</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">s</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">.</span></span></span>",
+        "<span style=\"--framer-text-color:var(--token-ccc1bf5d-aaf9-4591-8eaf-f92c6b3e168c, rgb(0, 0, 0))\" class=\"framer-text\"><span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">O</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">n</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span></span> <span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">A</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">P</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">I</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">.</span></span> <span style=\"white-space:nowrap\"></span></span><br class=\"framer-text\"><span style=\"--framer-text-color:var(--token-ccc1bf5d-aaf9-4591-8eaf-f92c6b3e168c, rgb(0, 0, 0))\" class=\"framer-text\"><span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">G</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">l</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">o</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">b</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">a</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">l</span></span> <span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">C</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">o</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">v</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">r</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">a</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">g</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">.</span></span></span><br class=\"framer-text\"><span style=\"--framer-text-color:var(--token-ccc1bf5d-aaf9-4591-8eaf-f92c6b3e168c, rgb(0, 0, 0))\" class=\"framer-text\"><span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">L</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">o</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">c</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">a</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">l</span></span> <span style=\"white-space:nowrap\"><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">A</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">c</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">c</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">e</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">s</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">s</span><span style=\"display:inline-block;opacity:0.001;filter:blur(10px);transform:translateX(0px) translateY(0px) scale(1) rotate(0deg) skewX(0deg) skewY(0deg)\">.</span></span></span>",
+        "Use cases",
+        "Use cases",
+        "Use cases"
+      ],
+      "name": "Avenia",
+      "ok": true,
+      "title": "Avenia - Borderless Liquidity",
+      "website": "https://avenia.io/"
+    },
+    {
+      "description": null,
+      "headings": [
+        "Access Denied"
+      ],
+      "name": "Bybit",
+      "ok": false,
+      "title": "Access Denied",
+      "website": "https://www.bybit.com/en"
+    },
+    {
+      "description": "Securitize is unlocking broader access to alternative investments by enabling private businesses to raise capital from investors while providing liquidity.",
+      "headings": [],
+      "name": "Securitize",
+      "ok": true,
+      "title": "Securitize",
+      "website": "https://securitize.io/"
+    },
+    {
+      "description": "The SBI Group has three core businesses: Financial Services, Asset Management, and Biotechnology, Healthcare & Medical Informatics Business.",
+      "headings": [],
+      "name": "SBI Holdings",
+      "ok": true,
+      "title": "SBI Holdings",
+      "website": "https://www.sbigroup.co.jp/english"
+    },
+    {
+      "description": "JPYC is the most well-known in Japanese stablecoins the only one with a strong record of issuance and operation on Public Chain.",
+      "headings": [],
+      "name": "JPYC",
+      "ok": true,
+      "title": "JPYC Inc.｜We issue JPY Coin",
+      "website": "https://corporate.jpyc.co.jp/en"
+    },
+    {
+      "description": "We provide digital asset custody and trading solutions that reduces counterparty risk, boosts capital efficiency and gives institutions control of their crypto.",
+      "headings": [
+        "Building the institutional standard for digital assets.",
+        "Institutional custody, prime services and collateral management.",
+        "The market&#x27;s first off-exchange settlement solution.",
+        "Secure digital asset custody.",
+        "Safeguarded lending for digital assets.",
+        "A scalable and custodian-agnostic settlement network.",
+        "In global partnership with pioneering institutions.",
+        "Suitable for any strategy.",
+        "See why pioneering institutions use Copper."
+      ],
+      "name": "Copper",
+      "ok": true,
+      "title": "Copper | Building the institutional standard for digital assets",
+      "website": "https://copper.co/en"
+    },
+    {
+      "description": "Secure your crypto assets such as Bitcoin, Ethereum, XRP, Monero, and more. Give yourself peace of mind by knowing that your cryptocurrencies are safe",
+      "headings": [
+        "Ledger Signers & Crypto Wallets",
+        "Go beyond exchanges and software wallets",
+        "More clarity",
+        "More choice",
+        "More control",
+        "Not sure where to start?",
+        "Your phone alone isn’t secure",
+        "Only Ledger signers keep you safe. Don’t be a victim of identity theft or wallet drains.",
+        "Ledger Stax™",
+        "Ledger Flex™",
+        "Ledger Nano™ <span class=\"text-body-r\">Gen5</span>",
+        "Ledger Nano™ <span class=\"text-body-r\">Classics</span>"
+      ],
+      "name": "Ledger",
+      "ok": true,
+      "title": "Ledger Crypto Wallet - Security for DeFi & Web3",
+      "website": "https://www.ledger.com/"
+    },
+    {
+      "description": "At Mercoin,Inc., we plan and develop services related to cryptoassets and blockchain technologies.",
+      "headings": [
+        "Circulate your value, <br /> anywhere and everywhere",
+        "Concept",
+        "Creating a marketplace where value in all forms —<br /> not just belongings and trust—can be exchanged",
+        "Service",
+        "Buy bitcoin on the Mercari app",
+        "News",
+        "Mercan",
+        "Careers",
+        "We are looking for talent to take on challenges with Mercoin."
+      ],
+      "name": "Mercoin",
+      "ok": true,
+      "title": "Mercoin, Inc.",
+      "website": "https://about.mercoin.com/en"
+    },
+    {
+      "description": "Careem is ‘the everything app’ for the region, making it easier than ever to move around, order food and groceries, manage payments, and more.",
+      "headings": [
+        "The everything app | Careem",
+        "Go",
+        "anywhere",
+        "Eat",
+        "anytime",
+        "Get",
+        "anything",
+        "Pay",
+        "anyone",
+        "About us",
+        "Captains",
+        "Engineering at Careem"
+      ],
+      "name": "Careem",
+      "ok": true,
+      "title": "The everything app | Careem",
+      "website": "https://www.careem.com/"
+    }
+  ],
+  "source": "src/data/imports/arc-ecosystem-logos.csv"
+}

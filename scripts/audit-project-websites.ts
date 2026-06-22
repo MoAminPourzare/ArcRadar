@@ -18,7 +18,8 @@ const records = parse(readFileSync(csvPath, "utf8"), {
   skip_empty_lines: true,
   trim: true,
 }) as CsvProjectRow[];
-const uniqueRecords = deduplicateByWebsite(records);
+const websiteRecords = records.filter((record) => Boolean(getWebsite(record)));
+const uniqueRecords = deduplicateByWebsite(websiteRecords);
 const results: WebsiteAudit[] = [];
 
 for (let index = 0; index < uniqueRecords.length; index += 5) {
@@ -59,8 +60,9 @@ console.log(
 
 type CsvProjectRow = {
   Category?: string;
-  "Project Link": string;
-  "Project Name": string;
+  Website?: string;
+  "Project Link"?: string;
+  "Project Name"?: string;
 };
 
 type WebsiteAudit = {
@@ -78,9 +80,9 @@ type WebsiteAudit = {
 };
 
 async function auditWebsite(record: CsvProjectRow): Promise<WebsiteAudit> {
-  const website = normalizeWebsite(record["Project Link"]);
+  const website = normalizeWebsite(getWebsite(record));
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 15_000);
+  const timeout = setTimeout(() => controller.abort(), 8_000);
 
   try {
     const response = await fetch(website, {
@@ -110,7 +112,7 @@ async function auditWebsite(record: CsvProjectRow): Promise<WebsiteAudit> {
         /<h[1-3][^>]*>([\s\S]*?)<\/h[1-3]>/gi,
         12,
       ),
-      name: normalizeWhitespace(record["Project Name"]),
+      name: getName(record, website),
       ok: response.ok,
       status: response.status,
       text: extractVisibleText(html).slice(0, 4_000),
@@ -128,7 +130,7 @@ async function auditWebsite(record: CsvProjectRow): Promise<WebsiteAudit> {
       error: error instanceof Error ? error.message : String(error),
       finalUrl: website,
       headings: [],
-      name: normalizeWhitespace(record["Project Name"]),
+      name: getName(record, website),
       ok: false,
       status: null,
       text: "",
@@ -144,7 +146,7 @@ function deduplicateByWebsite(records: CsvProjectRow[]) {
   const seen = new Set<string>();
 
   return records.filter((record) => {
-    const website = normalizeWebsite(record["Project Link"]);
+    const website = normalizeWebsite(getWebsite(record));
 
     if (seen.has(website)) {
       return false;
@@ -153,6 +155,20 @@ function deduplicateByWebsite(records: CsvProjectRow[]) {
     seen.add(website);
     return true;
   });
+}
+
+function getWebsite(record: CsvProjectRow) {
+  return record["Project Link"]?.trim() || record.Website?.trim() || "";
+}
+
+function getName(record: CsvProjectRow, website: string) {
+  const name = normalizeWhitespace(record["Project Name"] ?? "");
+
+  if (name) {
+    return name;
+  }
+
+  return new URL(website).hostname.replace(/^www\./, "").split(".")[0];
 }
 
 function extractMatches(html: string, pattern: RegExp, limit: number) {
