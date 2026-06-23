@@ -44,7 +44,7 @@ export function ProjectLogo({
         "relative grid shrink-0 place-items-center overflow-hidden font-black shadow-sm",
         sizeClass[size],
         showImage
-          ? "border border-transparent bg-white text-ink"
+          ? "bg-white text-ink"
           : `border border-ink/10 bg-gradient-to-br ${accentClass[accent]}`,
         className,
       )}
