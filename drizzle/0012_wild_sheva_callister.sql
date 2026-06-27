@@ -1,0 +1,1 @@
+ALTER TABLE "agent_reports" ALTER COLUMN "project_id" DROP NOT NULL;

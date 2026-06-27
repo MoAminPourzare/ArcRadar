@@ -66,6 +66,10 @@ export async function getLatestProjectAgentReports({
     const latestReports: Record<string, AgentReportSummary> = {};
 
     for (const report of reports) {
+      if (!report.projectId) {
+        continue;
+      }
+
       if (!latestReports[report.projectId]) {
         latestReports[report.projectId] = mapAgentReport(report);
       }

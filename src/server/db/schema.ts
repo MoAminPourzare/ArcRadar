@@ -200,9 +200,9 @@ export const agentReports = pgTable(
     runId: uuid("run_id")
       .references(() => agentRuns.id, { onDelete: "cascade" })
       .notNull(),
-    projectId: uuid("project_id")
-      .references(() => projects.id, { onDelete: "cascade" })
-      .notNull(),
+    projectId: uuid("project_id").references(() => projects.id, {
+      onDelete: "cascade",
+    }),
     agentId: varchar("agent_id", { length: 64 }).notNull(),
     title: varchar("title", { length: 180 }).notNull(),
     summary: text("summary").notNull(),

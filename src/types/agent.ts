@@ -1,6 +1,9 @@
 export const ARC_READINESS_AUDIT_AGENT_ID = "arc_readiness_audit" as const;
+export const TIP_ALLOCATION_AGENT_ID = "tip_allocation" as const;
 
-export type AgentId = typeof ARC_READINESS_AUDIT_AGENT_ID;
+export type AgentId =
+  | typeof ARC_READINESS_AUDIT_AGENT_ID
+  | typeof TIP_ALLOCATION_AGENT_ID;
 
 export type AuditDepth = "full" | "quick";
 
@@ -68,4 +71,32 @@ export type AgentReportSummary = {
   score: number | null;
   summary: string;
   title: string;
+};
+
+export type TipAllocationStrategy =
+  | "ai_agents"
+  | "balanced"
+  | "payments_stack"
+  | "rising_projects"
+  | "top_signal"
+  | "underfunded_builders";
+
+export type TipAllocationProject = {
+  amountUsdc: string;
+  category: string;
+  projectId: string;
+  projectName: string;
+  projectSlug: string;
+  reason: string;
+  score: number;
+  walletAddress: `0x${string}`;
+};
+
+export type TipAllocationPlan = {
+  allocations: TipAllocationProject[];
+  budgetUsdc: string;
+  generatedAt: string;
+  maxProjects: number;
+  strategy: TipAllocationStrategy;
+  summary: string;
 };

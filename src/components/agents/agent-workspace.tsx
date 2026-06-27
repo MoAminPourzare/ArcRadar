@@ -12,6 +12,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { ArcReadinessAuditPanel } from "@/components/agents/arc-readiness-audit-panel";
+import { TipAllocationPanel } from "@/components/agents/tip-allocation-panel";
 import { ProjectLogo } from "@/components/projects/project-logo";
 import { cn } from "@/lib/utils";
 import type { AgentReportSummary } from "@/types/agent";
@@ -35,12 +36,12 @@ const agentOptions = [
   },
   {
     description:
-      "Suggest how a supporter should split an Arc USDC budget across high-signal projects.",
+      "Paid Arc USDC nanopayment agent that splits a supporter budget across high-signal projects.",
     icon: CircleDollarSign,
     id: "tip-allocation",
     label: "Tip Allocation",
-    live: false,
-    status: "Next",
+    live: true,
+    status: "Live",
   },
   {
     description:
@@ -99,6 +100,7 @@ export function AgentWorkspace({
     projects.find((project) => project.id === selectedProjectId) ??
     visibleProjects[0] ??
     projects[0];
+  const requiresProjectInput = activeAgentId === "arc-readiness";
 
   return (
     <section className="border-b border-ink/10 bg-paper py-8 sm:py-10">
@@ -173,82 +175,93 @@ export function AgentWorkspace({
           })}
         </div>
 
-        <div className="mt-5 grid gap-5 xl:grid-cols-[390px_minmax(0,1fr)]">
-          <aside className="rounded-lg border border-ink/10 bg-white p-4 shadow-sm">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="text-xs font-black uppercase text-blueprint">
-                  Project input
-                </p>
-                <h2 className="mt-1 text-xl font-black text-ink">
-                  Choose target project
-                </h2>
-              </div>
-              <span className="rounded-md bg-ink/5 px-2 py-1 text-[10px] font-black uppercase text-ink/40">
-                Required
-              </span>
-            </div>
-
-            <label className="relative mt-4 block">
-              <Search
-                aria-hidden
-                className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-ink/35"
-                weight="duotone"
-              />
-              <input
-                className="min-h-11 w-full rounded-lg border border-ink/10 bg-paper pl-10 pr-3 text-sm font-semibold text-ink outline-none transition placeholder:text-ink/35 focus:border-blueprint"
-                onChange={(event) => {
-                  const value = event.target.value;
-                  setQuery(value);
-
-                  const nextProject = projects.find((project) =>
-                    [
-                      project.name,
-                      project.tagline,
-                      project.builder,
-                      project.category,
-                      ...project.tags,
-                    ]
-                      .join(" ")
-                      .toLowerCase()
-                      .includes(value.trim().toLowerCase()),
-                  );
-
-                  if (nextProject && value.trim()) {
-                    setSelectedProjectId(nextProject.id);
-                  }
-                }}
-                placeholder="Search project, builder, category"
-                type="search"
-                value={query}
-              />
-            </label>
-
-            <div className="mt-3 grid max-h-[540px] gap-2 overflow-y-auto pr-1">
-              {visibleProjects.length > 0 ? (
-                visibleProjects.map((project) => (
-                  <ProjectOption
-                    active={project.id === selectedProject?.id}
-                    key={project.id}
-                    project={project}
-                    report={latestReportsByProjectId[project.id]}
-                    onSelect={() => setSelectedProjectId(project.id)}
-                  />
-                ))
-              ) : (
-                <div className="rounded-lg border border-dashed border-ink/20 bg-paper p-4 text-sm font-semibold text-ink/50">
-                  No project found for this search.
+        <div
+          className={cn(
+            "mt-5 grid gap-5",
+            requiresProjectInput
+              ? "xl:grid-cols-[390px_minmax(0,1fr)]"
+              : "xl:grid-cols-1",
+          )}
+        >
+          {requiresProjectInput ? (
+            <aside className="rounded-lg border border-ink/10 bg-white p-4 shadow-sm">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-xs font-black uppercase text-blueprint">
+                    Project input
+                  </p>
+                  <h2 className="mt-1 text-xl font-black text-ink">
+                    Choose target project
+                  </h2>
                 </div>
-              )}
-            </div>
+                <span className="rounded-md bg-ink/5 px-2 py-1 text-[10px] font-black uppercase text-ink/40">
+                  Required
+                </span>
+              </div>
 
-            <p className="mt-3 text-xs font-semibold text-ink/40">
-              Showing {visibleProjects.length} of {filteredProjects.length} matches.
-            </p>
-          </aside>
+              <label className="relative mt-4 block">
+                <Search
+                  aria-hidden
+                  className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-ink/35"
+                  weight="duotone"
+                />
+                <input
+                  className="min-h-11 w-full rounded-lg border border-ink/10 bg-paper pl-10 pr-3 text-sm font-semibold text-ink outline-none transition placeholder:text-ink/35 focus:border-blueprint"
+                  onChange={(event) => {
+                    const value = event.target.value;
+                    setQuery(value);
+
+                    const nextProject = projects.find((project) =>
+                      [
+                        project.name,
+                        project.tagline,
+                        project.builder,
+                        project.category,
+                        ...project.tags,
+                      ]
+                        .join(" ")
+                        .toLowerCase()
+                        .includes(value.trim().toLowerCase()),
+                    );
+
+                    if (nextProject && value.trim()) {
+                      setSelectedProjectId(nextProject.id);
+                    }
+                  }}
+                  placeholder="Search project, builder, category"
+                  type="search"
+                  value={query}
+                />
+              </label>
+
+              <div className="mt-3 grid max-h-[540px] gap-2 overflow-y-auto pr-1">
+                {visibleProjects.length > 0 ? (
+                  visibleProjects.map((project) => (
+                    <ProjectOption
+                      active={project.id === selectedProject?.id}
+                      key={project.id}
+                      project={project}
+                      report={latestReportsByProjectId[project.id]}
+                      onSelect={() => setSelectedProjectId(project.id)}
+                    />
+                  ))
+                ) : (
+                  <div className="rounded-lg border border-dashed border-ink/20 bg-paper p-4 text-sm font-semibold text-ink/50">
+                    No project found for this search.
+                  </div>
+                )}
+              </div>
+
+              <p className="mt-3 text-xs font-semibold text-ink/40">
+                Showing {visibleProjects.length} of {filteredProjects.length} matches.
+              </p>
+            </aside>
+          ) : null}
 
           <div className="grid gap-4">
-            {selectedProject ? (
+            {activeAgentId === "tip-allocation" ? (
+              <TipAllocationPanel />
+            ) : selectedProject ? (
               <>
                 <section className="rounded-lg border border-ink/10 bg-white p-4 shadow-sm">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -340,7 +353,7 @@ function ProjectOption({
           {project.name}
         </span>
         <span className="mt-0.5 block truncate text-xs font-semibold text-ink/45">
-          {project.category} · {project.builder}
+          {project.category} / {project.builder}
         </span>
       </span>
       <span
