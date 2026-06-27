@@ -5,6 +5,7 @@ import { ProjectProfilePage } from "@/components/projects/project-profile-page";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
 import { siteConfig } from "@/config/site";
+import { getLatestProjectAgentReport } from "@/server/agents/repository";
 import {
   getProjectBySlug,
   getProjects,
@@ -55,6 +56,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   const relatedProjects = getRelatedProjectsFromList(project, allProjects);
   const tipData = await getProjectTipData(project);
+  const latestAuditReport = await getLatestProjectAgentReport({
+    projectId: project.id,
+  });
   const socialData = await getSocialLayerData(allProjects);
   const socialSignal = socialData.projects.find(
     (signal) => signal.project.slug === project.slug,
@@ -64,6 +68,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <div className="min-h-screen bg-paper text-ink">
       <SiteHeader />
       <ProjectProfilePage
+        latestAuditReport={latestAuditReport}
         project={project}
         relatedProjects={relatedProjects}
         socialSignal={socialSignal}

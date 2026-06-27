@@ -30,8 +30,8 @@ const sections = [
   },
   {
     description:
-      "An Arc-focused assistant will be added here in a future phase.",
-    disabled: true,
+      "Run paid testnet readiness audits that check project profiles, websites, USDC tipping setup, Arc proof, and activity signals.",
+    disabled: false,
     href: "/agent",
     icon: Bot,
     label: "Agent",
@@ -80,8 +80,8 @@ export function ExploreSections() {
           <p className="mt-3 text-sm font-semibold leading-6 text-ink/55">
             Each area now has its own route, data surface, and purpose. Start
             with the directory, use the builder hub for docs shortcuts, then
-            move through support, network, and wallet readiness. Agent
-            functionality is reserved for a future phase.
+            move through support, network, wallet readiness, and agent-powered
+            project checks.
           </p>
         </div>
 

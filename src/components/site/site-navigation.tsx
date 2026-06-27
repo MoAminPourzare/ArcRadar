@@ -9,7 +9,7 @@ const navigationItems = [
   { disabled: false, href: "/projects", label: "Projects" },
   { disabled: false, href: "/submit", label: "Submit" },
   { disabled: false, href: "/builders", label: "Builders" },
-  { disabled: true, href: "/agent", label: "Agent" },
+  { disabled: false, href: "/agent", label: "Agent" },
   { disabled: false, href: "/leaderboard", label: "Leaderboard" },
   { disabled: false, href: "/network", label: "Network" },
   { disabled: false, href: "/wallet", label: "Wallet" },

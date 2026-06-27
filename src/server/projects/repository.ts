@@ -183,6 +183,7 @@ function mapDatabaseProject(
     tagline: row.tagline,
     tags: row.tags,
     walletAddress: row.projectWallet as `0x${string}` | null,
+    websiteUrl: row.websiteUrl,
   };
 }
 

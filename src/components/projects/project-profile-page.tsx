@@ -10,15 +10,18 @@ import {
 } from "@phosphor-icons/react/ssr";
 import Link from "next/link";
 
+import { ArcReadinessAuditPanel } from "@/components/agents/arc-readiness-audit-panel";
 import { ProjectCard } from "@/components/projects/project-card";
 import { ProjectLinkIcon } from "@/components/projects/project-link-icon";
 import { ProjectLogo } from "@/components/projects/project-logo";
 import { ProjectTipPanel } from "@/components/projects/project-tip-panel";
 import { shortenAddress } from "@/lib/utils";
+import type { AgentReportSummary } from "@/types/agent";
 import type { Project, ProjectLink, ProjectTipData } from "@/types/project";
 import type { ProjectSocialSignal } from "@/types/social";
 
 type ProjectProfilePageProps = {
+  latestAuditReport?: AgentReportSummary | null;
   project: Project;
   relatedProjects: Project[];
   socialSignal?: ProjectSocialSignal;
@@ -71,6 +74,7 @@ const signalPillars = {
 } as const;
 
 export function ProjectProfilePage({
+  latestAuditReport,
   project,
   relatedProjects,
   socialSignal,
@@ -166,6 +170,11 @@ export function ProjectProfilePage({
                   projectWallet={project.walletAddress}
                 />
               ) : null}
+              <ArcReadinessAuditPanel
+                initialReport={latestAuditReport}
+                projectName={project.name}
+                projectSlug={project.slug}
+              />
             </aside>
           </div>
         </div>

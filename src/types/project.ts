@@ -94,6 +94,7 @@ export type Project = {
   description: string;
   category: ProjectCategory;
   builder: string;
+  websiteUrl?: string | null;
   logoUrl?: string | null;
   walletAddress: `0x${string}` | null;
   links: ProjectLink[];

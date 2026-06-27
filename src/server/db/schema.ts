@@ -46,6 +46,13 @@ export const submissionStatus = pgEnum("submission_status", [
   "rejected",
 ]);
 
+export const agentRunStatus = pgEnum("agent_run_status", [
+  "pending",
+  "running",
+  "completed",
+  "failed",
+]);
+
 export const projects = pgTable(
   "projects",
   {
@@ -143,6 +150,86 @@ export const tipIndexerState = pgTable("tip_indexer_state", {
     .defaultNow()
     .notNull(),
 });
+
+export const agentRuns = pgTable(
+  "agent_runs",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    agentId: varchar("agent_id", { length: 64 }).notNull(),
+    projectId: uuid("project_id").references(() => projects.id, {
+      onDelete: "cascade",
+    }),
+    userWallet: varchar("user_wallet", { length: 42 }),
+    status: agentRunStatus("status").default("pending").notNull(),
+    paymentTransactionHash: varchar("payment_transaction_hash", {
+      length: 66,
+    }),
+    paymentAmountUsdcMicro: bigint("payment_amount_usdc_micro", {
+      mode: "bigint",
+    })
+      .default(sql`0`)
+      .notNull(),
+    input: jsonb("input")
+      .$type<Record<string, unknown>>()
+      .default({})
+      .notNull(),
+    output: jsonb("output")
+      .$type<Record<string, unknown>>()
+      .default({})
+      .notNull(),
+    error: text("error"),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+    completedAt: timestamp("completed_at", { withTimezone: true }),
+  },
+  (table) => [
+    index("agent_runs_agent_id_idx").on(table.agentId),
+    index("agent_runs_project_id_idx").on(table.projectId),
+    index("agent_runs_status_idx").on(table.status),
+    uniqueIndex("agent_runs_payment_transaction_hash_idx").on(
+      table.paymentTransactionHash,
+    ),
+  ],
+);
+
+export const agentReports = pgTable(
+  "agent_reports",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    runId: uuid("run_id")
+      .references(() => agentRuns.id, { onDelete: "cascade" })
+      .notNull(),
+    projectId: uuid("project_id")
+      .references(() => projects.id, { onDelete: "cascade" })
+      .notNull(),
+    agentId: varchar("agent_id", { length: 64 }).notNull(),
+    title: varchar("title", { length: 180 }).notNull(),
+    summary: text("summary").notNull(),
+    score: integer("score"),
+    findings: jsonb("findings")
+      .$type<Array<Record<string, unknown>>>()
+      .default([])
+      .notNull(),
+    recommendations: jsonb("recommendations")
+      .$type<Array<Record<string, unknown>>>()
+      .default([])
+      .notNull(),
+    evidence: jsonb("evidence")
+      .$type<Record<string, unknown>>()
+      .default({})
+      .notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => [
+    index("agent_reports_agent_id_idx").on(table.agentId),
+    index("agent_reports_created_at_idx").on(table.createdAt),
+    index("agent_reports_project_id_idx").on(table.projectId),
+    index("agent_reports_run_id_idx").on(table.runId),
+  ],
+);
 
 export const projectLogoAssets = pgTable("project_logo_assets", {
   key: varchar("key", { length: 48 }).primaryKey(),
