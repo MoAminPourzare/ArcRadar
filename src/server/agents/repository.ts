@@ -46,6 +46,37 @@ export async function getLatestProjectAgentReport({
   }
 }
 
+export async function getLatestProjectAgentReports({
+  agentId = ARC_READINESS_AUDIT_AGENT_ID,
+}: {
+  agentId?: AgentId;
+} = {}) {
+  const db = getDb();
+
+  if (!db) {
+    return {};
+  }
+
+  try {
+    const reports = await db
+      .select()
+      .from(agentReports)
+      .where(eq(agentReports.agentId, agentId))
+      .orderBy(desc(agentReports.createdAt));
+    const latestReports: Record<string, AgentReportSummary> = {};
+
+    for (const report of reports) {
+      if (!latestReports[report.projectId]) {
+        latestReports[report.projectId] = mapAgentReport(report);
+      }
+    }
+
+    return latestReports;
+  } catch {
+    return {};
+  }
+}
+
 export async function getAgentReportByPaymentHash(transactionHash: `0x${string}`) {
   const db = getDb();
 
