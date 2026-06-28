@@ -4,9 +4,7 @@ import {
   ChartLineUpIcon as ChartLineUp,
   ClipboardTextIcon as ClipboardText,
   CurrencyCircleDollarIcon as CircleDollarSign,
-  FlagBannerIcon as Flag,
   MagnifyingGlassIcon as Search,
-  RocketLaunchIcon as RocketLaunch,
 } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
@@ -42,24 +40,6 @@ const agentOptions = [
     label: "Tip Allocation",
     live: true,
     status: "Live",
-  },
-  {
-    description:
-      "Turn a builder website or social link into a complete ArcRadar project draft.",
-    icon: RocketLaunch,
-    id: "launch-assistant",
-    label: "Launch Assistant",
-    live: false,
-    status: "Soon",
-  },
-  {
-    description:
-      "Convert audit gaps into practical missions and micro-bounties for contributors.",
-    icon: Flag,
-    id: "mission-agent",
-    label: "Mission Agent",
-    live: false,
-    status: "Soon",
   },
 ] as const;
 
@@ -120,7 +100,7 @@ export function AgentWorkspace({
           </div>
         </div>
 
-        <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-3 md:grid-cols-2">
           {agentOptions.map((agent) => {
             const Icon = agent.icon;
             const isActive = activeAgentId === agent.id;
